@@ -1,0 +1,26 @@
+.idea
+
+### Node template
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+node_modules
+scratch
+test/.env
+docs/fonts/
+docs/styles/
+docs/scripts/
+docs/*.html*
+.nyc_output
+test/definitions
+v0
+dist
+temp
+docs
