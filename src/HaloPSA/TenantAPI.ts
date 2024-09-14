@@ -22,7 +22,7 @@ export class TenantAPI extends HaloPSA {
    * 
    
    */
-  getTenant(): Promise<any> {
+  getTenant({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Tenant',
@@ -34,7 +34,7 @@ export class TenantAPI extends HaloPSA {
    * 
    
    */
-  postTenant(): Promise<any> {
+  postTenant({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Tenant',

@@ -22,7 +22,7 @@ export class ReportDataAPI extends HaloPSA {
    *
    * @param {string} publishedid
    */
-  getReportDatapublishedid(publishedid: string): Promise<any> {
+  getReportDatapublishedid({ publishedid }: { publishedid: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ReportData/${publishedid}`,

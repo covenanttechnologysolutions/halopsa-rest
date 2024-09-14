@@ -24,7 +24,7 @@ export class AddressbookAPI extends HaloPSA {
    * 
    
    */
-  getAddressbook(): Promise<any> {
+  getAddressbook({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Addressbook',
@@ -36,7 +36,7 @@ export class AddressbookAPI extends HaloPSA {
    * 
    
    */
-  postAddressbook(addressbook: Array<Addressbook>): Promise<any> {
+  postAddressbook({ addressbook }: { addressbook: Array<Addressbook> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Addressbook',
@@ -49,7 +49,7 @@ export class AddressbookAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getAddressbookById(id: number): Promise<any> {
+  getAddressbookById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Addressbook/${id}`,
@@ -61,7 +61,7 @@ export class AddressbookAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAddressbookById(id: number): Promise<any> {
+  deleteAddressbookById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Addressbook/${id}`,

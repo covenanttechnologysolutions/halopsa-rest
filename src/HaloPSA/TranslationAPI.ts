@@ -24,7 +24,7 @@ export class TranslationAPI extends HaloPSA {
    * 
    
    */
-  getTranslation(): Promise<any> {
+  getTranslation({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Translation',
@@ -36,9 +36,11 @@ export class TranslationAPI extends HaloPSA {
    * 
    
    */
-  postTranslation(
-    languagePackTranslationsCustom: Array<LanguagePackTranslationsCustom>,
-  ): Promise<any> {
+  postTranslation({
+    languagePackTranslationsCustom,
+  }: {
+    languagePackTranslationsCustom: Array<LanguagePackTranslationsCustom>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Translation',

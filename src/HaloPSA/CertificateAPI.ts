@@ -24,7 +24,7 @@ export class CertificateAPI extends HaloPSA {
    * 
    
    */
-  getCertificate(): Promise<any> {
+  getCertificate({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Certificate',
@@ -36,7 +36,7 @@ export class CertificateAPI extends HaloPSA {
    * 
    
    */
-  postCertificate(certificate: Array<Certificate>): Promise<any> {
+  postCertificate({ certificate }: { certificate: Array<Certificate> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Certificate',
@@ -49,9 +49,15 @@ export class CertificateAPI extends HaloPSA {
    * @description Use this to return a single instance of Certificate.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getCertificateById(id: number, includedetails: boolean): Promise<any> {
+  getCertificateById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Certificate/${id}`,
@@ -66,7 +72,7 @@ export class CertificateAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteCertificateById(id: number): Promise<any> {
+  deleteCertificateById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Certificate/${id}`,

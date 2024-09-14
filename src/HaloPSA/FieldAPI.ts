@@ -23,10 +23,10 @@ export class FieldAPI extends HaloPSA {
    * @summary List of Field
    * @description Use this to return multiple Field.<br>
 				Requires authentication.
-   * @param {string} kind 
-   * @param {number} type_id 
+   * @param {string} [kind] 
+   * @param {number} [type_id] 
    */
-  getField(kind: string, type_id: number): Promise<any> {
+  getField({ kind, type_id }: { kind?: string; type_id?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Field',
@@ -42,7 +42,7 @@ export class FieldAPI extends HaloPSA {
    * 
    
    */
-  postField(field: Array<Field>): Promise<any> {
+  postField({ field }: { field: Array<Field> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Field',
@@ -55,10 +55,18 @@ export class FieldAPI extends HaloPSA {
    * @description Use this to return a single instance of Field.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
-   * @param {string} kind 
+   * @param {boolean} [includedetails] 
+   * @param {string} [kind] 
    */
-  getFieldById(id: number, includedetails: boolean, kind: string): Promise<any> {
+  getFieldById({
+    id,
+    includedetails,
+    kind,
+  }: {
+    id: number
+    includedetails?: boolean
+    kind?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Field/${id}`,
@@ -74,9 +82,9 @@ export class FieldAPI extends HaloPSA {
    * @description Delete specific Field.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {string} kind 
+   * @param {string} [kind] 
    */
-  deleteFieldById(id: number, kind: string): Promise<any> {
+  deleteFieldById({ id, kind }: { id: number; kind?: string }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Field/${id}`,
@@ -91,7 +99,7 @@ export class FieldAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  postFieldAddFieldToAllById(id: number): Promise<any> {
+  postFieldAddFieldToAllById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'post',
       path: `/Field/AddFieldToAll/${id}`,

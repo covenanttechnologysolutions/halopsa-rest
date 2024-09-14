@@ -24,7 +24,7 @@ export class ConnectedInstanceAPI extends HaloPSA {
    * 
    
    */
-  getConnectedInstance(): Promise<any> {
+  getConnectedInstance({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ConnectedInstance',
@@ -36,7 +36,11 @@ export class ConnectedInstanceAPI extends HaloPSA {
    * 
    
    */
-  postConnectedInstance(connectedInstance: Array<ConnectedInstance>): Promise<any> {
+  postConnectedInstance({
+    connectedInstance,
+  }: {
+    connectedInstance: Array<ConnectedInstance>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ConnectedInstance',
@@ -49,9 +53,15 @@ export class ConnectedInstanceAPI extends HaloPSA {
    * @description Use this to return a single instance of ConnectedInstance.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getConnectedInstanceById(id: number, includedetails: boolean): Promise<any> {
+  getConnectedInstanceById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ConnectedInstance/${id}`,
@@ -66,7 +76,7 @@ export class ConnectedInstanceAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteConnectedInstanceById(id: number): Promise<any> {
+  deleteConnectedInstanceById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ConnectedInstance/${id}`,

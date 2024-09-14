@@ -24,7 +24,7 @@ export class AzureDevOpsDetailsAPI extends HaloPSA {
    * 
    
    */
-  getAzureDevOpsDetails(): Promise<any> {
+  getAzureDevOpsDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AzureDevOpsDetails',
@@ -36,7 +36,11 @@ export class AzureDevOpsDetailsAPI extends HaloPSA {
    * 
    
    */
-  postAzureDevOpsDetails(azureDevOpsDetails: Array<AzureDevOpsDetails>): Promise<any> {
+  postAzureDevOpsDetails({
+    azureDevOpsDetails,
+  }: {
+    azureDevOpsDetails: Array<AzureDevOpsDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/AzureDevOpsDetails',
@@ -49,9 +53,15 @@ export class AzureDevOpsDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of AzureDevOpsDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getAzureDevOpsDetailsById(id: number, includedetails: boolean): Promise<any> {
+  getAzureDevOpsDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/AzureDevOpsDetails/${id}`,
@@ -66,7 +76,7 @@ export class AzureDevOpsDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAzureDevOpsDetailsById(id: number): Promise<any> {
+  deleteAzureDevOpsDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/AzureDevOpsDetails/${id}`,

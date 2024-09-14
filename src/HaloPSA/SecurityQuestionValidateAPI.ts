@@ -24,7 +24,7 @@ export class SecurityQuestionValidateAPI extends HaloPSA {
    * 
    
    */
-  getSecurityQuestionValidate(): Promise<any> {
+  getSecurityQuestionValidate({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SecurityQuestionValidate',
@@ -36,7 +36,7 @@ export class SecurityQuestionValidateAPI extends HaloPSA {
    * 
    
    */
-  postSecurityQuestionValidate(nPR_Result: Array<NPR_Result>): Promise<any> {
+  postSecurityQuestionValidate({ nPR_Result }: { nPR_Result: Array<NPR_Result> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SecurityQuestionValidate',

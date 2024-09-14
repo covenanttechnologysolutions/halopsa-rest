@@ -24,7 +24,7 @@ export class KandjiDetailsAPI extends HaloPSA {
    * 
    
    */
-  getKandjiDetails(): Promise<any> {
+  getKandjiDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/KandjiDetails',
@@ -36,7 +36,7 @@ export class KandjiDetailsAPI extends HaloPSA {
    * 
    
    */
-  postKandjiDetails(kandjiDetails: Array<KandjiDetails>): Promise<any> {
+  postKandjiDetails({ kandjiDetails }: { kandjiDetails: Array<KandjiDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/KandjiDetails',
@@ -49,7 +49,7 @@ export class KandjiDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getKandjiDetailsById(id: number): Promise<any> {
+  getKandjiDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/KandjiDetails/${id}`,
@@ -61,7 +61,7 @@ export class KandjiDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteKandjiDetailsById(id: number): Promise<any> {
+  deleteKandjiDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/KandjiDetails/${id}`,

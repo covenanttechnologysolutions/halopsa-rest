@@ -23,29 +23,40 @@ export class AddressAPI extends HaloPSA {
    * @summary List of AddressStore
    * @description Use this to return multiple AddressStore.<br>
 				Requires authentication.
-   * @param {number} count 
-   * @param {string} postcode 
-   * @param {number} site_id 
-   * @param {number} type_id 
-   * @param {number} user_id 
-   * @param {} openedafter (bool) Only return tickets opened within the last 30 days.
-   * @param {} onholdonly (bool) Only return tickets that are on SLA hold.
-   * @param {} overrideclientid (int) Filter tickets to a client id.
-   * @param {} overridesiteid (int) Filter tickets to a site id.
-   * @param {} overrideuserid (int) Filter tickets to a user id.
+   * @param {number} [count] 
+   * @param {string} [postcode] 
+   * @param {number} [site_id] 
+   * @param {number} [type_id] 
+   * @param {number} [user_id] 
+   * @param {} [openedafter] (bool) Only return tickets opened within the last 30 days.
+   * @param {} [onholdonly] (bool) Only return tickets that are on SLA hold.
+   * @param {} [overrideclientid] (int) Filter tickets to a client id.
+   * @param {} [overridesiteid] (int) Filter tickets to a site id.
+   * @param {} [overrideuserid] (int) Filter tickets to a user id.
    */
-  getAddress(
-    count: number,
-    postcode: string,
-    site_id: number,
-    type_id: number,
-    user_id: number,
-    openedafter: any,
-    onholdonly: any,
-    overrideclientid: any,
-    overridesiteid: any,
-    overrideuserid: any,
-  ): Promise<any> {
+  getAddress({
+    count,
+    postcode,
+    site_id,
+    type_id,
+    user_id,
+    openedafter,
+    onholdonly,
+    overrideclientid,
+    overridesiteid,
+    overrideuserid,
+  }: {
+    count?: number
+    postcode?: string
+    site_id?: number
+    type_id?: number
+    user_id?: number
+    openedafter?: any
+    onholdonly?: any
+    overrideclientid?: any
+    overridesiteid?: any
+    overrideuserid?: any
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Address',
@@ -69,7 +80,7 @@ export class AddressAPI extends HaloPSA {
    * 
    
    */
-  postAddress(addressStore: Array<AddressStore>): Promise<any> {
+  postAddress({ addressStore }: { addressStore: Array<AddressStore> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Address',
@@ -82,9 +93,9 @@ export class AddressAPI extends HaloPSA {
    * @description Use this to return a single instance of AddressStore.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getAddressById(id: number, includedetails: boolean): Promise<any> {
+  getAddressById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Address/${id}`,
@@ -99,7 +110,7 @@ export class AddressAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAddressById(id: number): Promise<any> {
+  deleteAddressById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Address/${id}`,

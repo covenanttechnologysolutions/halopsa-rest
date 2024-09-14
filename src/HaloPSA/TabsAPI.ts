@@ -23,10 +23,10 @@ export class TabsAPI extends HaloPSA {
    * @summary List of Tabname
    * @description Use this to return multiple Tabname.<br>
 				Requires authentication.
-   * @param {number} type 
-   * @param {number} typeid 
+   * @param {number} [type] 
+   * @param {number} [typeid] 
    */
-  getTabs(type: number, typeid: number): Promise<any> {
+  getTabs({ type, typeid }: { type?: number; typeid?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Tabs',
@@ -42,7 +42,7 @@ export class TabsAPI extends HaloPSA {
    * 
    
    */
-  postTabs(tabname: Array<Tabname>): Promise<any> {
+  postTabs({ tabname }: { tabname: Array<Tabname> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Tabs',
@@ -55,9 +55,9 @@ export class TabsAPI extends HaloPSA {
    * @description Use this to return a single instance of Tabname.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getTabsById(id: number, includedetails: boolean): Promise<any> {
+  getTabsById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Tabs/${id}`,
@@ -72,7 +72,7 @@ export class TabsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteTabsById(id: number): Promise<any> {
+  deleteTabsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Tabs/${id}`,

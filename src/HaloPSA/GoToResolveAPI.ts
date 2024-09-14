@@ -22,7 +22,7 @@ export class GoToResolveAPI extends HaloPSA {
    * 
    
    */
-  getGoToResolveComplete(): Promise<any> {
+  getGoToResolveComplete({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/GoToResolve/Complete',
@@ -34,7 +34,7 @@ export class GoToResolveAPI extends HaloPSA {
    * 
    
    */
-  getGoToResolveDownload(): Promise<any> {
+  getGoToResolveDownload({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/GoToResolve/Download',

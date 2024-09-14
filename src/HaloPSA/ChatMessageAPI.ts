@@ -25,11 +25,19 @@ export class ChatMessageAPI extends HaloPSA {
    * @summary List of LiveChatMsg
    * @description Use this to return multiple LiveChatMsg.<br>
 				Requires authentication.
-   * @param {number} chat_id 
-   * @param {number} last_id 
-   * @param {number} max_id 
+   * @param {number} [chat_id] 
+   * @param {number} [last_id] 
+   * @param {number} [max_id] 
    */
-  getChatMessage(chat_id: number, last_id: number, max_id: number): Promise<any> {
+  getChatMessage({
+    chat_id,
+    last_id,
+    max_id,
+  }: {
+    chat_id?: number
+    last_id?: number
+    max_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ChatMessage',
@@ -46,7 +54,7 @@ export class ChatMessageAPI extends HaloPSA {
    * 
    
    */
-  postChatMessage(liveChatMsg: Array<LiveChatMsg>): Promise<any> {
+  postChatMessage({ liveChatMsg }: { liveChatMsg: Array<LiveChatMsg> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ChatMessage',
@@ -59,7 +67,11 @@ export class ChatMessageAPI extends HaloPSA {
    * 
    
    */
-  postChatMessageIsTyping(liveChatIsTyping: LiveChatIsTyping): Promise<any> {
+  postChatMessageIsTyping({
+    liveChatIsTyping,
+  }: {
+    liveChatIsTyping: LiveChatIsTyping
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ChatMessage/IsTyping',

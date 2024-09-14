@@ -24,7 +24,7 @@ export class TicketTypeGroupAPI extends HaloPSA {
    * 
    
    */
-  getTicketTypeGroup(): Promise<any> {
+  getTicketTypeGroup({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TicketTypeGroup',
@@ -36,7 +36,11 @@ export class TicketTypeGroupAPI extends HaloPSA {
    * 
    
    */
-  postTicketTypeGroup(requestTypeGroup: Array<RequestTypeGroup>): Promise<any> {
+  postTicketTypeGroup({
+    requestTypeGroup,
+  }: {
+    requestTypeGroup: Array<RequestTypeGroup>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/TicketTypeGroup',
@@ -49,10 +53,18 @@ export class TicketTypeGroupAPI extends HaloPSA {
    * @description Use this to return a single instance of RequestTypeGroup.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} getfields 
-   * @param {boolean} includedetails 
+   * @param {boolean} [getfields] 
+   * @param {boolean} [includedetails] 
    */
-  getTicketTypeGroupById(id: number, getfields: boolean, includedetails: boolean): Promise<any> {
+  getTicketTypeGroupById({
+    id,
+    getfields,
+    includedetails,
+  }: {
+    id: number
+    getfields?: boolean
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/TicketTypeGroup/${id}`,
@@ -68,7 +80,7 @@ export class TicketTypeGroupAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteTicketTypeGroupById(id: number): Promise<any> {
+  deleteTicketTypeGroupById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/TicketTypeGroup/${id}`,

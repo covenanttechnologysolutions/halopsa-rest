@@ -24,7 +24,7 @@ export class AvalaraDetailsAPI extends HaloPSA {
    * 
    
    */
-  getAvalaraDetails(): Promise<any> {
+  getAvalaraDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AvalaraDetails',
@@ -36,7 +36,7 @@ export class AvalaraDetailsAPI extends HaloPSA {
    * 
    
    */
-  postAvalaraDetails(avalaraDetails: Array<AvalaraDetails>): Promise<any> {
+  postAvalaraDetails({ avalaraDetails }: { avalaraDetails: Array<AvalaraDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/AvalaraDetails',
@@ -49,7 +49,7 @@ export class AvalaraDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getAvalaraDetailsById(id: number): Promise<any> {
+  getAvalaraDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/AvalaraDetails/${id}`,
@@ -61,7 +61,7 @@ export class AvalaraDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAvalaraDetailsById(id: number): Promise<any> {
+  deleteAvalaraDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/AvalaraDetails/${id}`,

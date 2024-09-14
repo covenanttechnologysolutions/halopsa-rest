@@ -24,7 +24,7 @@ export class AdobeAcrobatDetailsAPI extends HaloPSA {
    * 
    
    */
-  getAdobeAcrobatDetails(): Promise<any> {
+  getAdobeAcrobatDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AdobeAcrobatDetails',
@@ -36,7 +36,11 @@ export class AdobeAcrobatDetailsAPI extends HaloPSA {
    * 
    
    */
-  postAdobeAcrobatDetails(adobeAcrobatDetails: Array<AdobeAcrobatDetails>): Promise<any> {
+  postAdobeAcrobatDetails({
+    adobeAcrobatDetails,
+  }: {
+    adobeAcrobatDetails: Array<AdobeAcrobatDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/AdobeAcrobatDetails',
@@ -49,7 +53,7 @@ export class AdobeAcrobatDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getAdobeAcrobatDetailsById(id: number): Promise<any> {
+  getAdobeAcrobatDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/AdobeAcrobatDetails/${id}`,
@@ -61,7 +65,7 @@ export class AdobeAcrobatDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAdobeAcrobatDetailsById(id: number): Promise<any> {
+  deleteAdobeAcrobatDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/AdobeAcrobatDetails/${id}`,

@@ -24,7 +24,7 @@ export class DatabaseLookupConfirmationAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getDatabaseLookupConfirmationById(id: number): Promise<any> {
+  getDatabaseLookupConfirmationById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/DatabaseLookupConfirmation/${id}`,
@@ -36,9 +36,11 @@ export class DatabaseLookupConfirmationAPI extends HaloPSA {
    * 
    
    */
-  postDatabaseLookupConfirmation(
-    partsLookupConfirmation: Array<PartsLookupConfirmation>,
-  ): Promise<any> {
+  postDatabaseLookupConfirmation({
+    partsLookupConfirmation,
+  }: {
+    partsLookupConfirmation: Array<PartsLookupConfirmation>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/DatabaseLookupConfirmation',

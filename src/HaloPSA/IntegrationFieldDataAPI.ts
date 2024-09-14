@@ -24,7 +24,7 @@ export class IntegrationFieldDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationFieldData(): Promise<any> {
+  getIntegrationFieldData({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationFieldData',
@@ -36,7 +36,11 @@ export class IntegrationFieldDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationFieldData(integrationFieldData: Array<IntegrationFieldData>): Promise<any> {
+  postIntegrationFieldData({
+    integrationFieldData,
+  }: {
+    integrationFieldData: Array<IntegrationFieldData>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationFieldData',
@@ -49,7 +53,7 @@ export class IntegrationFieldDataAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getIntegrationFieldDataById(id: number): Promise<any> {
+  getIntegrationFieldDataById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/IntegrationFieldData/${id}`,
@@ -61,7 +65,7 @@ export class IntegrationFieldDataAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteIntegrationFieldDataById(id: number): Promise<any> {
+  deleteIntegrationFieldDataById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/IntegrationFieldData/${id}`,

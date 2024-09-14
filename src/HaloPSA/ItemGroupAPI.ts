@@ -24,7 +24,7 @@ export class ItemGroupAPI extends HaloPSA {
    * 
    
    */
-  getItemGroup(): Promise<any> {
+  getItemGroup({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ItemGroup',
@@ -36,7 +36,7 @@ export class ItemGroupAPI extends HaloPSA {
    * 
    
    */
-  postItemGroup(itemGroup: Array<ItemGroup>): Promise<any> {
+  postItemGroup({ itemGroup }: { itemGroup: Array<ItemGroup> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ItemGroup',
@@ -49,10 +49,18 @@ export class ItemGroupAPI extends HaloPSA {
    * @description Use this to return a single instance of ItemGroup.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {number} groupQuantity 
-   * @param {boolean} includedetails 
+   * @param {number} [groupQuantity] 
+   * @param {boolean} [includedetails] 
    */
-  getItemGroupById(id: number, groupQuantity: number, includedetails: boolean): Promise<any> {
+  getItemGroupById({
+    id,
+    groupQuantity,
+    includedetails,
+  }: {
+    id: number
+    groupQuantity?: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ItemGroup/${id}`,
@@ -68,7 +76,7 @@ export class ItemGroupAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteItemGroupById(id: number): Promise<any> {
+  deleteItemGroupById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ItemGroup/${id}`,

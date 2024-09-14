@@ -23,11 +23,19 @@ export class WorkdayAPI extends HaloPSA {
    * @summary List of Workdays
    * @description Use this to return multiple Workdays.<br>
 				Requires authentication.
-   * @param {number} access_control_level 
-   * @param {boolean} isconfig 
-   * @param {boolean} showholidays 
+   * @param {number} [access_control_level] 
+   * @param {boolean} [isconfig] 
+   * @param {boolean} [showholidays] 
    */
-  getWorkday(access_control_level: number, isconfig: boolean, showholidays: boolean): Promise<any> {
+  getWorkday({
+    access_control_level,
+    isconfig,
+    showholidays,
+  }: {
+    access_control_level?: number
+    isconfig?: boolean
+    showholidays?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Workday',
@@ -44,7 +52,7 @@ export class WorkdayAPI extends HaloPSA {
    * 
    
    */
-  postWorkday(workdays: Array<Workdays>): Promise<any> {
+  postWorkday({ workdays }: { workdays: Array<Workdays> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Workday',
@@ -57,9 +65,9 @@ export class WorkdayAPI extends HaloPSA {
    * @description Use this to return a single instance of Workdays.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getWorkdayById(id: number, includedetails: boolean): Promise<any> {
+  getWorkdayById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Workday/${id}`,
@@ -74,7 +82,7 @@ export class WorkdayAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteWorkdayById(id: number): Promise<any> {
+  deleteWorkdayById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Workday/${id}`,

@@ -22,7 +22,7 @@ export class AreaRequestTypeAPI extends HaloPSA {
    * 
    
    */
-  getAreaRequestType(): Promise<any> {
+  getAreaRequestType({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AreaRequestType',
@@ -34,9 +34,15 @@ export class AreaRequestTypeAPI extends HaloPSA {
    * @description Use this to return a single instance of AreaRequestType.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getAreaRequestTypeById(id: number, includedetails: boolean): Promise<any> {
+  getAreaRequestTypeById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/AreaRequestType/${id}`,

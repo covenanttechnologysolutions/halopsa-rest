@@ -22,7 +22,7 @@ export class AdobeCommerceIntegrationAPI extends HaloPSA {
    * 
    
    */
-  getAdobeCommerceIntegration(): Promise<any> {
+  getAdobeCommerceIntegration({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AdobeCommerceIntegration',
@@ -34,7 +34,7 @@ export class AdobeCommerceIntegrationAPI extends HaloPSA {
    * 
    
    */
-  postAdobeCommerceIntegrationAuth(file: File): Promise<any> {
+  postAdobeCommerceIntegrationAuth({ file }: { file: File }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/AdobeCommerceIntegration/auth',

@@ -24,7 +24,7 @@ export class SetupTabAPI extends HaloPSA {
    * 
    
    */
-  getSetupTab(): Promise<any> {
+  getSetupTab({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SetupTab',
@@ -36,7 +36,7 @@ export class SetupTabAPI extends HaloPSA {
    * 
    
    */
-  postSetupTab(setupTab: Array<SetupTab>): Promise<any> {
+  postSetupTab({ setupTab }: { setupTab: Array<SetupTab> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SetupTab',
@@ -49,9 +49,9 @@ export class SetupTabAPI extends HaloPSA {
    * @description Use this to return a single instance of SetupTab.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getSetupTabById(id: number, includedetails: boolean): Promise<any> {
+  getSetupTabById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/SetupTab/${id}`,

@@ -23,9 +23,9 @@ export class DatabaseLookupAPI extends HaloPSA {
    * @summary List of PartsLookup
    * @description Use this to return multiple PartsLookup.<br>
 				Requires authentication.
-   * @param {number} type 
+   * @param {number} [type] 
    */
-  getDatabaseLookup(type: number): Promise<any> {
+  getDatabaseLookup({ type }: { type?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/DatabaseLookup',
@@ -40,7 +40,7 @@ export class DatabaseLookupAPI extends HaloPSA {
    * 
    
    */
-  postDatabaseLookup(partsLookup: Array<PartsLookup>): Promise<any> {
+  postDatabaseLookup({ partsLookup }: { partsLookup: Array<PartsLookup> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/DatabaseLookup',
@@ -53,10 +53,18 @@ export class DatabaseLookupAPI extends HaloPSA {
    * @description Use this to return a single instance of PartsLookup.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
-   * @param {obj} lookup_value 
+   * @param {boolean} [includedetails] 
+   * @param {obj} [lookup_value] 
    */
-  getDatabaseLookupById(id: number, includedetails: boolean, lookup_value: obj): Promise<any> {
+  getDatabaseLookupById({
+    id,
+    includedetails,
+    lookup_value,
+  }: {
+    id: number
+    includedetails?: boolean
+    lookup_value?: obj
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/DatabaseLookup/${id}`,
@@ -72,7 +80,7 @@ export class DatabaseLookupAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteDatabaseLookupById(id: number): Promise<any> {
+  deleteDatabaseLookupById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/DatabaseLookup/${id}`,
@@ -84,7 +92,7 @@ export class DatabaseLookupAPI extends HaloPSA {
    * 
    
    */
-  postDatabaseLookupRun(partsLookup: Array<PartsLookup>): Promise<any> {
+  postDatabaseLookupRun({ partsLookup }: { partsLookup: Array<PartsLookup> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/DatabaseLookup/run',

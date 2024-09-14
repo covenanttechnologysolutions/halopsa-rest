@@ -24,7 +24,7 @@ export class DynatraceDetailsAPI extends HaloPSA {
    * 
    
    */
-  getDynatraceDetails(): Promise<any> {
+  getDynatraceDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/DynatraceDetails',
@@ -36,7 +36,11 @@ export class DynatraceDetailsAPI extends HaloPSA {
    * 
    
    */
-  postDynatraceDetails(dynatraceDetails: Array<DynatraceDetails>): Promise<any> {
+  postDynatraceDetails({
+    dynatraceDetails,
+  }: {
+    dynatraceDetails: Array<DynatraceDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/DynatraceDetails',
@@ -49,7 +53,7 @@ export class DynatraceDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getDynatraceDetailsById(id: number): Promise<any> {
+  getDynatraceDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/DynatraceDetails/${id}`,
@@ -61,7 +65,7 @@ export class DynatraceDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteDynatraceDetailsById(id: number): Promise<any> {
+  deleteDynatraceDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/DynatraceDetails/${id}`,

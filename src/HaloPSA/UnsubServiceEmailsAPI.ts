@@ -24,7 +24,7 @@ export class UnsubServiceEmailsAPI extends HaloPSA {
    * 
    
    */
-  getUnsubServiceEmails(): Promise<any> {
+  getUnsubServiceEmails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/UnsubServiceEmails',
@@ -36,7 +36,11 @@ export class UnsubServiceEmailsAPI extends HaloPSA {
    * 
    
    */
-  postUnsubServiceEmails(unsubEmailServiceUsers: Array<UnsubEmailServiceUsers>): Promise<any> {
+  postUnsubServiceEmails({
+    unsubEmailServiceUsers,
+  }: {
+    unsubEmailServiceUsers: Array<UnsubEmailServiceUsers>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/UnsubServiceEmails',
@@ -49,9 +53,15 @@ export class UnsubServiceEmailsAPI extends HaloPSA {
    * @description Use this to return a single instance of UnsubEmailServiceUsers.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getUnsubServiceEmailsById(id: number, includedetails: boolean): Promise<any> {
+  getUnsubServiceEmailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/UnsubServiceEmails/${id}`,
@@ -66,7 +76,7 @@ export class UnsubServiceEmailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteUnsubServiceEmailsById(id: number): Promise<any> {
+  deleteUnsubServiceEmailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/UnsubServiceEmails/${id}`,

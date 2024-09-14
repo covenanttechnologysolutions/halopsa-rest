@@ -22,7 +22,7 @@ export class DocumentCreationAPI extends HaloPSA {
    * 
    
    */
-  postDocumentCreation(): Promise<any> {
+  postDocumentCreation({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/DocumentCreation',

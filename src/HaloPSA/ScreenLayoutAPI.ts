@@ -23,9 +23,9 @@ export class ScreenLayoutAPI extends HaloPSA {
    * @summary List of ScreenLayout
    * @description Use this to return multiple ScreenLayout.<br>
 				Requires authentication.
-   * @param {number} typeid 
+   * @param {number} [typeid] 
    */
-  getScreenLayout(typeid: number): Promise<any> {
+  getScreenLayout({ typeid }: { typeid?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ScreenLayout',
@@ -40,7 +40,7 @@ export class ScreenLayoutAPI extends HaloPSA {
    * 
    
    */
-  postScreenLayout(screenLayout: Array<ScreenLayout>): Promise<any> {
+  postScreenLayout({ screenLayout }: { screenLayout: Array<ScreenLayout> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ScreenLayout',
@@ -53,9 +53,15 @@ export class ScreenLayoutAPI extends HaloPSA {
    * @description Use this to return a single instance of ScreenLayout.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getScreenLayoutById(id: number, includedetails: boolean): Promise<any> {
+  getScreenLayoutById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ScreenLayout/${id}`,
@@ -70,7 +76,7 @@ export class ScreenLayoutAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteScreenLayoutById(id: number): Promise<any> {
+  deleteScreenLayoutById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ScreenLayout/${id}`,

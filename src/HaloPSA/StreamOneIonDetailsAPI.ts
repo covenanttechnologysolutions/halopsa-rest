@@ -24,7 +24,7 @@ export class StreamOneIonDetailsAPI extends HaloPSA {
    * 
    
    */
-  getStreamOneIonDetails(): Promise<any> {
+  getStreamOneIonDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/StreamOneIonDetails',
@@ -36,7 +36,11 @@ export class StreamOneIonDetailsAPI extends HaloPSA {
    * 
    
    */
-  postStreamOneIonDetails(streamOneIonDetails: Array<StreamOneIonDetails>): Promise<any> {
+  postStreamOneIonDetails({
+    streamOneIonDetails,
+  }: {
+    streamOneIonDetails: Array<StreamOneIonDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/StreamOneIonDetails',
@@ -49,7 +53,7 @@ export class StreamOneIonDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getStreamOneIonDetailsById(id: number): Promise<any> {
+  getStreamOneIonDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/StreamOneIonDetails/${id}`,
@@ -61,7 +65,7 @@ export class StreamOneIonDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteStreamOneIonDetailsById(id: number): Promise<any> {
+  deleteStreamOneIonDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/StreamOneIonDetails/${id}`,

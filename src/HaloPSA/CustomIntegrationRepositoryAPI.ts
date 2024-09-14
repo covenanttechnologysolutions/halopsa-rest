@@ -22,7 +22,7 @@ export class CustomIntegrationRepositoryAPI extends HaloPSA {
    * 
    
    */
-  getCustomIntegrationRepository(): Promise<any> {
+  getCustomIntegrationRepository({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/CustomIntegrationRepository',
@@ -34,16 +34,21 @@ export class CustomIntegrationRepositoryAPI extends HaloPSA {
    * @description Use this to return a single instance of OutboundIntegration.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
-   * @param {boolean} includemethods 
-   * @param {number} module_id 
+   * @param {boolean} [includedetails] 
+   * @param {boolean} [includemethods] 
+   * @param {number} [module_id] 
    */
-  getCustomIntegrationRepositoryById(
-    id: number,
-    includedetails: boolean,
-    includemethods: boolean,
-    module_id: number,
-  ): Promise<any> {
+  getCustomIntegrationRepositoryById({
+    id,
+    includedetails,
+    includemethods,
+    module_id,
+  }: {
+    id: number
+    includedetails?: boolean
+    includemethods?: boolean
+    module_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/CustomIntegrationRepository/${id}`,

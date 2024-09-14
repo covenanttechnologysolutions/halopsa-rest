@@ -23,10 +23,16 @@ export class ImportCSVAPI extends HaloPSA {
    * @summary List of ImportCsv
    * @description Use this to return multiple ImportCsv.<br>
 				Requires authentication.
-   * @param {boolean} includedetails 
-   * @param {number} type_id 
+   * @param {boolean} [includedetails] 
+   * @param {number} [type_id] 
    */
-  getImportCSV(includedetails: boolean, type_id: number): Promise<any> {
+  getImportCSV({
+    includedetails,
+    type_id,
+  }: {
+    includedetails?: boolean
+    type_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ImportCSV',
@@ -42,7 +48,7 @@ export class ImportCSVAPI extends HaloPSA {
    * 
    
    */
-  postImportCSV(importCsv: Array<ImportCsv>): Promise<any> {
+  postImportCSV({ importCsv }: { importCsv: Array<ImportCsv> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ImportCSV',
@@ -55,9 +61,9 @@ export class ImportCSVAPI extends HaloPSA {
    * @description Use this to return a single instance of ImportCsv.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getImportCSVById(id: number, includedetails: boolean): Promise<any> {
+  getImportCSVById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ImportCSV/${id}`,
@@ -72,7 +78,7 @@ export class ImportCSVAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteImportCSVById(id: number): Promise<any> {
+  deleteImportCSVById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ImportCSV/${id}`,

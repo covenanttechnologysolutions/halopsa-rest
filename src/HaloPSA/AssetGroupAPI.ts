@@ -23,11 +23,19 @@ export class AssetGroupAPI extends HaloPSA {
    * @summary List of Generic
    * @description Use this to return multiple Generic.<br>
 				Requires authentication.
-   * @param {string} includetypesforgroups 
-   * @param {boolean} istree 
-   * @param {string} type 
+   * @param {string} [includetypesforgroups] 
+   * @param {boolean} [istree] 
+   * @param {string} [type] 
    */
-  getAssetGroup(includetypesforgroups: string, istree: boolean, type: string): Promise<any> {
+  getAssetGroup({
+    includetypesforgroups,
+    istree,
+    type,
+  }: {
+    includetypesforgroups?: string
+    istree?: boolean
+    type?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AssetGroup',
@@ -44,7 +52,7 @@ export class AssetGroupAPI extends HaloPSA {
    * 
    
    */
-  postAssetGroup(generic: Array<Generic>): Promise<any> {
+  postAssetGroup({ generic }: { generic: Array<Generic> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/AssetGroup',
@@ -57,9 +65,15 @@ export class AssetGroupAPI extends HaloPSA {
    * @description Use this to return a single instance of Generic.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getAssetGroupById(id: number, includedetails: boolean): Promise<any> {
+  getAssetGroupById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/AssetGroup/${id}`,
@@ -74,7 +88,7 @@ export class AssetGroupAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAssetGroupById(id: number): Promise<any> {
+  deleteAssetGroupById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/AssetGroup/${id}`,

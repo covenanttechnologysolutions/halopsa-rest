@@ -22,7 +22,7 @@ export class BulkEmailAPI extends HaloPSA {
    * 
    
    */
-  getBulkEmail(): Promise<any> {
+  getBulkEmail({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/BulkEmail',
@@ -34,9 +34,9 @@ export class BulkEmailAPI extends HaloPSA {
    * @description Use this to return a single instance of BulkEmail.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getBulkEmailById(id: number, includedetails: boolean): Promise<any> {
+  getBulkEmailById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/BulkEmail/${id}`,

@@ -23,11 +23,19 @@ export class RolesAPI extends HaloPSA {
    * @summary List of NHD_Roles
    * @description Use this to return multiple NHD_Roles.<br>
 				Requires authentication.
-   * @param {number} access_control_level 
-   * @param {number} agentid 
-   * @param {boolean} isconfig 
+   * @param {number} [access_control_level] 
+   * @param {number} [agentid] 
+   * @param {boolean} [isconfig] 
    */
-  getRoles(access_control_level: number, agentid: number, isconfig: boolean): Promise<any> {
+  getRoles({
+    access_control_level,
+    agentid,
+    isconfig,
+  }: {
+    access_control_level?: number
+    agentid?: number
+    isconfig?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Roles',
@@ -44,7 +52,7 @@ export class RolesAPI extends HaloPSA {
    * 
    
    */
-  postRoles(nHD_Roles: Array<NHD_Roles>): Promise<any> {
+  postRoles({ nHD_Roles }: { nHD_Roles: Array<NHD_Roles> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Roles',
@@ -57,10 +65,18 @@ export class RolesAPI extends HaloPSA {
    * @description Use this to return a single instance of NHD_Roles.<br>
 				Requires authentication.
    * @param {string} id 
-   * @param {boolean} includedetails 
-   * @param {boolean} isconfig 
+   * @param {boolean} [includedetails] 
+   * @param {boolean} [isconfig] 
    */
-  getRolesById(id: string, includedetails: boolean, isconfig: boolean): Promise<any> {
+  getRolesById({
+    id,
+    includedetails,
+    isconfig,
+  }: {
+    id: string
+    includedetails?: boolean
+    isconfig?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Roles/${id}`,
@@ -76,7 +92,7 @@ export class RolesAPI extends HaloPSA {
    *
    * @param {string} id
    */
-  deleteRolesById(id: string): Promise<any> {
+  deleteRolesById({ id }: { id: string }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Roles/${id}`,

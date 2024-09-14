@@ -28,7 +28,7 @@ export class MailAPI extends HaloPSA {
    * 
    
    */
-  postMailAzure(): Promise<any> {
+  postMailAzure({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Mail/Azure',
@@ -40,7 +40,7 @@ export class MailAPI extends HaloPSA {
    * 
    
    */
-  postMailIntegratorAzure(): Promise<any> {
+  postMailIntegratorAzure({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Mail/Integrator/Azure',
@@ -52,7 +52,7 @@ export class MailAPI extends HaloPSA {
    * 
    
    */
-  postMailIntegratorGoogle(gmailMessage: GmailMessage): Promise<any> {
+  postMailIntegratorGoogle({ gmailMessage }: { gmailMessage: GmailMessage }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Mail/Integrator/Google',
@@ -65,7 +65,7 @@ export class MailAPI extends HaloPSA {
    * 
    
    */
-  postMailIntegratorPop3(pop3Message: Pop3Message): Promise<any> {
+  postMailIntegratorPop3({ pop3Message }: { pop3Message: Pop3Message }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Mail/Integrator/Pop3',
@@ -78,7 +78,7 @@ export class MailAPI extends HaloPSA {
    * 
    
    */
-  postMailIntegratorIMAP(iMAPMessage: IMAPMessage): Promise<any> {
+  postMailIntegratorIMAP({ iMAPMessage }: { iMAPMessage: IMAPMessage }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Mail/Integrator/IMAP',
@@ -89,9 +89,15 @@ export class MailAPI extends HaloPSA {
   /**
    *
    *
-   * @param {number} task_id
+   * @param {number} [task_id]
    */
-  postMailProcessMail(listNumber: number, task_id: number): Promise<any> {
+  postMailProcessMail({
+    listNumber,
+    task_id,
+  }: {
+    listNumber: number
+    task_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Mail/ProcessMail',

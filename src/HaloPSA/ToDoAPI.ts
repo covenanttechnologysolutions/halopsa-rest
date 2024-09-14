@@ -23,9 +23,9 @@ export class ToDoAPI extends HaloPSA {
    * @summary List of FaultToDo
    * @description Use this to return multiple FaultToDo.<br>
 				Requires authentication.
-   * @param {number} ticket_id 
+   * @param {number} [ticket_id] 
    */
-  getToDo(ticket_id: number): Promise<any> {
+  getToDo({ ticket_id }: { ticket_id?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ToDo',
@@ -40,7 +40,7 @@ export class ToDoAPI extends HaloPSA {
    * 
    
    */
-  postToDo(faultToDo: Array<FaultToDo>): Promise<any> {
+  postToDo({ faultToDo }: { faultToDo: Array<FaultToDo> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ToDo',

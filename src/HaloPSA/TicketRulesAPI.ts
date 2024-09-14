@@ -23,19 +23,25 @@ export class TicketRulesAPI extends HaloPSA {
    * @summary List of Autoassign
    * @description Use this to return multiple Autoassign.<br>
 				Requires authentication.
-   * @param {number} access_control_level 
-   * @param {boolean} excludeworkflow 
-   * @param {boolean} includecriteriainfo 
-   * @param {boolean} isconfig 
-   * @param {number} rule_use 
+   * @param {number} [access_control_level] 
+   * @param {boolean} [excludeworkflow] 
+   * @param {boolean} [includecriteriainfo] 
+   * @param {boolean} [isconfig] 
+   * @param {number} [rule_use] 
    */
-  getTicketRules(
-    access_control_level: number,
-    excludeworkflow: boolean,
-    includecriteriainfo: boolean,
-    isconfig: boolean,
-    rule_use: number,
-  ): Promise<any> {
+  getTicketRules({
+    access_control_level,
+    excludeworkflow,
+    includecriteriainfo,
+    isconfig,
+    rule_use,
+  }: {
+    access_control_level?: number
+    excludeworkflow?: boolean
+    includecriteriainfo?: boolean
+    isconfig?: boolean
+    rule_use?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TicketRules',
@@ -54,7 +60,7 @@ export class TicketRulesAPI extends HaloPSA {
    * 
    
    */
-  postTicketRules(autoassign: Array<Autoassign>): Promise<any> {
+  postTicketRules({ autoassign }: { autoassign: Array<Autoassign> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/TicketRules',
@@ -67,9 +73,15 @@ export class TicketRulesAPI extends HaloPSA {
    * @description Use this to return a single instance of Autoassign.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getTicketRulesById(id: number, includedetails: boolean): Promise<any> {
+  getTicketRulesById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/TicketRules/${id}`,
@@ -84,7 +96,7 @@ export class TicketRulesAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteTicketRulesById(id: number): Promise<any> {
+  deleteTicketRulesById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/TicketRules/${id}`,

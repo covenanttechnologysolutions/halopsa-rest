@@ -24,7 +24,7 @@ export class ConfluenceDetailsAPI extends HaloPSA {
    * 
    
    */
-  getConfluenceDetails(): Promise<any> {
+  getConfluenceDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ConfluenceDetails',
@@ -36,7 +36,11 @@ export class ConfluenceDetailsAPI extends HaloPSA {
    * 
    
    */
-  postConfluenceDetails(confluenceDetails: Array<ConfluenceDetails>): Promise<any> {
+  postConfluenceDetails({
+    confluenceDetails,
+  }: {
+    confluenceDetails: Array<ConfluenceDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ConfluenceDetails',
@@ -49,7 +53,7 @@ export class ConfluenceDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getConfluenceDetailsById(id: number): Promise<any> {
+  getConfluenceDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ConfluenceDetails/${id}`,
@@ -61,7 +65,7 @@ export class ConfluenceDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteConfluenceDetailsById(id: number): Promise<any> {
+  deleteConfluenceDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ConfluenceDetails/${id}`,

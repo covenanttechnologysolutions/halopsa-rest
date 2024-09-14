@@ -24,7 +24,7 @@ export class OrganisationAPI extends HaloPSA {
    * 
    
    */
-  getOrganisation(): Promise<any> {
+  getOrganisation({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Organisation',
@@ -36,7 +36,7 @@ export class OrganisationAPI extends HaloPSA {
    * 
    
    */
-  postOrganisation(organisation: Array<Organisation>): Promise<any> {
+  postOrganisation({ organisation }: { organisation: Array<Organisation> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Organisation',
@@ -49,9 +49,15 @@ export class OrganisationAPI extends HaloPSA {
    * @description Use this to return a single instance of Organisation.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getOrganisationById(id: number, includedetails: boolean): Promise<any> {
+  getOrganisationById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Organisation/${id}`,
@@ -66,7 +72,7 @@ export class OrganisationAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteOrganisationById(id: number): Promise<any> {
+  deleteOrganisationById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Organisation/${id}`,

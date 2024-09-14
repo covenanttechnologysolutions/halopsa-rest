@@ -40,19 +40,15 @@ export type ${name} = requestBodies['${typeName}']`
  * @param {string} url - The URL template (e.g., '/users/{id}', '/products').
  * @return {string} A concatenated string representing the name.
  */
-function generateOperationName({ method, url }) {
+function generateOperationName ({ method, url }) {
   return (
     method +
-    url
-      .slice(1)
-      .split('/')
-      .map((token) => {
-        if (token === '{id}') {
-          return 'ById'
-        }
-        return token.charAt(0).toUpperCase() + token.slice(1)
-      })
-      .join('')
+    url.slice(1).split('/').map((token) => {
+      if (token === '{id}') {
+        return 'ById'
+      }
+      return token.charAt(0).toUpperCase() + token.slice(1)
+    }).join('')
       // strip invalid characters from function names
       .replaceAll(/([^a-zA-Z0-9_$])/g, '')
   )
@@ -64,7 +60,7 @@ function generateOperationName({ method, url }) {
  * @param {string} options.apiName
  * @param {[]} options.operations
  */
-function generateAPIClass({ apiName, operations = [] }) {
+function generateAPIClass ({ apiName, operations = [] }) {
   // types holder for generating type aliases
   // type Types = Record<string, string>
   // system name, sanitized name
@@ -87,6 +83,7 @@ function generateAPIClass({ apiName, operations = [] }) {
 
       const requestParams = [] // holder for `this.request({ ... })
       const functionParams = [] // holder for functionName({ ... })
+      const functionTypes = [] // holder for function param types
 
       requestParams.push(`method: '${method}'`)
       if (pathParams.length === 0) {
@@ -113,9 +110,8 @@ function generateAPIClass({ apiName, operations = [] }) {
           if (bodyType === 'array') {
             // if array is a typed type
             if (body.content['application/json'].schema.items.$ref) {
-              const arrayItemType = body.content['application/json'].schema.items.$ref
-                .split('/')
-                .pop()
+              const arrayItemType = body.content['application/json'].schema.items.$ref.split('/').
+                pop()
               bodyName = arrayItemType.charAt(0).toLowerCase() + arrayItemType.slice(1)
               bodyType = `Array<${arrayItemType}>`
               types[arrayItemType] = { schemaType: 'schemas' }
@@ -127,7 +123,8 @@ function generateAPIClass({ apiName, operations = [] }) {
           }
         }
         requestParams.push(`data: ${bodyName}`)
-        functionParams.push(`${bodyName}: ${bodyType}`)
+        functionParams.push(`${bodyName}`)
+        functionTypes.push(`${bodyName}: ${bodyType}`)
       }
 
       // calculate path params
@@ -136,7 +133,8 @@ function generateAPIClass({ apiName, operations = [] }) {
           const paramName = param.name
           let paramType = param.schema.type
           const sanitizedParamType = typeMapSanitize(paramType)
-          functionParams.push(`${paramName}: ${sanitizedParamType}`)
+          functionParams.push(`${paramName}`)
+          functionTypes.push(`${paramName}${param.required ? '' : '?'}: ${sanitizedParamType}`)
         })
         requestParams.push(`path: \`${url.replaceAll(/({.+?})/g, (_, p1) => `$${p1}`)}\``)
       }
@@ -147,10 +145,12 @@ function generateAPIClass({ apiName, operations = [] }) {
         queryParams.forEach((param) => {
           const paramName = param.name
           const paramType = param.schema?.type ?? 'any'
-          params[paramName] = typeMapSanitize(paramType)
+          params[paramName] = { paramType: typeMapSanitize(paramType), required: param.required }
         })
         Object.keys(params).forEach((paramName) => {
-          functionParams.push(`${paramName}: ${params[paramName]}`)
+          functionTypes.push(
+            `${paramName}${params[paramName].required ? '' : '?'}: ${params[paramName].paramType}`)
+          functionParams.push(`${paramName}`)
         })
         requestParams.push(`params: {
         ${Object.keys(params).join(', ')}
@@ -165,7 +165,11 @@ function generateAPIClass({ apiName, operations = [] }) {
           const paramType = param.schema?.type
           const description = param.description ?? ''
           const sanitizedParamType = typeMapSanitize(paramType)
-          paramsDocs[paramName] = `* @param {${sanitizedParamType}} ${paramName} ${description}`
+          if (param.required) {
+            paramsDocs[paramName] = `* @param {${sanitizedParamType}} ${paramName} ${description}`
+          } else {
+            paramsDocs[paramName] = `* @param {${sanitizedParamType}} [${paramName}] ${description}`
+          }
         })
       }
 
@@ -173,11 +177,10 @@ function generateAPIClass({ apiName, operations = [] }) {
   /**
    * ${methodDefinition.summary ? `@summary ${methodDefinition.summary}` : ''}
    * ${methodDefinition.description ? `@description ${methodDefinition.description}` : ''}
-   ${Object.keys(paramsDocs)
-     .map((docParam) => paramsDocs[docParam])
-     .join('\n   ')}
+   ${Object.keys(paramsDocs).map((docParam) => paramsDocs[docParam]).join('\n   ')}
    */
-  ${operationName}(${functionParams.map((param) => param).join(', ')}): Promise<${returnType}> {
+  ${operationName}({${functionParams.map((param) => param).join(', ')}}: { ${functionTypes.join(
+        ', ')} }): Promise<${returnType}> {
     return this.request({
       ${requestParams.map((param) => param).join(', ')}
       })
@@ -188,12 +191,10 @@ function generateAPIClass({ apiName, operations = [] }) {
   // use true/false map to generate required types for this module
   const typeDefs = Object.keys(
     // sort keys to order imports
-    Object.keys(types)
-      .sort()
-      .reduce((obj, key) => {
-        obj[key] = types[key]
-        return obj
-      }, {}),
+    Object.keys(types).sort().reduce((obj, key) => {
+      obj[key] = types[key]
+      return obj
+    }, {}),
   ).map((type) => generateTypeDef({ typeName: type, schemaType: types[type].schemaType }))
 
   return `/* This file was auto-generated, do not manually edit. */

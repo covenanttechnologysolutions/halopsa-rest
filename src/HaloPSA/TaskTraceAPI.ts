@@ -22,7 +22,7 @@ export class TaskTraceAPI extends HaloPSA {
    * 
    
    */
-  getTaskTrace(): Promise<any> {
+  getTaskTrace({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TaskTrace',
@@ -34,7 +34,7 @@ export class TaskTraceAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getTaskTraceById(id: number): Promise<any> {
+  getTaskTraceById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/TaskTrace/${id}`,

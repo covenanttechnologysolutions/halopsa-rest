@@ -24,7 +24,7 @@ export class ReleaseNoteGroupAPI extends HaloPSA {
    * 
    
    */
-  getReleaseNoteGroup(): Promise<any> {
+  getReleaseNoteGroup({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ReleaseNoteGroup',
@@ -36,7 +36,11 @@ export class ReleaseNoteGroupAPI extends HaloPSA {
    * 
    
    */
-  postReleaseNoteGroup(releaseNoteGroup: Array<ReleaseNoteGroup>): Promise<any> {
+  postReleaseNoteGroup({
+    releaseNoteGroup,
+  }: {
+    releaseNoteGroup: Array<ReleaseNoteGroup>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ReleaseNoteGroup',
@@ -49,9 +53,15 @@ export class ReleaseNoteGroupAPI extends HaloPSA {
    * @description Use this to return a single instance of ReleaseNoteGroup.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getReleaseNoteGroupById(id: number, includedetails: boolean): Promise<any> {
+  getReleaseNoteGroupById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ReleaseNoteGroup/${id}`,
@@ -66,7 +76,7 @@ export class ReleaseNoteGroupAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteReleaseNoteGroupById(id: number): Promise<any> {
+  deleteReleaseNoteGroupById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ReleaseNoteGroup/${id}`,

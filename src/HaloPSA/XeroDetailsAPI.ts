@@ -23,10 +23,16 @@ export class XeroDetailsAPI extends HaloPSA {
    * @summary List of XeroDetails
    * @description Use this to return multiple XeroDetails.<br>
 				Requires authentication.
-   * @param {boolean} connectedonly 
-   * @param {string} tenantid 
+   * @param {boolean} [connectedonly] 
+   * @param {string} [tenantid] 
    */
-  getXeroDetails(connectedonly: boolean, tenantid: string): Promise<any> {
+  getXeroDetails({
+    connectedonly,
+    tenantid,
+  }: {
+    connectedonly?: boolean
+    tenantid?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/XeroDetails',
@@ -42,7 +48,7 @@ export class XeroDetailsAPI extends HaloPSA {
    * 
    
    */
-  postXeroDetails(xeroDetails: Array<XeroDetails>): Promise<any> {
+  postXeroDetails({ xeroDetails }: { xeroDetails: Array<XeroDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/XeroDetails',
@@ -55,9 +61,15 @@ export class XeroDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of XeroDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getXeroDetailsById(id: number, includedetails: boolean): Promise<any> {
+  getXeroDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/XeroDetails/${id}`,
@@ -72,7 +84,7 @@ export class XeroDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteXeroDetailsById(id: number): Promise<any> {
+  deleteXeroDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/XeroDetails/${id}`,

@@ -24,7 +24,7 @@ export class IngramMicroResellerDetailsAPI extends HaloPSA {
    * 
    
    */
-  getIngramMicroResellerDetails(): Promise<any> {
+  getIngramMicroResellerDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IngramMicroResellerDetails',
@@ -36,9 +36,11 @@ export class IngramMicroResellerDetailsAPI extends HaloPSA {
    * 
    
    */
-  postIngramMicroResellerDetails(
-    ingramMicroResellerDetails: Array<IngramMicroResellerDetails>,
-  ): Promise<any> {
+  postIngramMicroResellerDetails({
+    ingramMicroResellerDetails,
+  }: {
+    ingramMicroResellerDetails: Array<IngramMicroResellerDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IngramMicroResellerDetails',
@@ -51,7 +53,7 @@ export class IngramMicroResellerDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getIngramMicroResellerDetailsById(id: number): Promise<any> {
+  getIngramMicroResellerDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/IngramMicroResellerDetails/${id}`,
@@ -63,7 +65,7 @@ export class IngramMicroResellerDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteIngramMicroResellerDetailsById(id: number): Promise<any> {
+  deleteIngramMicroResellerDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/IngramMicroResellerDetails/${id}`,

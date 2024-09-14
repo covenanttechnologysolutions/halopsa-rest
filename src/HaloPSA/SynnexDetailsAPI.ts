@@ -24,7 +24,7 @@ export class SynnexDetailsAPI extends HaloPSA {
    * 
    
    */
-  getSynnexDetails(): Promise<any> {
+  getSynnexDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SynnexDetails',
@@ -36,7 +36,7 @@ export class SynnexDetailsAPI extends HaloPSA {
    * 
    
    */
-  postSynnexDetails(synnexDetails: Array<SynnexDetails>): Promise<any> {
+  postSynnexDetails({ synnexDetails }: { synnexDetails: Array<SynnexDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SynnexDetails',
@@ -49,9 +49,15 @@ export class SynnexDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of IngramMicroDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getSynnexDetailsById(id: number, includedetails: boolean): Promise<any> {
+  getSynnexDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/SynnexDetails/${id}`,
@@ -66,7 +72,7 @@ export class SynnexDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteSynnexDetailsById(id: number): Promise<any> {
+  deleteSynnexDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/SynnexDetails/${id}`,

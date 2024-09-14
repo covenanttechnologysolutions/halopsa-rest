@@ -24,7 +24,7 @@ export class ConfirmClosureAPI extends HaloPSA {
    * 
    
    */
-  getConfirmClosure(): Promise<any> {
+  getConfirmClosure({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ConfirmClosure',
@@ -36,7 +36,7 @@ export class ConfirmClosureAPI extends HaloPSA {
    * 
    
    */
-  postConfirmClosure(confirmClosure: Array<ConfirmClosure>): Promise<any> {
+  postConfirmClosure({ confirmClosure }: { confirmClosure: Array<ConfirmClosure> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ConfirmClosure',
@@ -49,9 +49,15 @@ export class ConfirmClosureAPI extends HaloPSA {
    * @description Use this to return a single instance of ConfirmClosure.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getConfirmClosureById(id: number, includedetails: boolean): Promise<any> {
+  getConfirmClosureById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ConfirmClosure/${id}`,
@@ -66,7 +72,7 @@ export class ConfirmClosureAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteConfirmClosureById(id: number): Promise<any> {
+  deleteConfirmClosureById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ConfirmClosure/${id}`,

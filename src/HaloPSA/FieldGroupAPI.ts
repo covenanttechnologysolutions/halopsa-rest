@@ -23,15 +23,19 @@ export class FieldGroupAPI extends HaloPSA {
    * @summary List of FieldGroup
    * @description Use this to return multiple FieldGroup.<br>
 				Requires authentication.
-   * @param {number} access_control_level 
-   * @param {boolean} includefields 
-   * @param {boolean} isconfig 
+   * @param {number} [access_control_level] 
+   * @param {boolean} [includefields] 
+   * @param {boolean} [isconfig] 
    */
-  getFieldGroup(
-    access_control_level: number,
-    includefields: boolean,
-    isconfig: boolean,
-  ): Promise<any> {
+  getFieldGroup({
+    access_control_level,
+    includefields,
+    isconfig,
+  }: {
+    access_control_level?: number
+    includefields?: boolean
+    isconfig?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/FieldGroup',
@@ -48,7 +52,7 @@ export class FieldGroupAPI extends HaloPSA {
    * 
    
    */
-  postFieldGroup(fieldGroup: Array<FieldGroup>): Promise<any> {
+  postFieldGroup({ fieldGroup }: { fieldGroup: Array<FieldGroup> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/FieldGroup',
@@ -61,9 +65,15 @@ export class FieldGroupAPI extends HaloPSA {
    * @description Use this to return a single instance of FieldGroup.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getFieldGroupById(id: number, includedetails: boolean): Promise<any> {
+  getFieldGroupById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/FieldGroup/${id}`,
@@ -78,7 +88,7 @@ export class FieldGroupAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteFieldGroupById(id: number): Promise<any> {
+  deleteFieldGroupById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/FieldGroup/${id}`,

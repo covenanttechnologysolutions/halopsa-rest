@@ -23,9 +23,9 @@ export class BudgetTypeAPI extends HaloPSA {
    * @summary List of BudgetType
    * @description Use this to return multiple BudgetType.<br>
 				Requires authentication.
-   * @param {number} ticket_id 
+   * @param {number} [ticket_id] 
    */
-  getBudgetType(ticket_id: number): Promise<any> {
+  getBudgetType({ ticket_id }: { ticket_id?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/BudgetType',
@@ -40,7 +40,7 @@ export class BudgetTypeAPI extends HaloPSA {
    * 
    
    */
-  postBudgetType(budgetType: Array<BudgetType>): Promise<any> {
+  postBudgetType({ budgetType }: { budgetType: Array<BudgetType> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/BudgetType',
@@ -53,9 +53,15 @@ export class BudgetTypeAPI extends HaloPSA {
    * @description Use this to return a single instance of BudgetType.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getBudgetTypeById(id: number, includedetails: boolean): Promise<any> {
+  getBudgetTypeById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/BudgetType/${id}`,
@@ -70,7 +76,7 @@ export class BudgetTypeAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteBudgetTypeById(id: number): Promise<any> {
+  deleteBudgetTypeById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/BudgetType/${id}`,

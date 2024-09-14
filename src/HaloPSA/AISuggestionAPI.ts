@@ -24,7 +24,7 @@ export class AISuggestionAPI extends HaloPSA {
    * 
    
    */
-  getAISuggestion(): Promise<any> {
+  getAISuggestion({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AISuggestion',
@@ -36,7 +36,7 @@ export class AISuggestionAPI extends HaloPSA {
    * 
    
    */
-  postAISuggestion(aiSuggestion: Array<AiSuggestion>): Promise<any> {
+  postAISuggestion({ aiSuggestion }: { aiSuggestion: Array<AiSuggestion> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/AISuggestion',
@@ -49,7 +49,7 @@ export class AISuggestionAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getAISuggestionById(id: number): Promise<any> {
+  getAISuggestionById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/AISuggestion/${id}`,
@@ -61,7 +61,7 @@ export class AISuggestionAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAISuggestionById(id: number): Promise<any> {
+  deleteAISuggestionById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/AISuggestion/${id}`,

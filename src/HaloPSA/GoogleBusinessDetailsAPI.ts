@@ -24,7 +24,7 @@ export class GoogleBusinessDetailsAPI extends HaloPSA {
    * 
    
    */
-  getGoogleBusinessDetails(): Promise<any> {
+  getGoogleBusinessDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/GoogleBusinessDetails',
@@ -36,7 +36,11 @@ export class GoogleBusinessDetailsAPI extends HaloPSA {
    * 
    
    */
-  postGoogleBusinessDetails(googleBusinessDetails: Array<GoogleBusinessDetails>): Promise<any> {
+  postGoogleBusinessDetails({
+    googleBusinessDetails,
+  }: {
+    googleBusinessDetails: Array<GoogleBusinessDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/GoogleBusinessDetails',
@@ -49,7 +53,7 @@ export class GoogleBusinessDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getGoogleBusinessDetailsById(id: number): Promise<any> {
+  getGoogleBusinessDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/GoogleBusinessDetails/${id}`,
@@ -61,7 +65,7 @@ export class GoogleBusinessDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteGoogleBusinessDetailsById(id: number): Promise<any> {
+  deleteGoogleBusinessDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/GoogleBusinessDetails/${id}`,

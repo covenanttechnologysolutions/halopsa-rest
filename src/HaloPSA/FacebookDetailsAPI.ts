@@ -23,9 +23,9 @@ export class FacebookDetailsAPI extends HaloPSA {
    * @summary List of FacebookDetails
    * @description Use this to return multiple FacebookDetails.<br>
 				Requires authentication.
-   * @param {string} page_id 
+   * @param {string} [page_id] 
    */
-  getFacebookDetails(page_id: string): Promise<any> {
+  getFacebookDetails({ page_id }: { page_id?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/FacebookDetails',
@@ -40,7 +40,11 @@ export class FacebookDetailsAPI extends HaloPSA {
    * 
    
    */
-  postFacebookDetails(facebookDetails: Array<FacebookDetails>): Promise<any> {
+  postFacebookDetails({
+    facebookDetails,
+  }: {
+    facebookDetails: Array<FacebookDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/FacebookDetails',
@@ -53,9 +57,15 @@ export class FacebookDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of FacebookDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getFacebookDetailsById(id: number, includedetails: boolean): Promise<any> {
+  getFacebookDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/FacebookDetails/${id}`,
@@ -70,7 +80,7 @@ export class FacebookDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteFacebookDetailsById(id: number): Promise<any> {
+  deleteFacebookDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/FacebookDetails/${id}`,

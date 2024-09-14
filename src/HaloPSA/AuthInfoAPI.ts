@@ -22,7 +22,7 @@ export class AuthInfoAPI extends HaloPSA {
    * 
    
    */
-  getAuthInfo(): Promise<any> {
+  getAuthInfo({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AuthInfo',

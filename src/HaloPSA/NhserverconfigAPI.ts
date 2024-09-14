@@ -24,7 +24,7 @@ export class NhserverconfigAPI extends HaloPSA {
    * 
    
    */
-  getNhserverconfig(): Promise<any> {
+  getNhserverconfig({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Nhserverconfig',
@@ -36,7 +36,7 @@ export class NhserverconfigAPI extends HaloPSA {
    * 
    
    */
-  postNhserverconfig(nHServerConfig: Array<NHServerConfig>): Promise<any> {
+  postNhserverconfig({ nHServerConfig }: { nHServerConfig: Array<NHServerConfig> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Nhserverconfig',
@@ -49,9 +49,15 @@ export class NhserverconfigAPI extends HaloPSA {
    * @description Use this to return a single instance of NHServerConfig.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getNhserverconfigById(id: number, includedetails: boolean): Promise<any> {
+  getNhserverconfigById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Nhserverconfig/${id}`,
@@ -66,7 +72,7 @@ export class NhserverconfigAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteNhserverconfigById(id: number): Promise<any> {
+  deleteNhserverconfigById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Nhserverconfig/${id}`,

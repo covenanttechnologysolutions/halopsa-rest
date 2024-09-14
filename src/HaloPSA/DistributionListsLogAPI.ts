@@ -24,7 +24,7 @@ export class DistributionListsLogAPI extends HaloPSA {
    * 
    
    */
-  getDistributionListsLog(): Promise<any> {
+  getDistributionListsLog({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/DistributionListsLog',
@@ -36,7 +36,11 @@ export class DistributionListsLogAPI extends HaloPSA {
    * 
    
    */
-  postDistributionListsLog(distributionListsLog: Array<DistributionListsLog>): Promise<any> {
+  postDistributionListsLog({
+    distributionListsLog,
+  }: {
+    distributionListsLog: Array<DistributionListsLog>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/DistributionListsLog',
@@ -49,7 +53,7 @@ export class DistributionListsLogAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getDistributionListsLogById(id: number): Promise<any> {
+  getDistributionListsLogById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/DistributionListsLog/${id}`,
@@ -61,7 +65,7 @@ export class DistributionListsLogAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteDistributionListsLogById(id: number): Promise<any> {
+  deleteDistributionListsLogById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/DistributionListsLog/${id}`,

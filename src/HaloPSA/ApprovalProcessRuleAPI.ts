@@ -23,11 +23,19 @@ export class ApprovalProcessRuleAPI extends HaloPSA {
    * @summary List of ApprovalProcessRule
    * @description Use this to return multiple ApprovalProcessRule.<br>
 				Requires authentication.
-   * @param {boolean} global 
-   * @param {number} process_id 
-   * @param {number} step_id 
+   * @param {boolean} [global] 
+   * @param {number} [process_id] 
+   * @param {number} [step_id] 
    */
-  getApprovalProcessRule(global: boolean, process_id: number, step_id: number): Promise<any> {
+  getApprovalProcessRule({
+    global,
+    process_id,
+    step_id,
+  }: {
+    global?: boolean
+    process_id?: number
+    step_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ApprovalProcessRule',
@@ -44,7 +52,11 @@ export class ApprovalProcessRuleAPI extends HaloPSA {
    * 
    
    */
-  postApprovalProcessRule(approvalProcessRule: Array<ApprovalProcessRule>): Promise<any> {
+  postApprovalProcessRule({
+    approvalProcessRule,
+  }: {
+    approvalProcessRule: Array<ApprovalProcessRule>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ApprovalProcessRule',
@@ -57,9 +69,15 @@ export class ApprovalProcessRuleAPI extends HaloPSA {
    * @description Use this to return a single instance of ApprovalProcessRule.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getApprovalProcessRuleById(id: number, includedetails: boolean): Promise<any> {
+  getApprovalProcessRuleById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ApprovalProcessRule/${id}`,
@@ -74,7 +92,7 @@ export class ApprovalProcessRuleAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteApprovalProcessRuleById(id: number): Promise<any> {
+  deleteApprovalProcessRuleById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ApprovalProcessRule/${id}`,

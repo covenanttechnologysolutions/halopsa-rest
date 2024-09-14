@@ -22,7 +22,7 @@ export class ScheduleOccurrenceAPI extends HaloPSA {
    * 
    
    */
-  getScheduleOccurrence(): Promise<any> {
+  getScheduleOccurrence({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ScheduleOccurrence',
@@ -34,7 +34,7 @@ export class ScheduleOccurrenceAPI extends HaloPSA {
    * 
    
    */
-  postScheduleOccurrence(listNumber: number): Promise<any> {
+  postScheduleOccurrence({ listNumber }: { listNumber: number }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ScheduleOccurrence',
@@ -47,7 +47,7 @@ export class ScheduleOccurrenceAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getScheduleOccurrenceById(id: number): Promise<any> {
+  getScheduleOccurrenceById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ScheduleOccurrence/${id}`,

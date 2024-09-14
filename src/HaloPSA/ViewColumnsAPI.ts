@@ -23,21 +23,28 @@ export class ViewColumnsAPI extends HaloPSA {
    * @summary List of ViewColumns
    * @description Use this to return multiple ViewColumns.<br>
 				Requires authentication.
-   * @param {boolean} globalonly 
-   * @param {boolean} showall 
-   * @param {number} showallforteam 
-   * @param {number} showallfortech 
-   * @param {number} ticketarea_id 
-   * @param {string} type 
+   * @param {boolean} [globalonly] 
+   * @param {boolean} [showall] 
+   * @param {number} [showallforteam] 
+   * @param {number} [showallfortech] 
+   * @param {number} [ticketarea_id] 
+   * @param {string} [type] 
    */
-  getViewColumns(
-    globalonly: boolean,
-    showall: boolean,
-    showallforteam: number,
-    showallfortech: number,
-    ticketarea_id: number,
-    type: string,
-  ): Promise<any> {
+  getViewColumns({
+    globalonly,
+    showall,
+    showallforteam,
+    showallfortech,
+    ticketarea_id,
+    type,
+  }: {
+    globalonly?: boolean
+    showall?: boolean
+    showallforteam?: number
+    showallfortech?: number
+    ticketarea_id?: number
+    type?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ViewColumns',
@@ -57,7 +64,7 @@ export class ViewColumnsAPI extends HaloPSA {
    * 
    
    */
-  postViewColumns(viewColumns: Array<ViewColumns>): Promise<any> {
+  postViewColumns({ viewColumns }: { viewColumns: Array<ViewColumns> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ViewColumns',
@@ -70,9 +77,15 @@ export class ViewColumnsAPI extends HaloPSA {
    * @description Use this to return a single instance of ViewColumns.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getViewColumnsById(id: number, includedetails: boolean): Promise<any> {
+  getViewColumnsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ViewColumns/${id}`,
@@ -87,7 +100,7 @@ export class ViewColumnsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteViewColumnsById(id: number): Promise<any> {
+  deleteViewColumnsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ViewColumns/${id}`,

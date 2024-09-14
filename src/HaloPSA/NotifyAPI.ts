@@ -80,7 +80,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyPagerDuty(): Promise<any> {
+  postNotifyPagerDuty({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/PagerDuty',
@@ -92,7 +92,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyTwilio(file: File): Promise<any> {
+  postNotifyTwilio({ file }: { file: File }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Twilio',
@@ -105,7 +105,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyJiraServiceManagement(): Promise<any> {
+  postNotifyJiraServiceManagement({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/JiraServiceManagement',
@@ -117,7 +117,11 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyProcessStreet(processStreetWebhook: ProcessStreetWebhook): Promise<any> {
+  postNotifyProcessStreet({
+    processStreetWebhook,
+  }: {
+    processStreetWebhook: ProcessStreetWebhook
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/ProcessStreet',
@@ -130,7 +134,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyWhatsApp(file: File): Promise<any> {
+  postNotifyWhatsApp({ file }: { file: File }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/WhatsApp',
@@ -143,7 +147,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyGithub(): Promise<any> {
+  postNotifyGithub({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/github',
@@ -155,7 +159,11 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyLogicMonitor(logicMonitorWebhook: LogicMonitorWebhook): Promise<any> {
+  postNotifyLogicMonitor({
+    logicMonitorWebhook,
+  }: {
+    logicMonitorWebhook: LogicMonitorWebhook
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/LogicMonitor',
@@ -168,7 +176,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifySite24x7(): Promise<any> {
+  postNotifySite24x7({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/site24x7',
@@ -180,7 +188,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyIcinga(): Promise<any> {
+  postNotifyIcinga({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/icinga',
@@ -192,7 +200,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyConfluence(): Promise<any> {
+  postNotifyConfluence({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Confluence',
@@ -204,7 +212,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyTrustpilot(): Promise<any> {
+  postNotifyTrustpilot({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/trustpilot',
@@ -216,7 +224,11 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyDattoRMMAlerts(dattoRMMWebhook: DattoRMMWebhook): Promise<any> {
+  postNotifyDattoRMMAlerts({
+    dattoRMMWebhook,
+  }: {
+    dattoRMMWebhook: DattoRMMWebhook
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/DattoRMM/Alerts',
@@ -229,7 +241,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyZabbix(zabbixWebhook: ZabbixWebhook): Promise<any> {
+  postNotifyZabbix({ zabbixWebhook }: { zabbixWebhook: ZabbixWebhook }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Zabbix',
@@ -242,7 +254,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  getNotifyConnectwiseRmm(): Promise<any> {
+  getNotifyConnectwiseRmm({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Notify/ConnectwiseRmm',
@@ -254,7 +266,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyPrometheus(): Promise<any> {
+  postNotifyPrometheus({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/prometheus',
@@ -266,7 +278,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyServicenowticket(object: object): Promise<any> {
+  postNotifyServicenowticket({ object }: { object: object }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/servicenowticket',
@@ -279,7 +291,11 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyServicenowaction(serviceNowAction: ServiceNowAction): Promise<any> {
+  postNotifyServicenowaction({
+    serviceNowAction,
+  }: {
+    serviceNowAction: ServiceNowAction
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/servicenowaction',
@@ -292,7 +308,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyDynatrace(dynatraceWebhook: DynatraceWebhook): Promise<any> {
+  postNotifyDynatrace({ dynatraceWebhook }: { dynatraceWebhook: DynatraceWebhook }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Dynatrace',
@@ -305,7 +321,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyTeamsChatMessage(): Promise<any> {
+  postNotifyTeamsChatMessage({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Teams/chatMessage',
@@ -317,7 +333,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyTeamsLifecycleNotification(): Promise<any> {
+  postNotifyTeamsLifecycleNotification({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Teams/lifecycleNotification',
@@ -329,7 +345,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyLapSafe(): Promise<any> {
+  postNotifyLapSafe({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/LapSafe',
@@ -342,7 +358,13 @@ export class NotifyAPI extends HaloPSA {
    * @param {number} tenant
    * @param {string} secret
    */
-  getNotifyAdobeAcrobattenantsecret(tenant: number, secret: string): Promise<any> {
+  getNotifyAdobeAcrobattenantsecret({
+    tenant,
+    secret,
+  }: {
+    tenant: number
+    secret: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Notify/AdobeAcrobat/${tenant}/${secret}`,
@@ -355,11 +377,15 @@ export class NotifyAPI extends HaloPSA {
    * @param {number} tenant
    * @param {string} secret
    */
-  postNotifyAdobeAcrobattenantsecret(
-    adobeAcrobatWebhook: AdobeAcrobatWebhook,
-    tenant: number,
-    secret: string,
-  ): Promise<any> {
+  postNotifyAdobeAcrobattenantsecret({
+    adobeAcrobatWebhook,
+    tenant,
+    secret,
+  }: {
+    adobeAcrobatWebhook: AdobeAcrobatWebhook
+    tenant: number
+    secret: string
+  }): Promise<any> {
     return this.request({
       method: 'post',
       data: adobeAcrobatWebhook,
@@ -372,7 +398,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyGotoresolve(): Promise<any> {
+  postNotifyGotoresolve({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/gotoresolve',
@@ -384,7 +410,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyIngrammicroreseller(iMRWebhook: IMRWebhook): Promise<any> {
+  postNotifyIngrammicroreseller({ iMRWebhook }: { iMRWebhook: IMRWebhook }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/ingrammicroreseller',
@@ -397,7 +423,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotify(object: object): Promise<any> {
+  postNotify({ object }: { object: object }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify',
@@ -410,7 +436,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyProcess(file: File): Promise<any> {
+  postNotifyProcess({ file }: { file: File }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/process',
@@ -423,7 +449,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifySolarWindsOrion(orionAlert: OrionAlert): Promise<any> {
+  postNotifySolarWindsOrion({ orionAlert }: { orionAlert: OrionAlert }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/SolarWindsOrion',
@@ -436,7 +462,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyDevice42(device42Webhook: Device42Webhook): Promise<any> {
+  postNotifyDevice42({ device42Webhook }: { device42Webhook: Device42Webhook }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Device42',
@@ -449,7 +475,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifySplunkOnCall(sOCWebhook: SOCWebhook): Promise<any> {
+  postNotifySplunkOnCall({ sOCWebhook }: { sOCWebhook: SOCWebhook }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/SplunkOnCall',
@@ -462,7 +488,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyAtera(ateraAlert: AteraAlert): Promise<any> {
+  postNotifyAtera({ ateraAlert }: { ateraAlert: AteraAlert }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Atera',
@@ -475,7 +501,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyAteraIntegrator(ateraAlert: AteraAlert): Promise<any> {
+  postNotifyAteraIntegrator({ ateraAlert }: { ateraAlert: AteraAlert }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Atera/Integrator',
@@ -488,7 +514,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyMeraki(merakiWebhook: MerakiWebhook): Promise<any> {
+  postNotifyMeraki({ merakiWebhook }: { merakiWebhook: MerakiWebhook }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Meraki',
@@ -499,9 +525,15 @@ export class NotifyAPI extends HaloPSA {
   /**
    *
    *
-   * @param {boolean} ignoreAuth
+   * @param {boolean} [ignoreAuth]
    */
-  postNotifyNinja(ninjaAlert: NinjaAlert, ignoreAuth: boolean): Promise<any> {
+  postNotifyNinja({
+    ninjaAlert,
+    ignoreAuth,
+  }: {
+    ninjaAlert: NinjaAlert
+    ignoreAuth?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Ninja',
@@ -517,7 +549,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyNinjaAlerts(ninjaWebhook: NinjaWebhook): Promise<any> {
+  postNotifyNinjaAlerts({ ninjaWebhook }: { ninjaWebhook: NinjaWebhook }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Ninja/Alerts',
@@ -530,7 +562,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifySnelStart(snelStartWebhook: SnelStartWebhook): Promise<any> {
+  postNotifySnelStart({ snelStartWebhook }: { snelStartWebhook: SnelStartWebhook }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/SnelStart',
@@ -543,7 +575,11 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyAzureMonitor(azureMonitorWebhook: AzureMonitorWebhook): Promise<any> {
+  postNotifyAzureMonitor({
+    azureMonitorWebhook,
+  }: {
+    azureMonitorWebhook: AzureMonitorWebhook
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/AzureMonitor',
@@ -556,7 +592,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifySyncro(syncroAlert: SyncroAlert): Promise<any> {
+  postNotifySyncro({ syncroAlert }: { syncroAlert: SyncroAlert }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Syncro',
@@ -569,7 +605,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyAutomate(automateAlert: AutomateAlert): Promise<any> {
+  postNotifyAutomate({ automateAlert }: { automateAlert: AutomateAlert }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Automate',
@@ -582,7 +618,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyAutomateIntegrator(automateAlert: AutomateAlert): Promise<any> {
+  postNotifyAutomateIntegrator({ automateAlert }: { automateAlert: AutomateAlert }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Automate/Integrator',
@@ -595,7 +631,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyJira(object: object): Promise<any> {
+  postNotifyJira({ object }: { object: object }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Jira',
@@ -608,7 +644,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyAzureDevOps(devOpsWebhook: DevOpsWebhook): Promise<any> {
+  postNotifyAzureDevOps({ devOpsWebhook }: { devOpsWebhook: DevOpsWebhook }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/AzureDevOps',
@@ -621,7 +657,11 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyAzureDevOpsIntegrator(devOpsWebhook: DevOpsWebhook): Promise<any> {
+  postNotifyAzureDevOpsIntegrator({
+    devOpsWebhook,
+  }: {
+    devOpsWebhook: DevOpsWebhook
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/AzureDevOps/Integrator',
@@ -634,7 +674,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyAuvik(auvikAlert: AuvikAlert): Promise<any> {
+  postNotifyAuvik({ auvikAlert }: { auvikAlert: AuvikAlert }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Auvik',
@@ -647,7 +687,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyXeroVerify(): Promise<any> {
+  postNotifyXeroVerify({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Xero/Verify',
@@ -657,9 +697,15 @@ export class NotifyAPI extends HaloPSA {
   /**
    *
    *
-   * @param {boolean} ignoreEventCheck
+   * @param {boolean} [ignoreEventCheck]
    */
-  postNotifyXero(xeroWebhookEvent: XeroWebhookEvent, ignoreEventCheck: boolean): Promise<any> {
+  postNotifyXero({
+    xeroWebhookEvent,
+    ignoreEventCheck,
+  }: {
+    xeroWebhookEvent: XeroWebhookEvent
+    ignoreEventCheck?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Xero',
@@ -675,7 +721,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyStripe(): Promise<any> {
+  postNotifyStripe({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Stripe',
@@ -687,7 +733,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyQuickbooksOnlineVerify(): Promise<any> {
+  postNotifyQuickbooksOnlineVerify({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/QuickbooksOnline/Verify',
@@ -699,7 +745,11 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyQuickBooksOnline(qBOWebhookEventEntity: QBOWebhookEventEntity): Promise<any> {
+  postNotifyQuickBooksOnline({
+    qBOWebhookEventEntity,
+  }: {
+    qBOWebhookEventEntity: QBOWebhookEventEntity
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/QuickBooksOnline',
@@ -712,7 +762,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyAddigy(addigyAlert: AddigyAlert): Promise<any> {
+  postNotifyAddigy({ addigyAlert }: { addigyAlert: AddigyAlert }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Addigy',
@@ -725,7 +775,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyAddigyIntegrator(addigyAlert: AddigyAlert): Promise<any> {
+  postNotifyAddigyIntegrator({ addigyAlert }: { addigyAlert: AddigyAlert }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Addigy/Integrator',
@@ -738,7 +788,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyPartnercenter(): Promise<any> {
+  postNotifyPartnercenter({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/partner-center',
@@ -750,7 +800,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyHalowebhook(): Promise<any> {
+  postNotifyHalowebhook({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/halo-webhook',
@@ -762,7 +812,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyUatrestore(): Promise<any> {
+  postNotifyUatrestore({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/uat-restore',
@@ -774,7 +824,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyNCentral(nCentralAlert: NCentralAlert): Promise<any> {
+  postNotifyNCentral({ nCentralAlert }: { nCentralAlert: NCentralAlert }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/N-Central',
@@ -787,7 +837,11 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifySlackEvents(slackEventWebhook: SlackEventWebhook): Promise<any> {
+  postNotifySlackEvents({
+    slackEventWebhook,
+  }: {
+    slackEventWebhook: SlackEventWebhook
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Slack/Events',
@@ -800,7 +854,11 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifySlack(slackInteractivity: SlackInteractivity): Promise<any> {
+  postNotifySlack({
+    slackInteractivity,
+  }: {
+    slackInteractivity: SlackInteractivity
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Slack',
@@ -813,7 +871,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyQuoter(file: File): Promise<any> {
+  postNotifyQuoter({ file }: { file: File }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Quoter',
@@ -826,7 +884,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyNagios(): Promise<any> {
+  postNotifyNagios({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Nagios',
@@ -838,7 +896,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  getNotifyFacebook(): Promise<any> {
+  getNotifyFacebook({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Notify/Facebook',
@@ -850,7 +908,7 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyFacebook(facebookWebhook: FacebookWebhook): Promise<any> {
+  postNotifyFacebook({ facebookWebhook }: { facebookWebhook: FacebookWebhook }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Facebook',
@@ -863,7 +921,11 @@ export class NotifyAPI extends HaloPSA {
    * 
    
    */
-  postNotifyTwitter(twitterWebhookContent: TwitterWebhookContent): Promise<any> {
+  postNotifyTwitter({
+    twitterWebhookContent,
+  }: {
+    twitterWebhookContent: TwitterWebhookContent
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Notify/Twitter',

@@ -21,9 +21,9 @@ export class VersionInfoAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} product_id 
+   * @param {number} [product_id] 
    */
-  getVersionInfo(product_id: number): Promise<any> {
+  getVersionInfo({ product_id }: { product_id?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/VersionInfo',
@@ -38,9 +38,15 @@ export class VersionInfoAPI extends HaloPSA {
    * @description Use this to return a single instance of Release.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getVersionInfoById(id: number, includedetails: boolean): Promise<any> {
+  getVersionInfoById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/VersionInfo/${id}`,
@@ -54,17 +60,22 @@ export class VersionInfoAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} count 
-   * @param {boolean} dontshownotes 
-   * @param {number} product_id 
-   * @param {string} search 
+   * @param {number} [count] 
+   * @param {boolean} [dontshownotes] 
+   * @param {number} [product_id] 
+   * @param {string} [search] 
    */
-  getVersionInfoSearchVersionInfo(
-    count: number,
-    dontshownotes: boolean,
-    product_id: number,
-    search: string,
-  ): Promise<any> {
+  getVersionInfoSearchVersionInfo({
+    count,
+    dontshownotes,
+    product_id,
+    search,
+  }: {
+    count?: number
+    dontshownotes?: boolean
+    product_id?: number
+    search?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/VersionInfo/SearchVersionInfo',
@@ -82,7 +93,7 @@ export class VersionInfoAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getVersionInfoGetOneSpotlightById(id: number): Promise<any> {
+  getVersionInfoGetOneSpotlightById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/VersionInfo/GetOneSpotlight/${id}`,
@@ -93,11 +104,19 @@ export class VersionInfoAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} count 
-   * @param {boolean} dontshownotes 
-   * @param {number} product_id 
+   * @param {number} [count] 
+   * @param {boolean} [dontshownotes] 
+   * @param {number} [product_id] 
    */
-  getVersionInfoSpotlight(count: number, dontshownotes: boolean, product_id: number): Promise<any> {
+  getVersionInfoSpotlight({
+    count,
+    dontshownotes,
+    product_id,
+  }: {
+    count?: number
+    dontshownotes?: boolean
+    product_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/VersionInfo/Spotlight',

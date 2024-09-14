@@ -24,7 +24,7 @@ export class JourneyAPI extends HaloPSA {
    * 
    
    */
-  getJourney(): Promise<any> {
+  getJourney({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Journey',
@@ -36,7 +36,7 @@ export class JourneyAPI extends HaloPSA {
    * 
    
    */
-  postJourney(journey: Array<Journey>): Promise<any> {
+  postJourney({ journey }: { journey: Array<Journey> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Journey',
@@ -49,9 +49,9 @@ export class JourneyAPI extends HaloPSA {
    * @description Use this to return a single instance of Journey.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getJourneyById(id: number, includedetails: boolean): Promise<any> {
+  getJourneyById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Journey/${id}`,
@@ -66,7 +66,7 @@ export class JourneyAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteJourneyById(id: number): Promise<any> {
+  deleteJourneyById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Journey/${id}`,

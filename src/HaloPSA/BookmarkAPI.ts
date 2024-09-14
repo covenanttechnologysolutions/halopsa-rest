@@ -24,7 +24,7 @@ export class BookmarkAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getBookmarkById(id: number): Promise<any> {
+  getBookmarkById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Bookmark/${id}`,
@@ -36,7 +36,7 @@ export class BookmarkAPI extends HaloPSA {
    * 
    
    */
-  postBookmark(bookmark: Bookmark): Promise<any> {
+  postBookmark({ bookmark }: { bookmark: Bookmark }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Bookmark',

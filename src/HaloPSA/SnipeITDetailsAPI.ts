@@ -24,7 +24,7 @@ export class SnipeITDetailsAPI extends HaloPSA {
    * 
    
    */
-  getSnipeITDetails(): Promise<any> {
+  getSnipeITDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SnipeITDetails',
@@ -36,7 +36,7 @@ export class SnipeITDetailsAPI extends HaloPSA {
    * 
    
    */
-  postSnipeITDetails(snipeITDetails: Array<SnipeITDetails>): Promise<any> {
+  postSnipeITDetails({ snipeITDetails }: { snipeITDetails: Array<SnipeITDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SnipeITDetails',
@@ -49,7 +49,7 @@ export class SnipeITDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getSnipeITDetailsById(id: number): Promise<any> {
+  getSnipeITDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/SnipeITDetails/${id}`,
@@ -61,7 +61,7 @@ export class SnipeITDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteSnipeITDetailsById(id: number): Promise<any> {
+  deleteSnipeITDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/SnipeITDetails/${id}`,

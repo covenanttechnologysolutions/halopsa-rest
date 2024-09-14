@@ -24,7 +24,7 @@ export class CustomIntegrationAPI extends HaloPSA {
    * 
    
    */
-  getCustomIntegration(): Promise<any> {
+  getCustomIntegration({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/CustomIntegration',
@@ -36,7 +36,11 @@ export class CustomIntegrationAPI extends HaloPSA {
    * 
    
    */
-  postCustomIntegration(outboundIntegration: Array<OutboundIntegration>): Promise<any> {
+  postCustomIntegration({
+    outboundIntegration,
+  }: {
+    outboundIntegration: Array<OutboundIntegration>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/CustomIntegration',
@@ -49,16 +53,21 @@ export class CustomIntegrationAPI extends HaloPSA {
    * @description Use this to return a single instance of OutboundIntegration.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
-   * @param {boolean} includemethods 
-   * @param {number} module_id 
+   * @param {boolean} [includedetails] 
+   * @param {boolean} [includemethods] 
+   * @param {number} [module_id] 
    */
-  getCustomIntegrationById(
-    id: number,
-    includedetails: boolean,
-    includemethods: boolean,
-    module_id: number,
-  ): Promise<any> {
+  getCustomIntegrationById({
+    id,
+    includedetails,
+    includemethods,
+    module_id,
+  }: {
+    id: number
+    includedetails?: boolean
+    includemethods?: boolean
+    module_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/CustomIntegration/${id}`,
@@ -75,7 +84,7 @@ export class CustomIntegrationAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteCustomIntegrationById(id: number): Promise<any> {
+  deleteCustomIntegrationById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/CustomIntegration/${id}`,

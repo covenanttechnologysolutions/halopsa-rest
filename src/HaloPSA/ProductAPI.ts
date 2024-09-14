@@ -23,10 +23,16 @@ export class ProductAPI extends HaloPSA {
    * @summary List of ReleaseProduct
    * @description Use this to return multiple ReleaseProduct.<br>
 				Requires authentication.
-   * @param {number} devops_instance 
-   * @param {boolean} third_party_only 
+   * @param {number} [devops_instance] 
+   * @param {boolean} [third_party_only] 
    */
-  getProduct(devops_instance: number, third_party_only: boolean): Promise<any> {
+  getProduct({
+    devops_instance,
+    third_party_only,
+  }: {
+    devops_instance?: number
+    third_party_only?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Product',
@@ -42,7 +48,7 @@ export class ProductAPI extends HaloPSA {
    * 
    
    */
-  postProduct(releaseProduct: Array<ReleaseProduct>): Promise<any> {
+  postProduct({ releaseProduct }: { releaseProduct: Array<ReleaseProduct> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Product',
@@ -55,9 +61,9 @@ export class ProductAPI extends HaloPSA {
    * @description Use this to return a single instance of ReleaseProduct.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getProductById(id: number, includedetails: boolean): Promise<any> {
+  getProductById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Product/${id}`,
@@ -72,7 +78,7 @@ export class ProductAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteProductById(id: number): Promise<any> {
+  deleteProductById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Product/${id}`,

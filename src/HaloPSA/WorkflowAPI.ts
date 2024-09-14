@@ -23,10 +23,16 @@ export class WorkflowAPI extends HaloPSA {
    * @summary List of FlowHeader
    * @description Use this to return multiple FlowHeader.<br>
 				Requires authentication.
-   * @param {number} access_control_level 
-   * @param {boolean} includeinactive 
+   * @param {number} [access_control_level] 
+   * @param {boolean} [includeinactive] 
    */
-  getWorkflow(access_control_level: number, includeinactive: boolean): Promise<any> {
+  getWorkflow({
+    access_control_level,
+    includeinactive,
+  }: {
+    access_control_level?: number
+    includeinactive?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Workflow',
@@ -42,7 +48,7 @@ export class WorkflowAPI extends HaloPSA {
    * 
    
    */
-  postWorkflow(flowHeader: Array<FlowHeader>): Promise<any> {
+  postWorkflow({ flowHeader }: { flowHeader: Array<FlowHeader> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Workflow',
@@ -55,9 +61,9 @@ export class WorkflowAPI extends HaloPSA {
    * @description Use this to return a single instance of FlowHeader.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getWorkflowById(id: number, includedetails: boolean): Promise<any> {
+  getWorkflowById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Workflow/${id}`,
@@ -72,7 +78,7 @@ export class WorkflowAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteWorkflowById(id: number): Promise<any> {
+  deleteWorkflowById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Workflow/${id}`,

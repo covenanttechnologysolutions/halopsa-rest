@@ -23,11 +23,19 @@ export class FeaturesAPI extends HaloPSA {
    * @summary List of ModuleSetup
    * @description Use this to return multiple ModuleSetup.<br>
 				Requires authentication.
-   * @param {boolean} isconfig 
-   * @param {boolean} showdisabled 
-   * @param {boolean} showenabled 
+   * @param {boolean} [isconfig] 
+   * @param {boolean} [showdisabled] 
+   * @param {boolean} [showenabled] 
    */
-  getFeatures(isconfig: boolean, showdisabled: boolean, showenabled: boolean): Promise<any> {
+  getFeatures({
+    isconfig,
+    showdisabled,
+    showenabled,
+  }: {
+    isconfig?: boolean
+    showdisabled?: boolean
+    showenabled?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Features',
@@ -44,7 +52,7 @@ export class FeaturesAPI extends HaloPSA {
    * 
    
    */
-  postFeatures(moduleSetup: Array<ModuleSetup>): Promise<any> {
+  postFeatures({ moduleSetup }: { moduleSetup: Array<ModuleSetup> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Features',
@@ -57,9 +65,9 @@ export class FeaturesAPI extends HaloPSA {
    * @description Use this to return a single instance of ModuleSetup.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getFeaturesById(id: number, includedetails: boolean): Promise<any> {
+  getFeaturesById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Features/${id}`,

@@ -23,9 +23,9 @@ export class DattoCommerceDetailsAPI extends HaloPSA {
    * @summary List of DattoCommerceDetails
    * @description Use this to return multiple DattoCommerceDetails.<br>
 				Requires authentication.
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getDattoCommerceDetails(includedetails: boolean): Promise<any> {
+  getDattoCommerceDetails({ includedetails }: { includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/DattoCommerceDetails',
@@ -40,7 +40,11 @@ export class DattoCommerceDetailsAPI extends HaloPSA {
    * 
    
    */
-  postDattoCommerceDetails(dattoCommerceDetails: Array<DattoCommerceDetails>): Promise<any> {
+  postDattoCommerceDetails({
+    dattoCommerceDetails,
+  }: {
+    dattoCommerceDetails: Array<DattoCommerceDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/DattoCommerceDetails',
@@ -53,9 +57,15 @@ export class DattoCommerceDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of DattoCommerceDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getDattoCommerceDetailsById(id: number, includedetails: boolean): Promise<any> {
+  getDattoCommerceDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/DattoCommerceDetails/${id}`,
@@ -70,7 +80,7 @@ export class DattoCommerceDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteDattoCommerceDetailsById(id: number): Promise<any> {
+  deleteDattoCommerceDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/DattoCommerceDetails/${id}`,

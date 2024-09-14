@@ -23,10 +23,16 @@ export class PowerShellScriptAPI extends HaloPSA {
    * @summary List of PowerShellScript
    * @description Use this to return multiple PowerShellScript.<br>
 				Requires authentication.
-   * @param {string} clientidoverride 
-   * @param {string} type 
+   * @param {string} [clientidoverride] 
+   * @param {string} [type] 
    */
-  getPowerShellScript(clientidoverride: string, type: string): Promise<any> {
+  getPowerShellScript({
+    clientidoverride,
+    type,
+  }: {
+    clientidoverride?: string
+    type?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/PowerShellScript',
@@ -42,7 +48,11 @@ export class PowerShellScriptAPI extends HaloPSA {
    * 
    
    */
-  postPowerShellScript(powerShellScript: Array<PowerShellScript>): Promise<any> {
+  postPowerShellScript({
+    powerShellScript,
+  }: {
+    powerShellScript: Array<PowerShellScript>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/PowerShellScript',
@@ -55,9 +65,15 @@ export class PowerShellScriptAPI extends HaloPSA {
    * @description Use this to return a single instance of PowerShellScript.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getPowerShellScriptById(id: number, includedetails: boolean): Promise<any> {
+  getPowerShellScriptById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/PowerShellScript/${id}`,
@@ -72,7 +88,7 @@ export class PowerShellScriptAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deletePowerShellScriptById(id: number): Promise<any> {
+  deletePowerShellScriptById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/PowerShellScript/${id}`,

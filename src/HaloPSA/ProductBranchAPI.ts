@@ -21,9 +21,9 @@ export class ProductBranchAPI extends HaloPSA {
    * @summary List of ReleaseBranch
    * @description Use this to return multiple ReleaseBranch.<br>
 				Requires authentication.
-   * @param {number} product_id 
+   * @param {number} [product_id] 
    */
-  getProductBranch(product_id: number): Promise<any> {
+  getProductBranch({ product_id }: { product_id?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ProductBranch',

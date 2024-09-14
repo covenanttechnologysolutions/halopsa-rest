@@ -24,7 +24,7 @@ export class CSVTemplateAPI extends HaloPSA {
    * 
    
    */
-  getCSVTemplate(): Promise<any> {
+  getCSVTemplate({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/CSVTemplate',
@@ -36,7 +36,7 @@ export class CSVTemplateAPI extends HaloPSA {
    * 
    
    */
-  postCSVTemplate(cSVTemplate: Array<CSVTemplate>): Promise<any> {
+  postCSVTemplate({ cSVTemplate }: { cSVTemplate: Array<CSVTemplate> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/CSVTemplate',
@@ -49,9 +49,15 @@ export class CSVTemplateAPI extends HaloPSA {
    * @description Use this to return a single instance of CSVTemplate.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getCSVTemplateById(id: number, includedetails: boolean): Promise<any> {
+  getCSVTemplateById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/CSVTemplate/${id}`,
@@ -66,7 +72,7 @@ export class CSVTemplateAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteCSVTemplateById(id: number): Promise<any> {
+  deleteCSVTemplateById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/CSVTemplate/${id}`,

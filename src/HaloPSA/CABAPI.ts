@@ -23,9 +23,9 @@ export class CABAPI extends HaloPSA {
    * @summary List of CabHeader
    * @description Use this to return multiple CabHeader.<br>
 				Requires authentication.
-   * @param {boolean} includemembers 
+   * @param {boolean} [includemembers] 
    */
-  getCAB(includemembers: boolean): Promise<any> {
+  getCAB({ includemembers }: { includemembers?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/CAB',
@@ -40,7 +40,7 @@ export class CABAPI extends HaloPSA {
    * 
    
    */
-  postCAB(cabHeader: Array<CabHeader>): Promise<any> {
+  postCAB({ cabHeader }: { cabHeader: Array<CabHeader> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/CAB',
@@ -53,9 +53,9 @@ export class CABAPI extends HaloPSA {
    * @description Use this to return a single instance of CabHeader.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getCABById(id: number, includedetails: boolean): Promise<any> {
+  getCABById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/CAB/${id}`,
@@ -70,7 +70,7 @@ export class CABAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteCABById(id: number): Promise<any> {
+  deleteCABById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/CAB/${id}`,

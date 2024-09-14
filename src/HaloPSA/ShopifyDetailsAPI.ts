@@ -24,7 +24,7 @@ export class ShopifyDetailsAPI extends HaloPSA {
    * 
    
    */
-  getShopifyDetails(): Promise<any> {
+  getShopifyDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ShopifyDetails',
@@ -36,7 +36,7 @@ export class ShopifyDetailsAPI extends HaloPSA {
    * 
    
    */
-  postShopifyDetails(shopifyDetails: Array<ShopifyDetails>): Promise<any> {
+  postShopifyDetails({ shopifyDetails }: { shopifyDetails: Array<ShopifyDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ShopifyDetails',
@@ -49,7 +49,7 @@ export class ShopifyDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getShopifyDetailsById(id: number): Promise<any> {
+  getShopifyDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ShopifyDetails/${id}`,
@@ -61,7 +61,7 @@ export class ShopifyDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteShopifyDetailsById(id: number): Promise<any> {
+  deleteShopifyDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ShopifyDetails/${id}`,

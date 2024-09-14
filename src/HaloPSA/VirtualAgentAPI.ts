@@ -24,7 +24,7 @@ export class VirtualAgentAPI extends HaloPSA {
    * 
    
    */
-  getVirtualAgent(): Promise<any> {
+  getVirtualAgent({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/VirtualAgent',
@@ -36,7 +36,7 @@ export class VirtualAgentAPI extends HaloPSA {
    * 
    
    */
-  postVirtualAgent(virtualAgent: Array<VirtualAgent>): Promise<any> {
+  postVirtualAgent({ virtualAgent }: { virtualAgent: Array<VirtualAgent> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/VirtualAgent',
@@ -49,7 +49,7 @@ export class VirtualAgentAPI extends HaloPSA {
    *
    * @param {string} id
    */
-  getVirtualAgentById(id: string): Promise<any> {
+  getVirtualAgentById({ id }: { id: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/VirtualAgent/${id}`,
@@ -61,7 +61,7 @@ export class VirtualAgentAPI extends HaloPSA {
    *
    * @param {string} id
    */
-  deleteVirtualAgentById(id: string): Promise<any> {
+  deleteVirtualAgentById({ id }: { id: string }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/VirtualAgent/${id}`,

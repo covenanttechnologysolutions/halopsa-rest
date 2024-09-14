@@ -21,10 +21,16 @@ export class XtypeRoleAPI extends HaloPSA {
    * @summary List of XTypeRole
    * @description Use this to return multiple XTypeRole.<br>
 				Requires authentication.
-   * @param {number} xtype_id 
-   * @param {number} xtyperole_id 
+   * @param {number} [xtype_id] 
+   * @param {number} [xtyperole_id] 
    */
-  getXtypeRole(xtype_id: number, xtyperole_id: number): Promise<any> {
+  getXtypeRole({
+    xtype_id,
+    xtyperole_id,
+  }: {
+    xtype_id?: number
+    xtyperole_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/XtypeRole',

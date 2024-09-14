@@ -24,7 +24,7 @@ export class TechDataResellerDetailsAPI extends HaloPSA {
    * 
    
    */
-  getTechDataResellerDetails(): Promise<any> {
+  getTechDataResellerDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TechDataResellerDetails',
@@ -36,9 +36,11 @@ export class TechDataResellerDetailsAPI extends HaloPSA {
    * 
    
    */
-  postTechDataResellerDetails(
-    techDataResellerDetails: Array<TechDataResellerDetails>,
-  ): Promise<any> {
+  postTechDataResellerDetails({
+    techDataResellerDetails,
+  }: {
+    techDataResellerDetails: Array<TechDataResellerDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/TechDataResellerDetails',
@@ -51,7 +53,7 @@ export class TechDataResellerDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getTechDataResellerDetailsById(id: number): Promise<any> {
+  getTechDataResellerDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/TechDataResellerDetails/${id}`,
@@ -63,7 +65,7 @@ export class TechDataResellerDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteTechDataResellerDetailsById(id: number): Promise<any> {
+  deleteTechDataResellerDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/TechDataResellerDetails/${id}`,

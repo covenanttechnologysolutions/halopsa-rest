@@ -23,17 +23,22 @@ export class TaxAPI extends HaloPSA {
    * @summary List of Tax
    * @description Use this to return multiple Tax.<br>
 				Requires authentication.
-   * @param {number} kashflowtenantid 
-   * @param {string} qbocompanyid 
-   * @param {number} related_to 
-   * @param {string} xerotenantid 
+   * @param {number} [kashflowtenantid] 
+   * @param {string} [qbocompanyid] 
+   * @param {number} [related_to] 
+   * @param {string} [xerotenantid] 
    */
-  getTax(
-    kashflowtenantid: number,
-    qbocompanyid: string,
-    related_to: number,
-    xerotenantid: string,
-  ): Promise<any> {
+  getTax({
+    kashflowtenantid,
+    qbocompanyid,
+    related_to,
+    xerotenantid,
+  }: {
+    kashflowtenantid?: number
+    qbocompanyid?: string
+    related_to?: number
+    xerotenantid?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Tax',
@@ -51,7 +56,7 @@ export class TaxAPI extends HaloPSA {
    * 
    
    */
-  postTax(tax: Array<Tax>): Promise<any> {
+  postTax({ tax }: { tax: Array<Tax> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Tax',
@@ -64,10 +69,18 @@ export class TaxAPI extends HaloPSA {
    * @description Use this to return a single instance of Tax.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
-   * @param {boolean} includeqbotaxrates 
+   * @param {boolean} [includedetails] 
+   * @param {boolean} [includeqbotaxrates] 
    */
-  getTaxById(id: number, includedetails: boolean, includeqbotaxrates: boolean): Promise<any> {
+  getTaxById({
+    id,
+    includedetails,
+    includeqbotaxrates,
+  }: {
+    id: number
+    includedetails?: boolean
+    includeqbotaxrates?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Tax/${id}`,
@@ -83,7 +96,7 @@ export class TaxAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteTaxById(id: number): Promise<any> {
+  deleteTaxById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Tax/${id}`,

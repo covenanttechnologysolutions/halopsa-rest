@@ -23,11 +23,19 @@ export class AgentCheckInAPI extends HaloPSA {
    * @summary List of AgentCheckIn
    * @description Use this to return multiple AgentCheckIn.<br>
 				Requires authentication.
-   * @param {number} agent_id 
-   * @param {string} end_date 
-   * @param {string} start_date 
+   * @param {number} [agent_id] 
+   * @param {string} [end_date] 
+   * @param {string} [start_date] 
    */
-  getAgentCheckIn(agent_id: number, end_date: string, start_date: string): Promise<any> {
+  getAgentCheckIn({
+    agent_id,
+    end_date,
+    start_date,
+  }: {
+    agent_id?: number
+    end_date?: string
+    start_date?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AgentCheckIn',
@@ -44,7 +52,7 @@ export class AgentCheckInAPI extends HaloPSA {
    * 
    
    */
-  postAgentCheckIn(agentCheckIn: Array<AgentCheckIn>): Promise<any> {
+  postAgentCheckIn({ agentCheckIn }: { agentCheckIn: Array<AgentCheckIn> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/AgentCheckIn',
@@ -57,9 +65,15 @@ export class AgentCheckInAPI extends HaloPSA {
    * @description Use this to return a single instance of AgentCheckIn.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getAgentCheckInById(id: number, includedetails: boolean): Promise<any> {
+  getAgentCheckInById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/AgentCheckIn/${id}`,

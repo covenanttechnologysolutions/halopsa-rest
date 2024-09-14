@@ -21,15 +21,19 @@ export class ServiceRequestDetailsAPI extends HaloPSA {
    * @summary List of ServiceRequestDetails
    * @description Use this to return multiple ServiceRequestDetails.<br>
 				Requires authentication.
-   * @param {boolean} exclude_urls 
-   * @param {boolean} includedetails 
-   * @param {number} service_id 
+   * @param {boolean} [exclude_urls] 
+   * @param {boolean} [includedetails] 
+   * @param {number} [service_id] 
    */
-  getServiceRequestDetails(
-    exclude_urls: boolean,
-    includedetails: boolean,
-    service_id: number,
-  ): Promise<any> {
+  getServiceRequestDetails({
+    exclude_urls,
+    includedetails,
+    service_id,
+  }: {
+    exclude_urls?: boolean
+    includedetails?: boolean
+    service_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ServiceRequestDetails',

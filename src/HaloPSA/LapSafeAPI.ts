@@ -22,7 +22,7 @@ export class LapSafeAPI extends HaloPSA {
    * 
    
    */
-  getLapSafeGet(): Promise<any> {
+  getLapSafeGet({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/LapSafe/Get',
@@ -34,7 +34,7 @@ export class LapSafeAPI extends HaloPSA {
    * 
    
    */
-  getLapSafeCancel(): Promise<any> {
+  getLapSafeCancel({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/LapSafe/Cancel',
@@ -46,7 +46,7 @@ export class LapSafeAPI extends HaloPSA {
    * 
    
    */
-  getLapSafeComplete(): Promise<any> {
+  getLapSafeComplete({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/LapSafe/Complete',

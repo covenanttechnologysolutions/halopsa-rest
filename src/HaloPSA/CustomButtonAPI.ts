@@ -23,17 +23,22 @@ export class CustomButtonAPI extends HaloPSA {
    * @summary List of CustomButton
    * @description Use this to return multiple CustomButton.<br>
 				Requires authentication.
-   * @param {boolean} isbuttonsetup 
-   * @param {boolean} ispermissionsetup 
-   * @param {number} msid 
-   * @param {number} typeid 
+   * @param {boolean} [isbuttonsetup] 
+   * @param {boolean} [ispermissionsetup] 
+   * @param {number} [msid] 
+   * @param {number} [typeid] 
    */
-  getCustomButton(
-    isbuttonsetup: boolean,
-    ispermissionsetup: boolean,
-    msid: number,
-    typeid: number,
-  ): Promise<any> {
+  getCustomButton({
+    isbuttonsetup,
+    ispermissionsetup,
+    msid,
+    typeid,
+  }: {
+    isbuttonsetup?: boolean
+    ispermissionsetup?: boolean
+    msid?: number
+    typeid?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/CustomButton',
@@ -51,7 +56,7 @@ export class CustomButtonAPI extends HaloPSA {
    * 
    
    */
-  postCustomButton(customButton: Array<CustomButton>): Promise<any> {
+  postCustomButton({ customButton }: { customButton: Array<CustomButton> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/CustomButton',
@@ -64,9 +69,15 @@ export class CustomButtonAPI extends HaloPSA {
    * @description Use this to return a single instance of CustomButton.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getCustomButtonById(id: number, includedetails: boolean): Promise<any> {
+  getCustomButtonById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/CustomButton/${id}`,
@@ -81,7 +92,7 @@ export class CustomButtonAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteCustomButtonById(id: number): Promise<any> {
+  deleteCustomButtonById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/CustomButton/${id}`,

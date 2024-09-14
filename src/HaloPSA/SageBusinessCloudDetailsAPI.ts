@@ -23,10 +23,16 @@ export class SageBusinessCloudDetailsAPI extends HaloPSA {
    * @summary List of SageBusinessCloudDetails
    * @description Use this to return multiple SageBusinessCloudDetails.<br>
 				Requires authentication.
-   * @param {boolean} connectedonly 
-   * @param {string} tenantid 
+   * @param {boolean} [connectedonly] 
+   * @param {string} [tenantid] 
    */
-  getSageBusinessCloudDetails(connectedonly: boolean, tenantid: string): Promise<any> {
+  getSageBusinessCloudDetails({
+    connectedonly,
+    tenantid,
+  }: {
+    connectedonly?: boolean
+    tenantid?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SageBusinessCloudDetails',
@@ -42,9 +48,11 @@ export class SageBusinessCloudDetailsAPI extends HaloPSA {
    * 
    
    */
-  postSageBusinessCloudDetails(
-    sageBusinessCloudDetails: Array<SageBusinessCloudDetails>,
-  ): Promise<any> {
+  postSageBusinessCloudDetails({
+    sageBusinessCloudDetails,
+  }: {
+    sageBusinessCloudDetails: Array<SageBusinessCloudDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SageBusinessCloudDetails',
@@ -57,9 +65,15 @@ export class SageBusinessCloudDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of SageBusinessCloudDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getSageBusinessCloudDetailsById(id: number, includedetails: boolean): Promise<any> {
+  getSageBusinessCloudDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/SageBusinessCloudDetails/${id}`,
@@ -74,7 +88,7 @@ export class SageBusinessCloudDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteSageBusinessCloudDetailsById(id: number): Promise<any> {
+  deleteSageBusinessCloudDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/SageBusinessCloudDetails/${id}`,

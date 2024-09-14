@@ -22,7 +22,7 @@ export class AWSAPI extends HaloPSA {
    * 
    
    */
-  getAWSGet(): Promise<any> {
+  getAWSGet({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AWS/Get',

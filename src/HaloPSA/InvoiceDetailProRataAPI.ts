@@ -22,7 +22,7 @@ export class InvoiceDetailProRataAPI extends HaloPSA {
    * 
    
    */
-  getInvoiceDetailProRata(): Promise<any> {
+  getInvoiceDetailProRata({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/InvoiceDetailProRata',

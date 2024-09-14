@@ -21,25 +21,34 @@ export class RoadmapAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {boolean} halocrm 
-   * @param {boolean} haloitsm 
-   * @param {boolean} halopsa 
-   * @param {boolean} haloservicedesk 
-   * @param {string} order 
-   * @param {boolean} orderdesc 
-   * @param {number} product_id 
-   * @param {boolean} roadmapcolumnview 
+   * @param {boolean} [halocrm] 
+   * @param {boolean} [haloitsm] 
+   * @param {boolean} [halopsa] 
+   * @param {boolean} [haloservicedesk] 
+   * @param {string} [order] 
+   * @param {boolean} [orderdesc] 
+   * @param {number} [product_id] 
+   * @param {boolean} [roadmapcolumnview] 
    */
-  getRoadmap(
-    halocrm: boolean,
-    haloitsm: boolean,
-    halopsa: boolean,
-    haloservicedesk: boolean,
-    order: string,
-    orderdesc: boolean,
-    product_id: number,
-    roadmapcolumnview: boolean,
-  ): Promise<any> {
+  getRoadmap({
+    halocrm,
+    haloitsm,
+    halopsa,
+    haloservicedesk,
+    order,
+    orderdesc,
+    product_id,
+    roadmapcolumnview,
+  }: {
+    halocrm?: boolean
+    haloitsm?: boolean
+    halopsa?: boolean
+    haloservicedesk?: boolean
+    order?: string
+    orderdesc?: boolean
+    product_id?: number
+    roadmapcolumnview?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Roadmap',

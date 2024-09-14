@@ -24,7 +24,11 @@ export class SalesMailboxDetailAPI extends HaloPSA {
    * 
    
    */
-  postSalesMailboxDetail(salesMailboxDetail: Array<SalesMailboxDetail>): Promise<any> {
+  postSalesMailboxDetail({
+    salesMailboxDetail,
+  }: {
+    salesMailboxDetail: Array<SalesMailboxDetail>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SalesMailboxDetail',

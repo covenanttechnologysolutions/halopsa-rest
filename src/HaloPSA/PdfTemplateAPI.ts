@@ -23,10 +23,10 @@ export class PdfTemplateAPI extends HaloPSA {
    * @summary List of PdfTemplate
    * @description Use this to return multiple PdfTemplate.<br>
 				Requires authentication.
-   * @param {string} licencename 
-   * @param {number} type 
+   * @param {string} [licencename] 
+   * @param {number} [type] 
    */
-  getPdfTemplate(licencename: string, type: number): Promise<any> {
+  getPdfTemplate({ licencename, type }: { licencename?: string; type?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/PdfTemplate',
@@ -42,7 +42,7 @@ export class PdfTemplateAPI extends HaloPSA {
    * 
    
    */
-  postPdfTemplate(pdfTemplate: Array<PdfTemplate>): Promise<any> {
+  postPdfTemplate({ pdfTemplate }: { pdfTemplate: Array<PdfTemplate> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/PdfTemplate',
@@ -55,16 +55,21 @@ export class PdfTemplateAPI extends HaloPSA {
    * @description Use this to return a single instance of PdfTemplate.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
-   * @param {string} licencename 
-   * @param {string} system_use 
+   * @param {boolean} [includedetails] 
+   * @param {string} [licencename] 
+   * @param {string} [system_use] 
    */
-  getPdfTemplateById(
-    id: number,
-    includedetails: boolean,
-    licencename: string,
-    system_use: string,
-  ): Promise<any> {
+  getPdfTemplateById({
+    id,
+    includedetails,
+    licencename,
+    system_use,
+  }: {
+    id: number
+    includedetails?: boolean
+    licencename?: string
+    system_use?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/PdfTemplate/${id}`,
@@ -81,7 +86,7 @@ export class PdfTemplateAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deletePdfTemplateById(id: number): Promise<any> {
+  deletePdfTemplateById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/PdfTemplate/${id}`,

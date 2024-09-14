@@ -23,10 +23,16 @@ export class ExactDetailsAPI extends HaloPSA {
    * @summary List of ExactDetails
    * @description Use this to return multiple ExactDetails.<br>
 				Requires authentication.
-   * @param {boolean} connectedonly 
-   * @param {string} division 
+   * @param {boolean} [connectedonly] 
+   * @param {string} [division] 
    */
-  getExactDetails(connectedonly: boolean, division: string): Promise<any> {
+  getExactDetails({
+    connectedonly,
+    division,
+  }: {
+    connectedonly?: boolean
+    division?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ExactDetails',
@@ -42,7 +48,7 @@ export class ExactDetailsAPI extends HaloPSA {
    * 
    
    */
-  postExactDetails(exactDetails: Array<ExactDetails>): Promise<any> {
+  postExactDetails({ exactDetails }: { exactDetails: Array<ExactDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ExactDetails',
@@ -55,10 +61,18 @@ export class ExactDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of ExactDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {number} division 
-   * @param {boolean} includedetails 
+   * @param {number} [division] 
+   * @param {boolean} [includedetails] 
    */
-  getExactDetailsById(id: number, division: number, includedetails: boolean): Promise<any> {
+  getExactDetailsById({
+    id,
+    division,
+    includedetails,
+  }: {
+    id: number
+    division?: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ExactDetails/${id}`,
@@ -74,7 +88,7 @@ export class ExactDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteExactDetailsById(id: number): Promise<any> {
+  deleteExactDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ExactDetails/${id}`,

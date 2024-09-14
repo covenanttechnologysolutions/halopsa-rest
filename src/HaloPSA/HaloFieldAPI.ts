@@ -22,7 +22,7 @@ export class HaloFieldAPI extends HaloPSA {
    * 
    
    */
-  getHaloField(): Promise<any> {
+  getHaloField({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/HaloField',

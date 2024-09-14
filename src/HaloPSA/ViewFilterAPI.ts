@@ -23,21 +23,28 @@ export class ViewFilterAPI extends HaloPSA {
    * @summary List of ViewFilter
    * @description Use this to return multiple ViewFilter.<br>
 				Requires authentication.
-   * @param {boolean} globalonly 
-   * @param {boolean} showall 
-   * @param {number} showallforteam 
-   * @param {number} showallfortech 
-   * @param {number} ticketarea_id 
-   * @param {string} type 
+   * @param {boolean} [globalonly] 
+   * @param {boolean} [showall] 
+   * @param {number} [showallforteam] 
+   * @param {number} [showallfortech] 
+   * @param {number} [ticketarea_id] 
+   * @param {string} [type] 
    */
-  getViewFilter(
-    globalonly: boolean,
-    showall: boolean,
-    showallforteam: number,
-    showallfortech: number,
-    ticketarea_id: number,
-    type: string,
-  ): Promise<any> {
+  getViewFilter({
+    globalonly,
+    showall,
+    showallforteam,
+    showallfortech,
+    ticketarea_id,
+    type,
+  }: {
+    globalonly?: boolean
+    showall?: boolean
+    showallforteam?: number
+    showallfortech?: number
+    ticketarea_id?: number
+    type?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ViewFilter',
@@ -57,7 +64,7 @@ export class ViewFilterAPI extends HaloPSA {
    * 
    
    */
-  postViewFilter(viewFilter: Array<ViewFilter>): Promise<any> {
+  postViewFilter({ viewFilter }: { viewFilter: Array<ViewFilter> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ViewFilter',
@@ -70,9 +77,15 @@ export class ViewFilterAPI extends HaloPSA {
    * @description Use this to return a single instance of ViewFilter.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getViewFilterById(id: number, includedetails: boolean): Promise<any> {
+  getViewFilterById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ViewFilter/${id}`,
@@ -87,7 +100,7 @@ export class ViewFilterAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteViewFilterById(id: number): Promise<any> {
+  deleteViewFilterById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ViewFilter/${id}`,

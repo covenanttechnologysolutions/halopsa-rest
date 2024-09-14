@@ -24,7 +24,7 @@ export class ChatFlowAPI extends HaloPSA {
    * 
    
    */
-  postChatFlow(chatFlowProcess: Array<ChatFlowProcess>): Promise<any> {
+  postChatFlow({ chatFlowProcess }: { chatFlowProcess: Array<ChatFlowProcess> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ChatFlow',

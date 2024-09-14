@@ -24,7 +24,7 @@ export class AWSDetailsAPI extends HaloPSA {
    * 
    
    */
-  getAWSDetails(): Promise<any> {
+  getAWSDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AWSDetails',
@@ -36,7 +36,7 @@ export class AWSDetailsAPI extends HaloPSA {
    * 
    
    */
-  postAWSDetails(aWSDetails: Array<AWSDetails>): Promise<any> {
+  postAWSDetails({ aWSDetails }: { aWSDetails: Array<AWSDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/AWSDetails',
@@ -49,7 +49,7 @@ export class AWSDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getAWSDetailsById(id: number): Promise<any> {
+  getAWSDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/AWSDetails/${id}`,
@@ -61,7 +61,7 @@ export class AWSDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAWSDetailsById(id: number): Promise<any> {
+  deleteAWSDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/AWSDetails/${id}`,

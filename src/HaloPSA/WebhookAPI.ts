@@ -23,10 +23,16 @@ export class WebhookAPI extends HaloPSA {
    * @summary List of Webhook
    * @description Use this to return multiple Webhook.<br>
 				Requires authentication.
-   * @param {boolean} isazureautomation 
-   * @param {number} type 
+   * @param {boolean} [isazureautomation] 
+   * @param {number} [type] 
    */
-  getWebhook(isazureautomation: boolean, type: number): Promise<any> {
+  getWebhook({
+    isazureautomation,
+    type,
+  }: {
+    isazureautomation?: boolean
+    type?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Webhook',
@@ -42,7 +48,7 @@ export class WebhookAPI extends HaloPSA {
    * 
    
    */
-  postWebhook(webhook: Array<Webhook>): Promise<any> {
+  postWebhook({ webhook }: { webhook: Array<Webhook> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Webhook',
@@ -55,9 +61,9 @@ export class WebhookAPI extends HaloPSA {
    * @description Use this to return a single instance of Webhook.<br>
 				Requires authentication.
    * @param {string} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getWebhookById(id: string, includedetails: boolean): Promise<any> {
+  getWebhookById({ id, includedetails }: { id: string; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Webhook/${id}`,
@@ -72,7 +78,7 @@ export class WebhookAPI extends HaloPSA {
    *
    * @param {string} id
    */
-  deleteWebhookById(id: string): Promise<any> {
+  deleteWebhookById({ id }: { id: string }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Webhook/${id}`,

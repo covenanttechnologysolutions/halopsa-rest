@@ -24,7 +24,7 @@ export class FeedbackAPI extends HaloPSA {
    * 
    
    */
-  getFeedback(): Promise<any> {
+  getFeedback({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Feedback',
@@ -36,7 +36,7 @@ export class FeedbackAPI extends HaloPSA {
    * 
    
    */
-  postFeedback(feedback: Array<Feedback>): Promise<any> {
+  postFeedback({ feedback }: { feedback: Array<Feedback> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Feedback',
@@ -49,16 +49,21 @@ export class FeedbackAPI extends HaloPSA {
    * @description Use this to return a single instance of Feedback.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} clearcomment 
-   * @param {boolean} includedetails 
-   * @param {string} key 
+   * @param {boolean} [clearcomment] 
+   * @param {boolean} [includedetails] 
+   * @param {string} [key] 
    */
-  getFeedbackById(
-    id: number,
-    clearcomment: boolean,
-    includedetails: boolean,
-    key: string,
-  ): Promise<any> {
+  getFeedbackById({
+    id,
+    clearcomment,
+    includedetails,
+    key,
+  }: {
+    id: number
+    clearcomment?: boolean
+    includedetails?: boolean
+    key?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Feedback/${id}`,
@@ -75,7 +80,7 @@ export class FeedbackAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteFeedbackById(id: number): Promise<any> {
+  deleteFeedbackById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Feedback/${id}`,

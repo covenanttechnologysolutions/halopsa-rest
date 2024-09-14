@@ -22,7 +22,7 @@ export class FaultViewLogAPI extends HaloPSA {
    * 
    
    */
-  getFaultViewLog(): Promise<any> {
+  getFaultViewLog({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/FaultViewLog',

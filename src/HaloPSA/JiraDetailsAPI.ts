@@ -24,7 +24,7 @@ export class JiraDetailsAPI extends HaloPSA {
    * 
    
    */
-  getJiraDetails(): Promise<any> {
+  getJiraDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/JiraDetails',
@@ -36,7 +36,7 @@ export class JiraDetailsAPI extends HaloPSA {
    * 
    
    */
-  postJiraDetails(jiraDetails: Array<JiraDetails>): Promise<any> {
+  postJiraDetails({ jiraDetails }: { jiraDetails: Array<JiraDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/JiraDetails',
@@ -49,7 +49,7 @@ export class JiraDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getJiraDetailsById(id: number): Promise<any> {
+  getJiraDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/JiraDetails/${id}`,
@@ -61,7 +61,7 @@ export class JiraDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteJiraDetailsById(id: number): Promise<any> {
+  deleteJiraDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/JiraDetails/${id}`,

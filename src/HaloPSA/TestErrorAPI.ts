@@ -22,7 +22,7 @@ export class TestErrorAPI extends HaloPSA {
    * 
    
    */
-  getTestError(): Promise<any> {
+  getTestError({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TestError',

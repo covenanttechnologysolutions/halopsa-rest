@@ -22,7 +22,7 @@ export class AssetTypeMappingsAPI extends HaloPSA {
    * 
    
    */
-  getAssetTypeMappings(): Promise<any> {
+  getAssetTypeMappings({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AssetTypeMappings',
@@ -34,9 +34,15 @@ export class AssetTypeMappingsAPI extends HaloPSA {
    * @description Use this to return a single instance of XTypeMapping.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getAssetTypeMappingsById(id: number, includedetails: boolean): Promise<any> {
+  getAssetTypeMappingsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/AssetTypeMappings/${id}`,

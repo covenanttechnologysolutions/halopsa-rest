@@ -23,9 +23,9 @@ export class LanguagesAPI extends HaloPSA {
    * @summary List of LanguagePack
    * @description Use this to return multiple LanguagePack.<br>
 				Requires authentication.
-   * @param {boolean} showall 
+   * @param {boolean} [showall] 
    */
-  getLanguages(showall: boolean): Promise<any> {
+  getLanguages({ showall }: { showall?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Languages',
@@ -40,7 +40,7 @@ export class LanguagesAPI extends HaloPSA {
    * 
    
    */
-  postLanguages(languagePack: Array<LanguagePack>): Promise<any> {
+  postLanguages({ languagePack }: { languagePack: Array<LanguagePack> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Languages',
@@ -53,9 +53,9 @@ export class LanguagesAPI extends HaloPSA {
    * @description Use this to return a single instance of LanguagePack.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getLanguagesById(id: number, includedetails: boolean): Promise<any> {
+  getLanguagesById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Languages/${id}`,
@@ -70,7 +70,7 @@ export class LanguagesAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteLanguagesById(id: number): Promise<any> {
+  deleteLanguagesById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Languages/${id}`,

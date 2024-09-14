@@ -23,9 +23,9 @@ export class OutgoingemailAPI extends HaloPSA {
    * @summary List of Outgoingemail
    * @description Use this to return multiple Outgoingemail.<br>
 				Requires authentication.
-   * @param {boolean} errorsonly 
+   * @param {boolean} [errorsonly] 
    */
-  getOutgoingemail(errorsonly: boolean): Promise<any> {
+  getOutgoingemail({ errorsonly }: { errorsonly?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Outgoingemail',
@@ -40,7 +40,7 @@ export class OutgoingemailAPI extends HaloPSA {
    * 
    
    */
-  postOutgoingemail(outgoingemail: Array<Outgoingemail>): Promise<any> {
+  postOutgoingemail({ outgoingemail }: { outgoingemail: Array<Outgoingemail> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Outgoingemail',
@@ -53,7 +53,7 @@ export class OutgoingemailAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteOutgoingemailById(id: number): Promise<any> {
+  deleteOutgoingemailById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Outgoingemail/${id}`,

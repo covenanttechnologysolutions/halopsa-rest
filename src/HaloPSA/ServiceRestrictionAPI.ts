@@ -21,15 +21,19 @@ export class ServiceRestrictionAPI extends HaloPSA {
    * @summary List of ServiceRestriction
    * @description Use this to return multiple ServiceRestriction.<br>
 				Requires authentication.
-   * @param {number} client_id 
-   * @param {number} service_category_id 
-   * @param {number} service_id 
+   * @param {number} [client_id] 
+   * @param {number} [service_category_id] 
+   * @param {number} [service_id] 
    */
-  getServiceRestriction(
-    client_id: number,
-    service_category_id: number,
-    service_id: number,
-  ): Promise<any> {
+  getServiceRestriction({
+    client_id,
+    service_category_id,
+    service_id,
+  }: {
+    client_id?: number
+    service_category_id?: number
+    service_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ServiceRestriction',

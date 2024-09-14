@@ -23,21 +23,28 @@ export class TicketApprovalAPI extends HaloPSA {
    * @summary List of FaultApproval
    * @description Use this to return multiple FaultApproval.<br>
 				Requires authentication.
-   * @param {number} action_number 
-   * @param {boolean} include_agent_details 
-   * @param {boolean} include_attachments 
-   * @param {boolean} includeapprovaldetails 
-   * @param {boolean} mine 
-   * @param {number} ticket_id 
+   * @param {number} [action_number] 
+   * @param {boolean} [include_agent_details] 
+   * @param {boolean} [include_attachments] 
+   * @param {boolean} [includeapprovaldetails] 
+   * @param {boolean} [mine] 
+   * @param {number} [ticket_id] 
    */
-  getTicketApproval(
-    action_number: number,
-    include_agent_details: boolean,
-    include_attachments: boolean,
-    includeapprovaldetails: boolean,
-    mine: boolean,
-    ticket_id: number,
-  ): Promise<any> {
+  getTicketApproval({
+    action_number,
+    include_agent_details,
+    include_attachments,
+    includeapprovaldetails,
+    mine,
+    ticket_id,
+  }: {
+    action_number?: number
+    include_agent_details?: boolean
+    include_attachments?: boolean
+    includeapprovaldetails?: boolean
+    mine?: boolean
+    ticket_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TicketApproval',
@@ -57,7 +64,7 @@ export class TicketApprovalAPI extends HaloPSA {
    * 
    
    */
-  postTicketApproval(faultApproval: Array<FaultApproval>): Promise<any> {
+  postTicketApproval({ faultApproval }: { faultApproval: Array<FaultApproval> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/TicketApproval',
@@ -70,9 +77,15 @@ export class TicketApprovalAPI extends HaloPSA {
    * @description Use this to return a single instance of FaultApproval.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getTicketApprovalById(id: number, includedetails: boolean): Promise<any> {
+  getTicketApprovalById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/TicketApproval/${id}`,
@@ -88,7 +101,7 @@ export class TicketApprovalAPI extends HaloPSA {
    * @param {number} id
    * @param {number} seq
    */
-  deleteTicketApprovalidseq(id: number, seq: number): Promise<any> {
+  deleteTicketApprovalidseq({ id, seq }: { id: number; seq: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/TicketApproval/${id}&${seq}`,

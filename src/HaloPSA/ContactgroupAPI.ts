@@ -24,7 +24,7 @@ export class ContactgroupAPI extends HaloPSA {
    * 
    
    */
-  getContactgroup(): Promise<any> {
+  getContactgroup({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Contactgroup',
@@ -36,7 +36,7 @@ export class ContactgroupAPI extends HaloPSA {
    * 
    
    */
-  postContactgroup(contactgroup: Array<Contactgroup>): Promise<any> {
+  postContactgroup({ contactgroup }: { contactgroup: Array<Contactgroup> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Contactgroup',
@@ -49,7 +49,7 @@ export class ContactgroupAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getContactgroupById(id: number): Promise<any> {
+  getContactgroupById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Contactgroup/${id}`,
@@ -61,7 +61,7 @@ export class ContactgroupAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteContactgroupById(id: number): Promise<any> {
+  deleteContactgroupById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Contactgroup/${id}`,

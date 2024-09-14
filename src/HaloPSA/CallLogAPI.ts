@@ -23,9 +23,9 @@ export class CallLogAPI extends HaloPSA {
    * @summary List of CallLog
    * @description Use this to return multiple CallLog.<br>
 				Requires authentication.
-   * @param {boolean} showall 
+   * @param {boolean} [showall] 
    */
-  getCallLog(showall: boolean): Promise<any> {
+  getCallLog({ showall }: { showall?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/CallLog',
@@ -40,7 +40,7 @@ export class CallLogAPI extends HaloPSA {
    * 
    
    */
-  postCallLog(callLog: Array<CallLog>): Promise<any> {
+  postCallLog({ callLog }: { callLog: Array<CallLog> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/CallLog',
@@ -53,9 +53,9 @@ export class CallLogAPI extends HaloPSA {
    * @description Use this to return a single instance of CallLog.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getCallLogById(id: number, includedetails: boolean): Promise<any> {
+  getCallLogById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/CallLog/${id}`,

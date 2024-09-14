@@ -24,7 +24,7 @@ export class CallScriptAPI extends HaloPSA {
    * 
    
    */
-  getCallScript(): Promise<any> {
+  getCallScript({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/CallScript',
@@ -36,7 +36,7 @@ export class CallScriptAPI extends HaloPSA {
    * 
    
    */
-  postCallScript(scriptHeader: Array<ScriptHeader>): Promise<any> {
+  postCallScript({ scriptHeader }: { scriptHeader: Array<ScriptHeader> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/CallScript',
@@ -49,9 +49,15 @@ export class CallScriptAPI extends HaloPSA {
    * @description Use this to return a single instance of ScriptHeader.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getCallScriptById(id: number, includedetails: boolean): Promise<any> {
+  getCallScriptById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/CallScript/${id}`,
@@ -66,7 +72,7 @@ export class CallScriptAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteCallScriptById(id: number): Promise<any> {
+  deleteCallScriptById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/CallScript/${id}`,

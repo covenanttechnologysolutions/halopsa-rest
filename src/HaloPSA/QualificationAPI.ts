@@ -23,9 +23,9 @@ export class QualificationAPI extends HaloPSA {
    * @summary List of Qualification
    * @description Use this to return multiple Qualification.<br>
 				Requires authentication.
-   * @param {boolean} includecriteriainfo 
+   * @param {boolean} [includecriteriainfo] 
    */
-  getQualification(includecriteriainfo: boolean): Promise<any> {
+  getQualification({ includecriteriainfo }: { includecriteriainfo?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Qualification',
@@ -40,7 +40,7 @@ export class QualificationAPI extends HaloPSA {
    * 
    
    */
-  postQualification(qualification: Array<Qualification>): Promise<any> {
+  postQualification({ qualification }: { qualification: Array<Qualification> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Qualification',
@@ -53,9 +53,15 @@ export class QualificationAPI extends HaloPSA {
    * @description Use this to return a single instance of Qualification.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getQualificationById(id: number, includedetails: boolean): Promise<any> {
+  getQualificationById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Qualification/${id}`,
@@ -70,7 +76,7 @@ export class QualificationAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteQualificationById(id: number): Promise<any> {
+  deleteQualificationById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Qualification/${id}`,

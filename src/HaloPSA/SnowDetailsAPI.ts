@@ -23,9 +23,9 @@ export class SnowDetailsAPI extends HaloPSA {
    * @summary List of SnowDetails
    * @description Use this to return multiple SnowDetails.<br>
 				Requires authentication.
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getSnowDetails(includedetails: boolean): Promise<any> {
+  getSnowDetails({ includedetails }: { includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SnowDetails',
@@ -40,7 +40,7 @@ export class SnowDetailsAPI extends HaloPSA {
    * 
    
    */
-  postSnowDetails(snowDetails: Array<SnowDetails>): Promise<any> {
+  postSnowDetails({ snowDetails }: { snowDetails: Array<SnowDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SnowDetails',
@@ -53,10 +53,18 @@ export class SnowDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of SnowDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} doDecrypt 
-   * @param {boolean} includedetails 
+   * @param {boolean} [doDecrypt] 
+   * @param {boolean} [includedetails] 
    */
-  getSnowDetailsById(id: number, doDecrypt: boolean, includedetails: boolean): Promise<any> {
+  getSnowDetailsById({
+    id,
+    doDecrypt,
+    includedetails,
+  }: {
+    id: number
+    doDecrypt?: boolean
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/SnowDetails/${id}`,
@@ -72,7 +80,7 @@ export class SnowDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteSnowDetailsById(id: number): Promise<any> {
+  deleteSnowDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/SnowDetails/${id}`,

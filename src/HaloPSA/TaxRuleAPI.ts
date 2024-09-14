@@ -24,7 +24,7 @@ export class TaxRuleAPI extends HaloPSA {
    * 
    
    */
-  getTaxRule(): Promise<any> {
+  getTaxRule({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TaxRule',
@@ -36,7 +36,7 @@ export class TaxRuleAPI extends HaloPSA {
    * 
    
    */
-  postTaxRule(taxRule: Array<TaxRule>): Promise<any> {
+  postTaxRule({ taxRule }: { taxRule: Array<TaxRule> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/TaxRule',
@@ -49,7 +49,7 @@ export class TaxRuleAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getTaxRuleById(id: number): Promise<any> {
+  getTaxRuleById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/TaxRule/${id}`,
@@ -61,7 +61,7 @@ export class TaxRuleAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteTaxRuleById(id: number): Promise<any> {
+  deleteTaxRuleById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/TaxRule/${id}`,

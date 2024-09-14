@@ -24,7 +24,7 @@ export class TaniumDetailsAPI extends HaloPSA {
    * 
    
    */
-  getTaniumDetails(): Promise<any> {
+  getTaniumDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TaniumDetails',
@@ -36,7 +36,7 @@ export class TaniumDetailsAPI extends HaloPSA {
    * 
    
    */
-  postTaniumDetails(taniumDetails: Array<TaniumDetails>): Promise<any> {
+  postTaniumDetails({ taniumDetails }: { taniumDetails: Array<TaniumDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/TaniumDetails',
@@ -49,7 +49,7 @@ export class TaniumDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getTaniumDetailsById(id: number): Promise<any> {
+  getTaniumDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/TaniumDetails/${id}`,
@@ -61,7 +61,7 @@ export class TaniumDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteTaniumDetailsById(id: number): Promise<any> {
+  deleteTaniumDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/TaniumDetails/${id}`,

@@ -23,10 +23,16 @@ export class IntegrationExportAPI extends HaloPSA {
    * @summary List of IntegrationExport
    * @description Use this to return multiple IntegrationExport.<br>
 				Requires authentication.
-   * @param {number} moduleId 
-   * @param {boolean} readyForImport 
+   * @param {number} [moduleId] 
+   * @param {boolean} [readyForImport] 
    */
-  getIntegrationExport(moduleId: number, readyForImport: boolean): Promise<any> {
+  getIntegrationExport({
+    moduleId,
+    readyForImport,
+  }: {
+    moduleId?: number
+    readyForImport?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationExport',
@@ -42,7 +48,11 @@ export class IntegrationExportAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationExport(integrationExport: Array<IntegrationExport>): Promise<any> {
+  postIntegrationExport({
+    integrationExport,
+  }: {
+    integrationExport: Array<IntegrationExport>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationExport',

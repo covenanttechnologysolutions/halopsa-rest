@@ -22,7 +22,7 @@ export class ClientCacheAPI extends HaloPSA {
    * 
    
    */
-  getClientCache(): Promise<any> {
+  getClientCache({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ClientCache',

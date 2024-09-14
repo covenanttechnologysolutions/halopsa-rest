@@ -22,7 +22,7 @@ export class EventAPI extends HaloPSA {
    * 
    
    */
-  getEvent(): Promise<any> {
+  getEvent({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Event',
@@ -34,7 +34,7 @@ export class EventAPI extends HaloPSA {
    * 
    
    */
-  postEvent(listNumber: number): Promise<any> {
+  postEvent({ listNumber }: { listNumber: number }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Event',
@@ -47,7 +47,7 @@ export class EventAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getEventById(id: number): Promise<any> {
+  getEventById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Event/${id}`,
@@ -59,7 +59,7 @@ export class EventAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteEventById(id: number): Promise<any> {
+  deleteEventById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Event/${id}`,

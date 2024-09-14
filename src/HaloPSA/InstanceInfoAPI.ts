@@ -22,7 +22,7 @@ export class InstanceInfoAPI extends HaloPSA {
    * 
    
    */
-  getInstanceInfo(): Promise<any> {
+  getInstanceInfo({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/InstanceInfo',

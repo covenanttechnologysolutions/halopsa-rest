@@ -23,29 +23,40 @@ export class HolidayAPI extends HaloPSA {
    * @summary List of Holidays
    * @description Use this to return multiple Holidays.<br>
 				Requires authentication.
-   * @param {number} agent_id 
-   * @param {boolean} approved_only 
-   * @param {DateTime} end_date 
-   * @param {number} entity 
-   * @param {boolean} include_apid 
-   * @param {boolean} inclusive_end 
-   * @param {boolean} inclusive_start 
-   * @param {boolean} my_approvals 
-   * @param {DateTime} start_date 
-   * @param {number} workdayid 
+   * @param {number} [agent_id] 
+   * @param {boolean} [approved_only] 
+   * @param {DateTime} [end_date] 
+   * @param {number} [entity] 
+   * @param {boolean} [include_apid] 
+   * @param {boolean} [inclusive_end] 
+   * @param {boolean} [inclusive_start] 
+   * @param {boolean} [my_approvals] 
+   * @param {DateTime} [start_date] 
+   * @param {number} [workdayid] 
    */
-  getHoliday(
-    agent_id: number,
-    approved_only: boolean,
-    end_date: DateTime,
-    entity: number,
-    include_apid: boolean,
-    inclusive_end: boolean,
-    inclusive_start: boolean,
-    my_approvals: boolean,
-    start_date: DateTime,
-    workdayid: number,
-  ): Promise<any> {
+  getHoliday({
+    agent_id,
+    approved_only,
+    end_date,
+    entity,
+    include_apid,
+    inclusive_end,
+    inclusive_start,
+    my_approvals,
+    start_date,
+    workdayid,
+  }: {
+    agent_id?: number
+    approved_only?: boolean
+    end_date?: DateTime
+    entity?: number
+    include_apid?: boolean
+    inclusive_end?: boolean
+    inclusive_start?: boolean
+    my_approvals?: boolean
+    start_date?: DateTime
+    workdayid?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Holiday',
@@ -69,7 +80,7 @@ export class HolidayAPI extends HaloPSA {
    * 
    
    */
-  postHoliday(holidays: Array<Holidays>): Promise<any> {
+  postHoliday({ holidays }: { holidays: Array<Holidays> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Holiday',
@@ -82,9 +93,9 @@ export class HolidayAPI extends HaloPSA {
    * @description Use this to return a single instance of Holidays.<br>
 				Requires authentication.
    * @param {string} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getHolidayById(id: string, includedetails: boolean): Promise<any> {
+  getHolidayById({ id, includedetails }: { id: string; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Holiday/${id}`,
@@ -99,7 +110,7 @@ export class HolidayAPI extends HaloPSA {
    *
    * @param {string} id
    */
-  deleteHolidayById(id: string): Promise<any> {
+  deleteHolidayById({ id }: { id: string }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Holiday/${id}`,

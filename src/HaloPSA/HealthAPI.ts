@@ -22,7 +22,7 @@ export class HealthAPI extends HaloPSA {
    * 
    
    */
-  getHealth(): Promise<any> {
+  getHealth({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Health',

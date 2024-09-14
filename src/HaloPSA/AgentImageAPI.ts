@@ -22,22 +22,30 @@ export class AgentImageAPI extends HaloPSA {
    * @description Use this to return a single instance of Uname.<br>
 				Requires authentication.
    * @param {string} id 
-   * @param {string} clientidoverride 
-   * @param {boolean} get_htmldesigner_signature 
-   * @param {boolean} getholidayallowance 
-   * @param {boolean} includedetails (bool) Include extra objects in the response.
-   * @param {boolean} isagentconfig 
-   * @param {boolean} loadcache 
+   * @param {string} [clientidoverride] 
+   * @param {boolean} [get_htmldesigner_signature] 
+   * @param {boolean} [getholidayallowance] 
+   * @param {boolean} [includedetails] (bool) Include extra objects in the response.
+   * @param {boolean} [isagentconfig] 
+   * @param {boolean} [loadcache] 
    */
-  getAgentImageById(
-    id: string,
-    clientidoverride: string,
-    get_htmldesigner_signature: boolean,
-    getholidayallowance: boolean,
-    includedetails: boolean,
-    isagentconfig: boolean,
-    loadcache: boolean,
-  ): Promise<any> {
+  getAgentImageById({
+    id,
+    clientidoverride,
+    get_htmldesigner_signature,
+    getholidayallowance,
+    includedetails,
+    isagentconfig,
+    loadcache,
+  }: {
+    id: string
+    clientidoverride?: string
+    get_htmldesigner_signature?: boolean
+    getholidayallowance?: boolean
+    includedetails?: boolean
+    isagentconfig?: boolean
+    loadcache?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/AgentImage/${id}`,

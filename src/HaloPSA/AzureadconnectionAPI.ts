@@ -23,17 +23,22 @@ export class AzureadconnectionAPI extends HaloPSA {
    * @summary List of AzureADConnection
    * @description Use this to return multiple AzureADConnection.<br>
 				Requires authentication.
-   * @param {boolean} authorized 
-   * @param {boolean} isintune 
-   * @param {number} type 
-   * @param {string} types 
+   * @param {boolean} [authorized] 
+   * @param {boolean} [isintune] 
+   * @param {number} [type] 
+   * @param {string} [types] 
    */
-  getAzureadconnection(
-    authorized: boolean,
-    isintune: boolean,
-    type: number,
-    types: string,
-  ): Promise<any> {
+  getAzureadconnection({
+    authorized,
+    isintune,
+    type,
+    types,
+  }: {
+    authorized?: boolean
+    isintune?: boolean
+    type?: number
+    types?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/azureadconnection',
@@ -51,7 +56,11 @@ export class AzureadconnectionAPI extends HaloPSA {
    * 
    
    */
-  postAzureadconnection(azureADConnection: Array<AzureADConnection>): Promise<any> {
+  postAzureadconnection({
+    azureADConnection,
+  }: {
+    azureADConnection: Array<AzureADConnection>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/azureadconnection',
@@ -64,14 +73,18 @@ export class AzureadconnectionAPI extends HaloPSA {
    * @description Use this to return a single instance of AzureADConnection.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
-   * @param {boolean} includetenants 
+   * @param {boolean} [includedetails] 
+   * @param {boolean} [includetenants] 
    */
-  getAzureadconnectionById(
-    id: number,
-    includedetails: boolean,
-    includetenants: boolean,
-  ): Promise<any> {
+  getAzureadconnectionById({
+    id,
+    includedetails,
+    includetenants,
+  }: {
+    id: number
+    includedetails?: boolean
+    includetenants?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/azureadconnection/${id}`,
@@ -87,7 +100,7 @@ export class AzureadconnectionAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAzureadconnectionById(id: number): Promise<any> {
+  deleteAzureadconnectionById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/azureadconnection/${id}`,

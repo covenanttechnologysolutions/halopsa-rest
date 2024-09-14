@@ -23,23 +23,31 @@ export class CannedTextAPI extends HaloPSA {
    * @summary List of CannedText
    * @description Use this to return multiple CannedText.<br>
 				Requires authentication.
-   * @param {number} access_control_level 
-   * @param {number} agent_id 
-   * @param {number} department_id 
-   * @param {number} group_id 
-   * @param {boolean} showall 
-   * @param {number} team_id 
-   * @param {boolean} ticketonly 
+   * @param {number} [access_control_level] 
+   * @param {number} [agent_id] 
+   * @param {number} [department_id] 
+   * @param {number} [group_id] 
+   * @param {boolean} [showall] 
+   * @param {number} [team_id] 
+   * @param {boolean} [ticketonly] 
    */
-  getCannedText(
-    access_control_level: number,
-    agent_id: number,
-    department_id: number,
-    group_id: number,
-    showall: boolean,
-    team_id: number,
-    ticketonly: boolean,
-  ): Promise<any> {
+  getCannedText({
+    access_control_level,
+    agent_id,
+    department_id,
+    group_id,
+    showall,
+    team_id,
+    ticketonly,
+  }: {
+    access_control_level?: number
+    agent_id?: number
+    department_id?: number
+    group_id?: number
+    showall?: boolean
+    team_id?: number
+    ticketonly?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/CannedText',
@@ -60,7 +68,7 @@ export class CannedTextAPI extends HaloPSA {
    * 
    
    */
-  postCannedText(cannedText: Array<CannedText>): Promise<any> {
+  postCannedText({ cannedText }: { cannedText: Array<CannedText> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/CannedText',
@@ -73,9 +81,15 @@ export class CannedTextAPI extends HaloPSA {
    * @description Use this to return a single instance of CannedText.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getCannedTextById(id: number, includedetails: boolean): Promise<any> {
+  getCannedTextById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/CannedText/${id}`,
@@ -90,7 +104,7 @@ export class CannedTextAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteCannedTextById(id: number): Promise<any> {
+  deleteCannedTextById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/CannedText/${id}`,

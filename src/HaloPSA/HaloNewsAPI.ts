@@ -24,7 +24,7 @@ export class HaloNewsAPI extends HaloPSA {
    * 
    
    */
-  getHaloNews(): Promise<any> {
+  getHaloNews({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/HaloNews',
@@ -36,7 +36,7 @@ export class HaloNewsAPI extends HaloPSA {
    * 
    
    */
-  postHaloNews(haloNews: Array<HaloNews>): Promise<any> {
+  postHaloNews({ haloNews }: { haloNews: Array<HaloNews> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/HaloNews',
@@ -49,9 +49,9 @@ export class HaloNewsAPI extends HaloPSA {
    * @description Use this to return a single instance of HaloNews.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getHaloNewsById(id: number, includedetails: boolean): Promise<any> {
+  getHaloNewsById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/HaloNews/${id}`,
@@ -66,7 +66,7 @@ export class HaloNewsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteHaloNewsById(id: number): Promise<any> {
+  deleteHaloNewsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/HaloNews/${id}`,
@@ -78,7 +78,7 @@ export class HaloNewsAPI extends HaloPSA {
    * 
    
    */
-  postHaloNewsRead(listNumber: number): Promise<any> {
+  postHaloNewsRead({ listNumber }: { listNumber: number }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/HaloNews/read',

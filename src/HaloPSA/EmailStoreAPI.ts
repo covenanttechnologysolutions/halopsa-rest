@@ -24,7 +24,7 @@ export class EmailStoreAPI extends HaloPSA {
    * 
    
    */
-  getEmailStore(): Promise<any> {
+  getEmailStore({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/EmailStore',
@@ -36,7 +36,7 @@ export class EmailStoreAPI extends HaloPSA {
    * 
    
    */
-  postEmailStore(emailStore: Array<EmailStore>): Promise<any> {
+  postEmailStore({ emailStore }: { emailStore: Array<EmailStore> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/EmailStore',
@@ -49,9 +49,15 @@ export class EmailStoreAPI extends HaloPSA {
    * @description Use this to return a single instance of EmailStore.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getEmailStoreById(id: number, includedetails: boolean): Promise<any> {
+  getEmailStoreById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/EmailStore/${id}`,
@@ -66,7 +72,7 @@ export class EmailStoreAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteEmailStoreById(id: number): Promise<any> {
+  deleteEmailStoreById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/EmailStore/${id}`,

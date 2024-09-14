@@ -23,21 +23,28 @@ export class EmailTemplateAPI extends HaloPSA {
    * @summary List of MessageContent
    * @description Use this to return multiple MessageContent.<br>
 				Requires authentication.
-   * @param {number} access_control_level 
-   * @param {boolean} ignore_mg 
-   * @param {boolean} isconfig 
-   * @param {number} messagegroup 
-   * @param {boolean} release_only 
-   * @param {boolean} portalcss 
+   * @param {number} [access_control_level] 
+   * @param {boolean} [ignore_mg] 
+   * @param {boolean} [isconfig] 
+   * @param {number} [messagegroup] 
+   * @param {boolean} [release_only] 
+   * @param {boolean} [portalcss] 
    */
-  getEmailTemplate(
-    access_control_level: number,
-    ignore_mg: boolean,
-    isconfig: boolean,
-    messagegroup: number,
-    release_only: boolean,
-    portalcss: boolean,
-  ): Promise<any> {
+  getEmailTemplate({
+    access_control_level,
+    ignore_mg,
+    isconfig,
+    messagegroup,
+    release_only,
+    portalcss,
+  }: {
+    access_control_level?: number
+    ignore_mg?: boolean
+    isconfig?: boolean
+    messagegroup?: number
+    release_only?: boolean
+    portalcss?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/EmailTemplate',
@@ -57,7 +64,7 @@ export class EmailTemplateAPI extends HaloPSA {
    * 
    
    */
-  postEmailTemplate(messageContent: Array<MessageContent>): Promise<any> {
+  postEmailTemplate({ messageContent }: { messageContent: Array<MessageContent> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/EmailTemplate',
@@ -70,10 +77,18 @@ export class EmailTemplateAPI extends HaloPSA {
    * @description Use this to return a single instance of MessageContent.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
-   * @param {number} messagegroup 
+   * @param {boolean} [includedetails] 
+   * @param {number} [messagegroup] 
    */
-  getEmailTemplateById(id: number, includedetails: boolean, messagegroup: number): Promise<any> {
+  getEmailTemplateById({
+    id,
+    includedetails,
+    messagegroup,
+  }: {
+    id: number
+    includedetails?: boolean
+    messagegroup?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/EmailTemplate/${id}`,
@@ -89,7 +104,7 @@ export class EmailTemplateAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteEmailTemplateById(id: number): Promise<any> {
+  deleteEmailTemplateById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/EmailTemplate/${id}`,

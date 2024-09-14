@@ -24,7 +24,7 @@ export class EcommerceOrderAPI extends HaloPSA {
    * 
    
    */
-  getEcommerceOrder(): Promise<any> {
+  getEcommerceOrder({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/EcommerceOrder',
@@ -36,7 +36,7 @@ export class EcommerceOrderAPI extends HaloPSA {
    * 
    
    */
-  postEcommerceOrder(ecommerceOrder: Array<EcommerceOrder>): Promise<any> {
+  postEcommerceOrder({ ecommerceOrder }: { ecommerceOrder: Array<EcommerceOrder> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/EcommerceOrder',
@@ -49,7 +49,7 @@ export class EcommerceOrderAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getEcommerceOrderById(id: number): Promise<any> {
+  getEcommerceOrderById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/EcommerceOrder/${id}`,
@@ -61,7 +61,7 @@ export class EcommerceOrderAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteEcommerceOrderById(id: number): Promise<any> {
+  deleteEcommerceOrderById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/EcommerceOrder/${id}`,

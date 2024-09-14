@@ -23,17 +23,22 @@ export class CRMNoteAPI extends HaloPSA {
    * @summary List of AreaNote
    * @description Use this to return multiple AreaNote.<br>
 				Requires authentication.
-   * @param {number} client_id 
-   * @param {number} count 
-   * @param {number} supplier_id 
-   * @param {number} toplevel_id 
+   * @param {number} [client_id] 
+   * @param {number} [count] 
+   * @param {number} [supplier_id] 
+   * @param {number} [toplevel_id] 
    */
-  getCRMNote(
-    client_id: number,
-    count: number,
-    supplier_id: number,
-    toplevel_id: number,
-  ): Promise<any> {
+  getCRMNote({
+    client_id,
+    count,
+    supplier_id,
+    toplevel_id,
+  }: {
+    client_id?: number
+    count?: number
+    supplier_id?: number
+    toplevel_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/CRMNote',
@@ -51,7 +56,7 @@ export class CRMNoteAPI extends HaloPSA {
    * 
    
    */
-  postCRMNote(areaNote: Array<AreaNote>): Promise<any> {
+  postCRMNote({ areaNote }: { areaNote: Array<AreaNote> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/CRMNote',
@@ -64,9 +69,9 @@ export class CRMNoteAPI extends HaloPSA {
    * @description Use this to return a single instance of AreaNote.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getCRMNoteById(id: number, includedetails: boolean): Promise<any> {
+  getCRMNoteById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/CRMNote/${id}`,
@@ -81,7 +86,7 @@ export class CRMNoteAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteCRMNoteById(id: number): Promise<any> {
+  deleteCRMNoteById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/CRMNote/${id}`,

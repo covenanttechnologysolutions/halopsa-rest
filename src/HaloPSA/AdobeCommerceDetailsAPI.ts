@@ -24,7 +24,7 @@ export class AdobeCommerceDetailsAPI extends HaloPSA {
    * 
    
    */
-  getAdobeCommerceDetails(): Promise<any> {
+  getAdobeCommerceDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AdobeCommerceDetails',
@@ -36,7 +36,11 @@ export class AdobeCommerceDetailsAPI extends HaloPSA {
    * 
    
    */
-  postAdobeCommerceDetails(adobeCommerceDetails: Array<AdobeCommerceDetails>): Promise<any> {
+  postAdobeCommerceDetails({
+    adobeCommerceDetails,
+  }: {
+    adobeCommerceDetails: Array<AdobeCommerceDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/AdobeCommerceDetails',
@@ -49,7 +53,7 @@ export class AdobeCommerceDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getAdobeCommerceDetailsById(id: number): Promise<any> {
+  getAdobeCommerceDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/AdobeCommerceDetails/${id}`,
@@ -61,7 +65,7 @@ export class AdobeCommerceDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAdobeCommerceDetailsById(id: number): Promise<any> {
+  deleteAdobeCommerceDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/AdobeCommerceDetails/${id}`,

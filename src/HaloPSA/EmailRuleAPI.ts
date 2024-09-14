@@ -23,10 +23,10 @@ export class EmailRuleAPI extends HaloPSA {
    * @summary List of EmailRule
    * @description Use this to return multiple EmailRule.<br>
 				Requires authentication.
-   * @param {string} fromaddress 
-   * @param {number} type 
+   * @param {string} [fromaddress] 
+   * @param {number} [type] 
    */
-  getEmailRule(fromaddress: string, type: number): Promise<any> {
+  getEmailRule({ fromaddress, type }: { fromaddress?: string; type?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/EmailRule',
@@ -42,7 +42,7 @@ export class EmailRuleAPI extends HaloPSA {
    * 
    
    */
-  postEmailRule(emailRule: Array<EmailRule>): Promise<any> {
+  postEmailRule({ emailRule }: { emailRule: Array<EmailRule> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/EmailRule',
@@ -55,9 +55,9 @@ export class EmailRuleAPI extends HaloPSA {
    * @description Use this to return a single instance of EmailRule.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getEmailRuleById(id: number, includedetails: boolean): Promise<any> {
+  getEmailRuleById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/EmailRule/${id}`,
@@ -72,7 +72,7 @@ export class EmailRuleAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteEmailRuleById(id: number): Promise<any> {
+  deleteEmailRuleById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/EmailRule/${id}`,

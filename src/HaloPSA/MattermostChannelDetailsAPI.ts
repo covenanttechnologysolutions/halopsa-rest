@@ -22,7 +22,7 @@ export class MattermostChannelDetailsAPI extends HaloPSA {
    * 
    
    */
-  getMattermostChannelDetails(): Promise<any> {
+  getMattermostChannelDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/MattermostChannelDetails',

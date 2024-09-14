@@ -24,7 +24,7 @@ export class ApplicationAPI extends HaloPSA {
    * 
    
    */
-  getApplication(): Promise<any> {
+  getApplication({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Application',
@@ -36,7 +36,11 @@ export class ApplicationAPI extends HaloPSA {
    * 
    
    */
-  postApplication(nHD_Identity_Application: Array<NHD_Identity_Application>): Promise<any> {
+  postApplication({
+    nHD_Identity_Application,
+  }: {
+    nHD_Identity_Application: Array<NHD_Identity_Application>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Application',
@@ -49,9 +53,15 @@ export class ApplicationAPI extends HaloPSA {
    * @description Use this to return a single instance of NHD_Identity_Application.<br>
 				Requires authentication.
    * @param {string} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getApplicationById(id: string, includedetails: boolean): Promise<any> {
+  getApplicationById({
+    id,
+    includedetails,
+  }: {
+    id: string
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Application/${id}`,
@@ -66,7 +76,7 @@ export class ApplicationAPI extends HaloPSA {
    *
    * @param {string} id
    */
-  deleteApplicationById(id: string): Promise<any> {
+  deleteApplicationById({ id }: { id: string }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Application/${id}`,

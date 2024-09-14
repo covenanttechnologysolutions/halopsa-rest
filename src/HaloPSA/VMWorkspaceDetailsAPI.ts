@@ -24,7 +24,7 @@ export class VMWorkspaceDetailsAPI extends HaloPSA {
    * 
    
    */
-  getVMWorkspaceDetails(): Promise<any> {
+  getVMWorkspaceDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/VMWorkspaceDetails',
@@ -36,7 +36,11 @@ export class VMWorkspaceDetailsAPI extends HaloPSA {
    * 
    
    */
-  postVMWorkspaceDetails(vMWorkspaceDetails: Array<VMWorkspaceDetails>): Promise<any> {
+  postVMWorkspaceDetails({
+    vMWorkspaceDetails,
+  }: {
+    vMWorkspaceDetails: Array<VMWorkspaceDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/VMWorkspaceDetails',
@@ -49,7 +53,7 @@ export class VMWorkspaceDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getVMWorkspaceDetailsById(id: number): Promise<any> {
+  getVMWorkspaceDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/VMWorkspaceDetails/${id}`,
@@ -61,7 +65,7 @@ export class VMWorkspaceDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteVMWorkspaceDetailsById(id: number): Promise<any> {
+  deleteVMWorkspaceDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/VMWorkspaceDetails/${id}`,

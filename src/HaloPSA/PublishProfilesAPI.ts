@@ -24,7 +24,7 @@ export class PublishProfilesAPI extends HaloPSA {
    * 
    
    */
-  getPublishProfiles(): Promise<any> {
+  getPublishProfiles({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/PublishProfiles',
@@ -36,7 +36,11 @@ export class PublishProfilesAPI extends HaloPSA {
    * 
    
    */
-  postPublishProfiles(publishProfiles: Array<PublishProfiles>): Promise<any> {
+  postPublishProfiles({
+    publishProfiles,
+  }: {
+    publishProfiles: Array<PublishProfiles>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/PublishProfiles',
@@ -49,7 +53,7 @@ export class PublishProfilesAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getPublishProfilesById(id: number): Promise<any> {
+  getPublishProfilesById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/PublishProfiles/${id}`,
@@ -61,7 +65,7 @@ export class PublishProfilesAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deletePublishProfilesById(id: number): Promise<any> {
+  deletePublishProfilesById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/PublishProfiles/${id}`,

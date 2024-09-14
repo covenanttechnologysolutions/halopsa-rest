@@ -23,9 +23,9 @@ export class PowerShellScriptCriteriaAPI extends HaloPSA {
    * @summary List of PowerShellScriptCriteria
    * @description Use this to return multiple PowerShellScriptCriteria.<br>
 				Requires authentication.
-   * @param {string} script_id 
+   * @param {string} [script_id] 
    */
-  getPowerShellScriptCriteria(script_id: string): Promise<any> {
+  getPowerShellScriptCriteria({ script_id }: { script_id?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/PowerShellScriptCriteria',
@@ -40,9 +40,11 @@ export class PowerShellScriptCriteriaAPI extends HaloPSA {
    * 
    
    */
-  postPowerShellScriptCriteria(
-    powerShellScriptCriteria: Array<PowerShellScriptCriteria>,
-  ): Promise<any> {
+  postPowerShellScriptCriteria({
+    powerShellScriptCriteria,
+  }: {
+    powerShellScriptCriteria: Array<PowerShellScriptCriteria>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/PowerShellScriptCriteria',
@@ -55,9 +57,15 @@ export class PowerShellScriptCriteriaAPI extends HaloPSA {
    * @description Use this to return a single instance of PowerShellScriptCriteria.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getPowerShellScriptCriteriaById(id: number, includedetails: boolean): Promise<any> {
+  getPowerShellScriptCriteriaById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/PowerShellScriptCriteria/${id}`,
@@ -72,7 +80,7 @@ export class PowerShellScriptCriteriaAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deletePowerShellScriptCriteriaById(id: number): Promise<any> {
+  deletePowerShellScriptCriteriaById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/PowerShellScriptCriteria/${id}`,

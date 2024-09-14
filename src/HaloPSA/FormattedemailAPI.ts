@@ -24,7 +24,7 @@ export class FormattedemailAPI extends HaloPSA {
    * 
    
    */
-  getFormattedemail(): Promise<any> {
+  getFormattedemail({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/formattedemail',
@@ -36,7 +36,7 @@ export class FormattedemailAPI extends HaloPSA {
    * 
    
    */
-  postFormattedemail(formattedEmail: Array<FormattedEmail>): Promise<any> {
+  postFormattedemail({ formattedEmail }: { formattedEmail: Array<FormattedEmail> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/formattedemail',
@@ -49,9 +49,15 @@ export class FormattedemailAPI extends HaloPSA {
    * @description Use this to return a single instance of formattedemail.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getFormattedemailById(id: number, includedetails: boolean): Promise<any> {
+  getFormattedemailById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/formattedemail/${id}`,
@@ -66,7 +72,7 @@ export class FormattedemailAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteFormattedemailById(id: number): Promise<any> {
+  deleteFormattedemailById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/formattedemail/${id}`,

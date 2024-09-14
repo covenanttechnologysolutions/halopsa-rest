@@ -21,10 +21,16 @@ export class WebhookRepositoryAPI extends HaloPSA {
    * @summary List of Webhook
    * @description Use this to return multiple Webhook.<br>
 				Requires authentication.
-   * @param {boolean} isazureautomation 
-   * @param {number} type 
+   * @param {boolean} [isazureautomation] 
+   * @param {number} [type] 
    */
-  getWebhookRepository(isazureautomation: boolean, type: number): Promise<any> {
+  getWebhookRepository({
+    isazureautomation,
+    type,
+  }: {
+    isazureautomation?: boolean
+    type?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/WebhookRepository',
@@ -40,9 +46,15 @@ export class WebhookRepositoryAPI extends HaloPSA {
    * @description Use this to return a single instance of Webhook.<br>
 				Requires authentication.
    * @param {string} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getWebhookRepositoryById(id: string, includedetails: boolean): Promise<any> {
+  getWebhookRepositoryById({
+    id,
+    includedetails,
+  }: {
+    id: string
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/WebhookRepository/${id}`,

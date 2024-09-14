@@ -21,21 +21,28 @@ export class IntegrationFieldMappingAPI extends HaloPSA {
    * @summary List of IntegrationFieldMapping
    * @description Use this to return multiple IntegrationFieldMapping.<br>
 				Requires authentication.
-   * @param {string} msid 
-   * @param {number} product_id 
-   * @param {string} subtypeid 
-   * @param {boolean} syncfields 
-   * @param {string} typeid 
-   * @param {string} xmvalue 
+   * @param {string} [msid] 
+   * @param {number} [product_id] 
+   * @param {string} [subtypeid] 
+   * @param {boolean} [syncfields] 
+   * @param {string} [typeid] 
+   * @param {string} [xmvalue] 
    */
-  getIntegrationFieldMapping(
-    msid: string,
-    product_id: number,
-    subtypeid: string,
-    syncfields: boolean,
-    typeid: string,
-    xmvalue: string,
-  ): Promise<any> {
+  getIntegrationFieldMapping({
+    msid,
+    product_id,
+    subtypeid,
+    syncfields,
+    typeid,
+    xmvalue,
+  }: {
+    msid?: string
+    product_id?: number
+    subtypeid?: string
+    syncfields?: boolean
+    typeid?: string
+    xmvalue?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationFieldMapping',

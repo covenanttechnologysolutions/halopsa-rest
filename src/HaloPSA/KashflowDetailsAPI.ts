@@ -23,15 +23,19 @@ export class KashflowDetailsAPI extends HaloPSA {
    * @summary List of KashflowDetails
    * @description Use this to return multiple KashflowDetails.<br>
 				Requires authentication.
-   * @param {boolean} includedisabled 
-   * @param {boolean} includeenabled 
-   * @param {number} tenantid 
+   * @param {boolean} [includedisabled] 
+   * @param {boolean} [includeenabled] 
+   * @param {number} [tenantid] 
    */
-  getKashflowDetails(
-    includedisabled: boolean,
-    includeenabled: boolean,
-    tenantid: number,
-  ): Promise<any> {
+  getKashflowDetails({
+    includedisabled,
+    includeenabled,
+    tenantid,
+  }: {
+    includedisabled?: boolean
+    includeenabled?: boolean
+    tenantid?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/KashflowDetails',
@@ -48,7 +52,11 @@ export class KashflowDetailsAPI extends HaloPSA {
    * 
    
    */
-  postKashflowDetails(kashflowDetails: Array<KashflowDetails>): Promise<any> {
+  postKashflowDetails({
+    kashflowDetails,
+  }: {
+    kashflowDetails: Array<KashflowDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/KashflowDetails',
@@ -61,9 +69,15 @@ export class KashflowDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of KashflowDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getKashflowDetailsById(id: number, includedetails: boolean): Promise<any> {
+  getKashflowDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/KashflowDetails/${id}`,
@@ -78,7 +92,7 @@ export class KashflowDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteKashflowDetailsById(id: number): Promise<any> {
+  deleteKashflowDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/KashflowDetails/${id}`,

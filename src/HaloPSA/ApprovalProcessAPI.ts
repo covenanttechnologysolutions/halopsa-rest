@@ -23,9 +23,9 @@ export class ApprovalProcessAPI extends HaloPSA {
    * @summary List of ApprovalProcess
    * @description Use this to return multiple ApprovalProcess.<br>
 				Requires authentication.
-   * @param {number} access_control_level 
+   * @param {number} [access_control_level] 
    */
-  getApprovalProcess(access_control_level: number): Promise<any> {
+  getApprovalProcess({ access_control_level }: { access_control_level?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ApprovalProcess',
@@ -40,7 +40,11 @@ export class ApprovalProcessAPI extends HaloPSA {
    * 
    
    */
-  postApprovalProcess(approvalProcess: Array<ApprovalProcess>): Promise<any> {
+  postApprovalProcess({
+    approvalProcess,
+  }: {
+    approvalProcess: Array<ApprovalProcess>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ApprovalProcess',
@@ -53,9 +57,15 @@ export class ApprovalProcessAPI extends HaloPSA {
    * @description Use this to return a single instance of ApprovalProcess.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getApprovalProcessById(id: number, includedetails: boolean): Promise<any> {
+  getApprovalProcessById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ApprovalProcess/${id}`,
@@ -70,7 +80,7 @@ export class ApprovalProcessAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteApprovalProcessById(id: number): Promise<any> {
+  deleteApprovalProcessById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ApprovalProcess/${id}`,

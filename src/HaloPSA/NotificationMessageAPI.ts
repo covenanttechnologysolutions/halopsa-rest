@@ -24,7 +24,7 @@ export class NotificationMessageAPI extends HaloPSA {
    * 
    
    */
-  getNotificationMessage(): Promise<any> {
+  getNotificationMessage({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/NotificationMessage',
@@ -36,7 +36,11 @@ export class NotificationMessageAPI extends HaloPSA {
    * 
    
    */
-  postNotificationMessage(notificationContent: Array<NotificationContent>): Promise<any> {
+  postNotificationMessage({
+    notificationContent,
+  }: {
+    notificationContent: Array<NotificationContent>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/NotificationMessage',
@@ -49,9 +53,15 @@ export class NotificationMessageAPI extends HaloPSA {
    * @description Use this to return a single instance of NotificationContent.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getNotificationMessageById(id: number, includedetails: boolean): Promise<any> {
+  getNotificationMessageById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/NotificationMessage/${id}`,
@@ -66,7 +76,7 @@ export class NotificationMessageAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteNotificationMessageById(id: number): Promise<any> {
+  deleteNotificationMessageById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/NotificationMessage/${id}`,

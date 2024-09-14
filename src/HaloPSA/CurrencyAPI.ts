@@ -24,7 +24,7 @@ export class CurrencyAPI extends HaloPSA {
    * 
    
    */
-  getCurrency(): Promise<any> {
+  getCurrency({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Currency',
@@ -36,7 +36,7 @@ export class CurrencyAPI extends HaloPSA {
    * 
    
    */
-  postCurrency(currency: Array<Currency>): Promise<any> {
+  postCurrency({ currency }: { currency: Array<Currency> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Currency',
@@ -49,9 +49,9 @@ export class CurrencyAPI extends HaloPSA {
    * @description Use this to return a single instance of Currency.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getCurrencyById(id: number, includedetails: boolean): Promise<any> {
+  getCurrencyById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Currency/${id}`,
@@ -66,7 +66,7 @@ export class CurrencyAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteCurrencyById(id: number): Promise<any> {
+  deleteCurrencyById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Currency/${id}`,

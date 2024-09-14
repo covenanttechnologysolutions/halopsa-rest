@@ -23,10 +23,16 @@ export class PriorityAPI extends HaloPSA {
    * @summary List of Policy
    * @description Use this to return multiple Policy.<br>
 				Requires authentication.
-   * @param {boolean} includedistinct 
-   * @param {number} slaid 
+   * @param {boolean} [includedistinct] 
+   * @param {number} [slaid] 
    */
-  getPriority(includedistinct: boolean, slaid: number): Promise<any> {
+  getPriority({
+    includedistinct,
+    slaid,
+  }: {
+    includedistinct?: boolean
+    slaid?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Priority',
@@ -42,7 +48,7 @@ export class PriorityAPI extends HaloPSA {
    * 
    
    */
-  postPriority(policy: Array<Policy>): Promise<any> {
+  postPriority({ policy }: { policy: Array<Policy> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Priority',
@@ -55,9 +61,9 @@ export class PriorityAPI extends HaloPSA {
    * @description Use this to return a single instance of Policy.<br>
 				Requires authentication.
    * @param {string} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getPriorityById(id: string, includedetails: boolean): Promise<any> {
+  getPriorityById({ id, includedetails }: { id: string; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Priority/${id}`,
@@ -72,7 +78,7 @@ export class PriorityAPI extends HaloPSA {
    *
    * @param {string} id
    */
-  deletePriorityById(id: string): Promise<any> {
+  deletePriorityById({ id }: { id: string }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Priority/${id}`,

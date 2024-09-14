@@ -23,17 +23,22 @@ export class SLAAPI extends HaloPSA {
    * @summary List of SlaHead
    * @description Use this to return multiple SlaHead.<br>
 				Requires authentication.
-   * @param {number} access_control_level 
-   * @param {boolean} isconfig 
-   * @param {boolean} showpriorities 
-   * @param {boolean} showworkdays 
+   * @param {number} [access_control_level] 
+   * @param {boolean} [isconfig] 
+   * @param {boolean} [showpriorities] 
+   * @param {boolean} [showworkdays] 
    */
-  getSLA(
-    access_control_level: number,
-    isconfig: boolean,
-    showpriorities: boolean,
-    showworkdays: boolean,
-  ): Promise<any> {
+  getSLA({
+    access_control_level,
+    isconfig,
+    showpriorities,
+    showworkdays,
+  }: {
+    access_control_level?: number
+    isconfig?: boolean
+    showpriorities?: boolean
+    showworkdays?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SLA',
@@ -51,7 +56,7 @@ export class SLAAPI extends HaloPSA {
    * 
    
    */
-  postSLA(slaHead: Array<SlaHead>): Promise<any> {
+  postSLA({ slaHead }: { slaHead: Array<SlaHead> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SLA',
@@ -64,9 +69,9 @@ export class SLAAPI extends HaloPSA {
    * @description Use this to return a single instance of SlaHead.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getSLAById(id: number, includedetails: boolean): Promise<any> {
+  getSLAById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/SLA/${id}`,
@@ -81,7 +86,7 @@ export class SLAAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteSLAById(id: number): Promise<any> {
+  deleteSLAById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/SLA/${id}`,

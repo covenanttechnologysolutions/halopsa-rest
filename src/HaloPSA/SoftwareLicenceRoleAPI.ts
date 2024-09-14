@@ -21,9 +21,9 @@ export class SoftwareLicenceRoleAPI extends HaloPSA {
    * @summary List of LicenceRole
    * @description Use this to return multiple LicenceRole.<br>
 				Requires authentication.
-   * @param {number} softwarelicence_id 
+   * @param {number} [softwarelicence_id] 
    */
-  getSoftwareLicenceRole(softwarelicence_id: number): Promise<any> {
+  getSoftwareLicenceRole({ softwarelicence_id }: { softwarelicence_id?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SoftwareLicenceRole',

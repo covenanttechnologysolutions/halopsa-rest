@@ -24,7 +24,7 @@ export class TimesheetAPI extends HaloPSA {
    * 
    
    */
-  getTimesheet(): Promise<any> {
+  getTimesheet({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Timesheet',
@@ -36,7 +36,7 @@ export class TimesheetAPI extends HaloPSA {
    * 
    
    */
-  postTimesheet(timesheet: Array<Timesheet>): Promise<any> {
+  postTimesheet({ timesheet }: { timesheet: Array<Timesheet> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Timesheet',
@@ -49,7 +49,7 @@ export class TimesheetAPI extends HaloPSA {
    * 
    
    */
-  getTimesheetMine(): Promise<any> {
+  getTimesheetMine({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Timesheet/mine',
@@ -61,7 +61,7 @@ export class TimesheetAPI extends HaloPSA {
    * 
    
    */
-  getTimesheetForecasting(): Promise<any> {
+  getTimesheetForecasting({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Timesheet/forecasting',
@@ -73,10 +73,18 @@ export class TimesheetAPI extends HaloPSA {
    * @description Use this to return a single instance of Timesheet.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {number} agent_id 
-   * @param {string} date 
+   * @param {number} [agent_id] 
+   * @param {string} [date] 
    */
-  getTimesheetById(id: number, agent_id: number, date: string): Promise<any> {
+  getTimesheetById({
+    id,
+    agent_id,
+    date,
+  }: {
+    id: number
+    agent_id?: number
+    date?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Timesheet/${id}`,

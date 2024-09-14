@@ -24,7 +24,7 @@ export class TenableAPI extends HaloPSA {
    * 
    
    */
-  getTenableGet(): Promise<any> {
+  getTenableGet({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Tenable/Get',
@@ -36,7 +36,11 @@ export class TenableAPI extends HaloPSA {
    * 
    
    */
-  postTenableExport(tenableCreateExport: TenableCreateExport): Promise<any> {
+  postTenableExport({
+    tenableCreateExport,
+  }: {
+    tenableCreateExport: TenableCreateExport
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Tenable/Export',
@@ -49,7 +53,7 @@ export class TenableAPI extends HaloPSA {
    * 
    
    */
-  getTenableStatus(): Promise<any> {
+  getTenableStatus({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Tenable/Status',
@@ -61,7 +65,7 @@ export class TenableAPI extends HaloPSA {
    * 
    
    */
-  postTenableCancel(): Promise<any> {
+  postTenableCancel({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Tenable/Cancel',

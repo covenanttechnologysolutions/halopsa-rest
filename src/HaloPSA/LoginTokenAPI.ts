@@ -24,7 +24,7 @@ export class LoginTokenAPI extends HaloPSA {
    * 
    
    */
-  postLoginToken(loginToken: LoginToken): Promise<any> {
+  postLoginToken({ loginToken }: { loginToken: LoginToken }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/LoginToken',

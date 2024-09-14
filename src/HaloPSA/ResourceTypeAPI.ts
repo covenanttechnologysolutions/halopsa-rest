@@ -22,7 +22,7 @@ export class ResourceTypeAPI extends HaloPSA {
    * 
    
    */
-  getResourceType(): Promise<any> {
+  getResourceType({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ResourceType',
@@ -34,7 +34,7 @@ export class ResourceTypeAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getResourceTypeById(id: number): Promise<any> {
+  getResourceTypeById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ResourceType/${id}`,

@@ -24,7 +24,7 @@ export class DistributionListsAPI extends HaloPSA {
    * 
    
    */
-  getDistributionLists(): Promise<any> {
+  getDistributionLists({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/DistributionLists',
@@ -36,7 +36,11 @@ export class DistributionListsAPI extends HaloPSA {
    * 
    
    */
-  postDistributionLists(distributionLists: Array<DistributionLists>): Promise<any> {
+  postDistributionLists({
+    distributionLists,
+  }: {
+    distributionLists: Array<DistributionLists>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/DistributionLists',
@@ -49,7 +53,7 @@ export class DistributionListsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getDistributionListsById(id: number): Promise<any> {
+  getDistributionListsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/DistributionLists/${id}`,
@@ -61,7 +65,7 @@ export class DistributionListsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteDistributionListsById(id: number): Promise<any> {
+  deleteDistributionListsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/DistributionLists/${id}`,

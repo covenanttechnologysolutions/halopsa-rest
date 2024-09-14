@@ -22,7 +22,7 @@ export class IntegratorTraceAPI extends HaloPSA {
    * 
    
    */
-  getIntegratorTrace(): Promise<any> {
+  getIntegratorTrace({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegratorTrace',
@@ -34,7 +34,7 @@ export class IntegratorTraceAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getIntegratorTraceById(id: number): Promise<any> {
+  getIntegratorTraceById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/IntegratorTrace/${id}`,

@@ -79,9 +79,9 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
+   * @param {string} [datatype] 
    */
-  getIntegrationDataGetNewRelic(datatype: string): Promise<any> {
+  getIntegrationDataGetNewRelic({ datatype }: { datatype?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/NewRelic',
@@ -95,17 +95,22 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {string} extrafilter 
-   * @param {boolean} keyPair 
-   * @param {number} page 
+   * @param {string} [datatype] 
+   * @param {string} [extrafilter] 
+   * @param {boolean} [keyPair] 
+   * @param {number} [page] 
    */
-  getIntegrationDataGetKaseyaVSA(
-    datatype: string,
-    extrafilter: string,
-    keyPair: boolean,
-    page: number,
-  ): Promise<any> {
+  getIntegrationDataGetKaseyaVSA({
+    datatype,
+    extrafilter,
+    keyPair,
+    page,
+  }: {
+    datatype?: string
+    extrafilter?: string
+    keyPair?: boolean
+    page?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/KaseyaVSA',
@@ -122,9 +127,9 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} method 
+   * @param {string} [method] 
    */
-  getIntegrationDataGetZabbix(method: string): Promise<any> {
+  getIntegrationDataGetZabbix({ method }: { method?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Zabbix',
@@ -138,17 +143,22 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} include_this_id 
-   * @param {boolean} remove_existing 
-   * @param {string} resource 
-   * @param {string} sub_resource 
+   * @param {string} [include_this_id] 
+   * @param {boolean} [remove_existing] 
+   * @param {string} [resource] 
+   * @param {string} [sub_resource] 
    */
-  getIntegrationDataGetGiacom(
-    include_this_id: string,
-    remove_existing: boolean,
-    resource: string,
-    sub_resource: string,
-  ): Promise<any> {
+  getIntegrationDataGetGiacom({
+    include_this_id,
+    remove_existing,
+    resource,
+    sub_resource,
+  }: {
+    include_this_id?: string
+    remove_existing?: boolean
+    resource?: string
+    sub_resource?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Giacom',
@@ -165,15 +175,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} include_this_id 
-   * @param {boolean} remove_existing 
-   * @param {string} resource 
+   * @param {string} [include_this_id] 
+   * @param {boolean} [remove_existing] 
+   * @param {string} [resource] 
    */
-  getIntegrationDataGetRhipe(
-    include_this_id: string,
-    remove_existing: boolean,
-    resource: string,
-  ): Promise<any> {
+  getIntegrationDataGetRhipe({
+    include_this_id,
+    remove_existing,
+    resource,
+  }: {
+    include_this_id?: string
+    remove_existing?: boolean
+    resource?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Rhipe',
@@ -189,15 +203,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} include_this_id 
-   * @param {boolean} remove_existing 
-   * @param {string} resource 
+   * @param {string} [include_this_id] 
+   * @param {boolean} [remove_existing] 
+   * @param {string} [resource] 
    */
-  getIntegrationDataGetTechData(
-    include_this_id: string,
-    remove_existing: boolean,
-    resource: string,
-  ): Promise<any> {
+  getIntegrationDataGetTechData({
+    include_this_id,
+    remove_existing,
+    resource,
+  }: {
+    include_this_id?: string
+    remove_existing?: boolean
+    resource?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/TechData',
@@ -213,15 +231,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} include_this_id 
-   * @param {boolean} remove_existing 
-   * @param {string} resource 
+   * @param {string} [include_this_id] 
+   * @param {boolean} [remove_existing] 
+   * @param {string} [resource] 
    */
-  getIntegrationDataGetIntY(
-    include_this_id: string,
-    remove_existing: boolean,
-    resource: string,
-  ): Promise<any> {
+  getIntegrationDataGetIntY({
+    include_this_id,
+    remove_existing,
+    resource,
+  }: {
+    include_this_id?: string
+    remove_existing?: boolean
+    resource?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/intY',
@@ -237,21 +259,28 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} account_id 
-   * @param {string} include_this_id 
-   * @param {number} module_id 
-   * @param {boolean} remove_existing 
-   * @param {boolean} reset_token 
-   * @param {string} resource 
+   * @param {string} [account_id] 
+   * @param {string} [include_this_id] 
+   * @param {number} [module_id] 
+   * @param {boolean} [remove_existing] 
+   * @param {boolean} [reset_token] 
+   * @param {string} [resource] 
    */
-  getIntegrationDataGetCloudMarketplace(
-    account_id: string,
-    include_this_id: string,
-    module_id: number,
-    remove_existing: boolean,
-    reset_token: boolean,
-    resource: string,
-  ): Promise<any> {
+  getIntegrationDataGetCloudMarketplace({
+    account_id,
+    include_this_id,
+    module_id,
+    remove_existing,
+    reset_token,
+    resource,
+  }: {
+    account_id?: string
+    include_this_id?: string
+    module_id?: number
+    remove_existing?: boolean
+    reset_token?: boolean
+    resource?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/CloudMarketplace',
@@ -270,19 +299,25 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} customer_id 
-   * @param {string} include_this_id 
-   * @param {boolean} remove_existing 
-   * @param {boolean} reset_token 
-   * @param {string} resource 
+   * @param {string} [customer_id] 
+   * @param {string} [include_this_id] 
+   * @param {boolean} [remove_existing] 
+   * @param {boolean} [reset_token] 
+   * @param {string} [resource] 
    */
-  getIntegrationDataGetSherweb(
-    customer_id: string,
-    include_this_id: string,
-    remove_existing: boolean,
-    reset_token: boolean,
-    resource: string,
-  ): Promise<any> {
+  getIntegrationDataGetSherweb({
+    customer_id,
+    include_this_id,
+    remove_existing,
+    reset_token,
+    resource,
+  }: {
+    customer_id?: string
+    include_this_id?: string
+    remove_existing?: boolean
+    reset_token?: boolean
+    resource?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Sherweb',
@@ -300,19 +335,25 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} include_this_id 
-   * @param {string} next_url 
-   * @param {boolean} paginate 
-   * @param {boolean} remove_existing 
-   * @param {string} resource 
+   * @param {string} [include_this_id] 
+   * @param {string} [next_url] 
+   * @param {boolean} [paginate] 
+   * @param {boolean} [remove_existing] 
+   * @param {string} [resource] 
    */
-  getIntegrationDataGetArrowSphere(
-    include_this_id: string,
-    next_url: string,
-    paginate: boolean,
-    remove_existing: boolean,
-    resource: string,
-  ): Promise<any> {
+  getIntegrationDataGetArrowSphere({
+    include_this_id,
+    next_url,
+    paginate,
+    remove_existing,
+    resource,
+  }: {
+    include_this_id?: string
+    next_url?: string
+    paginate?: boolean
+    remove_existing?: boolean
+    resource?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/ArrowSphere',
@@ -330,17 +371,22 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} include_this_id 
-   * @param {boolean} remove_existing 
-   * @param {string} resource 
-   * @param {string} tenant_id 
+   * @param {string} [include_this_id] 
+   * @param {boolean} [remove_existing] 
+   * @param {string} [resource] 
+   * @param {string} [tenant_id] 
    */
-  getIntegrationDataGetDickerData(
-    include_this_id: string,
-    remove_existing: boolean,
-    resource: string,
-    tenant_id: string,
-  ): Promise<any> {
+  getIntegrationDataGetDickerData({
+    include_this_id,
+    remove_existing,
+    resource,
+    tenant_id,
+  }: {
+    include_this_id?: string
+    remove_existing?: boolean
+    resource?: string
+    tenant_id?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/DickerData',
@@ -358,9 +404,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportSageBusinessCloud(
-    sageBusinessCloudDetails: Array<SageBusinessCloudDetails>,
-  ): Promise<any> {
+  postIntegrationDataImportSageBusinessCloud({
+    sageBusinessCloudDetails,
+  }: {
+    sageBusinessCloudDetails: Array<SageBusinessCloudDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/SageBusinessCloud',
@@ -373,7 +421,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetSageBusinessCloud(): Promise<any> {
+  getIntegrationDataGetSageBusinessCloud({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/SageBusinessCloud',
@@ -385,7 +433,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportExactOnline(exactDetails: Array<ExactDetails>): Promise<any> {
+  postIntegrationDataImportExactOnline({
+    exactDetails,
+  }: {
+    exactDetails: Array<ExactDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/ExactOnline',
@@ -398,7 +450,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetExactOnline(): Promise<any> {
+  getIntegrationDataGetExactOnline({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/ExactOnline',
@@ -410,7 +462,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataFormatJsonArray(): Promise<any> {
+  postIntegrationDataFormatJsonArray({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/FormatJsonArray',
@@ -421,9 +473,9 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} resource 
+   * @param {string} [resource] 
    */
-  getIntegrationDataGetQuoter(resource: string): Promise<any> {
+  getIntegrationDataGetQuoter({ resource }: { resource?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Quoter',
@@ -437,10 +489,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} resource 
-   * @param {string} uriparams 
+   * @param {string} [resource] 
+   * @param {string} [uriparams] 
    */
-  getIntegrationDataGetHaloLink(resource: string, uriparams: string): Promise<any> {
+  getIntegrationDataGetHaloLink({
+    resource,
+    uriparams,
+  }: {
+    resource?: string
+    uriparams?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/HaloLink',
@@ -456,7 +514,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataUnlinkHaloLink(listNumber: number): Promise<any> {
+  postIntegrationDataUnlinkHaloLink({ listNumber }: { listNumber: number }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Unlink/HaloLink',
@@ -469,7 +527,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataSAMLIdPMetadata(keyPair2: KeyPair2): Promise<any> {
+  postIntegrationDataSAMLIdPMetadata({ keyPair2 }: { keyPair2: KeyPair2 }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/SAML/IdP/Metadata',
@@ -482,7 +540,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataSAMLSPMetadata(): Promise<any> {
+  getIntegrationDataSAMLSPMetadata({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/SAML/SP/Metadata',
@@ -493,10 +551,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} facebook_details_id 
-   * @param {string} resource 
+   * @param {number} [facebook_details_id] 
+   * @param {string} [resource] 
    */
-  getIntegrationDataGetFacebook(facebook_details_id: number, resource: string): Promise<any> {
+  getIntegrationDataGetFacebook({
+    facebook_details_id,
+    resource,
+  }: {
+    facebook_details_id?: number
+    resource?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Facebook',
@@ -511,15 +575,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {boolean} keyPair 
-   * @param {string} secondarydatatype 
+   * @param {string} [datatype] 
+   * @param {boolean} [keyPair] 
+   * @param {string} [secondarydatatype] 
    */
-  getIntegrationDataGetConnectwiseControl(
-    datatype: string,
-    keyPair: boolean,
-    secondarydatatype: string,
-  ): Promise<any> {
+  getIntegrationDataGetConnectwiseControl({
+    datatype,
+    keyPair,
+    secondarydatatype,
+  }: {
+    datatype?: string
+    keyPair?: boolean
+    secondarydatatype?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/ConnectwiseControl',
@@ -535,21 +603,28 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} catalog 
-   * @param {string} datatype 
-   * @param {string} locale 
-   * @param {number} page_size 
-   * @param {number} pageno 
-   * @param {string} search 
+   * @param {string} [catalog] 
+   * @param {string} [datatype] 
+   * @param {string} [locale] 
+   * @param {number} [page_size] 
+   * @param {number} [pageno] 
+   * @param {string} [search] 
    */
-  getIntegrationDataGetEtilize(
-    catalog: string,
-    datatype: string,
-    locale: string,
-    page_size: number,
-    pageno: number,
-    search: string,
-  ): Promise<any> {
+  getIntegrationDataGetEtilize({
+    catalog,
+    datatype,
+    locale,
+    page_size,
+    pageno,
+    search,
+  }: {
+    catalog?: string
+    datatype?: string
+    locale?: string
+    page_size?: number
+    pageno?: number
+    search?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Etilize',
@@ -568,21 +643,28 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} alternate_sys_id 
-   * @param {number} customer_id 
-   * @param {string} datatype 
-   * @param {number} offset 
-   * @param {string} search 
-   * @param {number} supplier_id 
+   * @param {string} [alternate_sys_id] 
+   * @param {number} [customer_id] 
+   * @param {string} [datatype] 
+   * @param {number} [offset] 
+   * @param {string} [search] 
+   * @param {number} [supplier_id] 
    */
-  getIntegrationDataGetJiraServiceManagement(
-    alternate_sys_id: string,
-    customer_id: number,
-    datatype: string,
-    offset: number,
-    search: string,
-    supplier_id: number,
-  ): Promise<any> {
+  getIntegrationDataGetJiraServiceManagement({
+    alternate_sys_id,
+    customer_id,
+    datatype,
+    offset,
+    search,
+    supplier_id,
+  }: {
+    alternate_sys_id?: string
+    customer_id?: number
+    datatype?: string
+    offset?: number
+    search?: string
+    supplier_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/JiraServiceManagement',
@@ -602,9 +684,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataMicrosoftTeamsManifest(
-    teamsManifestCreate: TeamsManifestCreate,
-  ): Promise<any> {
+  postIntegrationDataMicrosoftTeamsManifest({
+    teamsManifestCreate,
+  }: {
+    teamsManifestCreate: TeamsManifestCreate
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/MicrosoftTeams/Manifest',
@@ -616,10 +700,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {number} offset 
+   * @param {string} [datatype] 
+   * @param {number} [offset] 
    */
-  getIntegrationDataGetLogicMonitor(datatype: string, offset: number): Promise<any> {
+  getIntegrationDataGetLogicMonitor({
+    datatype,
+    offset,
+  }: {
+    datatype?: string
+    offset?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/LogicMonitor',
@@ -634,19 +724,25 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} after 
-   * @param {string} datatype 
-   * @param {boolean} keypair 
-   * @param {boolean} pageinapi 
-   * @param {string} varname 
+   * @param {string} [after] 
+   * @param {string} [datatype] 
+   * @param {boolean} [keypair] 
+   * @param {boolean} [pageinapi] 
+   * @param {string} [varname] 
    */
-  getIntegrationDataGetBarracuda(
-    after: string,
-    datatype: string,
-    keypair: boolean,
-    pageinapi: boolean,
-    varname: string,
-  ): Promise<any> {
+  getIntegrationDataGetBarracuda({
+    after,
+    datatype,
+    keypair,
+    pageinapi,
+    varname,
+  }: {
+    after?: string
+    datatype?: string
+    keypair?: boolean
+    pageinapi?: boolean
+    varname?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Barracuda',
@@ -664,17 +760,22 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} country 
-   * @param {boolean} dataOnly 
-   * @param {string} endpoint 
-   * @param {number} year 
+   * @param {string} [country] 
+   * @param {boolean} [dataOnly] 
+   * @param {string} [endpoint] 
+   * @param {number} [year] 
    */
-  getIntegrationDataGetHolidayAPI(
-    country: string,
-    dataOnly: boolean,
-    endpoint: string,
-    year: number,
-  ): Promise<any> {
+  getIntegrationDataGetHolidayAPI({
+    country,
+    dataOnly,
+    endpoint,
+    year,
+  }: {
+    country?: string
+    dataOnly?: boolean
+    endpoint?: string
+    year?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/HolidayAPI',
@@ -692,7 +793,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetIcinga(): Promise<any> {
+  getIntegrationDataGetIcinga({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Icinga',
@@ -704,7 +805,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetConnectwiseRmm(): Promise<any> {
+  getIntegrationDataGetConnectwiseRmm({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/ConnectwiseRmm',
@@ -716,7 +817,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetShopify(): Promise<any> {
+  getIntegrationDataGetShopify({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Shopify',
@@ -728,7 +829,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetShopifyVerify(): Promise<any> {
+  getIntegrationDataGetShopifyVerify({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/ShopifyVerify',
@@ -740,7 +841,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetXensam(): Promise<any> {
+  getIntegrationDataGetXensam({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Xensam',
@@ -752,7 +853,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetDatagate(): Promise<any> {
+  getIntegrationDataGetDatagate({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Datagate',
@@ -764,7 +865,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetConfluence(): Promise<any> {
+  getIntegrationDataGetConfluence({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Confluence',
@@ -776,9 +877,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataPostConfluenceCreatewebhook(
-    confluenceWebhookEndpoint: ConfluenceWebhookEndpoint,
-  ): Promise<any> {
+  postIntegrationDataPostConfluenceCreatewebhook({
+    confluenceWebhookEndpoint,
+  }: {
+    confluenceWebhookEndpoint: ConfluenceWebhookEndpoint
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Post/Confluence/create-webhook',
@@ -791,7 +894,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetMail(): Promise<any> {
+  getIntegrationDataGetMail({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Mail',
@@ -803,7 +906,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetDeletedMail(): Promise<any> {
+  getIntegrationDataGetDeletedMail({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/DeletedMail',
@@ -815,7 +918,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataMoveMail(moveMailRequest: Array<MoveMailRequest>): Promise<any> {
+  postIntegrationDataMoveMail({
+    moveMailRequest,
+  }: {
+    moveMailRequest: Array<MoveMailRequest>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Move/Mail',
@@ -828,7 +935,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataPostOpenAi(actions: Actions): Promise<any> {
+  postIntegrationDataPostOpenAi({ actions }: { actions: Actions }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Post/OpenAi',
@@ -841,7 +948,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetAmazonSeller(): Promise<any> {
+  getIntegrationDataGetAmazonSeller({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/AmazonSeller',
@@ -853,7 +960,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetSnipeIT(): Promise<any> {
+  getIntegrationDataGetSnipeIT({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/SnipeIT',
@@ -865,7 +972,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetPrometheus(): Promise<any> {
+  getIntegrationDataGetPrometheus({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Prometheus',
@@ -877,7 +984,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportFortnox(fortnoxDetails: Array<FortnoxDetails>): Promise<any> {
+  postIntegrationDataImportFortnox({
+    fortnoxDetails,
+  }: {
+    fortnoxDetails: Array<FortnoxDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/Fortnox',
@@ -890,7 +1001,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetFortnox(): Promise<any> {
+  getIntegrationDataGetFortnox({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Fortnox',
@@ -902,7 +1013,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetMattermost(): Promise<any> {
+  getIntegrationDataGetMattermost({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Mattermost',
@@ -914,9 +1025,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataPostMattermostCreatewebhook(
-    mattermostWebhook: MattermostWebhook,
-  ): Promise<any> {
+  postIntegrationDataPostMattermostCreatewebhook({
+    mattermostWebhook,
+  }: {
+    mattermostWebhook: MattermostWebhook
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Post/Mattermost/create-webhook',
@@ -929,7 +1042,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataPostMattermostDeletewebhook(string: string): Promise<any> {
+  postIntegrationDataPostMattermostDeletewebhook({ string }: { string: string }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Post/Mattermost/delete-webhook',
@@ -942,9 +1055,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataPostMattermostSendwebhook(
-    mattermostWebhookContent: MattermostWebhookContent,
-  ): Promise<any> {
+  postIntegrationDataPostMattermostSendwebhook({
+    mattermostWebhookContent,
+  }: {
+    mattermostWebhookContent: MattermostWebhookContent
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Post/Mattermost/send-webhook',
@@ -957,7 +1072,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetWordpressCom(): Promise<any> {
+  getIntegrationDataGetWordpressCom({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/WordpressCom',
@@ -969,7 +1084,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetWordpressOrg(): Promise<any> {
+  getIntegrationDataGetWordpressOrg({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/WordpressOrg',
@@ -981,7 +1096,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetDynatrace(): Promise<any> {
+  getIntegrationDataGetDynatrace({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Dynatrace',
@@ -993,7 +1108,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportMyob(mYOBDetails: Array<MYOBDetails>): Promise<any> {
+  postIntegrationDataImportMyob({
+    mYOBDetails,
+  }: {
+    mYOBDetails: Array<MYOBDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/Myob',
@@ -1006,7 +1125,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetMyob(): Promise<any> {
+  getIntegrationDataGetMyob({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Myob',
@@ -1018,7 +1137,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetGoogleBusiness(): Promise<any> {
+  getIntegrationDataGetGoogleBusiness({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/GoogleBusiness',
@@ -1030,7 +1149,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetVMWorkspace(): Promise<any> {
+  getIntegrationDataGetVMWorkspace({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/VMWorkspace',
@@ -1042,7 +1161,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataBigPandaGetDeviceList(): Promise<any> {
+  getIntegrationDataBigPandaGetDeviceList({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/BigPanda/GetDeviceList',
@@ -1054,7 +1173,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetTanium(): Promise<any> {
+  getIntegrationDataGetTanium({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Tanium',
@@ -1066,7 +1185,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetSplashtop(): Promise<any> {
+  getIntegrationDataGetSplashtop({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Splashtop',
@@ -1078,7 +1197,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetSlack(): Promise<any> {
+  getIntegrationDataGetSlack({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Slack',
@@ -1090,7 +1209,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetGoCardless(): Promise<any> {
+  getIntegrationDataGetGoCardless({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/GoCardless',
@@ -1102,7 +1221,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetGoCardlessPayments(): Promise<any> {
+  getIntegrationDataGetGoCardlessPayments({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/GoCardless/Payments',
@@ -1114,7 +1233,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetAvalara(): Promise<any> {
+  getIntegrationDataGetAvalara({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Avalara',
@@ -1126,7 +1245,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetMeraki(): Promise<any> {
+  getIntegrationDataGetMeraki({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Meraki',
@@ -1138,7 +1257,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportXero(xeroDetails: Array<XeroDetails>): Promise<any> {
+  postIntegrationDataImportXero({
+    xeroDetails,
+  }: {
+    xeroDetails: Array<XeroDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/Xero',
@@ -1151,7 +1274,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetXero(): Promise<any> {
+  getIntegrationDataGetXero({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Xero',
@@ -1163,7 +1286,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataSendXero(invoiceHeader: InvoiceHeader): Promise<any> {
+  postIntegrationDataSendXero({ invoiceHeader }: { invoiceHeader: InvoiceHeader }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Send/Xero',
@@ -1175,9 +1298,9 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {boolean} testOnly 
+   * @param {boolean} [testOnly] 
    */
-  getIntegrationDataGetPRTG(testOnly: boolean): Promise<any> {
+  getIntegrationDataGetPRTG({ testOnly }: { testOnly?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/PRTG',
@@ -1191,15 +1314,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} dataType 
-   * @param {boolean} fetchSites 
-   * @param {boolean} keyPair 
+   * @param {string} [dataType] 
+   * @param {boolean} [fetchSites] 
+   * @param {boolean} [keyPair] 
    */
-  getIntegrationDataGetDatto(
-    dataType: string,
-    fetchSites: boolean,
-    keyPair: boolean,
-  ): Promise<any> {
+  getIntegrationDataGetDatto({
+    dataType,
+    fetchSites,
+    keyPair,
+  }: {
+    dataType?: string
+    fetchSites?: boolean
+    keyPair?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Datto',
@@ -1216,7 +1343,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetServiceNow(): Promise<any> {
+  getIntegrationDataGetServiceNow({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/ServiceNow',
@@ -1227,21 +1354,28 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} alternate_sys_id 
-   * @param {number} customer_id 
-   * @param {string} datatype 
-   * @param {number} offset 
-   * @param {string} search 
-   * @param {string} updateddate 
+   * @param {string} [alternate_sys_id] 
+   * @param {number} [customer_id] 
+   * @param {string} [datatype] 
+   * @param {number} [offset] 
+   * @param {string} [search] 
+   * @param {string} [updateddate] 
    */
-  getIntegrationDataGetServiceNowIntegration(
-    alternate_sys_id: string,
-    customer_id: number,
-    datatype: string,
-    offset: number,
-    search: string,
-    updateddate: string,
-  ): Promise<any> {
+  getIntegrationDataGetServiceNowIntegration({
+    alternate_sys_id,
+    customer_id,
+    datatype,
+    offset,
+    search,
+    updateddate,
+  }: {
+    alternate_sys_id?: string
+    customer_id?: number
+    datatype?: string
+    offset?: number
+    search?: string
+    updateddate?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/ServiceNowIntegration',
@@ -1260,9 +1394,9 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
+   * @param {string} [datatype] 
    */
-  getIntegrationDataGetSplunkOnCall(datatype: string): Promise<any> {
+  getIntegrationDataGetSplunkOnCall({ datatype }: { datatype?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/SplunkOnCall',
@@ -1277,9 +1411,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataCreateIncidentSplunkOnCall(
-    sOCCreateIncident: SOCCreateIncident,
-  ): Promise<any> {
+  postIntegrationDataCreateIncidentSplunkOnCall({
+    sOCCreateIncident,
+  }: {
+    sOCCreateIncident: SOCCreateIncident
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/CreateIncident/SplunkOnCall',
@@ -1292,9 +1428,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportQuickBooksOnline(
-    quickBooksDetails: Array<QuickBooksDetails>,
-  ): Promise<any> {
+  postIntegrationDataImportQuickBooksOnline({
+    quickBooksDetails,
+  }: {
+    quickBooksDetails: Array<QuickBooksDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/QuickBooksOnline',
@@ -1306,21 +1444,28 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} account_classification 
-   * @param {string} account_subtype 
-   * @param {string} account_type 
-   * @param {string} companyid 
-   * @param {number} connectionid 
-   * @param {string} datatype 
+   * @param {string} [account_classification] 
+   * @param {string} [account_subtype] 
+   * @param {string} [account_type] 
+   * @param {string} [companyid] 
+   * @param {number} [connectionid] 
+   * @param {string} [datatype] 
    */
-  getIntegrationDataGetQuickBooksOnline(
-    account_classification: string,
-    account_subtype: string,
-    account_type: string,
-    companyid: string,
-    connectionid: number,
-    datatype: string,
-  ): Promise<any> {
+  getIntegrationDataGetQuickBooksOnline({
+    account_classification,
+    account_subtype,
+    account_type,
+    companyid,
+    connectionid,
+    datatype,
+  }: {
+    account_classification?: string
+    account_subtype?: string
+    account_type?: string
+    companyid?: string
+    connectionid?: number
+    datatype?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/QuickBooksOnline',
@@ -1339,10 +1484,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {boolean} keyPair 
+   * @param {string} [datatype] 
+   * @param {boolean} [keyPair] 
    */
-  getIntegrationDataGetDevice42(datatype: string, keyPair: boolean): Promise<any> {
+  getIntegrationDataGetDevice42({
+    datatype,
+    keyPair,
+  }: {
+    datatype?: string
+    keyPair?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Device42',
@@ -1357,10 +1508,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {number} page 
+   * @param {string} [datatype] 
+   * @param {number} [page] 
    */
-  getIntegrationDataGetConnectWise(datatype: string, page: number): Promise<any> {
+  getIntegrationDataGetConnectWise({
+    datatype,
+    page,
+  }: {
+    datatype?: string
+    page?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/ConnectWise',
@@ -1375,27 +1532,37 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} azuretenants 
-   * @param {string} continuationToken 
-   * @param {string} datatype 
-   * @param {number} detailsId 
-   * @param {boolean} doPaginate 
-   * @param {boolean} isLookup 
-   * @param {boolean} keyPair 
-   * @param {string} nextLink 
-   * @param {string} search 
+   * @param {string} [azuretenants] 
+   * @param {string} [continuationToken] 
+   * @param {string} [datatype] 
+   * @param {number} [detailsId] 
+   * @param {boolean} [doPaginate] 
+   * @param {boolean} [isLookup] 
+   * @param {boolean} [keyPair] 
+   * @param {string} [nextLink] 
+   * @param {string} [search] 
    */
-  getIntegrationDataGetMicrosoftCSP(
-    azuretenants: string,
-    continuationToken: string,
-    datatype: string,
-    detailsId: number,
-    doPaginate: boolean,
-    isLookup: boolean,
-    keyPair: boolean,
-    nextLink: string,
-    search: string,
-  ): Promise<any> {
+  getIntegrationDataGetMicrosoftCSP({
+    azuretenants,
+    continuationToken,
+    datatype,
+    detailsId,
+    doPaginate,
+    isLookup,
+    keyPair,
+    nextLink,
+    search,
+  }: {
+    azuretenants?: string
+    continuationToken?: string
+    datatype?: string
+    detailsId?: number
+    doPaginate?: boolean
+    isLookup?: boolean
+    keyPair?: boolean
+    nextLink?: string
+    search?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/MicrosoftCSP',
@@ -1418,9 +1585,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataAdjustQtyMicrosoftCSP(
-    subscriptionQuantityChange: SubscriptionQuantityChange,
-  ): Promise<any> {
+  postIntegrationDataAdjustQtyMicrosoftCSP({
+    subscriptionQuantityChange,
+  }: {
+    subscriptionQuantityChange: SubscriptionQuantityChange
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/AdjustQty/MicrosoftCSP',
@@ -1432,10 +1601,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {string} nexturl 
+   * @param {string} [datatype] 
+   * @param {string} [nexturl] 
    */
-  getIntegrationDataGetAutotask(datatype: string, nexturl: string): Promise<any> {
+  getIntegrationDataGetAutotask({
+    datatype,
+    nexturl,
+  }: {
+    datatype?: string
+    nexturl?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Autotask',
@@ -1450,11 +1625,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {boolean} keyPair 
-   * @param {number} page 
+   * @param {string} [datatype] 
+   * @param {boolean} [keyPair] 
+   * @param {number} [page] 
    */
-  getIntegrationDataGetAtera(datatype: string, keyPair: boolean, page: number): Promise<any> {
+  getIntegrationDataGetAtera({
+    datatype,
+    keyPair,
+    page,
+  }: {
+    datatype?: string
+    keyPair?: boolean
+    page?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Atera',
@@ -1470,21 +1653,28 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {string} masterid 
-   * @param {string} nexturl 
-   * @param {string} overrideenddate 
-   * @param {string} overridestartdate 
-   * @param {string} userprincipalname 
+   * @param {string} [datatype] 
+   * @param {string} [masterid] 
+   * @param {string} [nexturl] 
+   * @param {string} [overrideenddate] 
+   * @param {string} [overridestartdate] 
+   * @param {string} [userprincipalname] 
    */
-  getIntegrationDataGetExchangeCalendars(
-    datatype: string,
-    masterid: string,
-    nexturl: string,
-    overrideenddate: string,
-    overridestartdate: string,
-    userprincipalname: string,
-  ): Promise<any> {
+  getIntegrationDataGetExchangeCalendars({
+    datatype,
+    masterid,
+    nexturl,
+    overrideenddate,
+    overridestartdate,
+    userprincipalname,
+  }: {
+    datatype?: string
+    masterid?: string
+    nexturl?: string
+    overrideenddate?: string
+    overridestartdate?: string
+    userprincipalname?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/ExchangeCalendars',
@@ -1503,15 +1693,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {number} override_mapping_id 
-   * @param {boolean} validate 
+   * @param {string} [datatype] 
+   * @param {number} [override_mapping_id] 
+   * @param {boolean} [validate] 
    */
-  getIntegrationDataGetOkta(
-    datatype: string,
-    override_mapping_id: number,
-    validate: boolean,
-  ): Promise<any> {
+  getIntegrationDataGetOkta({
+    datatype,
+    override_mapping_id,
+    validate,
+  }: {
+    datatype?: string
+    override_mapping_id?: number
+    validate?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Okta',
@@ -1528,7 +1722,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportKashflow(kashflowDetails: Array<KashflowDetails>): Promise<any> {
+  postIntegrationDataImportKashflow({
+    kashflowDetails,
+  }: {
+    kashflowDetails: Array<KashflowDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/Kashflow',
@@ -1540,10 +1738,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {number} tenantid 
+   * @param {string} [datatype] 
+   * @param {number} [tenantid] 
    */
-  getIntegrationDataGetKashflow(datatype: string, tenantid: number): Promise<any> {
+  getIntegrationDataGetKashflow({
+    datatype,
+    tenantid,
+  }: {
+    datatype?: string
+    tenantid?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Kashflow',
@@ -1558,10 +1762,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} callbackurl 
-   * @param {string} datatype 
+   * @param {string} [callbackurl] 
+   * @param {string} [datatype] 
    */
-  getIntegrationDataGetTwitter(callbackurl: string, datatype: string): Promise<any> {
+  getIntegrationDataGetTwitter({
+    callbackurl,
+    datatype,
+  }: {
+    callbackurl?: string
+    datatype?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Twitter',
@@ -1577,7 +1787,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataExportLansweeper(lansweeperStartExport: LansweeperStartExport): Promise<any> {
+  postIntegrationDataExportLansweeper({
+    lansweeperStartExport,
+  }: {
+    lansweeperStartExport: LansweeperStartExport
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Export/Lansweeper',
@@ -1589,19 +1803,25 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {string} exportid 
-   * @param {string} exportUrl 
-   * @param {number} halositeid 
-   * @param {string} siteid 
+   * @param {string} [datatype] 
+   * @param {string} [exportid] 
+   * @param {string} [exportUrl] 
+   * @param {number} [halositeid] 
+   * @param {string} [siteid] 
    */
-  getIntegrationDataGetLansweeper(
-    datatype: string,
-    exportid: string,
-    exportUrl: string,
-    halositeid: number,
-    siteid: string,
-  ): Promise<any> {
+  getIntegrationDataGetLansweeper({
+    datatype,
+    exportid,
+    exportUrl,
+    halositeid,
+    siteid,
+  }: {
+    datatype?: string
+    exportid?: string
+    exportUrl?: string
+    halositeid?: number
+    siteid?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Lansweeper',
@@ -1619,10 +1839,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} searchString 
-   * @param {boolean} testOnly 
+   * @param {string} [searchString] 
+   * @param {boolean} [testOnly] 
    */
-  getIntegrationDataGetInteract(searchString: string, testOnly: boolean): Promise<any> {
+  getIntegrationDataGetInteract({
+    searchString,
+    testOnly,
+  }: {
+    searchString?: string
+    testOnly?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Interact',
@@ -1637,10 +1863,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} accountid 
-   * @param {string} datatype 
+   * @param {string} [accountid] 
+   * @param {string} [datatype] 
    */
-  getIntegrationDataGetDynamicsCRM(accountid: string, datatype: string): Promise<any> {
+  getIntegrationDataGetDynamicsCRM({
+    accountid,
+    datatype,
+  }: {
+    accountid?: string
+    datatype?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/DynamicsCRM',
@@ -1655,17 +1887,22 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} connectionid 
-   * @param {string} datatype 
-   * @param {number} mappingid 
-   * @param {string} tenantid 
+   * @param {number} [connectionid] 
+   * @param {string} [datatype] 
+   * @param {number} [mappingid] 
+   * @param {string} [tenantid] 
    */
-  getIntegrationDataGetAzureAD(
-    connectionid: number,
-    datatype: string,
-    mappingid: number,
-    tenantid: string,
-  ): Promise<any> {
+  getIntegrationDataGetAzureAD({
+    connectionid,
+    datatype,
+    mappingid,
+    tenantid,
+  }: {
+    connectionid?: number
+    datatype?: string
+    mappingid?: number
+    tenantid?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/AzureAD',
@@ -1683,9 +1920,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportBusinessCentral(
-    businessCentralDetails: Array<BusinessCentralDetails>,
-  ): Promise<any> {
+  postIntegrationDataImportBusinessCentral({
+    businessCentralDetails,
+  }: {
+    businessCentralDetails: Array<BusinessCentralDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/BusinessCentral',
@@ -1698,7 +1937,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetBusinessCentral(): Promise<any> {
+  getIntegrationDataGetBusinessCentral({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/BusinessCentral',
@@ -1709,15 +1948,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {number} organizationid 
-   * @param {number} page 
+   * @param {string} [datatype] 
+   * @param {number} [organizationid] 
+   * @param {number} [page] 
    */
-  getIntegrationDataGetNinjaRMM(
-    datatype: string,
-    organizationid: number,
-    page: number,
-  ): Promise<any> {
+  getIntegrationDataGetNinjaRMM({
+    datatype,
+    organizationid,
+    page,
+  }: {
+    datatype?: string
+    organizationid?: number
+    page?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/NinjaRMM',
@@ -1733,10 +1976,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {number} gfisiteid 
+   * @param {string} [datatype] 
+   * @param {number} [gfisiteid] 
    */
-  getIntegrationDataGetSolarWindsRMM(datatype: string, gfisiteid: number): Promise<any> {
+  getIntegrationDataGetSolarWindsRMM({
+    datatype,
+    gfisiteid,
+  }: {
+    datatype?: string
+    gfisiteid?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/SolarWindsRMM',
@@ -1751,19 +2000,25 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} areaAzureTenant 
-   * @param {number} connectionid 
-   * @param {string} datatype 
-   * @param {boolean} doPaginate 
-   * @param {string} nextLink 
+   * @param {number} [areaAzureTenant] 
+   * @param {number} [connectionid] 
+   * @param {string} [datatype] 
+   * @param {boolean} [doPaginate] 
+   * @param {string} [nextLink] 
    */
-  getIntegrationDataGetIntune(
-    areaAzureTenant: number,
-    connectionid: number,
-    datatype: string,
-    doPaginate: boolean,
-    nextLink: string,
-  ): Promise<any> {
+  getIntegrationDataGetIntune({
+    areaAzureTenant,
+    connectionid,
+    datatype,
+    doPaginate,
+    nextLink,
+  }: {
+    areaAzureTenant?: number
+    connectionid?: number
+    datatype?: string
+    doPaginate?: boolean
+    nextLink?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Intune',
@@ -1781,15 +2036,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} apikeyoverride 
-   * @param {boolean} dataOnly 
-   * @param {string} datatype 
+   * @param {string} [apikeyoverride] 
+   * @param {boolean} [dataOnly] 
+   * @param {string} [datatype] 
    */
-  getIntegrationDataGetPagerDuty(
-    apikeyoverride: string,
-    dataOnly: boolean,
-    datatype: string,
-  ): Promise<any> {
+  getIntegrationDataGetPagerDuty({
+    apikeyoverride,
+    dataOnly,
+    datatype,
+  }: {
+    apikeyoverride?: string
+    dataOnly?: boolean
+    datatype?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/PagerDuty',
@@ -1805,17 +2064,22 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} connectionid 
-   * @param {string} datatype 
-   * @param {string} mailboxname 
-   * @param {number} mappingid 
+   * @param {number} [connectionid] 
+   * @param {string} [datatype] 
+   * @param {string} [mailboxname] 
+   * @param {number} [mappingid] 
    */
-  getIntegrationDataGetSalesMailbox(
-    connectionid: number,
-    datatype: string,
-    mailboxname: string,
-    mappingid: number,
-  ): Promise<any> {
+  getIntegrationDataGetSalesMailbox({
+    connectionid,
+    datatype,
+    mailboxname,
+    mappingid,
+  }: {
+    connectionid?: number
+    datatype?: string
+    mailboxname?: string
+    mappingid?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/SalesMailbox',
@@ -1833,7 +2097,7 @@ export class IntegrationDataAPI extends HaloPSA {
    *
    * @param {string} id
    */
-  getIntegrationDataGetSalesMailboxById(id: string): Promise<any> {
+  getIntegrationDataGetSalesMailboxById({ id }: { id: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/IntegrationData/Get/SalesMailbox/${id}`,
@@ -1844,9 +2108,9 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
+   * @param {string} [datatype] 
    */
-  getIntegrationDataGetLogMeIn(datatype: string): Promise<any> {
+  getIntegrationDataGetLogMeIn({ datatype }: { datatype?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/LogMeIn',
@@ -1860,9 +2124,9 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
+   * @param {string} [datatype] 
    */
-  getIntegrationDataGetGoogleCalendars(datatype: string): Promise<any> {
+  getIntegrationDataGetGoogleCalendars({ datatype }: { datatype?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/GoogleCalendars',
@@ -1876,17 +2140,22 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {number} mappingid 
-   * @param {string} nexttoken 
-   * @param {boolean} paginate 
+   * @param {string} [datatype] 
+   * @param {number} [mappingid] 
+   * @param {string} [nexttoken] 
+   * @param {boolean} [paginate] 
    */
-  getIntegrationDataGetGoogleWorkplace(
-    datatype: string,
-    mappingid: number,
-    nexttoken: string,
-    paginate: boolean,
-  ): Promise<any> {
+  getIntegrationDataGetGoogleWorkplace({
+    datatype,
+    mappingid,
+    nexttoken,
+    paginate,
+  }: {
+    datatype?: string
+    mappingid?: number
+    nexttoken?: string
+    paginate?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/GoogleWorkplace',
@@ -1903,17 +2172,22 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} accountid 
-   * @param {number} customerid 
-   * @param {boolean} dataOnly 
-   * @param {string} datatype 
+   * @param {number} [accountid] 
+   * @param {number} [customerid] 
+   * @param {boolean} [dataOnly] 
+   * @param {string} [datatype] 
    */
-  getIntegrationDataGetNCentral(
-    accountid: number,
-    customerid: number,
-    dataOnly: boolean,
-    datatype: string,
-  ): Promise<any> {
+  getIntegrationDataGetNCentral({
+    accountid,
+    customerid,
+    dataOnly,
+    datatype,
+  }: {
+    accountid?: number
+    customerid?: number
+    dataOnly?: boolean
+    datatype?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/NCentral',
@@ -1931,7 +2205,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportSnelStart(): Promise<any> {
+  postIntegrationDataImportSnelStart({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/SnelStart',
@@ -1942,9 +2216,9 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
+   * @param {string} [datatype] 
    */
-  getIntegrationDataGetSnelStart(datatype: string): Promise<any> {
+  getIntegrationDataGetSnelStart({ datatype }: { datatype?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/SnelStart',
@@ -1958,19 +2232,25 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {string} organizationid 
-   * @param {string} returntype 
-   * @param {string} typeid 
-   * @param {string} updateddate 
+   * @param {string} [datatype] 
+   * @param {string} [organizationid] 
+   * @param {string} [returntype] 
+   * @param {string} [typeid] 
+   * @param {string} [updateddate] 
    */
-  getIntegrationDataGetITGlue(
-    datatype: string,
-    organizationid: string,
-    returntype: string,
-    typeid: string,
-    updateddate: string,
-  ): Promise<any> {
+  getIntegrationDataGetITGlue({
+    datatype,
+    organizationid,
+    returntype,
+    typeid,
+    updateddate,
+  }: {
+    datatype?: string
+    organizationid?: string
+    returntype?: string
+    typeid?: string
+    updateddate?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/ITGlue',
@@ -1988,10 +2268,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {boolean} dataOnly 
-   * @param {string} endpoint 
+   * @param {boolean} [dataOnly] 
+   * @param {string} [endpoint] 
    */
-  getIntegrationDataGetJamf(dataOnly: boolean, endpoint: string): Promise<any> {
+  getIntegrationDataGetJamf({
+    dataOnly,
+    endpoint,
+  }: {
+    dataOnly?: boolean
+    endpoint?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Jamf',
@@ -2007,7 +2293,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataValidateJira(): Promise<any> {
+  getIntegrationDataValidateJira({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Validate/Jira',
@@ -2018,21 +2304,28 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {boolean} dataOnly 
-   * @param {string} dataType 
-   * @param {number} haloProduct 
-   * @param {string} issueTypes 
-   * @param {number} productId 
-   * @param {string} search 
+   * @param {boolean} [dataOnly] 
+   * @param {string} [dataType] 
+   * @param {number} [haloProduct] 
+   * @param {string} [issueTypes] 
+   * @param {number} [productId] 
+   * @param {string} [search] 
    */
-  getIntegrationDataGetJira(
-    dataOnly: boolean,
-    dataType: string,
-    haloProduct: number,
-    issueTypes: string,
-    productId: number,
-    search: string,
-  ): Promise<any> {
+  getIntegrationDataGetJira({
+    dataOnly,
+    dataType,
+    haloProduct,
+    issueTypes,
+    productId,
+    search,
+  }: {
+    dataOnly?: boolean
+    dataType?: string
+    haloProduct?: number
+    issueTypes?: string
+    productId?: number
+    search?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Jira',
@@ -2052,7 +2345,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataSearchJira(): Promise<any> {
+  getIntegrationDataSearchJira({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Search/Jira',
@@ -2064,7 +2357,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataLinkJira(linkIssue: Array<LinkIssue>): Promise<any> {
+  postIntegrationDataLinkJira({ linkIssue }: { linkIssue: Array<LinkIssue> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Link/Jira',
@@ -2077,7 +2370,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataUnlinkJira(linkIssue: Array<LinkIssue>): Promise<any> {
+  postIntegrationDataUnlinkJira({ linkIssue }: { linkIssue: Array<LinkIssue> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Unlink/Jira',
@@ -2090,7 +2383,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportJira(jiraDetails: Array<JiraDetails>): Promise<any> {
+  postIntegrationDataImportJira({
+    jiraDetails,
+  }: {
+    jiraDetails: Array<JiraDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/Jira',
@@ -2103,7 +2400,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportBeyondTrust(): Promise<any> {
+  postIntegrationDataImportBeyondTrust({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/BeyondTrust',
@@ -2114,15 +2411,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} connectionid 
-   * @param {string} datatype 
-   * @param {number} page 
+   * @param {number} [connectionid] 
+   * @param {string} [datatype] 
+   * @param {number} [page] 
    */
-  getIntegrationDataGetDattoCommerce(
-    connectionid: number,
-    datatype: string,
-    page: number,
-  ): Promise<any> {
+  getIntegrationDataGetDattoCommerce({
+    connectionid,
+    datatype,
+    page,
+  }: {
+    connectionid?: number
+    datatype?: string
+    page?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/DattoCommerce',
@@ -2138,19 +2439,25 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} connectionid 
-   * @param {string} datatype 
-   * @param {string} resourcegroupname 
-   * @param {string} subscriptionid 
-   * @param {string} workspacename 
+   * @param {number} [connectionid] 
+   * @param {string} [datatype] 
+   * @param {string} [resourcegroupname] 
+   * @param {string} [subscriptionid] 
+   * @param {string} [workspacename] 
    */
-  getIntegrationDataGetAzureSentinel(
-    connectionid: number,
-    datatype: string,
-    resourcegroupname: string,
-    subscriptionid: string,
-    workspacename: string,
-  ): Promise<any> {
+  getIntegrationDataGetAzureSentinel({
+    connectionid,
+    datatype,
+    resourcegroupname,
+    subscriptionid,
+    workspacename,
+  }: {
+    connectionid?: number
+    datatype?: string
+    resourcegroupname?: string
+    subscriptionid?: string
+    workspacename?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/AzureSentinel',
@@ -2168,11 +2475,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {boolean} dataOnly 
-   * @param {string} datatype 
-   * @param {number} page 
+   * @param {boolean} [dataOnly] 
+   * @param {string} [datatype] 
+   * @param {number} [page] 
    */
-  getIntegrationDataGetSyncro(dataOnly: boolean, datatype: string, page: number): Promise<any> {
+  getIntegrationDataGetSyncro({
+    dataOnly,
+    datatype,
+    page,
+  }: {
+    dataOnly?: boolean
+    datatype?: string
+    page?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Syncro',
@@ -2188,15 +2503,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} endpoint 
-   * @param {string} returntype 
-   * @param {boolean} validate 
+   * @param {string} [endpoint] 
+   * @param {string} [returntype] 
+   * @param {boolean} [validate] 
    */
-  getIntegrationDataGetDomotz(
-    endpoint: string,
-    returntype: string,
-    validate: boolean,
-  ): Promise<any> {
+  getIntegrationDataGetDomotz({
+    endpoint,
+    returntype,
+    validate,
+  }: {
+    endpoint?: string
+    returntype?: string
+    validate?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Domotz',
@@ -2212,21 +2531,28 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} customeremail 
-   * @param {string} customername 
-   * @param {string} datatype 
-   * @param {number} limit 
-   * @param {number} offset 
-   * @param {string} ticketid 
+   * @param {string} [customeremail] 
+   * @param {string} [customername] 
+   * @param {string} [datatype] 
+   * @param {number} [limit] 
+   * @param {number} [offset] 
+   * @param {string} [ticketid] 
    */
-  getIntegrationDataGetGoToAssist(
-    customeremail: string,
-    customername: string,
-    datatype: string,
-    limit: number,
-    offset: number,
-    ticketid: string,
-  ): Promise<any> {
+  getIntegrationDataGetGoToAssist({
+    customeremail,
+    customername,
+    datatype,
+    limit,
+    offset,
+    ticketid,
+  }: {
+    customeremail?: string
+    customername?: string
+    datatype?: string
+    limit?: number
+    offset?: number
+    ticketid?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/GoToAssist',
@@ -2245,15 +2571,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} dataType 
-   * @param {string} extraFilter 
-   * @param {boolean} keyPair 
+   * @param {string} [dataType] 
+   * @param {string} [extraFilter] 
+   * @param {boolean} [keyPair] 
    */
-  getIntegrationDataGetAutomate(
-    dataType: string,
-    extraFilter: string,
-    keyPair: boolean,
-  ): Promise<any> {
+  getIntegrationDataGetAutomate({
+    dataType,
+    extraFilter,
+    keyPair,
+  }: {
+    dataType?: string
+    extraFilter?: string
+    keyPair?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Automate',
@@ -2269,19 +2599,25 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} accountid 
-   * @param {boolean} dataOnly 
-   * @param {string} datatype 
-   * @param {string} nextlink 
-   * @param {boolean} paginate 
+   * @param {number} [accountid] 
+   * @param {boolean} [dataOnly] 
+   * @param {string} [datatype] 
+   * @param {string} [nextlink] 
+   * @param {boolean} [paginate] 
    */
-  getIntegrationDataGetSnow(
-    accountid: number,
-    dataOnly: boolean,
-    datatype: string,
-    nextlink: string,
-    paginate: boolean,
-  ): Promise<any> {
+  getIntegrationDataGetSnow({
+    accountid,
+    dataOnly,
+    datatype,
+    nextlink,
+    paginate,
+  }: {
+    accountid?: number
+    dataOnly?: boolean
+    datatype?: string
+    nextlink?: string
+    paginate?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Snow',
@@ -2299,23 +2635,31 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {boolean} data_only 
-   * @param {number} haloProduct 
-   * @param {number} instance_id 
-   * @param {number} product_id 
-   * @param {string} resource 
-   * @param {string} search 
-   * @param {string} workItemTypes 
+   * @param {boolean} [data_only] 
+   * @param {number} [haloProduct] 
+   * @param {number} [instance_id] 
+   * @param {number} [product_id] 
+   * @param {string} [resource] 
+   * @param {string} [search] 
+   * @param {string} [workItemTypes] 
    */
-  getIntegrationDataGetDevOps(
-    data_only: boolean,
-    haloProduct: number,
-    instance_id: number,
-    product_id: number,
-    resource: string,
-    search: string,
-    workItemTypes: string,
-  ): Promise<any> {
+  getIntegrationDataGetDevOps({
+    data_only,
+    haloProduct,
+    instance_id,
+    product_id,
+    resource,
+    search,
+    workItemTypes,
+  }: {
+    data_only?: boolean
+    haloProduct?: number
+    instance_id?: number
+    product_id?: number
+    resource?: string
+    search?: string
+    workItemTypes?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/DevOps',
@@ -2336,7 +2680,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataSearchDevOps(): Promise<any> {
+  getIntegrationDataSearchDevOps({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Search/DevOps',
@@ -2348,7 +2692,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportDevOps(azureDevOpsDetails: Array<AzureDevOpsDetails>): Promise<any> {
+  postIntegrationDataImportDevOps({
+    azureDevOpsDetails,
+  }: {
+    azureDevOpsDetails: Array<AzureDevOpsDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/DevOps',
@@ -2361,7 +2709,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataLinkDevOps(linkWorkItem: Array<LinkWorkItem>): Promise<any> {
+  postIntegrationDataLinkDevOps({
+    linkWorkItem,
+  }: {
+    linkWorkItem: Array<LinkWorkItem>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Link/DevOps',
@@ -2374,7 +2726,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataUnlinkDevOps(linkWorkItem: Array<LinkWorkItem>): Promise<any> {
+  postIntegrationDataUnlinkDevOps({
+    linkWorkItem,
+  }: {
+    linkWorkItem: Array<LinkWorkItem>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Unlink/DevOps',
@@ -2386,27 +2742,37 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} alsoInclude 
-   * @param {string} dataType 
-   * @param {boolean} excludeMapped 
-   * @param {string} extraFilter 
-   * @param {boolean} mappedOnly 
-   * @param {string} next_url 
-   * @param {boolean} paginate 
-   * @param {string} parentId 
-   * @param {string} subDataType 
+   * @param {string} [alsoInclude] 
+   * @param {string} [dataType] 
+   * @param {boolean} [excludeMapped] 
+   * @param {string} [extraFilter] 
+   * @param {boolean} [mappedOnly] 
+   * @param {string} [next_url] 
+   * @param {boolean} [paginate] 
+   * @param {string} [parentId] 
+   * @param {string} [subDataType] 
    */
-  getIntegrationDataGetAuvik(
-    alsoInclude: string,
-    dataType: string,
-    excludeMapped: boolean,
-    extraFilter: string,
-    mappedOnly: boolean,
-    next_url: string,
-    paginate: boolean,
-    parentId: string,
-    subDataType: string,
-  ): Promise<any> {
+  getIntegrationDataGetAuvik({
+    alsoInclude,
+    dataType,
+    excludeMapped,
+    extraFilter,
+    mappedOnly,
+    next_url,
+    paginate,
+    parentId,
+    subDataType,
+  }: {
+    alsoInclude?: string
+    dataType?: string
+    excludeMapped?: boolean
+    extraFilter?: string
+    mappedOnly?: boolean
+    next_url?: string
+    paginate?: boolean
+    parentId?: string
+    subDataType?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Auvik',
@@ -2428,21 +2794,28 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {boolean} keypair 
-   * @param {string} nextlink 
-   * @param {string} objecttype 
-   * @param {boolean} paginate 
-   * @param {string} resource 
-   * @param {string} search 
+   * @param {boolean} [keypair] 
+   * @param {string} [nextlink] 
+   * @param {string} [objecttype] 
+   * @param {boolean} [paginate] 
+   * @param {string} [resource] 
+   * @param {string} [search] 
    */
-  getIntegrationDataGetHubSpot(
-    keypair: boolean,
-    nextlink: string,
-    objecttype: string,
-    paginate: boolean,
-    resource: string,
-    search: string,
-  ): Promise<any> {
+  getIntegrationDataGetHubSpot({
+    keypair,
+    nextlink,
+    objecttype,
+    paginate,
+    resource,
+    search,
+  }: {
+    keypair?: boolean
+    nextlink?: string
+    objecttype?: string
+    paginate?: boolean
+    resource?: string
+    search?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/HubSpot',
@@ -2461,17 +2834,22 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} mappingid 
-   * @param {number} offset 
-   * @param {boolean} paginate 
-   * @param {string} resource 
+   * @param {number} [mappingid] 
+   * @param {number} [offset] 
+   * @param {boolean} [paginate] 
+   * @param {string} [resource] 
    */
-  getIntegrationDataGetQualys(
-    mappingid: number,
-    offset: number,
-    paginate: boolean,
-    resource: string,
-  ): Promise<any> {
+  getIntegrationDataGetQualys({
+    mappingid,
+    offset,
+    paginate,
+    resource,
+  }: {
+    mappingid?: number
+    offset?: number
+    paginate?: boolean
+    resource?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Qualys',
@@ -2488,21 +2866,28 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {number} clientid 
-   * @param {string} documenttype 
-   * @param {string} endpoint 
-   * @param {number} pagenum 
-   * @param {string} returntype 
-   * @param {boolean} validate 
+   * @param {number} [clientid] 
+   * @param {string} [documenttype] 
+   * @param {string} [endpoint] 
+   * @param {number} [pagenum] 
+   * @param {string} [returntype] 
+   * @param {boolean} [validate] 
    */
-  getIntegrationDataGetPassportal(
-    clientid: number,
-    documenttype: string,
-    endpoint: string,
-    pagenum: number,
-    returntype: string,
-    validate: boolean,
-  ): Promise<any> {
+  getIntegrationDataGetPassportal({
+    clientid,
+    documenttype,
+    endpoint,
+    pagenum,
+    returntype,
+    validate,
+  }: {
+    clientid?: number
+    documenttype?: string
+    endpoint?: string
+    pagenum?: number
+    returntype?: string
+    validate?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Passportal',
@@ -2521,10 +2906,16 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {string} locid 
+   * @param {string} [datatype] 
+   * @param {string} [locid] 
    */
-  postIntegrationDataImportIntacct(datatype: string, locid: string): Promise<any> {
+  postIntegrationDataImportIntacct({
+    datatype,
+    locid,
+  }: {
+    datatype?: string
+    locid?: string
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/Intacct',
@@ -2540,7 +2931,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetIntacct(): Promise<any> {
+  getIntegrationDataGetIntacct({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Intacct',
@@ -2551,11 +2942,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {boolean} keyPair 
-   * @param {number} page 
+   * @param {string} [datatype] 
+   * @param {boolean} [keyPair] 
+   * @param {number} [page] 
    */
-  getIntegrationDataGetLiongard(datatype: string, keyPair: boolean, page: number): Promise<any> {
+  getIntegrationDataGetLiongard({
+    datatype,
+    keyPair,
+    page,
+  }: {
+    datatype?: string
+    keyPair?: boolean
+    page?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Liongard',
@@ -2572,7 +2971,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataPostLiongard(area: Area): Promise<any> {
+  postIntegrationDataPostLiongard({ area }: { area: Area }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Post/Liongard',
@@ -2585,9 +2984,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataPostStripeCreatewebhook(
-    stripeWebhookEndpoint: StripeWebhookEndpoint,
-  ): Promise<any> {
+  postIntegrationDataPostStripeCreatewebhook({
+    stripeWebhookEndpoint,
+  }: {
+    stripeWebhookEndpoint: StripeWebhookEndpoint
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Post/Stripe/create-webhook',
@@ -2600,9 +3001,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataPostStripeCreatesetupintent(
-    stripePaymentIntentCreateRequest: StripePaymentIntentCreateRequest,
-  ): Promise<any> {
+  postIntegrationDataPostStripeCreatesetupintent({
+    stripePaymentIntentCreateRequest,
+  }: {
+    stripePaymentIntentCreateRequest: StripePaymentIntentCreateRequest
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Post/Stripe/create-setup-intent',
@@ -2615,9 +3018,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataPostStripeCreatepaymentintent(
-    stripePaymentIntentCreateRequest: StripePaymentIntentCreateRequest,
-  ): Promise<any> {
+  postIntegrationDataPostStripeCreatepaymentintent({
+    stripePaymentIntentCreateRequest,
+  }: {
+    stripePaymentIntentCreateRequest: StripePaymentIntentCreateRequest
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Post/Stripe/create-payment-intent',
@@ -2630,9 +3035,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataPostStripeUpdateinvoicepayment(
-    stripeUpdateInvoicePaymentRequest: StripeUpdateInvoicePaymentRequest,
-  ): Promise<any> {
+  postIntegrationDataPostStripeUpdateinvoicepayment({
+    stripeUpdateInvoicePaymentRequest,
+  }: {
+    stripeUpdateInvoicePaymentRequest: StripeUpdateInvoicePaymentRequest
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Post/Stripe/update-invoice-payment',
@@ -2645,7 +3052,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetStripe(): Promise<any> {
+  getIntegrationDataGetStripe({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Stripe',
@@ -2657,9 +3064,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataPostStripeCreateportalsession(
-    stripeCreatePortalSession: StripeCreatePortalSession,
-  ): Promise<any> {
+  postIntegrationDataPostStripeCreateportalsession({
+    stripeCreatePortalSession,
+  }: {
+    stripeCreatePortalSession: StripeCreatePortalSession
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Post/Stripe/create-portal-session',
@@ -2671,15 +3080,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} endpoint 
-   * @param {string} returntype 
-   * @param {boolean} validate 
+   * @param {string} [endpoint] 
+   * @param {string} [returntype] 
+   * @param {boolean} [validate] 
    */
-  getIntegrationDataGetAddigy(
-    endpoint: string,
-    returntype: string,
-    validate: boolean,
-  ): Promise<any> {
+  getIntegrationDataGetAddigy({
+    endpoint,
+    returntype,
+    validate,
+  }: {
+    endpoint?: string
+    returntype?: string
+    validate?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Addigy',
@@ -2695,11 +3108,19 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} datatype 
-   * @param {number} page 
-   * @param {string} parent_id 
+   * @param {string} [datatype] 
+   * @param {number} [page] 
+   * @param {string} [parent_id] 
    */
-  getIntegrationDataGetFreshdesk(datatype: string, page: number, parent_id: string): Promise<any> {
+  getIntegrationDataGetFreshdesk({
+    datatype,
+    page,
+    parent_id,
+  }: {
+    datatype?: string
+    page?: number
+    parent_id?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Freshdesk',
@@ -2715,21 +3136,28 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} include_this_id 
-   * @param {number} page 
-   * @param {boolean} paginate 
-   * @param {boolean} remove_existing 
-   * @param {string} resource 
-   * @param {string} third_party_id 
+   * @param {string} [include_this_id] 
+   * @param {number} [page] 
+   * @param {boolean} [paginate] 
+   * @param {boolean} [remove_existing] 
+   * @param {string} [resource] 
+   * @param {string} [third_party_id] 
    */
-  getIntegrationDataGetPax8(
-    include_this_id: string,
-    page: number,
-    paginate: boolean,
-    remove_existing: boolean,
-    resource: string,
-    third_party_id: string,
-  ): Promise<any> {
+  getIntegrationDataGetPax8({
+    include_this_id,
+    page,
+    paginate,
+    remove_existing,
+    resource,
+    third_party_id,
+  }: {
+    include_this_id?: string
+    page?: number
+    paginate?: boolean
+    remove_existing?: boolean
+    resource?: string
+    third_party_id?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Pax8',
@@ -2748,23 +3176,31 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} include_this_id 
-   * @param {number} offset 
-   * @param {boolean} paginate 
-   * @param {boolean} remove_existing 
-   * @param {string} resource 
-   * @param {number} tenant 
-   * @param {string} third_party_id 
+   * @param {string} [include_this_id] 
+   * @param {number} [offset] 
+   * @param {boolean} [paginate] 
+   * @param {boolean} [remove_existing] 
+   * @param {string} [resource] 
+   * @param {number} [tenant] 
+   * @param {string} [third_party_id] 
    */
-  getIntegrationDataGetIngramMicro(
-    include_this_id: string,
-    offset: number,
-    paginate: boolean,
-    remove_existing: boolean,
-    resource: string,
-    tenant: number,
-    third_party_id: string,
-  ): Promise<any> {
+  getIntegrationDataGetIngramMicro({
+    include_this_id,
+    offset,
+    paginate,
+    remove_existing,
+    resource,
+    tenant,
+    third_party_id,
+  }: {
+    include_this_id?: string
+    offset?: number
+    paginate?: boolean
+    remove_existing?: boolean
+    resource?: string
+    tenant?: number
+    third_party_id?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/IngramMicro',
@@ -2785,9 +3221,11 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationDataImportIngramMicroSubscriptions(
-    licence_List: Array<Licence_List>,
-  ): Promise<any> {
+  postIntegrationDataImportIngramMicroSubscriptions({
+    licence_List,
+  }: {
+    licence_List: Array<Licence_List>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationData/Import/IngramMicro/Subscriptions',
@@ -2800,7 +3238,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetStreamOneIon(): Promise<any> {
+  getIntegrationDataGetStreamOneIon({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/StreamOneIon',
@@ -2812,7 +3250,7 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationDataGetSynnex(): Promise<any> {
+  getIntegrationDataGetSynnex({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Synnex',
@@ -2823,17 +3261,22 @@ export class IntegrationDataAPI extends HaloPSA {
    * 
    * @description .<br>
 				Requires authentication.
-   * @param {string} endpoint 
-   * @param {boolean} keypair 
-   * @param {string} nextlink 
-   * @param {string} resource 
+   * @param {string} [endpoint] 
+   * @param {boolean} [keypair] 
+   * @param {string} [nextlink] 
+   * @param {string} [resource] 
    */
-  getIntegrationDataGetSalesforce(
-    endpoint: string,
-    keypair: boolean,
-    nextlink: string,
-    resource: string,
-  ): Promise<any> {
+  getIntegrationDataGetSalesforce({
+    endpoint,
+    keypair,
+    nextlink,
+    resource,
+  }: {
+    endpoint?: string
+    keypair?: boolean
+    nextlink?: string
+    resource?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationData/Get/Salesforce',

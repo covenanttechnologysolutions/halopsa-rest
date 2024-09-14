@@ -21,11 +21,19 @@ export class TicketTypeFieldAPI extends HaloPSA {
    * @summary List of RequestTypeField
    * @description Use this to return multiple RequestTypeField.<br>
 				Requires authentication.
-   * @param {boolean} buildcache 
-   * @param {boolean} debug 
-   * @param {boolean} isrtconfig 
+   * @param {boolean} [buildcache] 
+   * @param {boolean} [debug] 
+   * @param {boolean} [isrtconfig] 
    */
-  getTicketTypeField(buildcache: boolean, debug: boolean, isrtconfig: boolean): Promise<any> {
+  getTicketTypeField({
+    buildcache,
+    debug,
+    isrtconfig,
+  }: {
+    buildcache?: boolean
+    debug?: boolean
+    isrtconfig?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TicketTypeField',

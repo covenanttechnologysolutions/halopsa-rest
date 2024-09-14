@@ -24,7 +24,7 @@ export class UserRolesAPI extends HaloPSA {
    * 
    
    */
-  getUserRoles(): Promise<any> {
+  getUserRoles({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/UserRoles',
@@ -36,7 +36,7 @@ export class UserRolesAPI extends HaloPSA {
    * 
    
    */
-  postUserRoles(userRoles: Array<UserRoles>): Promise<any> {
+  postUserRoles({ userRoles }: { userRoles: Array<UserRoles> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/UserRoles',
@@ -49,9 +49,9 @@ export class UserRolesAPI extends HaloPSA {
    * @description Use this to return a single instance of UserRoles.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getUserRolesById(id: number, includedetails: boolean): Promise<any> {
+  getUserRolesById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/UserRoles/${id}`,
@@ -66,7 +66,7 @@ export class UserRolesAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteUserRolesById(id: number): Promise<any> {
+  deleteUserRolesById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/UserRoles/${id}`,

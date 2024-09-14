@@ -22,7 +22,7 @@ export class Test1API extends HaloPSA {
    * 
    
    */
-  getTest1(): Promise<any> {
+  getTest1({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Test1',

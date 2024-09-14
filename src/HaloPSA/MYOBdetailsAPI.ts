@@ -24,7 +24,7 @@ export class MYOBdetailsAPI extends HaloPSA {
    * 
    
    */
-  getMYOBdetails(): Promise<any> {
+  getMYOBdetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/MYOBdetails',
@@ -36,7 +36,7 @@ export class MYOBdetailsAPI extends HaloPSA {
    * 
    
    */
-  postMYOBdetails(mYOBDetails: Array<MYOBDetails>): Promise<any> {
+  postMYOBdetails({ mYOBDetails }: { mYOBDetails: Array<MYOBDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/MYOBdetails',
@@ -49,7 +49,7 @@ export class MYOBdetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getMYOBdetailsById(id: number): Promise<any> {
+  getMYOBdetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/MYOBdetails/${id}`,
@@ -61,7 +61,7 @@ export class MYOBdetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteMYOBdetailsById(id: number): Promise<any> {
+  deleteMYOBdetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/MYOBdetails/${id}`,

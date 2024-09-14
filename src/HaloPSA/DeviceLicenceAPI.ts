@@ -22,7 +22,7 @@ export class DeviceLicenceAPI extends HaloPSA {
    * 
    
    */
-  getDeviceLicence(): Promise<any> {
+  getDeviceLicence({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/DeviceLicence',

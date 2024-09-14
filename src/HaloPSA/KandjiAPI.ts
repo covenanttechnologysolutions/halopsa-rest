@@ -22,7 +22,7 @@ export class KandjiAPI extends HaloPSA {
    * 
    
    */
-  getKandjiGet(): Promise<any> {
+  getKandjiGet({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Kandji/Get',

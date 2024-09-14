@@ -24,7 +24,7 @@ export class PRTGDetailsAPI extends HaloPSA {
    * 
    
    */
-  getPRTGDetails(): Promise<any> {
+  getPRTGDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/PRTGDetails',
@@ -36,7 +36,7 @@ export class PRTGDetailsAPI extends HaloPSA {
    * 
    
    */
-  postPRTGDetails(pRTGDetails: Array<PRTGDetails>): Promise<any> {
+  postPRTGDetails({ pRTGDetails }: { pRTGDetails: Array<PRTGDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/PRTGDetails',
@@ -49,7 +49,7 @@ export class PRTGDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getPRTGDetailsById(id: number): Promise<any> {
+  getPRTGDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/PRTGDetails/${id}`,
@@ -61,7 +61,7 @@ export class PRTGDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deletePRTGDetailsById(id: number): Promise<any> {
+  deletePRTGDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/PRTGDetails/${id}`,

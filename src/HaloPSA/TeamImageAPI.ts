@@ -22,7 +22,7 @@ export class TeamImageAPI extends HaloPSA {
    *
    * @param {string} id
    */
-  getTeamImageById(id: string): Promise<any> {
+  getTeamImageById({ id }: { id: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/TeamImage/${id}`,

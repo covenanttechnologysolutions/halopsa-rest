@@ -23,9 +23,9 @@ export class ChatProfileAPI extends HaloPSA {
    * @summary List of ChatProfile
    * @description Use this to return multiple ChatProfile.<br>
 				Requires authentication.
-   * @param {number} type 
+   * @param {number} [type] 
    */
-  getChatProfile(type: number): Promise<any> {
+  getChatProfile({ type }: { type?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ChatProfile',
@@ -40,7 +40,7 @@ export class ChatProfileAPI extends HaloPSA {
    * 
    
    */
-  postChatProfile(chatProfile: Array<ChatProfile>): Promise<any> {
+  postChatProfile({ chatProfile }: { chatProfile: Array<ChatProfile> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ChatProfile',
@@ -53,16 +53,21 @@ export class ChatProfileAPI extends HaloPSA {
    * @description Use this to return a single instance of ChatProfile.<br>
 				Requires authentication.
    * @param {string} id 
-   * @param {boolean} check_available 
-   * @param {boolean} includedetails 
-   * @param {string} key 
+   * @param {boolean} [check_available] 
+   * @param {boolean} [includedetails] 
+   * @param {string} [key] 
    */
-  getChatProfileById(
-    id: string,
-    check_available: boolean,
-    includedetails: boolean,
-    key: string,
-  ): Promise<any> {
+  getChatProfileById({
+    id,
+    check_available,
+    includedetails,
+    key,
+  }: {
+    id: string
+    check_available?: boolean
+    includedetails?: boolean
+    key?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ChatProfile/${id}`,
@@ -79,7 +84,7 @@ export class ChatProfileAPI extends HaloPSA {
    *
    * @param {string} id
    */
-  deleteChatProfileById(id: string): Promise<any> {
+  deleteChatProfileById({ id }: { id: string }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ChatProfile/${id}`,

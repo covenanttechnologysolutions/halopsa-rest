@@ -23,19 +23,25 @@ export class TimesheetEventAPI extends HaloPSA {
    * @summary List of TimesheetEvent
    * @description Use this to return multiple TimesheetEvent.<br>
 				Requires authentication.
-   * @param {number} agent_id 
-   * @param {string} agents 
-   * @param {string} end_date 
-   * @param {string} start_date 
-   * @param {number} utcoffset 
+   * @param {number} [agent_id] 
+   * @param {string} [agents] 
+   * @param {string} [end_date] 
+   * @param {string} [start_date] 
+   * @param {number} [utcoffset] 
    */
-  getTimesheetEvent(
-    agent_id: number,
-    agents: string,
-    end_date: string,
-    start_date: string,
-    utcoffset: number,
-  ): Promise<any> {
+  getTimesheetEvent({
+    agent_id,
+    agents,
+    end_date,
+    start_date,
+    utcoffset,
+  }: {
+    agent_id?: number
+    agents?: string
+    end_date?: string
+    start_date?: string
+    utcoffset?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TimesheetEvent',
@@ -54,7 +60,7 @@ export class TimesheetEventAPI extends HaloPSA {
    * 
    
    */
-  postTimesheetEvent(timesheetEvent: Array<TimesheetEvent>): Promise<any> {
+  postTimesheetEvent({ timesheetEvent }: { timesheetEvent: Array<TimesheetEvent> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/TimesheetEvent',
@@ -67,7 +73,7 @@ export class TimesheetEventAPI extends HaloPSA {
    * 
    
    */
-  getTimesheetEventMine(): Promise<any> {
+  getTimesheetEventMine({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TimesheetEvent/mine',
@@ -79,9 +85,15 @@ export class TimesheetEventAPI extends HaloPSA {
    * @description Use this to return a single instance of TimesheetEvent.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getTimesheetEventById(id: number, includedetails: boolean): Promise<any> {
+  getTimesheetEventById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/TimesheetEvent/${id}`,
@@ -96,7 +108,7 @@ export class TimesheetEventAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteTimesheetEventById(id: number): Promise<any> {
+  deleteTimesheetEventById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/TimesheetEvent/${id}`,

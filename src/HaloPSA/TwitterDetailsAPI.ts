@@ -23,9 +23,9 @@ export class TwitterDetailsAPI extends HaloPSA {
    * @summary List of TwitterDetails
    * @description Use this to return multiple TwitterDetails.<br>
 				Requires authentication.
-   * @param {string} account_id 
+   * @param {string} [account_id] 
    */
-  getTwitterDetails(account_id: string): Promise<any> {
+  getTwitterDetails({ account_id }: { account_id?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TwitterDetails',
@@ -40,7 +40,7 @@ export class TwitterDetailsAPI extends HaloPSA {
    * 
    
    */
-  postTwitterDetails(twitterDetails: Array<TwitterDetails>): Promise<any> {
+  postTwitterDetails({ twitterDetails }: { twitterDetails: Array<TwitterDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/TwitterDetails',
@@ -53,9 +53,15 @@ export class TwitterDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of TwitterDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getTwitterDetailsById(id: number, includedetails: boolean): Promise<any> {
+  getTwitterDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/TwitterDetails/${id}`,
@@ -70,7 +76,7 @@ export class TwitterDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteTwitterDetailsById(id: number): Promise<any> {
+  deleteTwitterDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/TwitterDetails/${id}`,

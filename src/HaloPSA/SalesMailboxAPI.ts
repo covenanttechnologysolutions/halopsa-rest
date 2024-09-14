@@ -24,7 +24,7 @@ export class SalesMailboxAPI extends HaloPSA {
    * 
    
    */
-  getSalesMailbox(): Promise<any> {
+  getSalesMailbox({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SalesMailbox',
@@ -36,7 +36,7 @@ export class SalesMailboxAPI extends HaloPSA {
    * 
    
    */
-  postSalesMailbox(salesMailbox: Array<SalesMailbox>): Promise<any> {
+  postSalesMailbox({ salesMailbox }: { salesMailbox: Array<SalesMailbox> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SalesMailbox',
@@ -49,10 +49,18 @@ export class SalesMailboxAPI extends HaloPSA {
    * @description Use this to return a single instance of SalesMailbox.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} _test_access 
-   * @param {boolean} includedetails 
+   * @param {boolean} [_test_access] 
+   * @param {boolean} [includedetails] 
    */
-  getSalesMailboxById(id: number, _test_access: boolean, includedetails: boolean): Promise<any> {
+  getSalesMailboxById({
+    id,
+    _test_access,
+    includedetails,
+  }: {
+    id: number
+    _test_access?: boolean
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/SalesMailbox/${id}`,
@@ -68,7 +76,7 @@ export class SalesMailboxAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteSalesMailboxById(id: number): Promise<any> {
+  deleteSalesMailboxById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/SalesMailbox/${id}`,

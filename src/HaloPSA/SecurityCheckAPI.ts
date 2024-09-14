@@ -22,7 +22,7 @@ export class SecurityCheckAPI extends HaloPSA {
    * 
    
    */
-  getSecurityCheck(): Promise<any> {
+  getSecurityCheck({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SecurityCheck',

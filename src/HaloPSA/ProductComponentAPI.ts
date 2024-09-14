@@ -23,9 +23,9 @@ export class ProductComponentAPI extends HaloPSA {
    * @summary List of ReleaseComponent
    * @description Use this to return multiple ReleaseComponent.<br>
 				Requires authentication.
-   * @param {number} product_id 
+   * @param {number} [product_id] 
    */
-  getProductComponent(product_id: number): Promise<any> {
+  getProductComponent({ product_id }: { product_id?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ProductComponent',
@@ -40,7 +40,11 @@ export class ProductComponentAPI extends HaloPSA {
    * 
    
    */
-  postProductComponent(releaseComponent: Array<ReleaseComponent>): Promise<any> {
+  postProductComponent({
+    releaseComponent,
+  }: {
+    releaseComponent: Array<ReleaseComponent>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ProductComponent',
@@ -53,9 +57,15 @@ export class ProductComponentAPI extends HaloPSA {
    * @description Use this to return a single instance of ReleaseComponent.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getProductComponentById(id: number, includedetails: boolean): Promise<any> {
+  getProductComponentById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ProductComponent/${id}`,
@@ -70,7 +80,7 @@ export class ProductComponentAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteProductComponentById(id: number): Promise<any> {
+  deleteProductComponentById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ProductComponent/${id}`,

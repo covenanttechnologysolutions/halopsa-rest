@@ -22,7 +22,7 @@ export class TaskMonitorEventAPI extends HaloPSA {
    * 
    
    */
-  getTaskMonitorEvent(): Promise<any> {
+  getTaskMonitorEvent({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TaskMonitorEvent',

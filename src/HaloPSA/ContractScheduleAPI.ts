@@ -24,7 +24,7 @@ export class ContractScheduleAPI extends HaloPSA {
    * 
    
    */
-  getContractSchedule(): Promise<any> {
+  getContractSchedule({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ContractSchedule',
@@ -36,7 +36,11 @@ export class ContractScheduleAPI extends HaloPSA {
    * 
    
    */
-  postContractSchedule(contractSchedule: Array<ContractSchedule>): Promise<any> {
+  postContractSchedule({
+    contractSchedule,
+  }: {
+    contractSchedule: Array<ContractSchedule>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ContractSchedule',
@@ -49,9 +53,15 @@ export class ContractScheduleAPI extends HaloPSA {
    * @description Use this to return a single instance of ContractSchedule.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getContractScheduleById(id: number, includedetails: boolean): Promise<any> {
+  getContractScheduleById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ContractSchedule/${id}`,
@@ -66,7 +76,7 @@ export class ContractScheduleAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteContractScheduleById(id: number): Promise<any> {
+  deleteContractScheduleById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ContractSchedule/${id}`,

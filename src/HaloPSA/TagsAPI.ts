@@ -24,7 +24,7 @@ export class TagsAPI extends HaloPSA {
    * 
    
    */
-  getTags(): Promise<any> {
+  getTags({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Tags',
@@ -36,7 +36,7 @@ export class TagsAPI extends HaloPSA {
    * 
    
    */
-  postTags(tag: Array<Tag>): Promise<any> {
+  postTags({ tag }: { tag: Array<Tag> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Tags',
@@ -49,9 +49,9 @@ export class TagsAPI extends HaloPSA {
    * @description Use this to return a single instance of Tag.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getTagsById(id: number, includedetails: boolean): Promise<any> {
+  getTagsById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Tags/${id}`,
@@ -66,7 +66,7 @@ export class TagsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteTagsById(id: number): Promise<any> {
+  deleteTagsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Tags/${id}`,

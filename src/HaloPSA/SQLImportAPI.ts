@@ -23,15 +23,19 @@ export class SQLImportAPI extends HaloPSA {
    * @summary List of SQLImport
    * @description Use this to return multiple SQLImport.<br>
 				Requires authentication.
-   * @param {string} clientidoverride 
-   * @param {boolean} integratorenabled 
-   * @param {boolean} showpositiveonly 
+   * @param {string} [clientidoverride] 
+   * @param {boolean} [integratorenabled] 
+   * @param {boolean} [showpositiveonly] 
    */
-  getSQLImport(
-    clientidoverride: string,
-    integratorenabled: boolean,
-    showpositiveonly: boolean,
-  ): Promise<any> {
+  getSQLImport({
+    clientidoverride,
+    integratorenabled,
+    showpositiveonly,
+  }: {
+    clientidoverride?: string
+    integratorenabled?: boolean
+    showpositiveonly?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SQLImport',
@@ -48,7 +52,7 @@ export class SQLImportAPI extends HaloPSA {
    * 
    
    */
-  postSQLImport(sQLImport: Array<SQLImport>): Promise<any> {
+  postSQLImport({ sQLImport }: { sQLImport: Array<SQLImport> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SQLImport',
@@ -61,10 +65,18 @@ export class SQLImportAPI extends HaloPSA {
    * @description Use this to return a single instance of SQLImport.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {string} clientidoverride 
-   * @param {boolean} includedetails 
+   * @param {string} [clientidoverride] 
+   * @param {boolean} [includedetails] 
    */
-  getSQLImportById(id: number, clientidoverride: string, includedetails: boolean): Promise<any> {
+  getSQLImportById({
+    id,
+    clientidoverride,
+    includedetails,
+  }: {
+    id: number
+    clientidoverride?: string
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/SQLImport/${id}`,
@@ -80,7 +92,7 @@ export class SQLImportAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteSQLImportById(id: number): Promise<any> {
+  deleteSQLImportById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/SQLImport/${id}`,

@@ -23,11 +23,19 @@ export class ScheduleAPI extends HaloPSA {
    * @summary List of Schedule
    * @description Use this to return multiple Schedule.<br>
 				Requires authentication.
-   * @param {boolean} includedetails 
-   * @param {number} primaryid 
-   * @param {number} type 
+   * @param {boolean} [includedetails] 
+   * @param {number} [primaryid] 
+   * @param {number} [type] 
    */
-  getSchedule(includedetails: boolean, primaryid: number, type: number): Promise<any> {
+  getSchedule({
+    includedetails,
+    primaryid,
+    type,
+  }: {
+    includedetails?: boolean
+    primaryid?: number
+    type?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Schedule',
@@ -44,7 +52,7 @@ export class ScheduleAPI extends HaloPSA {
    * 
    
    */
-  postSchedule(schedule: Array<Schedule>): Promise<any> {
+  postSchedule({ schedule }: { schedule: Array<Schedule> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Schedule',
@@ -57,9 +65,9 @@ export class ScheduleAPI extends HaloPSA {
    * @description Use this to return a single instance of Schedule.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getScheduleById(id: number, includedetails: boolean): Promise<any> {
+  getScheduleById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Schedule/${id}`,

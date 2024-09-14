@@ -23,21 +23,28 @@ export class CustomTableAPI extends HaloPSA {
    * @summary List of CustomTable
    * @description Use this to return multiple CustomTable.<br>
 				Requires authentication.
-   * @param {number} access_control_level 
-   * @param {boolean} customonly 
-   * @param {boolean} isconfig 
-   * @param {boolean} iswebhookmapping 
-   * @param {boolean} systemonly 
-   * @param {number} usage 
+   * @param {number} [access_control_level] 
+   * @param {boolean} [customonly] 
+   * @param {boolean} [isconfig] 
+   * @param {boolean} [iswebhookmapping] 
+   * @param {boolean} [systemonly] 
+   * @param {number} [usage] 
    */
-  getCustomTable(
-    access_control_level: number,
-    customonly: boolean,
-    isconfig: boolean,
-    iswebhookmapping: boolean,
-    systemonly: boolean,
-    usage: number,
-  ): Promise<any> {
+  getCustomTable({
+    access_control_level,
+    customonly,
+    isconfig,
+    iswebhookmapping,
+    systemonly,
+    usage,
+  }: {
+    access_control_level?: number
+    customonly?: boolean
+    isconfig?: boolean
+    iswebhookmapping?: boolean
+    systemonly?: boolean
+    usage?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/CustomTable',
@@ -57,7 +64,7 @@ export class CustomTableAPI extends HaloPSA {
    * 
    
    */
-  postCustomTable(customTable: Array<CustomTable>): Promise<any> {
+  postCustomTable({ customTable }: { customTable: Array<CustomTable> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/CustomTable',
@@ -70,9 +77,15 @@ export class CustomTableAPI extends HaloPSA {
    * @description Use this to return a single instance of CustomTable.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getCustomTableById(id: number, includedetails: boolean): Promise<any> {
+  getCustomTableById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/CustomTable/${id}`,
@@ -87,7 +100,7 @@ export class CustomTableAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteCustomTableById(id: number): Promise<any> {
+  deleteCustomTableById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/CustomTable/${id}`,

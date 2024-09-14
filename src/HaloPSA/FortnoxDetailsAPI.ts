@@ -24,7 +24,7 @@ export class FortnoxDetailsAPI extends HaloPSA {
    * 
    
    */
-  getFortnoxDetails(): Promise<any> {
+  getFortnoxDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/FortnoxDetails',
@@ -36,7 +36,7 @@ export class FortnoxDetailsAPI extends HaloPSA {
    * 
    
    */
-  postFortnoxDetails(fortnoxDetails: Array<FortnoxDetails>): Promise<any> {
+  postFortnoxDetails({ fortnoxDetails }: { fortnoxDetails: Array<FortnoxDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/FortnoxDetails',
@@ -49,7 +49,7 @@ export class FortnoxDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getFortnoxDetailsById(id: number): Promise<any> {
+  getFortnoxDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/FortnoxDetails/${id}`,
@@ -61,7 +61,7 @@ export class FortnoxDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteFortnoxDetailsById(id: number): Promise<any> {
+  deleteFortnoxDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/FortnoxDetails/${id}`,

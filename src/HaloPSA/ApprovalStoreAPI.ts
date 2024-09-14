@@ -22,7 +22,7 @@ export class ApprovalStoreAPI extends HaloPSA {
    * 
    
    */
-  postApprovalStore(listNumber: number): Promise<any> {
+  postApprovalStore({ listNumber }: { listNumber: number }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ApprovalStore',

@@ -23,10 +23,16 @@ export class BusinessCentralDetailsAPI extends HaloPSA {
    * @summary List of BusinessCentralDetails
    * @description Use this to return multiple BusinessCentralDetails.<br>
 				Requires authentication.
-   * @param {string} companyid 
-   * @param {boolean} connectedonly 
+   * @param {string} [companyid] 
+   * @param {boolean} [connectedonly] 
    */
-  getBusinessCentralDetails(companyid: string, connectedonly: boolean): Promise<any> {
+  getBusinessCentralDetails({
+    companyid,
+    connectedonly,
+  }: {
+    companyid?: string
+    connectedonly?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/BusinessCentralDetails',
@@ -42,7 +48,11 @@ export class BusinessCentralDetailsAPI extends HaloPSA {
    * 
    
    */
-  postBusinessCentralDetails(businessCentralDetails: Array<BusinessCentralDetails>): Promise<any> {
+  postBusinessCentralDetails({
+    businessCentralDetails,
+  }: {
+    businessCentralDetails: Array<BusinessCentralDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/BusinessCentralDetails',
@@ -55,9 +65,15 @@ export class BusinessCentralDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of BusinessCentralDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getBusinessCentralDetailsById(id: number, includedetails: boolean): Promise<any> {
+  getBusinessCentralDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/BusinessCentralDetails/${id}`,
@@ -72,7 +88,7 @@ export class BusinessCentralDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteBusinessCentralDetailsById(id: number): Promise<any> {
+  deleteBusinessCentralDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/BusinessCentralDetails/${id}`,

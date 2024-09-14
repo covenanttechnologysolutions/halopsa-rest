@@ -24,7 +24,7 @@ export class TicketAreaAPI extends HaloPSA {
    * 
    
    */
-  getTicketArea(): Promise<any> {
+  getTicketArea({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TicketArea',
@@ -36,7 +36,7 @@ export class TicketAreaAPI extends HaloPSA {
    * 
    
    */
-  postTicketArea(ticketArea: Array<TicketArea>): Promise<any> {
+  postTicketArea({ ticketArea }: { ticketArea: Array<TicketArea> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/TicketArea',
@@ -49,9 +49,15 @@ export class TicketAreaAPI extends HaloPSA {
    * @description Use this to return a single instance of TicketArea.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getTicketAreaById(id: number, includedetails: boolean): Promise<any> {
+  getTicketAreaById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/TicketArea/${id}`,
@@ -66,7 +72,7 @@ export class TicketAreaAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteTicketAreaById(id: number): Promise<any> {
+  deleteTicketAreaById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/TicketArea/${id}`,

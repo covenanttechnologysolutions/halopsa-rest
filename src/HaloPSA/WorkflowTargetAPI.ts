@@ -24,7 +24,7 @@ export class WorkflowTargetAPI extends HaloPSA {
    * 
    
    */
-  getWorkflowTarget(): Promise<any> {
+  getWorkflowTarget({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/WorkflowTarget',
@@ -36,7 +36,7 @@ export class WorkflowTargetAPI extends HaloPSA {
    * 
    
    */
-  postWorkflowTarget(workflowTarget: Array<WorkflowTarget>): Promise<any> {
+  postWorkflowTarget({ workflowTarget }: { workflowTarget: Array<WorkflowTarget> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/WorkflowTarget',
@@ -49,7 +49,7 @@ export class WorkflowTargetAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getWorkflowTargetById(id: number): Promise<any> {
+  getWorkflowTargetById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/WorkflowTarget/${id}`,
@@ -61,7 +61,7 @@ export class WorkflowTargetAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteWorkflowTargetById(id: number): Promise<any> {
+  deleteWorkflowTargetById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/WorkflowTarget/${id}`,

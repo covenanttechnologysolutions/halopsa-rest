@@ -21,10 +21,16 @@ export class SearchAPI extends HaloPSA {
    * @summary List of Search
    * @description Use this to return multiple Search.<br>
 				Requires authentication.
-   * @param {number} count_per_entity 
-   * @param {string} search 
+   * @param {number} [count_per_entity] 
+   * @param {string} [search] 
    */
-  getSearch(count_per_entity: number, search: string): Promise<any> {
+  getSearch({
+    count_per_entity,
+    search,
+  }: {
+    count_per_entity?: number
+    search?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Search',

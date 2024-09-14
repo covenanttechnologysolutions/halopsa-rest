@@ -24,7 +24,11 @@ export class ImpersonationRequestAPI extends HaloPSA {
    * 
    
    */
-  postImpersonationRequest(impersonationRequest: ImpersonationRequest): Promise<any> {
+  postImpersonationRequest({
+    impersonationRequest,
+  }: {
+    impersonationRequest: ImpersonationRequest
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ImpersonationRequest',

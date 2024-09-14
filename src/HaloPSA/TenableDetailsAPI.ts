@@ -24,7 +24,7 @@ export class TenableDetailsAPI extends HaloPSA {
    * 
    
    */
-  getTenableDetails(): Promise<any> {
+  getTenableDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TenableDetails',
@@ -36,7 +36,7 @@ export class TenableDetailsAPI extends HaloPSA {
    * 
    
    */
-  postTenableDetails(tenableDetails: Array<TenableDetails>): Promise<any> {
+  postTenableDetails({ tenableDetails }: { tenableDetails: Array<TenableDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/TenableDetails',
@@ -49,7 +49,7 @@ export class TenableDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getTenableDetailsById(id: number): Promise<any> {
+  getTenableDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/TenableDetails/${id}`,
@@ -61,7 +61,7 @@ export class TenableDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteTenableDetailsById(id: number): Promise<any> {
+  deleteTenableDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/TenableDetails/${id}`,

@@ -22,7 +22,7 @@ export class TaskScheduleAPI extends HaloPSA {
    * 
    
    */
-  getTaskSchedule(): Promise<any> {
+  getTaskSchedule({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/TaskSchedule',
@@ -34,7 +34,7 @@ export class TaskScheduleAPI extends HaloPSA {
    * 
    
    */
-  postTaskSchedule(): Promise<any> {
+  postTaskSchedule({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/TaskSchedule',

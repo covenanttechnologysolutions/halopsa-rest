@@ -24,7 +24,7 @@ export class JamfDetailsAPI extends HaloPSA {
    * 
    
    */
-  getJamfDetails(): Promise<any> {
+  getJamfDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/JamfDetails',
@@ -36,7 +36,7 @@ export class JamfDetailsAPI extends HaloPSA {
    * 
    
    */
-  postJamfDetails(jamfDetails: Array<JamfDetails>): Promise<any> {
+  postJamfDetails({ jamfDetails }: { jamfDetails: Array<JamfDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/JamfDetails',
@@ -49,7 +49,7 @@ export class JamfDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getJamfDetailsById(id: number): Promise<any> {
+  getJamfDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/JamfDetails/${id}`,
@@ -61,7 +61,7 @@ export class JamfDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteJamfDetailsById(id: number): Promise<any> {
+  deleteJamfDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/JamfDetails/${id}`,

@@ -24,7 +24,7 @@ export class IntegrationConfigurationAPI extends HaloPSA {
    * 
    
    */
-  getIntegrationConfiguration(): Promise<any> {
+  getIntegrationConfiguration({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationConfiguration',
@@ -36,9 +36,11 @@ export class IntegrationConfigurationAPI extends HaloPSA {
    * 
    
    */
-  postIntegrationConfiguration(
-    integrationConfiguration: Array<IntegrationConfiguration>,
-  ): Promise<any> {
+  postIntegrationConfiguration({
+    integrationConfiguration,
+  }: {
+    integrationConfiguration: Array<IntegrationConfiguration>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IntegrationConfiguration',
@@ -51,9 +53,15 @@ export class IntegrationConfigurationAPI extends HaloPSA {
    * @description Use this to return a single instance of IntegrationConfiguration.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getIntegrationConfigurationById(id: number, includedetails: boolean): Promise<any> {
+  getIntegrationConfigurationById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/IntegrationConfiguration/${id}`,

@@ -23,9 +23,9 @@ export class InstanceAPI extends HaloPSA {
    * @summary List of Instance
    * @description Use this to return multiple Instance.<br>
 				Requires authentication.
-   * @param {number} comparewith 
+   * @param {number} [comparewith] 
    */
-  getInstance(comparewith: number): Promise<any> {
+  getInstance({ comparewith }: { comparewith?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Instance',
@@ -40,7 +40,7 @@ export class InstanceAPI extends HaloPSA {
    * 
    
    */
-  postInstance(instance: Array<Instance>): Promise<any> {
+  postInstance({ instance }: { instance: Array<Instance> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Instance',
@@ -53,7 +53,7 @@ export class InstanceAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getInstanceById(id: number): Promise<any> {
+  getInstanceById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Instance/${id}`,

@@ -24,7 +24,7 @@ export class IngramMicroDetailsAPI extends HaloPSA {
    * 
    
    */
-  getIngramMicroDetails(): Promise<any> {
+  getIngramMicroDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IngramMicroDetails',
@@ -36,7 +36,11 @@ export class IngramMicroDetailsAPI extends HaloPSA {
    * 
    
    */
-  postIngramMicroDetails(ingramMicroDetails: Array<IngramMicroDetails>): Promise<any> {
+  postIngramMicroDetails({
+    ingramMicroDetails,
+  }: {
+    ingramMicroDetails: Array<IngramMicroDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/IngramMicroDetails',
@@ -49,9 +53,15 @@ export class IngramMicroDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of IngramMicroDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getIngramMicroDetailsById(id: number, includedetails: boolean): Promise<any> {
+  getIngramMicroDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/IngramMicroDetails/${id}`,
@@ -66,7 +76,7 @@ export class IngramMicroDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteIngramMicroDetailsById(id: number): Promise<any> {
+  deleteIngramMicroDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/IngramMicroDetails/${id}`,

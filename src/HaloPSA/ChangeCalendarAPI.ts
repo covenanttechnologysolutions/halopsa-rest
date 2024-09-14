@@ -22,7 +22,7 @@ export class ChangeCalendarAPI extends HaloPSA {
    * 
    
    */
-  getChangeCalendar(): Promise<any> {
+  getChangeCalendar({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ChangeCalendar',

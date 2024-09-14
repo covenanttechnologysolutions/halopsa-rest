@@ -24,7 +24,7 @@ export class HaloDeviceInfoAPI extends HaloPSA {
    *
    * @param {string} id
    */
-  getHaloDeviceInfoById(id: string): Promise<any> {
+  getHaloDeviceInfoById({ id }: { id: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/HaloDeviceInfo/${id}`,
@@ -36,7 +36,7 @@ export class HaloDeviceInfoAPI extends HaloPSA {
    *
    * @param {string} id
    */
-  deleteHaloDeviceInfoById(id: string): Promise<any> {
+  deleteHaloDeviceInfoById({ id }: { id: string }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/HaloDeviceInfo/${id}`,
@@ -48,7 +48,7 @@ export class HaloDeviceInfoAPI extends HaloPSA {
    * 
    
    */
-  postHaloDeviceInfo(nHD_DeviceInfo: Array<NHD_DeviceInfo>): Promise<any> {
+  postHaloDeviceInfo({ nHD_DeviceInfo }: { nHD_DeviceInfo: Array<NHD_DeviceInfo> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/HaloDeviceInfo',

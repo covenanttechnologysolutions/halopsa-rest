@@ -23,34 +23,36 @@ export const DEFAULTS: {
   },
   logger:
     (debug = false) =>
-    (level, text, meta) => {
-      switch (level) {
-        case 'error':
-          console.error(`${level}: ${text}`, meta)
-          return
-        case 'warn':
-          if (debug) {
+      (level, text, meta) => {
+        switch (level) {
+          case 'error':
+            console.error(`${level}: ${text}`, meta)
+            return
+          case 'warn':
+            if (debug) {
+              console.log(`${level}: ${text}`, meta)
+            }
+            return
+          case 'info': {
+            if (debug) {
+              console.info(`${level}: ${text}`, meta)
+            }
+            return
+          }
+          default:
             console.log(`${level}: ${text}`, meta)
-          }
-          return
-        case 'info': {
-          if (debug) {
-            console.info(`${level}: ${text}`, meta)
-          }
-          return
+            return
         }
-        default:
-          console.log(`${level}: ${text}`, meta)
-          return
-      }
-    },
+      },
 }
 
 interface HaloToken {
+  scope: string
+  token_type: 'Bearer'
   access_token: string
-  data: {
-    expires_in: number
-  }
+  expires_in: number
+  refresh_token: string
+  id_token: string
 }
 
 export interface HaloOptions {
@@ -129,7 +131,7 @@ export default class HaloPSA {
    */
   request: (args: RequestOptions) => Promise<any>
 
-  constructor({
+  constructor ({
     clientSecret,
     companyUrl,
     clientId,
@@ -161,7 +163,7 @@ export default class HaloPSA {
 
     this.instance = axios.create({
       timeout,
-      baseURL: companyUrl,
+      baseURL: companyUrl + '/api',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.config.token?.access_token}`,
@@ -193,14 +195,14 @@ export default class HaloPSA {
   /**
    * @internal
    */
-  private async api({
+  private async api ({
     path,
     method,
     params,
     data,
   }: RequestOptions): Promise<ErrorResponse | DataResponse> {
     try {
-      const result = await this.instance({
+      const result = await this.instance.request({
         url: path,
         method,
         params,
@@ -222,7 +224,7 @@ export default class HaloPSA {
     }
   }
 
-  private async getToken() {
+  private async getToken (): Promise<HaloToken> {
     const params = new URLSearchParams()
     params.append('client_id', this.config.clientId)
     params.append('client_secret', this.config.clientSecret)

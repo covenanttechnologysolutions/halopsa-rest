@@ -22,7 +22,7 @@ export class AutomationAPI extends HaloPSA {
    * 
    
    */
-  getAutomation(): Promise<any> {
+  getAutomation({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Automation',
@@ -34,7 +34,7 @@ export class AutomationAPI extends HaloPSA {
    * 
    
    */
-  postAutomation(listNumber: number): Promise<any> {
+  postAutomation({ listNumber }: { listNumber: number }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Automation',
@@ -47,7 +47,7 @@ export class AutomationAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getAutomationById(id: number): Promise<any> {
+  getAutomationById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Automation/${id}`,
@@ -59,7 +59,7 @@ export class AutomationAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAutomationById(id: number): Promise<any> {
+  deleteAutomationById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Automation/${id}`,
@@ -71,7 +71,7 @@ export class AutomationAPI extends HaloPSA {
    *
    * @param {string} runbookId
    */
-  postAutomationrunbookId(runbookId: string): Promise<any> {
+  postAutomationrunbookId({ runbookId }: { runbookId: string }): Promise<any> {
     return this.request({
       method: 'post',
       path: `/Automation/${runbookId}`,

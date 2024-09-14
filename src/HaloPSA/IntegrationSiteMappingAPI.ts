@@ -21,15 +21,19 @@ export class IntegrationSiteMappingAPI extends HaloPSA {
    * @summary List of IntegrationSiteMapping
    * @description Use this to return multiple IntegrationSiteMapping.<br>
 				Requires authentication.
-   * @param {boolean} get_active_only 
-   * @param {number} msid 
-   * @param {string} third_party_client_id 
+   * @param {boolean} [get_active_only] 
+   * @param {number} [msid] 
+   * @param {string} [third_party_client_id] 
    */
-  getIntegrationSiteMapping(
-    get_active_only: boolean,
-    msid: number,
-    third_party_client_id: string,
-  ): Promise<any> {
+  getIntegrationSiteMapping({
+    get_active_only,
+    msid,
+    third_party_client_id,
+  }: {
+    get_active_only?: boolean
+    msid?: number
+    third_party_client_id?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegrationSiteMapping',

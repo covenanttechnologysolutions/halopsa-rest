@@ -24,7 +24,7 @@ export class SecurityQuestionAPI extends HaloPSA {
    * 
    
    */
-  getSecurityQuestion(): Promise<any> {
+  getSecurityQuestion({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SecurityQuestion',
@@ -36,7 +36,11 @@ export class SecurityQuestionAPI extends HaloPSA {
    * 
    
    */
-  postSecurityQuestion(securityQuestion: Array<SecurityQuestion>): Promise<any> {
+  postSecurityQuestion({
+    securityQuestion,
+  }: {
+    securityQuestion: Array<SecurityQuestion>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SecurityQuestion',
@@ -49,9 +53,15 @@ export class SecurityQuestionAPI extends HaloPSA {
    * @description Use this to return a single instance of SecurityQuestion.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getSecurityQuestionById(id: number, includedetails: boolean): Promise<any> {
+  getSecurityQuestionById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/SecurityQuestion/${id}`,
@@ -66,7 +76,7 @@ export class SecurityQuestionAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteSecurityQuestionById(id: number): Promise<any> {
+  deleteSecurityQuestionById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/SecurityQuestion/${id}`,

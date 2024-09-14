@@ -22,7 +22,7 @@ export class CABMemberAPI extends HaloPSA {
    * 
    
    */
-  getCABMember(): Promise<any> {
+  getCABMember({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/CABMember',

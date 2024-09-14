@@ -21,9 +21,9 @@ export class PagerdutymappingAPI extends HaloPSA {
    * @summary List of PagerDutyMapping
    * @description Use this to return multiple PagerDutyMapping.<br>
 				Requires authentication.
-   * @param {string} service_id 
+   * @param {string} [service_id] 
    */
-  getPagerdutymapping(service_id: string): Promise<any> {
+  getPagerdutymapping({ service_id }: { service_id?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/pagerdutymapping',

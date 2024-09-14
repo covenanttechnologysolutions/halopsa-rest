@@ -24,7 +24,7 @@ export class ToDoGroupAPI extends HaloPSA {
    * 
    
    */
-  getToDoGroup(): Promise<any> {
+  getToDoGroup({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ToDoGroup',
@@ -36,7 +36,7 @@ export class ToDoGroupAPI extends HaloPSA {
    * 
    
    */
-  postToDoGroup(toDoGroup: Array<ToDoGroup>): Promise<any> {
+  postToDoGroup({ toDoGroup }: { toDoGroup: Array<ToDoGroup> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ToDoGroup',
@@ -49,7 +49,7 @@ export class ToDoGroupAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getToDoGroupById(id: number): Promise<any> {
+  getToDoGroupById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ToDoGroup/${id}`,
@@ -61,7 +61,7 @@ export class ToDoGroupAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteToDoGroupById(id: number): Promise<any> {
+  deleteToDoGroupById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ToDoGroup/${id}`,

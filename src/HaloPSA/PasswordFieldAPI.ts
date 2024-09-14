@@ -24,7 +24,7 @@ export class PasswordFieldAPI extends HaloPSA {
    * 
    
    */
-  getPasswordField(): Promise<any> {
+  getPasswordField({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/PasswordField',
@@ -36,7 +36,11 @@ export class PasswordFieldAPI extends HaloPSA {
    * 
    
    */
-  postPasswordField(auditPasswordField: Array<AuditPasswordField>): Promise<any> {
+  postPasswordField({
+    auditPasswordField,
+  }: {
+    auditPasswordField: Array<AuditPasswordField>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/PasswordField',
@@ -49,9 +53,15 @@ export class PasswordFieldAPI extends HaloPSA {
    * @description Use this to return a single instance of AuditPasswordField.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getPasswordFieldById(id: number, includedetails: boolean): Promise<any> {
+  getPasswordFieldById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/PasswordField/${id}`,

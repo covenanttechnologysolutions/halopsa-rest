@@ -21,9 +21,9 @@ export class AzureadmappingAPI extends HaloPSA {
    * @summary List of AzureADMapping
    * @description Use this to return multiple AzureADMapping.<br>
 				Requires authentication.
-   * @param {number} connection_id 
+   * @param {number} [connection_id] 
    */
-  getAzureadmapping(connection_id: number): Promise<any> {
+  getAzureadmapping({ connection_id }: { connection_id?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/azureadmapping',

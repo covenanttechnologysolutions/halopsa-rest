@@ -24,7 +24,7 @@ export class ExternalChatMessageAPI extends HaloPSA {
    * 
    
    */
-  getExternalChatMessage(): Promise<any> {
+  getExternalChatMessage({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ExternalChatMessage',
@@ -36,7 +36,11 @@ export class ExternalChatMessageAPI extends HaloPSA {
    * 
    
    */
-  postExternalChatMessage(teamsChatMessage_List: Array<TeamsChatMessage_List>): Promise<any> {
+  postExternalChatMessage({
+    teamsChatMessage_List,
+  }: {
+    teamsChatMessage_List: Array<TeamsChatMessage_List>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ExternalChatMessage',
@@ -49,7 +53,7 @@ export class ExternalChatMessageAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getExternalChatMessageById(id: number): Promise<any> {
+  getExternalChatMessageById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ExternalChatMessage/${id}`,
@@ -61,7 +65,7 @@ export class ExternalChatMessageAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteExternalChatMessageById(id: number): Promise<any> {
+  deleteExternalChatMessageById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ExternalChatMessage/${id}`,

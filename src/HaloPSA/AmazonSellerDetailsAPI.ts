@@ -24,7 +24,7 @@ export class AmazonSellerDetailsAPI extends HaloPSA {
    * 
    
    */
-  getAmazonSellerDetails(): Promise<any> {
+  getAmazonSellerDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/AmazonSellerDetails',
@@ -36,7 +36,11 @@ export class AmazonSellerDetailsAPI extends HaloPSA {
    * 
    
    */
-  postAmazonSellerDetails(amazonSellerDetails: Array<AmazonSellerDetails>): Promise<any> {
+  postAmazonSellerDetails({
+    amazonSellerDetails,
+  }: {
+    amazonSellerDetails: Array<AmazonSellerDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/AmazonSellerDetails',
@@ -49,7 +53,7 @@ export class AmazonSellerDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getAmazonSellerDetailsById(id: number): Promise<any> {
+  getAmazonSellerDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/AmazonSellerDetails/${id}`,
@@ -61,7 +65,7 @@ export class AmazonSellerDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAmazonSellerDetailsById(id: number): Promise<any> {
+  deleteAmazonSellerDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/AmazonSellerDetails/${id}`,

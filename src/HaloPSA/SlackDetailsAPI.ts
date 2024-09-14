@@ -23,19 +23,25 @@ export class SlackDetailsAPI extends HaloPSA {
    * @summary List of SlackDetails
    * @description Use this to return multiple SlackDetails.<br>
 				Requires authentication.
-   * @param {string} agent_id 
-   * @param {string} channel_name 
-   * @param {string} includedisabled 
-   * @param {string} includeenabled 
-   * @param {string} team_name 
+   * @param {string} [agent_id] 
+   * @param {string} [channel_name] 
+   * @param {string} [includedisabled] 
+   * @param {string} [includeenabled] 
+   * @param {string} [team_name] 
    */
-  getSlackDetails(
-    agent_id: string,
-    channel_name: string,
-    includedisabled: string,
-    includeenabled: string,
-    team_name: string,
-  ): Promise<any> {
+  getSlackDetails({
+    agent_id,
+    channel_name,
+    includedisabled,
+    includeenabled,
+    team_name,
+  }: {
+    agent_id?: string
+    channel_name?: string
+    includedisabled?: string
+    includeenabled?: string
+    team_name?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SlackDetails',
@@ -54,7 +60,7 @@ export class SlackDetailsAPI extends HaloPSA {
    * 
    
    */
-  postSlackDetails(slackDetails: Array<SlackDetails>): Promise<any> {
+  postSlackDetails({ slackDetails }: { slackDetails: Array<SlackDetails> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SlackDetails',
@@ -67,9 +73,15 @@ export class SlackDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of SlackDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getSlackDetailsById(id: number, includedetails: boolean): Promise<any> {
+  getSlackDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/SlackDetails/${id}`,
@@ -84,7 +96,7 @@ export class SlackDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteSlackDetailsById(id: number): Promise<any> {
+  deleteSlackDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/SlackDetails/${id}`,
@@ -96,7 +108,7 @@ export class SlackDetailsAPI extends HaloPSA {
    * 
    
    */
-  postSlackDetailsUninstall(slackDetails: SlackDetails): Promise<any> {
+  postSlackDetailsUninstall({ slackDetails }: { slackDetails: SlackDetails }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/SlackDetails/Uninstall',

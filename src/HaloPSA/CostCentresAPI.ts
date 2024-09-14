@@ -24,7 +24,7 @@ export class CostCentresAPI extends HaloPSA {
    * 
    
    */
-  getCostCentres(): Promise<any> {
+  getCostCentres({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/CostCentres',
@@ -36,7 +36,7 @@ export class CostCentresAPI extends HaloPSA {
    * 
    
    */
-  postCostCentres(costcentres: Array<Costcentres>): Promise<any> {
+  postCostCentres({ costcentres }: { costcentres: Array<Costcentres> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/CostCentres',
@@ -49,9 +49,15 @@ export class CostCentresAPI extends HaloPSA {
    * @description Use this to return a single instance of Costcentres.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getCostCentresById(id: number, includedetails: boolean): Promise<any> {
+  getCostCentresById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/CostCentres/${id}`,
@@ -66,7 +72,7 @@ export class CostCentresAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteCostCentresById(id: number): Promise<any> {
+  deleteCostCentresById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/CostCentres/${id}`,

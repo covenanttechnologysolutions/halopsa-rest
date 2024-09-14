@@ -23,9 +23,9 @@ export class NCentralDetailsAPI extends HaloPSA {
    * @summary List of NCentralDetails
    * @description Use this to return multiple NCentralDetails.<br>
 				Requires authentication.
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getNCentralDetails(includedetails: boolean): Promise<any> {
+  getNCentralDetails({ includedetails }: { includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/NCentralDetails',
@@ -40,7 +40,11 @@ export class NCentralDetailsAPI extends HaloPSA {
    * 
    
    */
-  postNCentralDetails(nCentralDetails: Array<NCentralDetails>): Promise<any> {
+  postNCentralDetails({
+    nCentralDetails,
+  }: {
+    nCentralDetails: Array<NCentralDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/NCentralDetails',
@@ -53,9 +57,15 @@ export class NCentralDetailsAPI extends HaloPSA {
    * @description Use this to return a single instance of NCentralDetails.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getNCentralDetailsById(id: number, includedetails: boolean): Promise<any> {
+  getNCentralDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/NCentralDetails/${id}`,
@@ -70,7 +80,7 @@ export class NCentralDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteNCentralDetailsById(id: number): Promise<any> {
+  deleteNCentralDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/NCentralDetails/${id}`,

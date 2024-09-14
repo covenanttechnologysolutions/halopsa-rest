@@ -24,7 +24,7 @@ export class ReleaseTypeAPI extends HaloPSA {
    * 
    
    */
-  getReleaseType(): Promise<any> {
+  getReleaseType({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ReleaseType',
@@ -36,7 +36,7 @@ export class ReleaseTypeAPI extends HaloPSA {
    * 
    
    */
-  postReleaseType(releaseType: Array<ReleaseType>): Promise<any> {
+  postReleaseType({ releaseType }: { releaseType: Array<ReleaseType> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ReleaseType',
@@ -49,9 +49,15 @@ export class ReleaseTypeAPI extends HaloPSA {
    * @description Use this to return a single instance of ReleaseType.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getReleaseTypeById(id: number, includedetails: boolean): Promise<any> {
+  getReleaseTypeById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ReleaseType/${id}`,
@@ -66,7 +72,7 @@ export class ReleaseTypeAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteReleaseTypeById(id: number): Promise<any> {
+  deleteReleaseTypeById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ReleaseType/${id}`,

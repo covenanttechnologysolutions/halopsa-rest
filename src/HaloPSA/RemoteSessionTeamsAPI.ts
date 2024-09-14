@@ -21,10 +21,16 @@ export class RemoteSessionTeamsAPI extends HaloPSA {
    * @summary List of RemoteSessionTeams
    * @description Use this to return multiple RemoteSessionTeams.<br>
 				Requires authentication.
-   * @param {boolean} includeenabled 
-   * @param {string} msid 
+   * @param {boolean} [includeenabled] 
+   * @param {string} [msid] 
    */
-  getRemoteSessionTeams(includeenabled: boolean, msid: string): Promise<any> {
+  getRemoteSessionTeams({
+    includeenabled,
+    msid,
+  }: {
+    includeenabled?: boolean
+    msid?: string
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/RemoteSessionTeams',

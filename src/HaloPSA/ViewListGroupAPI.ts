@@ -23,9 +23,9 @@ export class ViewListGroupAPI extends HaloPSA {
    * @summary List of ViewListGroup
    * @description Use this to return multiple ViewListGroup.<br>
 				Requires authentication.
-   * @param {string} type 
+   * @param {string} [type] 
    */
-  getViewListGroup(type: string): Promise<any> {
+  getViewListGroup({ type }: { type?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ViewListGroup',
@@ -40,7 +40,7 @@ export class ViewListGroupAPI extends HaloPSA {
    * 
    
    */
-  postViewListGroup(viewListGroup: Array<ViewListGroup>): Promise<any> {
+  postViewListGroup({ viewListGroup }: { viewListGroup: Array<ViewListGroup> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ViewListGroup',
@@ -53,9 +53,15 @@ export class ViewListGroupAPI extends HaloPSA {
    * @description Use this to return a single instance of ViewListGroup.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getViewListGroupById(id: number, includedetails: boolean): Promise<any> {
+  getViewListGroupById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ViewListGroup/${id}`,
@@ -70,7 +76,7 @@ export class ViewListGroupAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteViewListGroupById(id: number): Promise<any> {
+  deleteViewListGroupById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ViewListGroup/${id}`,

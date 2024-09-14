@@ -23,21 +23,28 @@ export class CategoryAPI extends HaloPSA {
    * @summary List of CategoryDetail
    * @description Use this to return multiple CategoryDetail.<br>
 				Requires authentication.
-   * @param {number} client_id 
-   * @param {number} service_id 
-   * @param {number} team_id 
-   * @param {string} team_name 
-   * @param {number} tickettype_id 
-   * @param {number} type_id 
+   * @param {number} [client_id] 
+   * @param {number} [service_id] 
+   * @param {number} [team_id] 
+   * @param {string} [team_name] 
+   * @param {number} [tickettype_id] 
+   * @param {number} [type_id] 
    */
-  getCategory(
-    client_id: number,
-    service_id: number,
-    team_id: number,
-    team_name: string,
-    tickettype_id: number,
-    type_id: number,
-  ): Promise<any> {
+  getCategory({
+    client_id,
+    service_id,
+    team_id,
+    team_name,
+    tickettype_id,
+    type_id,
+  }: {
+    client_id?: number
+    service_id?: number
+    team_id?: number
+    team_name?: string
+    tickettype_id?: number
+    type_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Category',
@@ -57,7 +64,7 @@ export class CategoryAPI extends HaloPSA {
    * 
    
    */
-  postCategory(categoryDetail: Array<CategoryDetail>): Promise<any> {
+  postCategory({ categoryDetail }: { categoryDetail: Array<CategoryDetail> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Category',
@@ -70,9 +77,9 @@ export class CategoryAPI extends HaloPSA {
    * @description Use this to return a single instance of CategoryDetail.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getCategoryById(id: number, includedetails: boolean): Promise<any> {
+  getCategoryById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Category/${id}`,
@@ -87,7 +94,7 @@ export class CategoryAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteCategoryById(id: number): Promise<any> {
+  deleteCategoryById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Category/${id}`,

@@ -24,9 +24,15 @@ export class FaultsForecastingAPI extends HaloPSA {
    * @description Use this to return a single instance of FaultsForecasting.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getFaultsForecastingById(id: number, includedetails: boolean): Promise<any> {
+  getFaultsForecastingById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/FaultsForecasting/${id}`,
@@ -41,7 +47,11 @@ export class FaultsForecastingAPI extends HaloPSA {
    * 
    
    */
-  postFaultsForecasting(faultsForecasting: Array<FaultsForecasting>): Promise<any> {
+  postFaultsForecasting({
+    faultsForecasting,
+  }: {
+    faultsForecasting: Array<FaultsForecasting>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/FaultsForecasting',

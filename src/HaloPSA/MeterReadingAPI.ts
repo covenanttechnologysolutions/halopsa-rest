@@ -23,21 +23,28 @@ export class MeterReadingAPI extends HaloPSA {
    * @summary List of DeviceMeterReading
    * @description Use this to return multiple DeviceMeterReading.<br>
 				Requires authentication.
-   * @param {number} asset_id 
-   * @param {number} count 
-   * @param {number} page_no 
-   * @param {number} page_size 
-   * @param {boolean} pageinate 
-   * @param {number} recurringinvoice_line_id 
+   * @param {number} [asset_id] 
+   * @param {number} [count] 
+   * @param {number} [page_no] 
+   * @param {number} [page_size] 
+   * @param {boolean} [pageinate] 
+   * @param {number} [recurringinvoice_line_id] 
    */
-  getMeterReading(
-    asset_id: number,
-    count: number,
-    page_no: number,
-    page_size: number,
-    pageinate: boolean,
-    recurringinvoice_line_id: number,
-  ): Promise<any> {
+  getMeterReading({
+    asset_id,
+    count,
+    page_no,
+    page_size,
+    pageinate,
+    recurringinvoice_line_id,
+  }: {
+    asset_id?: number
+    count?: number
+    page_no?: number
+    page_size?: number
+    pageinate?: boolean
+    recurringinvoice_line_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/MeterReading',
@@ -57,7 +64,11 @@ export class MeterReadingAPI extends HaloPSA {
    * 
    
    */
-  postMeterReading(deviceMeterReading: Array<DeviceMeterReading>): Promise<any> {
+  postMeterReading({
+    deviceMeterReading,
+  }: {
+    deviceMeterReading: Array<DeviceMeterReading>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/MeterReading',
@@ -70,9 +81,15 @@ export class MeterReadingAPI extends HaloPSA {
    * @description Use this to return a single instance of DeviceMeterReading.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getMeterReadingById(id: number, includedetails: boolean): Promise<any> {
+  getMeterReadingById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/MeterReading/${id}`,

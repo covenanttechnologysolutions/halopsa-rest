@@ -23,9 +23,9 @@ export class LDAPConnectionAPI extends HaloPSA {
    * @summary List of LDAPConnection
    * @description Use this to return multiple LDAPConnection.<br>
 				Requires authentication.
-   * @param {string} clientidoverride 
+   * @param {string} [clientidoverride] 
    */
-  getLDAPConnection(clientidoverride: string): Promise<any> {
+  getLDAPConnection({ clientidoverride }: { clientidoverride?: string }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/LDAPConnection',
@@ -40,7 +40,7 @@ export class LDAPConnectionAPI extends HaloPSA {
    * 
    
    */
-  postLDAPConnection(lDAPConnection: Array<LDAPConnection>): Promise<any> {
+  postLDAPConnection({ lDAPConnection }: { lDAPConnection: Array<LDAPConnection> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/LDAPConnection',
@@ -53,14 +53,18 @@ export class LDAPConnectionAPI extends HaloPSA {
    * @description Use this to return a single instance of LDAPConnection.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {string} clientidoverride 
-   * @param {boolean} includedetails 
+   * @param {string} [clientidoverride] 
+   * @param {boolean} [includedetails] 
    */
-  getLDAPConnectionById(
-    id: number,
-    clientidoverride: string,
-    includedetails: boolean,
-  ): Promise<any> {
+  getLDAPConnectionById({
+    id,
+    clientidoverride,
+    includedetails,
+  }: {
+    id: number
+    clientidoverride?: string
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/LDAPConnection/${id}`,
@@ -76,7 +80,7 @@ export class LDAPConnectionAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteLDAPConnectionById(id: number): Promise<any> {
+  deleteLDAPConnectionById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/LDAPConnection/${id}`,

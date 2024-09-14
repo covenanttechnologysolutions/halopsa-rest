@@ -23,21 +23,28 @@ export class MailboxAPI extends HaloPSA {
    * @summary List of Mailbox
    * @description Use this to return multiple Mailbox.<br>
 				Requires authentication.
-   * @param {number} department_id 
-   * @param {boolean} from_addresses 
-   * @param {boolean} ignore_default 
-   * @param {number} organisation_id 
-   * @param {boolean} showall 
-   * @param {number} team_id 
+   * @param {number} [department_id] 
+   * @param {boolean} [from_addresses] 
+   * @param {boolean} [ignore_default] 
+   * @param {number} [organisation_id] 
+   * @param {boolean} [showall] 
+   * @param {number} [team_id] 
    */
-  getMailbox(
-    department_id: number,
-    from_addresses: boolean,
-    ignore_default: boolean,
-    organisation_id: number,
-    showall: boolean,
-    team_id: number,
-  ): Promise<any> {
+  getMailbox({
+    department_id,
+    from_addresses,
+    ignore_default,
+    organisation_id,
+    showall,
+    team_id,
+  }: {
+    department_id?: number
+    from_addresses?: boolean
+    ignore_default?: boolean
+    organisation_id?: number
+    showall?: boolean
+    team_id?: number
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Mailbox',
@@ -57,7 +64,7 @@ export class MailboxAPI extends HaloPSA {
    * 
    
    */
-  postMailbox(mailbox: Array<Mailbox>): Promise<any> {
+  postMailbox({ mailbox }: { mailbox: Array<Mailbox> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Mailbox',
@@ -70,10 +77,18 @@ export class MailboxAPI extends HaloPSA {
    * @description Use this to return a single instance of Mailbox.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
-   * @param {boolean} includeglobalsmtp 
+   * @param {boolean} [includedetails] 
+   * @param {boolean} [includeglobalsmtp] 
    */
-  getMailboxById(id: number, includedetails: boolean, includeglobalsmtp: boolean): Promise<any> {
+  getMailboxById({
+    id,
+    includedetails,
+    includeglobalsmtp,
+  }: {
+    id: number
+    includedetails?: boolean
+    includeglobalsmtp?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Mailbox/${id}`,
@@ -89,7 +104,7 @@ export class MailboxAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteMailboxById(id: number): Promise<any> {
+  deleteMailboxById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Mailbox/${id}`,

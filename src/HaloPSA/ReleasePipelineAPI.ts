@@ -24,7 +24,7 @@ export class ReleasePipelineAPI extends HaloPSA {
    * 
    
    */
-  getReleasePipeline(): Promise<any> {
+  getReleasePipeline({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ReleasePipeline',
@@ -36,7 +36,11 @@ export class ReleasePipelineAPI extends HaloPSA {
    * 
    
    */
-  postReleasePipeline(releasePipeline: Array<ReleasePipeline>): Promise<any> {
+  postReleasePipeline({
+    releasePipeline,
+  }: {
+    releasePipeline: Array<ReleasePipeline>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/ReleasePipeline',
@@ -49,7 +53,7 @@ export class ReleasePipelineAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getReleasePipelineById(id: number): Promise<any> {
+  getReleasePipelineById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ReleasePipeline/${id}`,
@@ -61,7 +65,7 @@ export class ReleasePipelineAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteReleasePipelineById(id: number): Promise<any> {
+  deleteReleasePipelineById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/ReleasePipeline/${id}`,

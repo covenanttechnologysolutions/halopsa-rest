@@ -21,9 +21,9 @@ export class BookingTypeAPI extends HaloPSA {
    * @summary List of BookingType
    * @description Use this to return multiple BookingType.<br>
 				Requires authentication.
-   * @param {number} type 
+   * @param {number} [type] 
    */
-  getBookingType(type: number): Promise<any> {
+  getBookingType({ type }: { type?: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/BookingType',

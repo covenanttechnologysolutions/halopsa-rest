@@ -21,10 +21,16 @@ export class RecurringItemAPI extends HaloPSA {
    * @summary List of AreaItem
    * @description Use this to return multiple AreaItem.<br>
 				Requires authentication.
-   * @param {number} client_id 
-   * @param {boolean} pending_recurring_invoice 
+   * @param {number} [client_id] 
+   * @param {boolean} [pending_recurring_invoice] 
    */
-  getRecurringItem(client_id: number, pending_recurring_invoice: boolean): Promise<any> {
+  getRecurringItem({
+    client_id,
+    pending_recurring_invoice,
+  }: {
+    client_id?: number
+    pending_recurring_invoice?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/RecurringItem',

@@ -24,7 +24,7 @@ export class AuditAPI extends HaloPSA {
    * 
    
    */
-  getAudit(): Promise<any> {
+  getAudit({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Audit',
@@ -36,7 +36,7 @@ export class AuditAPI extends HaloPSA {
    * 
    
    */
-  postAudit(audit: Array<Audit>): Promise<any> {
+  postAudit({ audit }: { audit: Array<Audit> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Audit',
@@ -49,9 +49,9 @@ export class AuditAPI extends HaloPSA {
    * @description Use this to return a single instance of Audit.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getAuditById(id: number, includedetails: boolean): Promise<any> {
+  getAuditById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/Audit/${id}`,
@@ -66,7 +66,7 @@ export class AuditAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteAuditById(id: number): Promise<any> {
+  deleteAuditById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/Audit/${id}`,

@@ -24,7 +24,7 @@ export class OnlineStatusAPI extends HaloPSA {
    * 
    
    */
-  getOnlineStatus(): Promise<any> {
+  getOnlineStatus({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/OnlineStatus',
@@ -36,7 +36,7 @@ export class OnlineStatusAPI extends HaloPSA {
    * 
    
    */
-  postOnlineStatus(onlineStatus: Array<OnlineStatus>): Promise<any> {
+  postOnlineStatus({ onlineStatus }: { onlineStatus: Array<OnlineStatus> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/OnlineStatus',

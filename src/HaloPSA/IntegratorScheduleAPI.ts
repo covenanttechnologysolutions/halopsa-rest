@@ -21,11 +21,19 @@ export class IntegratorScheduleAPI extends HaloPSA {
    * @summary List of IntegratorSchedule
    * @description Use this to return multiple IntegratorSchedule.<br>
 				Requires authentication.
-   * @param {number} page_no 
-   * @param {number} page_size 
-   * @param {boolean} pageinate 
+   * @param {number} [page_no] 
+   * @param {number} [page_size] 
+   * @param {boolean} [pageinate] 
    */
-  getIntegratorSchedule(page_no: number, page_size: number, pageinate: boolean): Promise<any> {
+  getIntegratorSchedule({
+    page_no,
+    page_size,
+    pageinate,
+  }: {
+    page_no?: number
+    page_size?: number
+    pageinate?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegratorSchedule',

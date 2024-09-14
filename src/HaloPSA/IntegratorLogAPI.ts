@@ -21,17 +21,22 @@ export class IntegratorLogAPI extends HaloPSA {
    * @summary List of IntegratorLog
    * @description Use this to return multiple IntegratorLog.<br>
 				Requires authentication.
-   * @param {number} module_id 
-   * @param {number} page_no 
-   * @param {number} page_size 
-   * @param {boolean} pageinate 
+   * @param {number} [module_id] 
+   * @param {number} [page_no] 
+   * @param {number} [page_size] 
+   * @param {boolean} [pageinate] 
    */
-  getIntegratorLog(
-    module_id: number,
-    page_no: number,
-    page_size: number,
-    pageinate: boolean,
-  ): Promise<any> {
+  getIntegratorLog({
+    module_id,
+    page_no,
+    page_size,
+    pageinate,
+  }: {
+    module_id?: number
+    page_no?: number
+    page_size?: number
+    pageinate?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/IntegratorLog',

@@ -24,7 +24,7 @@ export class WordpressOrgDetailsAPI extends HaloPSA {
    * 
    
    */
-  getWordpressOrgDetails(): Promise<any> {
+  getWordpressOrgDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/WordpressOrgDetails',
@@ -36,7 +36,11 @@ export class WordpressOrgDetailsAPI extends HaloPSA {
    * 
    
    */
-  postWordpressOrgDetails(wordpressOrgDetails: Array<WordpressOrgDetails>): Promise<any> {
+  postWordpressOrgDetails({
+    wordpressOrgDetails,
+  }: {
+    wordpressOrgDetails: Array<WordpressOrgDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/WordpressOrgDetails',
@@ -49,7 +53,7 @@ export class WordpressOrgDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getWordpressOrgDetailsById(id: number): Promise<any> {
+  getWordpressOrgDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/WordpressOrgDetails/${id}`,
@@ -61,7 +65,7 @@ export class WordpressOrgDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteWordpressOrgDetailsById(id: number): Promise<any> {
+  deleteWordpressOrgDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/WordpressOrgDetails/${id}`,

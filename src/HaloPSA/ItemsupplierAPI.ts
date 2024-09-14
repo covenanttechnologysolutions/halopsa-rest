@@ -24,7 +24,7 @@ export class ItemsupplierAPI extends HaloPSA {
    * 
    
    */
-  getItemsupplier(): Promise<any> {
+  getItemsupplier({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/itemsupplier',
@@ -36,7 +36,7 @@ export class ItemsupplierAPI extends HaloPSA {
    * 
    
    */
-  postItemsupplier(itemSupplier: Array<ItemSupplier>): Promise<any> {
+  postItemsupplier({ itemSupplier }: { itemSupplier: Array<ItemSupplier> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/itemsupplier',
@@ -49,9 +49,15 @@ export class ItemsupplierAPI extends HaloPSA {
    * @description Use this to return a single instance of ItemSupplier.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getItemsupplierById(id: number, includedetails: boolean): Promise<any> {
+  getItemsupplierById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/itemsupplier/${id}`,
@@ -66,7 +72,7 @@ export class ItemsupplierAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteItemsupplierById(id: number): Promise<any> {
+  deleteItemsupplierById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/itemsupplier/${id}`,

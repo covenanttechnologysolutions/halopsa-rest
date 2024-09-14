@@ -22,7 +22,7 @@ export class BackgroundTaskAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getBackgroundTaskById(id: number): Promise<any> {
+  getBackgroundTaskById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/BackgroundTask/${id}`,

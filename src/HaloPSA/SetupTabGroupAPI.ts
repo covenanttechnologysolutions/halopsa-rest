@@ -22,7 +22,7 @@ export class SetupTabGroupAPI extends HaloPSA {
    * 
    
    */
-  getSetupTabGroup(): Promise<any> {
+  getSetupTabGroup({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/SetupTabGroup',
@@ -34,9 +34,15 @@ export class SetupTabGroupAPI extends HaloPSA {
    * @description Use this to return a single instance of SetupTabGroup.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getSetupTabGroupById(id: number, includedetails: boolean): Promise<any> {
+  getSetupTabGroupById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/SetupTabGroup/${id}`,

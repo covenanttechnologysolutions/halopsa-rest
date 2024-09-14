@@ -24,7 +24,7 @@ export class ControlAPI extends HaloPSA {
    * 
    
    */
-  getControl(): Promise<any> {
+  getControl({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Control',
@@ -36,7 +36,7 @@ export class ControlAPI extends HaloPSA {
    * 
    
    */
-  postControl(control: Array<Control>): Promise<any> {
+  postControl({ control }: { control: Array<Control> }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Control',
@@ -49,7 +49,7 @@ export class ControlAPI extends HaloPSA {
    * 
    
    */
-  postControlSetup(): Promise<any> {
+  postControlSetup({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Control/setup',
@@ -61,7 +61,7 @@ export class ControlAPI extends HaloPSA {
    * 
    
    */
-  postControlClearCache(): Promise<any> {
+  postControlClearCache({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Control/ClearCache',
@@ -73,7 +73,7 @@ export class ControlAPI extends HaloPSA {
    * 
    
    */
-  postControlUpdateEnc(): Promise<any> {
+  postControlUpdateEnc({}: {}): Promise<any> {
     return this.request({
       method: 'post',
       path: '/Control/UpdateEnc',
@@ -85,7 +85,7 @@ export class ControlAPI extends HaloPSA {
    * 
    
    */
-  getControlTeams(): Promise<any> {
+  getControlTeams({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/Control/Teams',

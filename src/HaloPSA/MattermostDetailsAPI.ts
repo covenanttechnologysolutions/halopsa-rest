@@ -24,7 +24,7 @@ export class MattermostDetailsAPI extends HaloPSA {
    * 
    
    */
-  getMattermostDetails(): Promise<any> {
+  getMattermostDetails({}: {}): Promise<any> {
     return this.request({
       method: 'get',
       path: '/MattermostDetails',
@@ -36,7 +36,11 @@ export class MattermostDetailsAPI extends HaloPSA {
    * 
    
    */
-  postMattermostDetails(mattermostDetails: Array<MattermostDetails>): Promise<any> {
+  postMattermostDetails({
+    mattermostDetails,
+  }: {
+    mattermostDetails: Array<MattermostDetails>
+  }): Promise<any> {
     return this.request({
       method: 'post',
       path: '/MattermostDetails',
@@ -49,7 +53,7 @@ export class MattermostDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  getMattermostDetailsById(id: number): Promise<any> {
+  getMattermostDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/MattermostDetails/${id}`,
@@ -61,7 +65,7 @@ export class MattermostDetailsAPI extends HaloPSA {
    *
    * @param {number} id
    */
-  deleteMattermostDetailsById(id: number): Promise<any> {
+  deleteMattermostDetailsById({ id }: { id: number }): Promise<any> {
     return this.request({
       method: 'delete',
       path: `/MattermostDetails/${id}`,

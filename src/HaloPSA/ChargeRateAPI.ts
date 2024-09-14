@@ -21,19 +21,25 @@ export class ChargeRateAPI extends HaloPSA {
    * @summary List of ChargeRate
    * @description Use this to return multiple ChargeRate.<br>
 				Requires authentication.
-   * @param {number} chargerate_id 
-   * @param {number} client_id 
-   * @param {number} contract_id 
-   * @param {boolean} currentonly 
-   * @param {boolean} globalonly 
+   * @param {number} [chargerate_id] 
+   * @param {number} [client_id] 
+   * @param {number} [contract_id] 
+   * @param {boolean} [currentonly] 
+   * @param {boolean} [globalonly] 
    */
-  getChargeRate(
-    chargerate_id: number,
-    client_id: number,
-    contract_id: number,
-    currentonly: boolean,
-    globalonly: boolean,
-  ): Promise<any> {
+  getChargeRate({
+    chargerate_id,
+    client_id,
+    contract_id,
+    currentonly,
+    globalonly,
+  }: {
+    chargerate_id?: number
+    client_id?: number
+    contract_id?: number
+    currentonly?: boolean
+    globalonly?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: '/ChargeRate',
@@ -52,9 +58,15 @@ export class ChargeRateAPI extends HaloPSA {
    * @description Use this to return a single instance of ChargeRate.<br>
 				Requires authentication.
    * @param {number} id 
-   * @param {boolean} includedetails 
+   * @param {boolean} [includedetails] 
    */
-  getChargeRateById(id: number, includedetails: boolean): Promise<any> {
+  getChargeRateById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<any> {
     return this.request({
       method: 'get',
       path: `/ChargeRate/${id}`,
