@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Instance} */
 export type Instance = schemas['Instance']
@@ -14,49 +13,24 @@ export type Instance = schemas['Instance']
  * Instance module
  * @public
  */
-export class InstanceAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class InstanceAPI extends BaseAPI {
   /**
    * @summary List of Instance
-   * @description Use this to return multiple Instance.<br>
-				Requires authentication.
-   * @param {number} [comparewith] 
+   * @description Use this to return multiple Instance. Requires authentication.
+   * @param {number} [comparewith]
    */
-  getInstance({ comparewith }: { comparewith?: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Instance',
-      params: {
-        comparewith,
-      },
-    })
+  getInstance({ comparewith }: { comparewith?: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Instance', params: { comparewith } })
+  }
+
+  postInstance({ instanceList }: { instanceList: Array<Instance> }): Promise<Instance> {
+    return this.request({ method: 'post', data: instanceList, path: '/Instance' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  postInstance({ instance }: { instance: Array<Instance> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Instance',
-      data: instance,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  getInstanceById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/Instance/${id}`,
-    })
+  getInstanceById({ id }: { id: number }): Promise<Instance> {
+    return this.request({ method: 'get', path: `/Instance/${id}` })
   }
 }

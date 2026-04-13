@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module AreaAzureTenantAPI
@@ -12,22 +9,17 @@ type schemas = components['schemas']
  * AreaAzureTenant module
  * @public
  */
-export class AreaAzureTenantAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class AreaAzureTenantAPI extends BaseAPI {
   /**
    * @summary List of AreaAzureTenant
-   * @description Use this to return multiple AreaAzureTenant.<br>
-				Requires authentication.
-   * @param {string} [azure_tenant_id] 
-   * @param {number} [client_id] 
-   * @param {number} [details_id] 
-   * @param {boolean} [ignore_decrypt] 
-   * @param {boolean} [notset] 
-   * @param {boolean} [returnalliflinked] 
-   * @param {number} [site_id] 
+   * @description Use this to return multiple AreaAzureTenant. Requires authentication.
+   * @param {string} [azure_tenant_id]
+   * @param {number} [client_id]
+   * @param {number} [details_id]
+   * @param {boolean} [ignore_decrypt]
+   * @param {boolean} [notset]
+   * @param {boolean} [returnalliflinked]
+   * @param {number} [site_id]
    */
   getAreaAzureTenant({
     azure_tenant_id,
@@ -45,7 +37,7 @@ export class AreaAzureTenantAPI extends HaloPSA {
     notset?: boolean
     returnalliflinked?: boolean
     site_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/AreaAzureTenant',

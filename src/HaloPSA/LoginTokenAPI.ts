@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link LoginToken} */
 export type LoginToken = schemas['LoginToken']
@@ -14,21 +13,8 @@ export type LoginToken = schemas['LoginToken']
  * LoginToken module
  * @public
  */
-export class LoginTokenAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postLoginToken({ loginToken }: { loginToken: LoginToken }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/LoginToken',
-      data: loginToken,
-    })
+export class LoginTokenAPI extends BaseAPI {
+  postLoginToken({ loginToken }: { loginToken: LoginToken }): Promise<LoginToken> {
+    return this.request({ method: 'post', data: loginToken, path: '/LoginToken' })
   }
 }

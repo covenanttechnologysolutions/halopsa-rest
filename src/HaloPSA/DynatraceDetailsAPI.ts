@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link DynatraceDetails} */
 export type DynatraceDetails = schemas['DynatraceDetails']
@@ -14,61 +13,30 @@ export type DynatraceDetails = schemas['DynatraceDetails']
  * DynatraceDetails module
  * @public
  */
-export class DynatraceDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class DynatraceDetailsAPI extends BaseAPI {
+  getDynatraceDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/DynatraceDetails' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getDynatraceDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/DynatraceDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postDynatraceDetails({
-    dynatraceDetails,
+    dynatraceDetailsList,
   }: {
-    dynatraceDetails: Array<DynatraceDetails>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/DynatraceDetails',
-      data: dynatraceDetails,
-    })
+    dynatraceDetailsList: Array<DynatraceDetails>
+  }): Promise<DynatraceDetails> {
+    return this.request({ method: 'post', data: dynatraceDetailsList, path: '/DynatraceDetails' })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getDynatraceDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/DynatraceDetails/${id}`,
-    })
+  getDynatraceDetailsById({ id }: { id: number }): Promise<DynatraceDetails> {
+    return this.request({ method: 'get', path: `/DynatraceDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteDynatraceDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/DynatraceDetails/${id}`,
-    })
+  deleteDynatraceDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/DynatraceDetails/${id}` })
   }
 }

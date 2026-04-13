@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Feedback} */
 export type Feedback = schemas['Feedback']
@@ -14,44 +13,22 @@ export type Feedback = schemas['Feedback']
  * Feedback module
  * @public
  */
-export class FeedbackAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class FeedbackAPI extends BaseAPI {
+  getFeedback(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Feedback' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getFeedback({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Feedback',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postFeedback({ feedback }: { feedback: Array<Feedback> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Feedback',
-      data: feedback,
-    })
+  postFeedback({ feedbackList }: { feedbackList: Array<Feedback> }): Promise<Feedback> {
+    return this.request({ method: 'post', data: feedbackList, path: '/Feedback' })
   }
 
   /**
    * @summary Get one Feedback
-   * @description Use this to return a single instance of Feedback.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [clearcomment] 
-   * @param {boolean} [includedetails] 
-   * @param {string} [key] 
+   * @description Use this to return a single instance of Feedback. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [clearcomment]
+   * @param {boolean} [includedetails]
+   * @param {string} [key]
    */
   getFeedbackById({
     id,
@@ -63,27 +40,22 @@ export class FeedbackAPI extends HaloPSA {
     clearcomment?: boolean
     includedetails?: boolean
     key?: string
-  }): Promise<any> {
+  }): Promise<Feedback> {
     return this.request({
       method: 'get',
       path: `/Feedback/${id}`,
-      params: {
-        clearcomment,
-        includedetails,
-        key,
-      },
+      params: { clearcomment, includedetails, key },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteFeedbackById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Feedback/${id}`,
-    })
+  deleteFeedbackById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Feedback/${id}` })
+  }
+
+  getFeedbackFeedbackMessage(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Feedback/FeedbackMessage' })
   }
 }

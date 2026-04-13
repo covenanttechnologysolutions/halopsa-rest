@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link IntegrationError} */
 export type IntegrationError = schemas['IntegrationError']
@@ -14,31 +13,26 @@ export type IntegrationError = schemas['IntegrationError']
  * IntegrationError module
  * @public
  */
-export class IntegrationErrorAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class IntegrationErrorAPI extends BaseAPI {
   /**
    * @summary List of IntegrationError
-   * @description Use this to return multiple IntegrationError.<br>
-				Requires authentication.
-   * @param {number} [count] 
-   * @param {number} [detail_id] 
-   * @param {number} [module_id] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
+   * @description Use this to return multiple IntegrationError. Requires authentication.
+   * @param {number} [count]
+   * @param {number} [detail_id]
+   * @param {number} [module_id]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
    */
   getIntegrationError({
     count,
@@ -74,7 +68,7 @@ export class IntegrationErrorAPI extends HaloPSA {
     page_no?: number
     page_size?: number
     pageinate?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/IntegrationError',
@@ -99,29 +93,19 @@ export class IntegrationErrorAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postIntegrationError({
-    integrationError,
+    integrationErrorList,
   }: {
-    integrationError: Array<IntegrationError>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/IntegrationError',
-      data: integrationError,
-    })
+    integrationErrorList: Array<IntegrationError>
+  }): Promise<IntegrationError> {
+    return this.request({ method: 'post', data: integrationErrorList, path: '/IntegrationError' })
   }
 
   /**
    * @summary Get one IntegrationError
-   * @description Use this to return a single instance of IntegrationError.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of IntegrationError. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getIntegrationErrorById({
     id,
@@ -129,25 +113,18 @@ export class IntegrationErrorAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<IntegrationError> {
     return this.request({
       method: 'get',
       path: `/IntegrationError/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteIntegrationErrorById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/IntegrationError/${id}`,
-    })
+  deleteIntegrationErrorById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/IntegrationError/${id}` })
   }
 }

@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module AssetTypeInfoAPI
@@ -12,24 +9,19 @@ type schemas = components['schemas']
  * AssetTypeInfo module
  * @public
  */
-export class AssetTypeInfoAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class AssetTypeInfoAPI extends BaseAPI {
   /**
    * @summary List of Xtype
-   * @description Use this to return multiple Xtype.<br>
-				Requires authentication.
-   * @param {number} [assetgroup_id] 
-   * @param {boolean} [can_create_only] 
-   * @param {boolean} [can_edit_only] 
-   * @param {boolean} [fixedassetgroups] 
-   * @param {number} [include_current] 
-   * @param {boolean} [resourcesonly] 
-   * @param {boolean} [setuplist] 
-   * @param {number} [tickettype_id] 
-   * @param {string} [type] 
+   * @description Use this to return multiple Xtype. Requires authentication.
+   * @param {number} [assetgroup_id]
+   * @param {boolean} [can_create_only]
+   * @param {boolean} [can_edit_only]
+   * @param {boolean} [fixedassetgroups]
+   * @param {number} [include_current]
+   * @param {boolean} [resourcesonly]
+   * @param {boolean} [setuplist]
+   * @param {number} [tickettype_id]
+   * @param {string} [type]
    */
   getAssetTypeInfo({
     assetgroup_id,
@@ -51,7 +43,7 @@ export class AssetTypeInfoAPI extends HaloPSA {
     setuplist?: boolean
     tickettype_id?: number
     type?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/AssetTypeInfo',

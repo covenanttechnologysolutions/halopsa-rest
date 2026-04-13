@@ -1,10 +1,13 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link OrderHead} */
 export type OrderHead = schemas['OrderHead']
+/** {@link OrderHead_View} */
+export type OrderHead_View = schemas['OrderHead_View']
+/** {@link Viewers} */
+export type Viewers = schemas['Viewers']
 
 /**
  * @module SalesOrderAPI
@@ -14,46 +17,41 @@ export type OrderHead = schemas['OrderHead']
  * SalesOrder module
  * @public
  */
-export class SalesOrderAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class SalesOrderAPI extends BaseAPI {
   /**
    * @summary List of OrderHead
-   * @description Use this to return multiple OrderHead.<br>
-				Requires authentication.
-   * @param {string} [advanced_search] 
-   * @param {string} [billing_date] 
-   * @param {number} [client_id] 
-   * @param {string} [client_ids] 
-   * @param {boolean} [closed] 
-   * @param {number} [count] 
-   * @param {boolean} [idonly] 
-   * @param {boolean} [needsconsigning] 
-   * @param {boolean} [needsinvoicing] 
-   * @param {boolean} [needsordering] 
-   * @param {boolean} [open] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {string} [quote_status] 
-   * @param {boolean} [ready_for_invoicing] 
-   * @param {string} [search] 
-   * @param {number} [site_id] 
-   * @param {number} [ticket_id] 
-   * @param {number} [toplevel_id] 
-   * @param {number} [user_id] 
+   * @description Use this to return multiple OrderHead. Requires authentication.
+   * @param {string} [advanced_search]
+   * @param {string} [billing_date]
+   * @param {number} [client_id]
+   * @param {string} [client_ids]
+   * @param {boolean} [closed]
+   * @param {number} [count]
+   * @param {boolean} [idonly]
+   * @param {boolean} [needsconsigning]
+   * @param {boolean} [needsinvoicing]
+   * @param {boolean} [needsordering]
+   * @param {boolean} [open]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {string} [quote_status]
+   * @param {boolean} [ready_for_invoicing]
+   * @param {string} [search]
+   * @param {number} [site_id]
+   * @param {number} [ticket_id]
+   * @param {number} [toplevel_id]
+   * @param {number} [user_id]
    */
   getSalesOrder({
     advanced_search,
@@ -119,7 +117,7 @@ export class SalesOrderAPI extends HaloPSA {
     ticket_id?: number
     toplevel_id?: number
     user_id?: number
-  }): Promise<any> {
+  }): Promise<OrderHead_View> {
     return this.request({
       method: 'get',
       path: '/SalesOrder',
@@ -159,29 +157,19 @@ export class SalesOrderAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postSalesOrder({ orderHead }: { orderHead: Array<OrderHead> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/SalesOrder',
-      data: orderHead,
-    })
+  postSalesOrder({ orderHeadList }: { orderHeadList: Array<OrderHead> }): Promise<OrderHead> {
+    return this.request({ method: 'post', data: orderHeadList, path: '/SalesOrder' })
   }
 
   /**
    * @summary Get one OrderHead
-   * @description Use this to return a single instance of OrderHead.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [consignablelines] 
-   * @param {boolean} [includedetails] 
-   * @param {boolean} [invoiceablelines] 
-   * @param {number} [oneline] 
-   * @param {boolean} [pendingpolines] 
+   * @description Use this to return a single instance of OrderHead. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [consignablelines]
+   * @param {boolean} [includedetails]
+   * @param {boolean} [invoiceablelines]
+   * @param {number} [oneline]
+   * @param {boolean} [pendingpolines]
    */
   getSalesOrderById({
     id,
@@ -197,29 +185,22 @@ export class SalesOrderAPI extends HaloPSA {
     invoiceablelines?: boolean
     oneline?: number
     pendingpolines?: boolean
-  }): Promise<any> {
+  }): Promise<OrderHead> {
     return this.request({
       method: 'get',
       path: `/SalesOrder/${id}`,
-      params: {
-        consignablelines,
-        includedetails,
-        invoiceablelines,
-        oneline,
-        pendingpolines,
-      },
+      params: { consignablelines, includedetails, invoiceablelines, oneline, pendingpolines },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteSalesOrderById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/SalesOrder/${id}`,
-    })
+  deleteSalesOrderById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/SalesOrder/${id}` })
+  }
+
+  postSalesOrderView({ viewersList }: { viewersList: Array<Viewers> }): Promise<unknown> {
+    return this.request({ method: 'post', data: viewersList, path: '/SalesOrder/View' })
   }
 }

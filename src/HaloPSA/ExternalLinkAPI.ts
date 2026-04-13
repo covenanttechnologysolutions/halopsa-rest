@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ExternalLink_List} */
 export type ExternalLink_List = schemas['ExternalLink_List']
@@ -16,39 +15,34 @@ export type GenerateExternalLink = schemas['GenerateExternalLink']
  * ExternalLink module
  * @public
  */
-export class ExternalLinkAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ExternalLinkAPI extends BaseAPI {
   /**
    * @summary List of ExternalLink
-   * @description Use this to return multiple ExternalLink.<br>
-				Requires authentication.
-   * @param {number} [count] 
-   * @param {number} [details_id] 
-   * @param {number} [halo_id] 
-   * @param {number} [module_id] 
-   * @param {string} [module_list] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {string} [search] 
-   * @param {number} [table_id] 
-   * @param {string} [third_party_desc] 
-   * @param {string} [third_party_id] 
-   * @param {string} [third_party_secondary_id] 
-   * @param {string} [third_party_type] 
+   * @description Use this to return multiple ExternalLink. Requires authentication.
+   * @param {number} [count]
+   * @param {number} [details_id]
+   * @param {number} [halo_id]
+   * @param {number} [module_id]
+   * @param {string} [module_list]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {string} [search]
+   * @param {number} [table_id]
+   * @param {string} [third_party_desc]
+   * @param {string} [third_party_id]
+   * @param {string} [third_party_secondary_id]
+   * @param {string} [third_party_type]
    */
   getExternalLink({
     count,
@@ -100,7 +94,7 @@ export class ExternalLinkAPI extends HaloPSA {
     third_party_id?: string
     third_party_secondary_id?: string
     third_party_type?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/ExternalLink',
@@ -133,29 +127,19 @@ export class ExternalLinkAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postExternalLink({
-    externalLink_List,
+    externalLink_ListList,
   }: {
-    externalLink_List: Array<ExternalLink_List>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ExternalLink',
-      data: externalLink_List,
-    })
+    externalLink_ListList: Array<ExternalLink_List>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: externalLink_ListList, path: '/ExternalLink' })
   }
 
   /**
    * @summary Get one ExternalLink
-   * @description Use this to return a single instance of ExternalLink.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of ExternalLink. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getExternalLinkById({
     id,
@@ -163,42 +147,26 @@ export class ExternalLinkAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ExternalLink/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/ExternalLink/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteExternalLinkById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ExternalLink/${id}`,
-    })
+  deleteExternalLinkById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ExternalLink/${id}` })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postExternalLinkGenerate({
     generateExternalLink,
   }: {
     generateExternalLink: GenerateExternalLink
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
-      path: '/ExternalLink/Generate',
       data: generateExternalLink,
+      path: '/ExternalLink/Generate',
     })
   }
 }

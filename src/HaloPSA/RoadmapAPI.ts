@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module RoadmapAPI
@@ -12,23 +9,17 @@ type schemas = components['schemas']
  * Roadmap module
  * @public
  */
-export class RoadmapAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class RoadmapAPI extends BaseAPI {
   /**
-   * 
-   * @description .<br>
-				Requires authentication.
-   * @param {boolean} [halocrm] 
-   * @param {boolean} [haloitsm] 
-   * @param {boolean} [halopsa] 
-   * @param {boolean} [haloservicedesk] 
-   * @param {string} [order] 
-   * @param {boolean} [orderdesc] 
-   * @param {number} [product_id] 
-   * @param {boolean} [roadmapcolumnview] 
+   * @description . Requires authentication.
+   * @param {boolean} [halocrm]
+   * @param {boolean} [haloitsm]
+   * @param {boolean} [halopsa]
+   * @param {boolean} [haloservicedesk]
+   * @param {string} [order]
+   * @param {boolean} [orderdesc]
+   * @param {number} [product_id]
+   * @param {boolean} [roadmapcolumnview]
    */
   getRoadmap({
     halocrm,
@@ -48,7 +39,7 @@ export class RoadmapAPI extends HaloPSA {
     orderdesc?: boolean
     product_id?: number
     roadmapcolumnview?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/Roadmap',

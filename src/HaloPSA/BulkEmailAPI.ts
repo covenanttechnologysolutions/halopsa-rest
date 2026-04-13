@@ -1,8 +1,9 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
+/** {@link BulkEmail} */
+export type BulkEmail = schemas['BulkEmail']
 
 /**
  * @module BulkEmailAPI
@@ -12,37 +13,24 @@ type schemas = components['schemas']
  * BulkEmail module
  * @public
  */
-export class BulkEmailAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  getBulkEmail({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/BulkEmail',
-    })
+export class BulkEmailAPI extends BaseAPI {
+  getBulkEmail(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/BulkEmail' })
   }
 
   /**
    * @summary Get one BulkEmail
-   * @description Use this to return a single instance of BulkEmail.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of BulkEmail. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
-  getBulkEmailById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/BulkEmail/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  getBulkEmailById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<BulkEmail> {
+    return this.request({ method: 'get', path: `/BulkEmail/${id}`, params: { includedetails } })
   }
 }

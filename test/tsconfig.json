@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "rootDir": "..",
+    "types": ["node"]
+  },
+  "include": ["types.test-d.ts"],
+  "exclude": []
+}

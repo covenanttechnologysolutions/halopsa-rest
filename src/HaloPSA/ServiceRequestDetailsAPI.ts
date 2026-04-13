@@ -1,8 +1,9 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
+/** {@link ServiceRequestDetails} */
+export type ServiceRequestDetails = schemas['ServiceRequestDetails']
 
 /**
  * @module ServiceRequestDetailsAPI
@@ -12,18 +13,13 @@ type schemas = components['schemas']
  * ServiceRequestDetails module
  * @public
  */
-export class ServiceRequestDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ServiceRequestDetailsAPI extends BaseAPI {
   /**
    * @summary List of ServiceRequestDetails
-   * @description Use this to return multiple ServiceRequestDetails.<br>
-				Requires authentication.
-   * @param {boolean} [exclude_urls] 
-   * @param {boolean} [includedetails] 
-   * @param {number} [service_id] 
+   * @description Use this to return multiple ServiceRequestDetails. Requires authentication.
+   * @param {boolean} [exclude_urls]
+   * @param {boolean} [includedetails]
+   * @param {number} [service_id]
    */
   getServiceRequestDetails({
     exclude_urls,
@@ -33,15 +29,31 @@ export class ServiceRequestDetailsAPI extends HaloPSA {
     exclude_urls?: boolean
     includedetails?: boolean
     service_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/ServiceRequestDetails',
-      params: {
-        exclude_urls,
-        includedetails,
-        service_id,
-      },
+      params: { exclude_urls, includedetails, service_id },
+    })
+  }
+
+  /**
+   * @summary Get one ServiceRequestDetails
+   * @description Use this to return a single instance of ServiceRequestDetails. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
+   */
+  getServiceRequestDetailsById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<ServiceRequestDetails> {
+    return this.request({
+      method: 'get',
+      path: `/ServiceRequestDetails/${id}`,
+      params: { includedetails },
     })
   }
 }

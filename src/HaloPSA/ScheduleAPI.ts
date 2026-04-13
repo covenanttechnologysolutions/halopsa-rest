@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Schedule} */
 export type Schedule = schemas['Schedule']
@@ -14,18 +13,13 @@ export type Schedule = schemas['Schedule']
  * Schedule module
  * @public
  */
-export class ScheduleAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ScheduleAPI extends BaseAPI {
   /**
    * @summary List of Schedule
-   * @description Use this to return multiple Schedule.<br>
-				Requires authentication.
-   * @param {boolean} [includedetails] 
-   * @param {number} [primaryid] 
-   * @param {number} [type] 
+   * @description Use this to return multiple Schedule. Requires authentication.
+   * @param {boolean} [includedetails]
+   * @param {number} [primaryid]
+   * @param {number} [type]
    */
   getSchedule({
     includedetails,
@@ -35,45 +29,31 @@ export class ScheduleAPI extends HaloPSA {
     includedetails?: boolean
     primaryid?: number
     type?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/Schedule',
-      params: {
-        includedetails,
-        primaryid,
-        type,
-      },
+      params: { includedetails, primaryid, type },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postSchedule({ schedule }: { schedule: Array<Schedule> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Schedule',
-      data: schedule,
-    })
+  postSchedule({ scheduleList }: { scheduleList: Array<Schedule> }): Promise<Schedule> {
+    return this.request({ method: 'post', data: scheduleList, path: '/Schedule' })
   }
 
   /**
    * @summary Get one Schedule
-   * @description Use this to return a single instance of Schedule.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of Schedule. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
-  getScheduleById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/Schedule/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  getScheduleById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<Schedule> {
+    return this.request({ method: 'get', path: `/Schedule/${id}`, params: { includedetails } })
   }
 }

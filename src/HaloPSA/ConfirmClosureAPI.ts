@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ConfirmClosure} */
 export type ConfirmClosure = schemas['ConfirmClosure']
@@ -14,42 +13,24 @@ export type ConfirmClosure = schemas['ConfirmClosure']
  * ConfirmClosure module
  * @public
  */
-export class ConfirmClosureAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class ConfirmClosureAPI extends BaseAPI {
+  getConfirmClosure(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/ConfirmClosure' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getConfirmClosure({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/ConfirmClosure',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postConfirmClosure({ confirmClosure }: { confirmClosure: Array<ConfirmClosure> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ConfirmClosure',
-      data: confirmClosure,
-    })
+  postConfirmClosure({
+    confirmClosureList,
+  }: {
+    confirmClosureList: Array<ConfirmClosure>
+  }): Promise<ConfirmClosure> {
+    return this.request({ method: 'post', data: confirmClosureList, path: '/ConfirmClosure' })
   }
 
   /**
    * @summary Get one ConfirmClosure
-   * @description Use this to return a single instance of ConfirmClosure.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of ConfirmClosure. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getConfirmClosureById({
     id,
@@ -57,25 +38,18 @@ export class ConfirmClosureAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<ConfirmClosure> {
     return this.request({
       method: 'get',
       path: `/ConfirmClosure/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteConfirmClosureById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ConfirmClosure/${id}`,
-    })
+  deleteConfirmClosureById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ConfirmClosure/${id}` })
   }
 }

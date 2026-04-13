@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link FaultsForecasting} */
 export type FaultsForecasting = schemas['FaultsForecasting']
@@ -14,17 +13,12 @@ export type FaultsForecasting = schemas['FaultsForecasting']
  * FaultsForecasting module
  * @public
  */
-export class FaultsForecastingAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class FaultsForecastingAPI extends BaseAPI {
   /**
    * @summary Get one FaultsForecasting
-   * @description Use this to return a single instance of FaultsForecasting.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of FaultsForecasting. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getFaultsForecastingById({
     id,
@@ -32,30 +26,19 @@ export class FaultsForecastingAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<FaultsForecasting> {
     return this.request({
       method: 'get',
       path: `/FaultsForecasting/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postFaultsForecasting({
-    faultsForecasting,
+    faultsForecastingList,
   }: {
-    faultsForecasting: Array<FaultsForecasting>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/FaultsForecasting',
-      data: faultsForecasting,
-    })
+    faultsForecastingList: Array<FaultsForecasting>
+  }): Promise<FaultsForecasting> {
+    return this.request({ method: 'post', data: faultsForecastingList, path: '/FaultsForecasting' })
   }
 }

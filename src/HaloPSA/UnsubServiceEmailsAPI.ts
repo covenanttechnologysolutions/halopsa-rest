@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link UnsubEmailServiceUsers} */
 export type UnsubEmailServiceUsers = schemas['UnsubEmailServiceUsers']
@@ -14,46 +13,28 @@ export type UnsubEmailServiceUsers = schemas['UnsubEmailServiceUsers']
  * UnsubServiceEmails module
  * @public
  */
-export class UnsubServiceEmailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class UnsubServiceEmailsAPI extends BaseAPI {
+  getUnsubServiceEmails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/UnsubServiceEmails' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getUnsubServiceEmails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/UnsubServiceEmails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postUnsubServiceEmails({
-    unsubEmailServiceUsers,
+    unsubEmailServiceUsersList,
   }: {
-    unsubEmailServiceUsers: Array<UnsubEmailServiceUsers>
-  }): Promise<any> {
+    unsubEmailServiceUsersList: Array<UnsubEmailServiceUsers>
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
+      data: unsubEmailServiceUsersList,
       path: '/UnsubServiceEmails',
-      data: unsubEmailServiceUsers,
     })
   }
 
   /**
    * @summary Get one UnsubEmailServiceUsers
-   * @description Use this to return a single instance of UnsubEmailServiceUsers.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of UnsubEmailServiceUsers. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getUnsubServiceEmailsById({
     id,
@@ -61,25 +42,18 @@ export class UnsubServiceEmailsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/UnsubServiceEmails/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteUnsubServiceEmailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/UnsubServiceEmails/${id}`,
-    })
+  deleteUnsubServiceEmailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/UnsubServiceEmails/${id}` })
   }
 }

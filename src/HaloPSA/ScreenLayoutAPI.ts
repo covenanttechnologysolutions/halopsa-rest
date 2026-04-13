@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ScreenLayout} */
 export type ScreenLayout = schemas['ScreenLayout']
@@ -14,46 +13,29 @@ export type ScreenLayout = schemas['ScreenLayout']
  * ScreenLayout module
  * @public
  */
-export class ScreenLayoutAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ScreenLayoutAPI extends BaseAPI {
   /**
    * @summary List of ScreenLayout
-   * @description Use this to return multiple ScreenLayout.<br>
-				Requires authentication.
-   * @param {number} [typeid] 
+   * @description Use this to return multiple ScreenLayout. Requires authentication.
+   * @param {number} [typeid]
    */
-  getScreenLayout({ typeid }: { typeid?: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/ScreenLayout',
-      params: {
-        typeid,
-      },
-    })
+  getScreenLayout({ typeid }: { typeid?: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/ScreenLayout', params: { typeid } })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postScreenLayout({ screenLayout }: { screenLayout: Array<ScreenLayout> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ScreenLayout',
-      data: screenLayout,
-    })
+  postScreenLayout({
+    screenLayoutList,
+  }: {
+    screenLayoutList: Array<ScreenLayout>
+  }): Promise<ScreenLayout> {
+    return this.request({ method: 'post', data: screenLayoutList, path: '/ScreenLayout' })
   }
 
   /**
    * @summary Get one ScreenLayout
-   * @description Use this to return a single instance of ScreenLayout.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of ScreenLayout. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getScreenLayoutById({
     id,
@@ -61,25 +43,14 @@ export class ScreenLayoutAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ScreenLayout/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<ScreenLayout> {
+    return this.request({ method: 'get', path: `/ScreenLayout/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteScreenLayoutById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ScreenLayout/${id}`,
-    })
+  deleteScreenLayoutById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ScreenLayout/${id}` })
   }
 }

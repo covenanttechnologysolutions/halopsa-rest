@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link FieldInfo} */
 export type FieldInfo = schemas['FieldInfo']
@@ -14,34 +13,29 @@ export type FieldInfo = schemas['FieldInfo']
  * FieldInfo module
  * @public
  */
-export class FieldInfoAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class FieldInfoAPI extends BaseAPI {
   /**
    * @summary List of FieldInfo
-   * @description Use this to return multiple FieldInfo.<br>
-				Requires authentication.
-   * @param {number} [access_control_level] 
-   * @param {string} [domain] 
-   * @param {boolean} [excluderanges] 
-   * @param {boolean} [excludetables] 
-   * @param {boolean} [excludetableself] 
-   * @param {number} [extratype] 
-   * @param {number} [fieldtype] 
-   * @param {string} [fieldtypemultiple] 
-   * @param {boolean} [includecategories] 
-   * @param {boolean} [includedatefields] 
-   * @param {boolean} [includejirafields] 
-   * @param {boolean} [includeremotefields] 
-   * @param {boolean} [includevalues] 
-   * @param {number} [inputtype] 
-   * @param {boolean} [isapprovalstep] 
-   * @param {boolean} [isconfig] 
-   * @param {boolean} [iscustomfieldsetup] 
-   * @param {number} [systemid] 
-   * @param {number} [typeid] 
+   * @description Use this to return multiple FieldInfo. Requires authentication.
+   * @param {number} [access_control_level]
+   * @param {string} [domain]
+   * @param {boolean} [excluderanges]
+   * @param {boolean} [excludetables]
+   * @param {boolean} [excludetableself]
+   * @param {number} [extratype]
+   * @param {number} [fieldtype]
+   * @param {string} [fieldtypemultiple]
+   * @param {boolean} [includecategories]
+   * @param {boolean} [includedatefields]
+   * @param {boolean} [includejirafields]
+   * @param {boolean} [includeremotefields]
+   * @param {boolean} [includevalues]
+   * @param {number} [inputtype]
+   * @param {boolean} [isapprovalstep]
+   * @param {boolean} [isconfig]
+   * @param {boolean} [iscustomfieldsetup]
+   * @param {number} [systemid]
+   * @param {number} [typeid]
    */
   getFieldInfo({
     access_control_level,
@@ -83,7 +77,7 @@ export class FieldInfoAPI extends HaloPSA {
     iscustomfieldsetup?: boolean
     systemid?: number
     typeid?: number
-  }): Promise<any> {
+  }): Promise<Array<FieldInfo>> {
     return this.request({
       method: 'get',
       path: '/FieldInfo',
@@ -111,29 +105,19 @@ export class FieldInfoAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postFieldInfo({ fieldInfo }: { fieldInfo: Array<FieldInfo> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/FieldInfo',
-      data: fieldInfo,
-    })
+  postFieldInfo({ fieldInfoList }: { fieldInfoList: Array<FieldInfo> }): Promise<FieldInfo> {
+    return this.request({ method: 'post', data: fieldInfoList, path: '/FieldInfo' })
   }
 
   /**
    * @summary Get one FieldInfo
-   * @description Use this to return a single instance of FieldInfo.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {number} [entityid] 
-   * @param {boolean} [getlookupvalues] 
-   * @param {boolean} [includedetails] 
-   * @param {string} [livecustomfields] 
-   * @param {number} [userid] 
+   * @description Use this to return a single instance of FieldInfo. Requires authentication.
+   * @param {number} id
+   * @param {number} [entityid]
+   * @param {boolean} [getlookupvalues]
+   * @param {boolean} [includedetails]
+   * @param {string} [livecustomfields]
+   * @param {number} [userid]
    */
   getFieldInfoById({
     id,
@@ -149,29 +133,18 @@ export class FieldInfoAPI extends HaloPSA {
     includedetails?: boolean
     livecustomfields?: string
     userid?: number
-  }): Promise<any> {
+  }): Promise<FieldInfo> {
     return this.request({
       method: 'get',
       path: `/FieldInfo/${id}`,
-      params: {
-        entityid,
-        getlookupvalues,
-        includedetails,
-        livecustomfields,
-        userid,
-      },
+      params: { entityid, getlookupvalues, includedetails, livecustomfields, userid },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteFieldInfoById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/FieldInfo/${id}`,
-    })
+  deleteFieldInfoById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/FieldInfo/${id}` })
   }
 }

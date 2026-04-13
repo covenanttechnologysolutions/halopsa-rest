@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link TaxRule} */
 export type TaxRule = schemas['TaxRule']
@@ -14,57 +13,26 @@ export type TaxRule = schemas['TaxRule']
  * TaxRule module
  * @public
  */
-export class TaxRuleAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class TaxRuleAPI extends BaseAPI {
+  getTaxRule(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/TaxRule' })
+  }
+
+  postTaxRule({ taxRuleList }: { taxRuleList: Array<TaxRule> }): Promise<TaxRule> {
+    return this.request({ method: 'post', data: taxRuleList, path: '/TaxRule' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  getTaxRule({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/TaxRule',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postTaxRule({ taxRule }: { taxRule: Array<TaxRule> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/TaxRule',
-      data: taxRule,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  getTaxRuleById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/TaxRule/${id}`,
-    })
+  getTaxRuleById({ id }: { id: number }): Promise<TaxRule> {
+    return this.request({ method: 'get', path: `/TaxRule/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteTaxRuleById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/TaxRule/${id}`,
-    })
+  deleteTaxRuleById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/TaxRule/${id}` })
   }
 }

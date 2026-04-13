@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link SnowDetails} */
 export type SnowDetails = schemas['SnowDetails']
@@ -14,47 +13,30 @@ export type SnowDetails = schemas['SnowDetails']
  * SnowDetails module
  * @public
  */
-export class SnowDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class SnowDetailsAPI extends BaseAPI {
   /**
    * @summary List of SnowDetails
-   * @description Use this to return multiple SnowDetails.<br>
-				Requires authentication.
-   * @param {boolean} [includedetails] 
+   * @description Use this to return multiple SnowDetails. Requires authentication.
+   * @param {boolean} [includedetails]
    */
-  getSnowDetails({ includedetails }: { includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/SnowDetails',
-      params: {
-        includedetails,
-      },
-    })
+  getSnowDetails({ includedetails }: { includedetails?: boolean }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/SnowDetails', params: { includedetails } })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postSnowDetails({ snowDetails }: { snowDetails: Array<SnowDetails> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/SnowDetails',
-      data: snowDetails,
-    })
+  postSnowDetails({
+    snowDetailsList,
+  }: {
+    snowDetailsList: Array<SnowDetails>
+  }): Promise<SnowDetails> {
+    return this.request({ method: 'post', data: snowDetailsList, path: '/SnowDetails' })
   }
 
   /**
    * @summary Get one SnowDetails
-   * @description Use this to return a single instance of SnowDetails.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [doDecrypt] 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of SnowDetails. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [doDecrypt]
+   * @param {boolean} [includedetails]
    */
   getSnowDetailsById({
     id,
@@ -64,26 +46,18 @@ export class SnowDetailsAPI extends HaloPSA {
     id: number
     doDecrypt?: boolean
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<SnowDetails> {
     return this.request({
       method: 'get',
       path: `/SnowDetails/${id}`,
-      params: {
-        doDecrypt,
-        includedetails,
-      },
+      params: { doDecrypt, includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteSnowDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/SnowDetails/${id}`,
-    })
+  deleteSnowDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/SnowDetails/${id}` })
   }
 }

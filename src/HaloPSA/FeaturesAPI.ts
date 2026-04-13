@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ModuleSetup} */
 export type ModuleSetup = schemas['ModuleSetup']
@@ -14,18 +13,13 @@ export type ModuleSetup = schemas['ModuleSetup']
  * Features module
  * @public
  */
-export class FeaturesAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class FeaturesAPI extends BaseAPI {
   /**
    * @summary List of ModuleSetup
-   * @description Use this to return multiple ModuleSetup.<br>
-				Requires authentication.
-   * @param {boolean} [isconfig] 
-   * @param {boolean} [showdisabled] 
-   * @param {boolean} [showenabled] 
+   * @description Use this to return multiple ModuleSetup. Requires authentication.
+   * @param {boolean} [isconfig]
+   * @param {boolean} [showdisabled]
+   * @param {boolean} [showenabled]
    */
   getFeatures({
     isconfig,
@@ -35,45 +29,31 @@ export class FeaturesAPI extends HaloPSA {
     isconfig?: boolean
     showdisabled?: boolean
     showenabled?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/Features',
-      params: {
-        isconfig,
-        showdisabled,
-        showenabled,
-      },
+      params: { isconfig, showdisabled, showenabled },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postFeatures({ moduleSetup }: { moduleSetup: Array<ModuleSetup> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Features',
-      data: moduleSetup,
-    })
+  postFeatures({ moduleSetupList }: { moduleSetupList: Array<ModuleSetup> }): Promise<unknown> {
+    return this.request({ method: 'post', data: moduleSetupList, path: '/Features' })
   }
 
   /**
    * @summary Get one ModuleSetup
-   * @description Use this to return a single instance of ModuleSetup.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of ModuleSetup. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
-  getFeaturesById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/Features/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  getFeaturesById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/Features/${id}`, params: { includedetails } })
   }
 }

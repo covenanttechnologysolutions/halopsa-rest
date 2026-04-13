@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link PowerShellScriptCriteria} */
 export type PowerShellScriptCriteria = schemas['PowerShellScriptCriteria']
@@ -14,50 +13,33 @@ export type PowerShellScriptCriteria = schemas['PowerShellScriptCriteria']
  * PowerShellScriptCriteria module
  * @public
  */
-export class PowerShellScriptCriteriaAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class PowerShellScriptCriteriaAPI extends BaseAPI {
   /**
    * @summary List of PowerShellScriptCriteria
-   * @description Use this to return multiple PowerShellScriptCriteria.<br>
-				Requires authentication.
-   * @param {string} [script_id] 
+   * @description Use this to return multiple PowerShellScriptCriteria. Requires authentication.
+   * @param {string} [script_id]
    */
-  getPowerShellScriptCriteria({ script_id }: { script_id?: string }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/PowerShellScriptCriteria',
-      params: {
-        script_id,
-      },
-    })
+  getPowerShellScriptCriteria({ script_id }: { script_id?: string }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/PowerShellScriptCriteria', params: { script_id } })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postPowerShellScriptCriteria({
-    powerShellScriptCriteria,
+    powerShellScriptCriteriaList,
   }: {
-    powerShellScriptCriteria: Array<PowerShellScriptCriteria>
-  }): Promise<any> {
+    powerShellScriptCriteriaList: Array<PowerShellScriptCriteria>
+  }): Promise<PowerShellScriptCriteria> {
     return this.request({
       method: 'post',
+      data: powerShellScriptCriteriaList,
       path: '/PowerShellScriptCriteria',
-      data: powerShellScriptCriteria,
     })
   }
 
   /**
    * @summary Get one PowerShellScriptCriteria
-   * @description Use this to return a single instance of PowerShellScriptCriteria.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of PowerShellScriptCriteria. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getPowerShellScriptCriteriaById({
     id,
@@ -65,25 +47,18 @@ export class PowerShellScriptCriteriaAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<PowerShellScriptCriteria> {
     return this.request({
       method: 'get',
       path: `/PowerShellScriptCriteria/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deletePowerShellScriptCriteriaById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/PowerShellScriptCriteria/${id}`,
-    })
+  deletePowerShellScriptCriteriaById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/PowerShellScriptCriteria/${id}` })
   }
 }

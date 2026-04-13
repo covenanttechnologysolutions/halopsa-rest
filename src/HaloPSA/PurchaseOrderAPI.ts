@@ -1,10 +1,13 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link SupplierOrderHeader} */
 export type SupplierOrderHeader = schemas['SupplierOrderHeader']
+/** {@link SupplierOrderHeader_View} */
+export type SupplierOrderHeader_View = schemas['SupplierOrderHeader_View']
+/** {@link Viewers} */
+export type Viewers = schemas['Viewers']
 
 /**
  * @module PurchaseOrderAPI
@@ -14,45 +17,40 @@ export type SupplierOrderHeader = schemas['SupplierOrderHeader']
  * PurchaseOrder module
  * @public
  */
-export class PurchaseOrderAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class PurchaseOrderAPI extends BaseAPI {
   /**
    * @summary List of SupplierOrderHeader
-   * @description Use this to return multiple SupplierOrderHeader.<br>
-				Requires authentication.
-   * @param {boolean} [awaiting_approval] (int) Filter by the suppliers that are awaiting approval.
-   * @param {boolean} [awaitingstock] (bool) Filter by suppliers awaiting stock.
-   * @param {number} [client_id] (int) Filters by the specified client.
-   * @param {boolean} [closed] (bool) Filter by closed status.
-   * @param {number} [count] (int) Number of contracts to return in the response.
-   * @param {boolean} [deliver_to_us] (bool) Filter on delivery to us option.
-   * @param {number} [deliver_to_user_salesorder_id] 
-   * @param {boolean} [my_approvals] (int) Filter by the suppliers that are awaiting approval from you.
-   * @param {boolean} [open] (bool) Filter by open status.
-   * @param {string} [order] (string) The name of the field to order by first.
-   * @param {string} [order2] (string) The name of the field to order by second.
-   * @param {string} [order3] (string) The name of the field to order by third.
-   * @param {string} [order4] (string) The name of the field to order by fourth.
-   * @param {string} [order5] (string) The name of the field to order by fifth.
-   * @param {boolean} [orderdesc] (bool) Whether to order ascending or descending on first order.
-   * @param {boolean} [orderdesc2] (bool) Whether to order ascending or descending on second order.
-   * @param {boolean} [orderdesc3] (bool) Whether to order ascending or descending on third order.
-   * @param {boolean} [orderdesc4] (bool) Whether to order ascending or descending on fourth order.
-   * @param {boolean} [orderdesc5] (bool) Whether to order ascending or descending on fifth order.
-   * @param {number} [page_no] (int) When using Pagination, the page number to return.
-   * @param {number} [page_size] (int) When using Pagination, the size of the page.
-   * @param {boolean} [pageinate] (bool) Whether to use Pagination in the response.
-   * @param {string} [po_status] (string) Filters by the specified purchase order statuses - comma seperated.
-   * @param {number} [salesorder_id] (int) Filter by the specified sales order.
-   * @param {string} [search] (string) Filters response based on the search string.
-   * @param {number} [site_id] (int) Filters by the specified site.
-   * @param {number} [supplier_id] (int) Filters by the specified supplier.
-   * @param {number} [ticket_id] (int) Filter by the specified ticket.
-   * @param {boolean} [unsent] (bool) Filter by sent status.
-   * @param {number} [user_id] (int) Filters by the specified user.
+   * @description Use this to return multiple SupplierOrderHeader. Requires authentication.
+   * @param {boolean} [awaiting_approval] Filter by the suppliers that are awaiting approval.
+   * @param {boolean} [awaitingstock] Filter by suppliers awaiting stock.
+   * @param {number} [client_id] Filters by the specified client.
+   * @param {boolean} [closed] Filter by closed status.
+   * @param {number} [count] Number of contracts to return in the response.
+   * @param {boolean} [deliver_to_us] Filter on delivery to us option.
+   * @param {number} [deliver_to_user_salesorder_id]
+   * @param {boolean} [my_approvals] Filter by the suppliers that are awaiting approval from you.
+   * @param {boolean} [open] Filter by open status.
+   * @param {string} [order] The name of the field to order by first.
+   * @param {string} [order2] The name of the field to order by second.
+   * @param {string} [order3] The name of the field to order by third.
+   * @param {string} [order4] The name of the field to order by fourth.
+   * @param {string} [order5] The name of the field to order by fifth.
+   * @param {boolean} [orderdesc] Whether to order ascending or descending on first order.
+   * @param {boolean} [orderdesc2] Whether to order ascending or descending on second order.
+   * @param {boolean} [orderdesc3] Whether to order ascending or descending on third order.
+   * @param {boolean} [orderdesc4] Whether to order ascending or descending on fourth order.
+   * @param {boolean} [orderdesc5] Whether to order ascending or descending on fifth order.
+   * @param {number} [page_no] When using Pagination, the page number to return.
+   * @param {number} [page_size] When using Pagination, the size of the page.
+   * @param {boolean} [pageinate] Whether to use Pagination in the response.
+   * @param {string} [po_status] Filters by the specified purchase order statuses - comma seperated.
+   * @param {number} [salesorder_id] Filter by the specified sales order.
+   * @param {string} [search] Filters response based on the search string.
+   * @param {number} [site_id] Filters by the specified site.
+   * @param {number} [supplier_id] Filters by the specified supplier.
+   * @param {number} [ticket_id] Filter by the specified ticket.
+   * @param {boolean} [unsent] Filter by sent status.
+   * @param {number} [user_id] Filters by the specified user.
    */
   getPurchaseOrder({
     awaiting_approval,
@@ -116,7 +114,7 @@ export class PurchaseOrderAPI extends HaloPSA {
     ticket_id?: number
     unsent?: boolean
     user_id?: number
-  }): Promise<any> {
+  }): Promise<SupplierOrderHeader_View> {
     return this.request({
       method: 'get',
       path: '/PurchaseOrder',
@@ -155,32 +153,22 @@ export class PurchaseOrderAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postPurchaseOrder({
-    supplierOrderHeader,
+    supplierOrderHeaderList,
   }: {
-    supplierOrderHeader: Array<SupplierOrderHeader>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/PurchaseOrder',
-      data: supplierOrderHeader,
-    })
+    supplierOrderHeaderList: Array<SupplierOrderHeader>
+  }): Promise<SupplierOrderHeader> {
+    return this.request({ method: 'post', data: supplierOrderHeaderList, path: '/PurchaseOrder' })
   }
 
   /**
    * @summary Get one SupplierOrderHeader
-   * @description Use this to return a single instance of SupplierOrderHeader.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [extrareceivablelines] (bool) Include also the deliver to us for the suppliers that have recieved more quantity than they currently have in the response.
-   * @param {boolean} [includedetails] (bool) Include extra objects in the response.
-   * @param {boolean} [invoiceablelines] 
-   * @param {boolean} [receivablelines] (bool) Include only consignable lines in the response.
+   * @description Use this to return a single instance of SupplierOrderHeader. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [extrareceivablelines] Include also the deliver to us for the suppliers that have recieved more quantity than they currently have in the response.
+   * @param {boolean} [includedetails] Include extra objects in the response.
+   * @param {boolean} [invoiceablelines]
+   * @param {boolean} [receivablelines] Include only consignable lines in the response.
    */
   getPurchaseOrderById({
     id,
@@ -194,28 +182,34 @@ export class PurchaseOrderAPI extends HaloPSA {
     includedetails?: boolean
     invoiceablelines?: boolean
     receivablelines?: boolean
-  }): Promise<any> {
+  }): Promise<SupplierOrderHeader> {
     return this.request({
       method: 'get',
       path: `/PurchaseOrder/${id}`,
-      params: {
-        extrareceivablelines,
-        includedetails,
-        invoiceablelines,
-        receivablelines,
-      },
+      params: { extrareceivablelines, includedetails, invoiceablelines, receivablelines },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deletePurchaseOrderById({ id }: { id: number }): Promise<any> {
+  deletePurchaseOrderById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/PurchaseOrder/${id}` })
+  }
+
+  postPurchaseOrderConfirmreceipt({
+    supplierOrderHeader,
+  }: {
+    supplierOrderHeader: SupplierOrderHeader
+  }): Promise<unknown> {
     return this.request({
-      method: 'delete',
-      path: `/PurchaseOrder/${id}`,
+      method: 'post',
+      data: supplierOrderHeader,
+      path: '/PurchaseOrder/confirmreceipt',
     })
+  }
+
+  postPurchaseOrderView({ viewersList }: { viewersList: Array<Viewers> }): Promise<unknown> {
+    return this.request({ method: 'post', data: viewersList, path: '/PurchaseOrder/View' })
   }
 }

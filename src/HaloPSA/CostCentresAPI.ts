@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Costcentres} */
 export type Costcentres = schemas['Costcentres']
@@ -14,42 +13,20 @@ export type Costcentres = schemas['Costcentres']
  * CostCentres module
  * @public
  */
-export class CostCentresAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class CostCentresAPI extends BaseAPI {
+  getCostCentres(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/CostCentres' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getCostCentres({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/CostCentres',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postCostCentres({ costcentres }: { costcentres: Array<Costcentres> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/CostCentres',
-      data: costcentres,
-    })
+  postCostCentres({ costcentresList }: { costcentresList: Array<Costcentres> }): Promise<unknown> {
+    return this.request({ method: 'post', data: costcentresList, path: '/CostCentres' })
   }
 
   /**
    * @summary Get one Costcentres
-   * @description Use this to return a single instance of Costcentres.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of Costcentres. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getCostCentresById({
     id,
@@ -57,25 +34,14 @@ export class CostCentresAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/CostCentres/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/CostCentres/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteCostCentresById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/CostCentres/${id}`,
-    })
+  deleteCostCentresById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/CostCentres/${id}` })
   }
 }

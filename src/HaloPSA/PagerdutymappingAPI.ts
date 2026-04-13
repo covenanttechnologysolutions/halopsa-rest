@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module PagerdutymappingAPI
@@ -12,24 +9,13 @@ type schemas = components['schemas']
  * Pagerdutymapping module
  * @public
  */
-export class PagerdutymappingAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class PagerdutymappingAPI extends BaseAPI {
   /**
    * @summary List of PagerDutyMapping
-   * @description Use this to return multiple PagerDutyMapping.<br>
-				Requires authentication.
-   * @param {string} [service_id] 
+   * @description Use this to return multiple PagerDutyMapping. Requires authentication.
+   * @param {string} [service_id]
    */
-  getPagerdutymapping({ service_id }: { service_id?: string }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/pagerdutymapping',
-      params: {
-        service_id,
-      },
-    })
+  getPagerdutymapping({ service_id }: { service_id?: string }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/pagerdutymapping', params: { service_id } })
   }
 }

@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link PowerShellScript} */
 export type PowerShellScript = schemas['PowerShellScript']
@@ -14,17 +13,12 @@ export type PowerShellScript = schemas['PowerShellScript']
  * PowerShellScript module
  * @public
  */
-export class PowerShellScriptAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class PowerShellScriptAPI extends BaseAPI {
   /**
    * @summary List of PowerShellScript
-   * @description Use this to return multiple PowerShellScript.<br>
-				Requires authentication.
-   * @param {string} [clientidoverride] 
-   * @param {string} [type] 
+   * @description Use this to return multiple PowerShellScript. Requires authentication.
+   * @param {string} [clientidoverride]
+   * @param {string} [type]
    */
   getPowerShellScript({
     clientidoverride,
@@ -32,40 +26,27 @@ export class PowerShellScriptAPI extends HaloPSA {
   }: {
     clientidoverride?: string
     type?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/PowerShellScript',
-      params: {
-        clientidoverride,
-        type,
-      },
+      params: { clientidoverride, type },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postPowerShellScript({
-    powerShellScript,
+    powerShellScriptList,
   }: {
-    powerShellScript: Array<PowerShellScript>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/PowerShellScript',
-      data: powerShellScript,
-    })
+    powerShellScriptList: Array<PowerShellScript>
+  }): Promise<PowerShellScript> {
+    return this.request({ method: 'post', data: powerShellScriptList, path: '/PowerShellScript' })
   }
 
   /**
    * @summary Get one PowerShellScript
-   * @description Use this to return a single instance of PowerShellScript.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of PowerShellScript. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getPowerShellScriptById({
     id,
@@ -73,25 +54,18 @@ export class PowerShellScriptAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<PowerShellScript> {
     return this.request({
       method: 'get',
       path: `/PowerShellScript/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deletePowerShellScriptById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/PowerShellScript/${id}`,
-    })
+  deletePowerShellScriptById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/PowerShellScript/${id}` })
   }
 }

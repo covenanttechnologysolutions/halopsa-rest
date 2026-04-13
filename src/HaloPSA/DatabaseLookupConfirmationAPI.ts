@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link PartsLookupConfirmation} */
 export type PartsLookupConfirmation = schemas['PartsLookupConfirmation']
@@ -14,37 +13,23 @@ export type PartsLookupConfirmation = schemas['PartsLookupConfirmation']
  * DatabaseLookupConfirmation module
  * @public
  */
-export class DatabaseLookupConfirmationAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class DatabaseLookupConfirmationAPI extends BaseAPI {
   /**
-   *
-   *
    * @param {number} id
    */
-  getDatabaseLookupConfirmationById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/DatabaseLookupConfirmation/${id}`,
-    })
+  getDatabaseLookupConfirmationById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/DatabaseLookupConfirmation/${id}` })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postDatabaseLookupConfirmation({
-    partsLookupConfirmation,
+    partsLookupConfirmationList,
   }: {
-    partsLookupConfirmation: Array<PartsLookupConfirmation>
-  }): Promise<any> {
+    partsLookupConfirmationList: Array<PartsLookupConfirmation>
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
+      data: partsLookupConfirmationList,
       path: '/DatabaseLookupConfirmation',
-      data: partsLookupConfirmation,
     })
   }
 }

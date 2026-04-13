@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link SecurityQuestion} */
 export type SecurityQuestion = schemas['SecurityQuestion']
@@ -14,46 +13,24 @@ export type SecurityQuestion = schemas['SecurityQuestion']
  * SecurityQuestion module
  * @public
  */
-export class SecurityQuestionAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class SecurityQuestionAPI extends BaseAPI {
+  getSecurityQuestion(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/SecurityQuestion' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getSecurityQuestion({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/SecurityQuestion',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postSecurityQuestion({
-    securityQuestion,
+    securityQuestionList,
   }: {
-    securityQuestion: Array<SecurityQuestion>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/SecurityQuestion',
-      data: securityQuestion,
-    })
+    securityQuestionList: Array<SecurityQuestion>
+  }): Promise<SecurityQuestion> {
+    return this.request({ method: 'post', data: securityQuestionList, path: '/SecurityQuestion' })
   }
 
   /**
    * @summary Get one SecurityQuestion
-   * @description Use this to return a single instance of SecurityQuestion.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of SecurityQuestion. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getSecurityQuestionById({
     id,
@@ -61,25 +38,18 @@ export class SecurityQuestionAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<SecurityQuestion> {
     return this.request({
       method: 'get',
       path: `/SecurityQuestion/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteSecurityQuestionById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/SecurityQuestion/${id}`,
-    })
+  deleteSecurityQuestionById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/SecurityQuestion/${id}` })
   }
 }

@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link EscMsg} */
 export type EscMsg = schemas['EscMsg']
@@ -14,26 +13,21 @@ export type EscMsg = schemas['EscMsg']
  * Notifications module
  * @public
  */
-export class NotificationsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class NotificationsAPI extends BaseAPI {
   /**
    * @summary List of EscMsg
-   * @description Use this to return multiple EscMsg.<br>
-				Requires authentication.
-   * @param {boolean} [checkhalointegrator] 
-   * @param {boolean} [checknhserver] 
-   * @param {string} [clientversion] 
-   * @param {number} [count] 
-   * @param {number} [newer_than_id] 
-   * @param {number} [older_than_id] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {boolean} [update_shown] 
-   * @param {number} [utc_offset] 
+   * @description Use this to return multiple EscMsg. Requires authentication.
+   * @param {boolean} [checkhalointegrator]
+   * @param {boolean} [checknhserver]
+   * @param {string} [clientversion]
+   * @param {number} [count]
+   * @param {number} [newer_than_id]
+   * @param {number} [older_than_id]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {boolean} [update_shown]
+   * @param {number} [utc_offset]
    */
   getNotifications({
     checkhalointegrator,
@@ -59,7 +53,7 @@ export class NotificationsAPI extends HaloPSA {
     pageinate?: boolean
     update_shown?: boolean
     utc_offset?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/Notifications',
@@ -79,25 +73,15 @@ export class NotificationsAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postNotifications({ escMsg }: { escMsg: Array<EscMsg> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Notifications',
-      data: escMsg,
-    })
+  postNotifications({ escMsgList }: { escMsgList: Array<EscMsg> }): Promise<unknown> {
+    return this.request({ method: 'post', data: escMsgList, path: '/Notifications' })
   }
 
   /**
    * @summary Get one EscMsg
-   * @description Use this to return a single instance of EscMsg.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of EscMsg. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getNotificationsById({
     id,
@@ -105,38 +89,18 @@ export class NotificationsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/Notifications/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/Notifications/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteNotificationsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Notifications/${id}`,
-    })
+  deleteNotificationsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Notifications/${id}` })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postNotificationsProcess({ listString }: { listString: string }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Notifications/process',
-      data: listString,
-    })
+  postNotificationsProcess({ items }: { items: Array<string> }): Promise<unknown> {
+    return this.request({ method: 'post', data: items, path: '/Notifications/process' })
   }
 }

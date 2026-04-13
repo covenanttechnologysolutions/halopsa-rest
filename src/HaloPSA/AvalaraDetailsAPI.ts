@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link AvalaraDetails} */
 export type AvalaraDetails = schemas['AvalaraDetails']
@@ -14,57 +13,30 @@ export type AvalaraDetails = schemas['AvalaraDetails']
  * AvalaraDetails module
  * @public
  */
-export class AvalaraDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class AvalaraDetailsAPI extends BaseAPI {
+  getAvalaraDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/AvalaraDetails' })
+  }
+
+  postAvalaraDetails({
+    avalaraDetailsList,
+  }: {
+    avalaraDetailsList: Array<AvalaraDetails>
+  }): Promise<AvalaraDetails> {
+    return this.request({ method: 'post', data: avalaraDetailsList, path: '/AvalaraDetails' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  getAvalaraDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/AvalaraDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postAvalaraDetails({ avalaraDetails }: { avalaraDetails: Array<AvalaraDetails> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/AvalaraDetails',
-      data: avalaraDetails,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  getAvalaraDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/AvalaraDetails/${id}`,
-    })
+  getAvalaraDetailsById({ id }: { id: number }): Promise<AvalaraDetails> {
+    return this.request({ method: 'get', path: `/AvalaraDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteAvalaraDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/AvalaraDetails/${id}`,
-    })
+  deleteAvalaraDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/AvalaraDetails/${id}` })
   }
 }

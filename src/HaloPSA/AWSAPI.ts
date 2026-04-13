@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module AWSAPI
@@ -12,20 +9,8 @@ type schemas = components['schemas']
  * AWS module
  * @public
  */
-export class AWSAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  getAWSGet({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/AWS/Get',
-    })
+export class AWSAPI extends BaseAPI {
+  getAWSGet(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/AWS/Get' })
   }
 }

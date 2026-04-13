@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module AdobeCommerceIntegrationAPI
@@ -12,33 +9,12 @@ type schemas = components['schemas']
  * AdobeCommerceIntegration module
  * @public
  */
-export class AdobeCommerceIntegrationAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class AdobeCommerceIntegrationAPI extends BaseAPI {
+  getAdobeCommerceIntegration(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/AdobeCommerceIntegration' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getAdobeCommerceIntegration({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/AdobeCommerceIntegration',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postAdobeCommerceIntegrationAuth({ file }: { file: File }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/AdobeCommerceIntegration/auth',
-      data: file,
-    })
+  postAdobeCommerceIntegrationAuth({ file }: { file: File }): Promise<unknown> {
+    return this.request({ method: 'post', data: file, path: '/AdobeCommerceIntegration/auth' })
   }
 }

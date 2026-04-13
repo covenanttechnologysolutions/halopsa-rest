@@ -1,10 +1,11 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Company} */
 export type Company = schemas['Company']
+/** {@link Company_View} */
+export type Company_View = schemas['Company_View']
 
 /**
  * @module SupplierAPI
@@ -14,37 +15,32 @@ export type Company = schemas['Company']
  * Supplier module
  * @public
  */
-export class SupplierAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class SupplierAPI extends BaseAPI {
   /**
    * @summary List of Company
-   * @description Use this to return multiple Company.<br>
-				Requires authentication.
-   * @param {string} [activeinactive] 
-   * @param {number} [count] 
-   * @param {boolean} [idonly] 
-   * @param {boolean} [includeactive] 
-   * @param {boolean} [includeinactive] 
-   * @param {number} [kashflowtenantid] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {string} [search] 
-   * @param {number} [toplevel_id] 
-   * @param {string} [xerotenantid] 
+   * @description Use this to return multiple Company. Requires authentication.
+   * @param {string} [activeinactive]
+   * @param {number} [count]
+   * @param {boolean} [idonly]
+   * @param {boolean} [includeactive]
+   * @param {boolean} [includeinactive]
+   * @param {number} [kashflowtenantid]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {string} [search]
+   * @param {number} [toplevel_id]
+   * @param {string} [xerotenantid]
    */
   getSupplier({
     activeinactive,
@@ -92,7 +88,7 @@ export class SupplierAPI extends HaloPSA {
     search?: string
     toplevel_id?: number
     xerotenantid?: string
-  }): Promise<any> {
+  }): Promise<Company_View> {
     return this.request({
       method: 'get',
       path: '/Supplier',
@@ -123,45 +119,30 @@ export class SupplierAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postSupplier({ company }: { company: Array<Company> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Supplier',
-      data: company,
-    })
+  postSupplier({ companyList }: { companyList: Array<Company> }): Promise<Company> {
+    return this.request({ method: 'post', data: companyList, path: '/Supplier' })
   }
 
   /**
    * @summary Get one Company
-   * @description Use this to return a single instance of Company.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of Company. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
-  getSupplierById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/Supplier/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  getSupplierById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<Company> {
+    return this.request({ method: 'get', path: `/Supplier/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteSupplierById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Supplier/${id}`,
-    })
+  deleteSupplierById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Supplier/${id}` })
   }
 }

@@ -3,6 +3,23 @@ import promiseRetry from 'promise-retry'
 import HaloPSA, { HaloConfig } from './HaloPSA'
 
 /**
+ * Base class for generated API sections. Holds a shared HaloPSA instance
+ * and exposes `request` so subclasses share a single axios client + token cache.
+ * @public
+ */
+export class BaseAPI {
+  readonly #halo: HaloPSA
+
+  constructor(halo: HaloPSA) {
+    this.#halo = halo
+  }
+
+  protected request<T = unknown>(args: RequestOptions): Promise<T> {
+    return this.#halo.request(args) as Promise<T>
+  }
+}
+
+/**
  * curried request function
  * @internal
  */

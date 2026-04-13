@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link IntegrationExport} */
 export type IntegrationExport = schemas['IntegrationExport']
@@ -14,17 +13,12 @@ export type IntegrationExport = schemas['IntegrationExport']
  * IntegrationExport module
  * @public
  */
-export class IntegrationExportAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class IntegrationExportAPI extends BaseAPI {
   /**
    * @summary List of IntegrationExport
-   * @description Use this to return multiple IntegrationExport.<br>
-				Requires authentication.
-   * @param {number} [moduleId] 
-   * @param {boolean} [readyForImport] 
+   * @description Use this to return multiple IntegrationExport. Requires authentication.
+   * @param {number} [moduleId]
+   * @param {boolean} [readyForImport]
    */
   getIntegrationExport({
     moduleId,
@@ -32,31 +26,26 @@ export class IntegrationExportAPI extends HaloPSA {
   }: {
     moduleId?: number
     readyForImport?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/IntegrationExport',
-      params: {
-        moduleId,
-        readyForImport,
-      },
+      params: { moduleId, readyForImport },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postIntegrationExport({
-    integrationExport,
+    integrationExportList,
   }: {
-    integrationExport: Array<IntegrationExport>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/IntegrationExport',
-      data: integrationExport,
-    })
+    integrationExportList: Array<IntegrationExport>
+  }): Promise<IntegrationExport> {
+    return this.request({ method: 'post', data: integrationExportList, path: '/IntegrationExport' })
+  }
+
+  /**
+   * @param {number} id
+   */
+  deleteIntegrationExportById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/IntegrationExport/${id}` })
   }
 }

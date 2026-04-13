@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Generic} */
 export type Generic = schemas['Generic']
@@ -14,18 +13,13 @@ export type Generic = schemas['Generic']
  * AssetGroup module
  * @public
  */
-export class AssetGroupAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class AssetGroupAPI extends BaseAPI {
   /**
    * @summary List of Generic
-   * @description Use this to return multiple Generic.<br>
-				Requires authentication.
-   * @param {string} [includetypesforgroups] 
-   * @param {boolean} [istree] 
-   * @param {string} [type] 
+   * @description Use this to return multiple Generic. Requires authentication.
+   * @param {string} [includetypesforgroups]
+   * @param {boolean} [istree]
+   * @param {string} [type]
    */
   getAssetGroup({
     includetypesforgroups,
@@ -35,37 +29,23 @@ export class AssetGroupAPI extends HaloPSA {
     includetypesforgroups?: string
     istree?: boolean
     type?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/AssetGroup',
-      params: {
-        includetypesforgroups,
-        istree,
-        type,
-      },
+      params: { includetypesforgroups, istree, type },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postAssetGroup({ generic }: { generic: Array<Generic> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/AssetGroup',
-      data: generic,
-    })
+  postAssetGroup({ genericList }: { genericList: Array<Generic> }): Promise<unknown> {
+    return this.request({ method: 'post', data: genericList, path: '/AssetGroup' })
   }
 
   /**
    * @summary Get one Generic
-   * @description Use this to return a single instance of Generic.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of Generic. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getAssetGroupById({
     id,
@@ -73,25 +53,14 @@ export class AssetGroupAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/AssetGroup/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/AssetGroup/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteAssetGroupById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/AssetGroup/${id}`,
-    })
+  deleteAssetGroupById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/AssetGroup/${id}` })
   }
 }

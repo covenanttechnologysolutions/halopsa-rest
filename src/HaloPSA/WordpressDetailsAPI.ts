@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link WordpressDetails} */
 export type WordpressDetails = schemas['WordpressDetails']
@@ -14,61 +13,30 @@ export type WordpressDetails = schemas['WordpressDetails']
  * WordpressDetails module
  * @public
  */
-export class WordpressDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class WordpressDetailsAPI extends BaseAPI {
+  getWordpressDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/WordpressDetails' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getWordpressDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/WordpressDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postWordpressDetails({
-    wordpressDetails,
+    wordpressDetailsList,
   }: {
-    wordpressDetails: Array<WordpressDetails>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/WordpressDetails',
-      data: wordpressDetails,
-    })
+    wordpressDetailsList: Array<WordpressDetails>
+  }): Promise<WordpressDetails> {
+    return this.request({ method: 'post', data: wordpressDetailsList, path: '/WordpressDetails' })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getWordpressDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/WordpressDetails/${id}`,
-    })
+  getWordpressDetailsById({ id }: { id: number }): Promise<WordpressDetails> {
+    return this.request({ method: 'get', path: `/WordpressDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteWordpressDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/WordpressDetails/${id}`,
-    })
+  deleteWordpressDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/WordpressDetails/${id}` })
   }
 }

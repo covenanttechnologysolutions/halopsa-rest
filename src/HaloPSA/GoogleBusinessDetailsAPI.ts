@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link GoogleBusinessDetails} */
 export type GoogleBusinessDetails = schemas['GoogleBusinessDetails']
@@ -14,61 +13,34 @@ export type GoogleBusinessDetails = schemas['GoogleBusinessDetails']
  * GoogleBusinessDetails module
  * @public
  */
-export class GoogleBusinessDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class GoogleBusinessDetailsAPI extends BaseAPI {
+  getGoogleBusinessDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/GoogleBusinessDetails' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getGoogleBusinessDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/GoogleBusinessDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postGoogleBusinessDetails({
-    googleBusinessDetails,
+    googleBusinessDetailsList,
   }: {
-    googleBusinessDetails: Array<GoogleBusinessDetails>
-  }): Promise<any> {
+    googleBusinessDetailsList: Array<GoogleBusinessDetails>
+  }): Promise<GoogleBusinessDetails> {
     return this.request({
       method: 'post',
+      data: googleBusinessDetailsList,
       path: '/GoogleBusinessDetails',
-      data: googleBusinessDetails,
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getGoogleBusinessDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/GoogleBusinessDetails/${id}`,
-    })
+  getGoogleBusinessDetailsById({ id }: { id: number }): Promise<GoogleBusinessDetails> {
+    return this.request({ method: 'get', path: `/GoogleBusinessDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteGoogleBusinessDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/GoogleBusinessDetails/${id}`,
-    })
+  deleteGoogleBusinessDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/GoogleBusinessDetails/${id}` })
   }
 }

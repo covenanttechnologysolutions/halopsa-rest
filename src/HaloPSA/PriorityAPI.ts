@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Policy} */
 export type Policy = schemas['Policy']
@@ -14,17 +13,12 @@ export type Policy = schemas['Policy']
  * Priority module
  * @public
  */
-export class PriorityAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class PriorityAPI extends BaseAPI {
   /**
    * @summary List of Policy
-   * @description Use this to return multiple Policy.<br>
-				Requires authentication.
-   * @param {boolean} [includedistinct] 
-   * @param {number} [slaid] 
+   * @description Use this to return multiple Policy. Requires authentication.
+   * @param {boolean} [includedistinct]
+   * @param {number} [slaid]
    */
   getPriority({
     includedistinct,
@@ -32,56 +26,34 @@ export class PriorityAPI extends HaloPSA {
   }: {
     includedistinct?: boolean
     slaid?: number
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Priority',
-      params: {
-        includedistinct,
-        slaid,
-      },
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Priority', params: { includedistinct, slaid } })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postPriority({ policy }: { policy: Array<Policy> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Priority',
-      data: policy,
-    })
+  postPriority({ policyList }: { policyList: Array<Policy> }): Promise<unknown> {
+    return this.request({ method: 'post', data: policyList, path: '/Priority' })
   }
 
   /**
    * @summary Get one Policy
-   * @description Use this to return a single instance of Policy.<br>
-				Requires authentication.
-   * @param {string} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of Policy. Requires authentication.
+   * @param {string} id
+   * @param {boolean} [includedetails]
    */
-  getPriorityById({ id, includedetails }: { id: string; includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/Priority/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  getPriorityById({
+    id,
+    includedetails,
+  }: {
+    id: string
+    includedetails?: boolean
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/Priority/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {string} id
    */
-  deletePriorityById({ id }: { id: string }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Priority/${id}`,
-    })
+  deletePriorityById({ id }: { id: string }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Priority/${id}` })
   }
 }

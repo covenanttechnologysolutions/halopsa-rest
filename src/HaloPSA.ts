@@ -23,27 +23,27 @@ export const DEFAULTS: {
   },
   logger:
     (debug = false) =>
-      (level, text, meta) => {
-        switch (level) {
-          case 'error':
-            console.error(`${level}: ${text}`, meta)
-            return
-          case 'warn':
-            if (debug) {
-              console.log(`${level}: ${text}`, meta)
-            }
-            return
-          case 'info': {
-            if (debug) {
-              console.info(`${level}: ${text}`, meta)
-            }
-            return
-          }
-          default:
+    (level, text, meta) => {
+      switch (level) {
+        case 'error':
+          console.error(`${level}: ${text}`, meta)
+          return
+        case 'warn':
+          if (debug) {
             console.log(`${level}: ${text}`, meta)
-            return
+          }
+          return
+        case 'info': {
+          if (debug) {
+            console.info(`${level}: ${text}`, meta)
+          }
+          return
         }
-      },
+        default:
+          console.log(`${level}: ${text}`, meta)
+          return
+      }
+    },
 }
 
 interface HaloToken {
@@ -125,13 +125,14 @@ export interface HaloConfig extends HaloOptions {
 export default class HaloPSA {
   config: HaloConfig
   private instance: AxiosInstance
+  private cachedToken?: HaloToken
 
   /**
    * @public
    */
   request: (args: RequestOptions) => Promise<any>
 
-  constructor ({
+  constructor({
     clientSecret,
     companyUrl,
     clientId,
@@ -164,27 +165,19 @@ export default class HaloPSA {
     this.instance = axios.create({
       timeout,
       baseURL: companyUrl + '/api',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.config.token?.access_token}`,
-      },
+      headers: { 'Content-Type': 'application/json' },
     })
 
     this.instance.interceptors.request.use(
-      (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig | any => {
-        // update token if expired
-        if (Date.now() > EXPIRES_AT) {
-          return this.getToken().then((token) => {
-            return {
-              ...config,
-              headers: {
-                ...config.headers,
-                Authorization: `Bearer ${token.access_token}`,
-              },
-            }
-          })
+      async (config: InternalAxiosRequestConfig): Promise<InternalAxiosRequestConfig> => {
+        // Refresh the token when expired or never fetched. Always set the
+        // Authorization header from the cached token. The axios instance has
+        // no static auth header, so without this the second request would go
+        // out unauthenticated.
+        if (!this.cachedToken || Date.now() > EXPIRES_AT) {
+          this.cachedToken = await this.getToken()
         }
-
+        config.headers.set('Authorization', `Bearer ${this.cachedToken.access_token}`)
         return config
       },
     )
@@ -195,7 +188,7 @@ export default class HaloPSA {
   /**
    * @internal
    */
-  private async api ({
+  private async api({
     path,
     method,
     params,
@@ -224,7 +217,7 @@ export default class HaloPSA {
     }
   }
 
-  private async getToken (): Promise<HaloToken> {
+  private async getToken(): Promise<HaloToken> {
     const params = new URLSearchParams()
     params.append('client_id', this.config.clientId)
     params.append('client_secret', this.config.clientSecret)

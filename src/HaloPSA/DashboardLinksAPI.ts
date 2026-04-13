@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link DashboardLinks} */
 export type DashboardLinks = schemas['DashboardLinks']
@@ -14,33 +13,28 @@ export type DashboardLinks = schemas['DashboardLinks']
  * DashboardLinks module
  * @public
  */
-export class DashboardLinksAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class DashboardLinksAPI extends BaseAPI {
   /**
    * @summary List of DashboardLinks
-   * @description Use this to return multiple DashboardLinks.<br>
-				Requires authentication.
-   * @param {number} [access_control_level] 
-   * @param {number} [count] 
-   * @param {boolean} [in_app] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {boolean} [showall] 
-   * @param {number} [userid] 
+   * @description Use this to return multiple DashboardLinks. Requires authentication.
+   * @param {number} [access_control_level]
+   * @param {number} [count]
+   * @param {boolean} [in_app]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {boolean} [showall]
+   * @param {number} [userid]
    */
   getDashboardLinks({
     access_control_level,
@@ -80,7 +74,7 @@ export class DashboardLinksAPI extends HaloPSA {
     pageinate?: boolean
     showall?: boolean
     userid?: number
-  }): Promise<any> {
+  }): Promise<Array<DashboardLinks>> {
     return this.request({
       method: 'get',
       path: '/DashboardLinks',
@@ -107,28 +101,22 @@ export class DashboardLinksAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postDashboardLinks({ dashboardLinks }: { dashboardLinks: Array<DashboardLinks> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/DashboardLinks',
-      data: dashboardLinks,
-    })
+  postDashboardLinks({
+    dashboardLinksList,
+  }: {
+    dashboardLinksList: Array<DashboardLinks>
+  }): Promise<DashboardLinks> {
+    return this.request({ method: 'post', data: dashboardLinksList, path: '/DashboardLinks' })
   }
 
   /**
    * @summary Get one DashboardLinks
-   * @description Use this to return a single instance of DashboardLinks.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [getreporttoken] 
-   * @param {boolean} [includedetails] 
-   * @param {boolean} [showall] 
-   * @param {number} [userid] 
+   * @description Use this to return a single instance of DashboardLinks. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [getreporttoken]
+   * @param {boolean} [includedetails]
+   * @param {boolean} [showall]
+   * @param {number} [userid]
    */
   getDashboardLinksById({
     id,
@@ -142,40 +130,22 @@ export class DashboardLinksAPI extends HaloPSA {
     includedetails?: boolean
     showall?: boolean
     userid?: number
-  }): Promise<any> {
+  }): Promise<DashboardLinks> {
     return this.request({
       method: 'get',
       path: `/DashboardLinks/${id}`,
-      params: {
-        getreporttoken,
-        includedetails,
-        showall,
-        userid,
-      },
+      params: { getreporttoken, includedetails, showall, userid },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteDashboardLinksById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/DashboardLinks/${id}`,
-    })
+  deleteDashboardLinksById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/DashboardLinks/${id}` })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getDashboardLinksFilterValues({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/DashboardLinks/FilterValues',
-    })
+  getDashboardLinksFilterValues(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/DashboardLinks/FilterValues' })
   }
 }

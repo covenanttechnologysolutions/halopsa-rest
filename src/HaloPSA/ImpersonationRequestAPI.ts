@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ImpersonationRequest} */
 export type ImpersonationRequest = schemas['ImpersonationRequest']
@@ -14,25 +13,16 @@ export type ImpersonationRequest = schemas['ImpersonationRequest']
  * ImpersonationRequest module
  * @public
  */
-export class ImpersonationRequestAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
-  /**
-   * 
-   * 
-   
-   */
+export class ImpersonationRequestAPI extends BaseAPI {
   postImpersonationRequest({
     impersonationRequest,
   }: {
     impersonationRequest: ImpersonationRequest
-  }): Promise<any> {
+  }): Promise<ImpersonationRequest> {
     return this.request({
       method: 'post',
-      path: '/ImpersonationRequest',
       data: impersonationRequest,
+      path: '/ImpersonationRequest',
     })
   }
 }

@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module ResourceTypeAPI
@@ -12,32 +9,15 @@ type schemas = components['schemas']
  * ResourceType module
  * @public
  */
-export class ResourceTypeAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class ResourceTypeAPI extends BaseAPI {
+  getResourceType(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/ResourceType' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  getResourceType({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/ResourceType',
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  getResourceTypeById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ResourceType/${id}`,
-    })
+  getResourceTypeById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/ResourceType/${id}` })
   }
 }

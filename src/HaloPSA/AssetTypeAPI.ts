@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Xtype} */
 export type Xtype = schemas['Xtype']
@@ -14,24 +13,19 @@ export type Xtype = schemas['Xtype']
  * AssetType module
  * @public
  */
-export class AssetTypeAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class AssetTypeAPI extends BaseAPI {
   /**
    * @summary List of Xtype
-   * @description Use this to return multiple Xtype.<br>
-				Requires authentication.
-   * @param {number} [assetgroup_id] 
-   * @param {boolean} [can_create_only] 
-   * @param {boolean} [can_edit_only] 
-   * @param {boolean} [fixedassetgroups] 
-   * @param {number} [include_current] 
-   * @param {boolean} [resourcesonly] 
-   * @param {boolean} [setuplist] 
-   * @param {number} [tickettype_id] 
-   * @param {string} [type] 
+   * @description Use this to return multiple Xtype. Requires authentication.
+   * @param {number} [assetgroup_id]
+   * @param {boolean} [can_create_only]
+   * @param {boolean} [can_edit_only]
+   * @param {boolean} [fixedassetgroups]
+   * @param {number} [include_current]
+   * @param {boolean} [resourcesonly]
+   * @param {boolean} [setuplist]
+   * @param {number} [tickettype_id]
+   * @param {string} [type]
    */
   getAssetType({
     assetgroup_id,
@@ -53,7 +47,7 @@ export class AssetTypeAPI extends HaloPSA {
     setuplist?: boolean
     tickettype_id?: number
     type?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/AssetType',
@@ -71,31 +65,21 @@ export class AssetTypeAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postAssetType({ xtype }: { xtype: Array<Xtype> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/AssetType',
-      data: xtype,
-    })
+  postAssetType({ xtypeList }: { xtypeList: Array<Xtype> }): Promise<unknown> {
+    return this.request({ method: 'post', data: xtypeList, path: '/AssetType' })
   }
 
   /**
    * @summary Get one Xtype
-   * @description Use this to return a single instance of Xtype.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {number} [booking_type] 
-   * @param {number} [client_id] 
-   * @param {string} [end_date] 
-   * @param {boolean} [fieldsandlayoutonly] 
-   * @param {boolean} [includedetails] 
-   * @param {number} [site_id] 
-   * @param {string} [start_date] 
+   * @description Use this to return a single instance of Xtype. Requires authentication.
+   * @param {number} id
+   * @param {number} [booking_type]
+   * @param {number} [client_id]
+   * @param {string} [end_date]
+   * @param {boolean} [fieldsandlayoutonly]
+   * @param {boolean} [includedetails]
+   * @param {number} [site_id]
+   * @param {string} [start_date]
    */
   getAssetTypeById({
     id,
@@ -115,7 +99,7 @@ export class AssetTypeAPI extends HaloPSA {
     includedetails?: boolean
     site_id?: number
     start_date?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/AssetType/${id}`,
@@ -132,14 +116,9 @@ export class AssetTypeAPI extends HaloPSA {
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteAssetTypeById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/AssetType/${id}`,
-    })
+  deleteAssetTypeById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/AssetType/${id}` })
   }
 }

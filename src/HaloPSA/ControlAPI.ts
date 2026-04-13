@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Control} */
 export type Control = schemas['Control']
@@ -14,81 +13,28 @@ export type Control = schemas['Control']
  * Control module
  * @public
  */
-export class ControlAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class ControlAPI extends BaseAPI {
+  getControl(): Promise<Control> {
+    return this.request({ method: 'get', path: '/Control' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getControl({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Control',
-    })
+  postControl({ controlList }: { controlList: Array<Control> }): Promise<Control> {
+    return this.request({ method: 'post', data: controlList, path: '/Control' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postControl({ control }: { control: Array<Control> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Control',
-      data: control,
-    })
+  postControlSetup(): Promise<unknown> {
+    return this.request({ method: 'post', path: '/Control/setup' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postControlSetup({}: {}): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Control/setup',
-    })
+  postControlClearCache(): Promise<unknown> {
+    return this.request({ method: 'post', path: '/Control/ClearCache' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postControlClearCache({}: {}): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Control/ClearCache',
-    })
+  postControlUpdateEnc(): Promise<unknown> {
+    return this.request({ method: 'post', path: '/Control/UpdateEnc' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postControlUpdateEnc({}: {}): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Control/UpdateEnc',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  getControlTeams({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Control/Teams',
-    })
+  getControlTeams(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Control/Teams' })
   }
 }

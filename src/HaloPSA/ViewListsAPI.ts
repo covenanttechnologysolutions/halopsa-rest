@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ViewLists} */
 export type ViewLists = schemas['ViewLists']
@@ -14,25 +13,20 @@ export type ViewLists = schemas['ViewLists']
  * ViewLists module
  * @public
  */
-export class ViewListsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ViewListsAPI extends BaseAPI {
   /**
    * @summary List of ViewLists
-   * @description Use this to return multiple ViewLists.<br>
-				Requires authentication.
-   * @param {number} [connectedinstance_id] 
-   * @param {string} [domain] 
-   * @param {boolean} [globalonly] 
-   * @param {boolean} [istree] 
-   * @param {boolean} [showall] 
-   * @param {number} [showallforteam] 
-   * @param {number} [showallfortech] 
-   * @param {boolean} [showcounts] 
-   * @param {number} [ticketarea_id] 
-   * @param {string} [type] 
+   * @description Use this to return multiple ViewLists. Requires authentication.
+   * @param {number} [connectedinstance_id]
+   * @param {string} [domain]
+   * @param {boolean} [globalonly]
+   * @param {boolean} [istree]
+   * @param {boolean} [showall]
+   * @param {number} [showallforteam]
+   * @param {number} [showallfortech]
+   * @param {boolean} [showcounts]
+   * @param {number} [ticketarea_id]
+   * @param {string} [type]
    */
   getViewLists({
     connectedinstance_id,
@@ -56,7 +50,7 @@ export class ViewListsAPI extends HaloPSA {
     showcounts?: boolean
     ticketarea_id?: number
     type?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/ViewLists',
@@ -75,27 +69,17 @@ export class ViewListsAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postViewLists({ viewLists }: { viewLists: Array<ViewLists> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ViewLists',
-      data: viewLists,
-    })
+  postViewLists({ viewListsList }: { viewListsList: Array<ViewLists> }): Promise<ViewLists> {
+    return this.request({ method: 'post', data: viewListsList, path: '/ViewLists' })
   }
 
   /**
    * @summary Get one ViewLists
-   * @description Use this to return a single instance of ViewLists.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {string} [domain] 
-   * @param {boolean} [includedetails] 
-   * @param {boolean} [showcounts] 
+   * @description Use this to return a single instance of ViewLists. Requires authentication.
+   * @param {number} id
+   * @param {string} [domain]
+   * @param {boolean} [includedetails]
+   * @param {boolean} [showcounts]
    */
   getViewListsById({
     id,
@@ -107,27 +91,18 @@ export class ViewListsAPI extends HaloPSA {
     domain?: string
     includedetails?: boolean
     showcounts?: boolean
-  }): Promise<any> {
+  }): Promise<ViewLists> {
     return this.request({
       method: 'get',
       path: `/ViewLists/${id}`,
-      params: {
-        domain,
-        includedetails,
-        showcounts,
-      },
+      params: { domain, includedetails, showcounts },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteViewListsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ViewLists/${id}`,
-    })
+  deleteViewListsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ViewLists/${id}` })
   }
 }

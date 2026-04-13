@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link WordpressOrgDetails} */
 export type WordpressOrgDetails = schemas['WordpressOrgDetails']
@@ -14,61 +13,34 @@ export type WordpressOrgDetails = schemas['WordpressOrgDetails']
  * WordpressOrgDetails module
  * @public
  */
-export class WordpressOrgDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class WordpressOrgDetailsAPI extends BaseAPI {
+  getWordpressOrgDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/WordpressOrgDetails' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getWordpressOrgDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/WordpressOrgDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postWordpressOrgDetails({
-    wordpressOrgDetails,
+    wordpressOrgDetailsList,
   }: {
-    wordpressOrgDetails: Array<WordpressOrgDetails>
-  }): Promise<any> {
+    wordpressOrgDetailsList: Array<WordpressOrgDetails>
+  }): Promise<WordpressOrgDetails> {
     return this.request({
       method: 'post',
+      data: wordpressOrgDetailsList,
       path: '/WordpressOrgDetails',
-      data: wordpressOrgDetails,
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getWordpressOrgDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/WordpressOrgDetails/${id}`,
-    })
+  getWordpressOrgDetailsById({ id }: { id: number }): Promise<WordpressOrgDetails> {
+    return this.request({ method: 'get', path: `/WordpressOrgDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteWordpressOrgDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/WordpressOrgDetails/${id}`,
-    })
+  deleteWordpressOrgDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/WordpressOrgDetails/${id}` })
   }
 }

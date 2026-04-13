@@ -1,10 +1,11 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Device} */
 export type Device = schemas['Device']
+/** {@link Device_View} */
+export type Device_View = schemas['Device_View']
 
 /**
  * @module AssetAPI
@@ -14,92 +15,89 @@ export type Device = schemas['Device']
  * Asset module
  * @public
  */
-export class AssetAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class AssetAPI extends BaseAPI {
   /**
    * @summary List of Device
-   * @description Use this to return multiple Device.<br>
-				Requires authentication.
-   * @param {string} [activeinactive] (string) Filter on active/inactive assets - comma seperated, first value being true or false for active, second for inactive.
-   * @param {string} [advanced_search] 
-   * @param {number} [assetgroup_id] (int) Filter by Assets belonging to a particular Asset group.
-   * @param {string} [assetgroups] (string) Filter Assets on asset groups, comma seperated ids.
-   * @param {string} [assets] 
-   * @param {string} [assetstatuses] (string) Filter Assets on asset statuses, comma seperated ids.
-   * @param {number} [assettype] 
-   * @param {number} [assettype_id] (int) Filter by Assets belonging to a particular Asset type.
-   * @param {string} [assettypes] (string) Filter Assets on asset types, comma seperated ids.
-   * @param {boolean} [bookmarked] (bool) Include only Assets that are bookmarked in the response.
-   * @param {number} [client_id] (int) Filter by Assets belonging to a particular client.
-   * @param {number} [columns_id] (int) The column profile ID.
-   * @param {boolean} [consignable] (bool) Include only the Assets that are consignable in the response.
-   * @param {number} [consignment_id] (int) Filter by Assets consignment id.
-   * @param {number} [contract_id] (int) Filter by Assets assigned to a particular contract.
-   * @param {number} [contract_id_adding_to] (int) Include the billing period of the linked contract id in the response.
-   * @param {number} [count] (int) Number of Assets to return in the response.
-   * @param {boolean} [domotzagents] (bool) Include only Assets with a linked Domotz agent in the response.
-   * @param {string} [excludethese] (string) Returns Assets based on the exclusion of these Asset ID's, comma seperated.
-   * @param {string} [globalSearchID] 
-   * @param {boolean} [idonly] (bool) Include only the Asset ID in the response.
-   * @param {boolean} [includeactive] (bool) Include active Assets in the response.
-   * @param {boolean} [includeallowedstatus] (bool) Include the Asset column 'tallowallstatus' in the response.
-   * @param {boolean} [includeassetfields] (bool) Include asset fields in the response.
-   * @param {boolean} [includechildren] (bool) Include child Assets in the response.
-   * @param {boolean} [includecolumns] (bool) Include column details in the response.
-   * @param {boolean} [includeinactive] (bool) Include inactive Assets in the response.
-   * @param {boolean} [includeservices] (bool) Include Assets linked service ids in the response.
-   * @param {boolean} [includeuser] (bool) Include user details in the response.
-   * @param {Array<number>} [integration_tenantids] 
-   * @param {string} [integration_type] (string) Filter on which integration the Asset was imported through - 'aterarmm', 'ninjarmm', 'syncromsp', 'domotz', 'connectwiseautomate', 'snow', 'datto', 'passportal', 'addigy', 'liongard'.
-   * @param {string} [inventory_number] 
-   * @param {boolean} [islogonbehalfview] 
-   * @param {number} [item_id] (int) Filter by Assets item id.
-   * @param {number} [itemstock_id] (int) Filter by Assets item stock id.
-   * @param {number} [kb_id] 
-   * @param {boolean} [lastupdatefromdate] (bool) Include the field lastupdatefromdate in the response.
-   * @param {boolean} [lastupdatetodate] (bool) Include the field lastupdatetodate in the response.
-   * @param {number} [licence_id] (int) Filter by Assets assigned to a particular licence.
-   * @param {boolean} [linked_to_ticket] 
-   * @param {number} [linkedto_id] (int) Filter by Assets linked to a particular Asset.
-   * @param {boolean} [mine] (bool) Include only the Assets that belong to yourself in the response.
-   * @param {boolean} [mysite] (bool) Include only the Assets that belong to your site in the response.
-   * @param {boolean} [noicon] (bool) Exclude the Asset icon in the response.
-   * @param {string} [order] (string) The name of the field to order by first.
-   * @param {string} [order2] (string) The name of the field to order by second.
-   * @param {string} [order3] (string) The name of the field to order by third.
-   * @param {string} [order4] (string) The name of the field to order by fourth.
-   * @param {string} [order5] (string) The name of the field to order by fifth.
-   * @param {boolean} [orderdesc] (bool) Whether to order ascending or descending on first order.
-   * @param {boolean} [orderdesc2] (bool) Whether to order ascending or descending on second order.
-   * @param {boolean} [orderdesc3] (bool) Whether to order ascending or descending on third order.
-   * @param {boolean} [orderdesc4] (bool) Whether to order ascending or descending on fourth order.
-   * @param {boolean} [orderdesc5] (bool) Whether to order ascending or descending on fifth order.
-   * @param {number} [page_no] (int) When using Pagination, the page number to return.
-   * @param {number} [page_size] (int) When using Pagination, the size of the page.
-   * @param {boolean} [pageinate] (bool) Whether to use Pagination in the response.
-   * @param {boolean} [previously_selected] (bool) Include the most recent dateoccured field from a linked ticket in the response.
-   * @param {number} [previously_selected_client_id] (int) Filter previously_selected by client id.
-   * @param {number} [previously_selected_site_id] (int) Filter previously_selected by site id.
-   * @param {number} [previously_selected_user_id] (int) Filter previously_selected by user id.
-   * @param {number} [salesorder_id] (int) Filter by Assets sales order id.
-   * @param {number} [salesorder_line] (int) Filter by Assets sales order line id.
-   * @param {string} [search] (string) Filters response based on the search string.
-   * @param {boolean} [search_inventory_number_only] (bool) Whether to search only on inventory number in the search string.
-   * @param {number} [service_id] (int) Filter by Assets belonging to a particular service.
-   * @param {string} [service_ids] (string) Filter Assets on service ids, comma seperated ids.
-   * @param {number} [site_id] (int) Filter by Assets belonging to a particular site.
-   * @param {number} [stockbin_id] 
-   * @param {Array<number>} [stockbin_ids] 
-   * @param {number} [supplier_contract_id] (int) Filter by Assets assigned to a particular supplier contract.
-   * @param {number} [supplier_id] (int) Filter by Assets belonging to a particular supplier.
-   * @param {string} [suppliercontracts] (string) Filter Assets on supplier contracts, comma seperated ids.
-   * @param {number} [ticket_id] (int) Filter by Assets belonging to a particular ticket.
-   * @param {number} [tickettype_id] 
-   * @param {number} [user_id] 
-   * @param {string} [username] (string) Filters by the specified username.
+   * @description Use this to return multiple Device. Requires authentication.
+   * @param {string} [activeinactive] Filter on active/inactive assets - comma seperated, first value being true or false for active, second for inactive.
+   * @param {string} [advanced_search]
+   * @param {number} [assetgroup_id] Filter by Assets belonging to a particular Asset group.
+   * @param {string} [assetgroups] Filter Assets on asset groups, comma seperated ids.
+   * @param {string} [assets]
+   * @param {string} [assetstatuses] Filter Assets on asset statuses, comma seperated ids.
+   * @param {number} [assettype]
+   * @param {number} [assettype_id] Filter by Assets belonging to a particular Asset type.
+   * @param {string} [assettypes] Filter Assets on asset types, comma seperated ids.
+   * @param {boolean} [bookmarked] Include only Assets that are bookmarked in the response.
+   * @param {number} [client_id] Filter by Assets belonging to a particular client.
+   * @param {string} [client_ids] (array of int) Returns Assets based on client ID's in the array.
+   * @param {number} [columns_id] The column profile ID.
+   * @param {boolean} [consignable] Include only the Assets that are consignable in the response.
+   * @param {number} [consignment_id] Filter by Assets consignment id.
+   * @param {number} [contract_id] Filter by Assets assigned to a particular contract.
+   * @param {number} [contract_id_adding_to] Include the billing period of the linked contract id in the response.
+   * @param {number} [count] Number of Assets to return in the response.
+   * @param {boolean} [domotzagents] Include only Assets with a linked Domotz agent in the response.
+   * @param {string} [excludethese] Returns Assets based on the exclusion of these Asset ID's, comma seperated.
+   * @param {string} [globalSearchID]
+   * @param {boolean} [idonly] Include only the Asset ID in the response.
+   * @param {boolean} [includeactive] Include active Assets in the response.
+   * @param {boolean} [includeallowedstatus] Include the Asset column 'tallowallstatus' in the response.
+   * @param {boolean} [includeassetfields] Include asset fields in the response - must also specify the URL parameter 'assettype_id' at the same time.
+   * @param {boolean} [includechildren] Include child Assets in the response.
+   * @param {boolean} [includecolumns] Include column details in the response.
+   * @param {boolean} [includeinactive] Include inactive Assets in the response.
+   * @param {boolean} [includeservices] Include Assets linked service ids in the response.
+   * @param {boolean} [includeuser] Include user details in the response.
+   * @param {Array<number>} [integration_tenantids]
+   * @param {string} [integration_type] Filter on which integration the Asset was imported through - 'aterarmm', 'ninjarmm', 'syncromsp', 'domotz', 'connectwiseautomate', 'snow', 'datto', 'passportal', 'addigy', 'liongard'.
+   * @param {string} [inventory_number]
+   * @param {boolean} [islogonbehalfview]
+   * @param {number} [item_id] Filter by Assets item id.
+   * @param {number} [itemstock_id] Filter by Assets item stock id.
+   * @param {number} [kb_id]
+   * @param {boolean} [lastupdatefromdate] Include the field lastupdatefromdate in the response.
+   * @param {boolean} [lastupdatetodate] Include the field lastupdatetodate in the response.
+   * @param {number} [licence_id] Filter by Assets assigned to a particular licence.
+   * @param {boolean} [linked_to_ticket]
+   * @param {number} [linkedto_id] Filter by Assets linked to a particular Asset.
+   * @param {boolean} [mine] Include only the Assets that belong to yourself in the response.
+   * @param {boolean} [mysite] Include only the Assets that belong to your site in the response.
+   * @param {boolean} [noicon] Exclude the Asset icon in the response.
+   * @param {string} [order] The name of the field to order by first.
+   * @param {string} [order2] The name of the field to order by second.
+   * @param {string} [order3] The name of the field to order by third.
+   * @param {string} [order4] The name of the field to order by fourth.
+   * @param {string} [order5] The name of the field to order by fifth.
+   * @param {boolean} [orderdesc] Whether to order ascending or descending on first order.
+   * @param {boolean} [orderdesc2] Whether to order ascending or descending on second order.
+   * @param {boolean} [orderdesc3] Whether to order ascending or descending on third order.
+   * @param {boolean} [orderdesc4] Whether to order ascending or descending on fourth order.
+   * @param {boolean} [orderdesc5] Whether to order ascending or descending on fifth order.
+   * @param {number} [page_no] When using Pagination, the page number to return.
+   * @param {number} [page_size] When using Pagination, the size of the page.
+   * @param {boolean} [pageinate] Whether to use Pagination in the response.
+   * @param {boolean} [previously_selected] Include the most recent dateoccured field from a linked ticket in the response.
+   * @param {number} [previously_selected_client_id] Filter previously_selected by client id.
+   * @param {number} [previously_selected_site_id] Filter previously_selected by site id.
+   * @param {number} [previously_selected_user_id] Filter previously_selected by user id.
+   * @param {number} [salesorder_id] Filter by Assets sales order id.
+   * @param {number} [salesorder_line] Filter by Assets sales order line id.
+   * @param {string} [search] Filters response based on the search string.
+   * @param {boolean} [search_inventory_number_only] Whether to search only on inventory number in the search string.
+   * @param {number} [service_id] Filter by Assets belonging to a particular service.
+   * @param {string} [service_ids] Filter Assets on service ids, comma seperated ids.
+   * @param {number} [site_id] Filter by Assets belonging to a particular site.
+   * @param {number} [stockbin_id]
+   * @param {Array<number>} [stockbin_ids]
+   * @param {number} [supplier_contract_id] Filter by Assets assigned to a particular supplier contract.
+   * @param {number} [supplier_id] Filter by Assets belonging to a particular supplier.
+   * @param {string} [suppliercontracts] Filter Assets on supplier contracts, comma seperated ids.
+   * @param {number} [ticket_id] Filter by Assets belonging to a particular ticket.
+   * @param {number} [tickettype_id]
+   * @param {number} [user_id]
+   * @param {string} [username] Filters by the specified username.
+   * @param {string} [include_custom_fields] Comma separated list of Custom Field IDs to include in the response.
    */
   getAsset({
     activeinactive,
@@ -113,6 +111,7 @@ export class AssetAPI extends HaloPSA {
     assettypes,
     bookmarked,
     client_id,
+    client_ids,
     columns_id,
     consignable,
     consignment_id,
@@ -179,6 +178,7 @@ export class AssetAPI extends HaloPSA {
     tickettype_id,
     user_id,
     username,
+    include_custom_fields,
   }: {
     activeinactive?: string
     advanced_search?: string
@@ -191,6 +191,7 @@ export class AssetAPI extends HaloPSA {
     assettypes?: string
     bookmarked?: boolean
     client_id?: number
+    client_ids?: string
     columns_id?: number
     consignable?: boolean
     consignment_id?: number
@@ -257,7 +258,8 @@ export class AssetAPI extends HaloPSA {
     tickettype_id?: number
     user_id?: number
     username?: string
-  }): Promise<any> {
+    include_custom_fields?: string
+  }): Promise<Device_View> {
     return this.request({
       method: 'get',
       path: '/Asset',
@@ -273,6 +275,7 @@ export class AssetAPI extends HaloPSA {
         assettypes,
         bookmarked,
         client_id,
+        client_ids,
         columns_id,
         consignable,
         consignment_id,
@@ -339,34 +342,25 @@ export class AssetAPI extends HaloPSA {
         tickettype_id,
         user_id,
         username,
+        include_custom_fields,
       },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postAsset({ device }: { device: Array<Device> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Asset',
-      data: device,
-    })
+  postAsset({ deviceList }: { deviceList: Array<Device> }): Promise<Device> {
+    return this.request({ method: 'post', data: deviceList, path: '/Asset' })
   }
 
   /**
    * @summary Get one Device
-   * @description Use this to return a single instance of Device.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {number} [assettype_id] 
-   * @param {boolean} [includeactivity] (bool) Include activity details in the response.
-   * @param {boolean} [includeallowedstatus] (bool) Include allowed statuses details in the response.
-   * @param {boolean} [includedetails] (bool) Include extra objects in the response.
-   * @param {boolean} [includediagramdetails] (bool) Include diagram details in the response.
-   * @param {boolean} [includehierarchy] (bool) Include hierarchy details in the response.
+   * @description Use this to return a single instance of Device. Requires authentication.
+   * @param {number} id
+   * @param {number} [assettype_id]
+   * @param {boolean} [includeactivity] Include activity details in the response.
+   * @param {boolean} [includeallowedstatus] Include allowed statuses details in the response.
+   * @param {boolean} [includedetails] Include extra objects in the response.
+   * @param {boolean} [includediagramdetails] Include diagram details in the response.
+   * @param {boolean} [includehierarchy] Include hierarchy details in the response.
    */
   getAssetById({
     id,
@@ -384,7 +378,7 @@ export class AssetAPI extends HaloPSA {
     includedetails?: boolean
     includediagramdetails?: boolean
     includehierarchy?: boolean
-  }): Promise<any> {
+  }): Promise<Device> {
     return this.request({
       method: 'get',
       path: `/Asset/${id}`,
@@ -400,38 +394,17 @@ export class AssetAPI extends HaloPSA {
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteAssetById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Asset/${id}`,
-    })
+  deleteAssetById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Asset/${id}` })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getAssetNextTag({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Asset/NextTag',
-    })
+  getAssetNextTag(): Promise<Record<string, unknown>> {
+    return this.request({ method: 'get', path: '/Asset/NextTag' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getAssetGetAllSoftwareVersions({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Asset/GetAllSoftwareVersions',
-    })
+  getAssetGetAllSoftwareVersions(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Asset/GetAllSoftwareVersions' })
   }
 }

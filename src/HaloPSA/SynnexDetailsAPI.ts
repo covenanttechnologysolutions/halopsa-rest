@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link SynnexDetails} */
 export type SynnexDetails = schemas['SynnexDetails']
@@ -14,42 +13,24 @@ export type SynnexDetails = schemas['SynnexDetails']
  * SynnexDetails module
  * @public
  */
-export class SynnexDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class SynnexDetailsAPI extends BaseAPI {
+  getSynnexDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/SynnexDetails' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getSynnexDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/SynnexDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postSynnexDetails({ synnexDetails }: { synnexDetails: Array<SynnexDetails> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/SynnexDetails',
-      data: synnexDetails,
-    })
+  postSynnexDetails({
+    synnexDetailsList,
+  }: {
+    synnexDetailsList: Array<SynnexDetails>
+  }): Promise<SynnexDetails> {
+    return this.request({ method: 'post', data: synnexDetailsList, path: '/SynnexDetails' })
   }
 
   /**
    * @summary Get one IngramMicroDetails
-   * @description Use this to return a single instance of IngramMicroDetails.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of IngramMicroDetails. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getSynnexDetailsById({
     id,
@@ -57,25 +38,14 @@ export class SynnexDetailsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/SynnexDetails/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<SynnexDetails> {
+    return this.request({ method: 'get', path: `/SynnexDetails/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteSynnexDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/SynnexDetails/${id}`,
-    })
+  deleteSynnexDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/SynnexDetails/${id}` })
   }
 }

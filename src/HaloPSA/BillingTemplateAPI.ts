@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ContractTemplateHeader} */
 export type ContractTemplateHeader = schemas['ContractTemplateHeader']
@@ -14,47 +13,29 @@ export type ContractTemplateHeader = schemas['ContractTemplateHeader']
  * BillingTemplate module
  * @public
  */
-export class BillingTemplateAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class BillingTemplateAPI extends BaseAPI {
+  getBillingTemplate(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/BillingTemplate' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getBillingTemplate({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/BillingTemplate',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postBillingTemplate({
-    contractTemplateHeader,
+    contractTemplateHeaderList,
   }: {
-    contractTemplateHeader: Array<ContractTemplateHeader>
-  }): Promise<any> {
+    contractTemplateHeaderList: Array<ContractTemplateHeader>
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
+      data: contractTemplateHeaderList,
       path: '/BillingTemplate',
-      data: contractTemplateHeader,
     })
   }
 
   /**
    * @summary Get one ContractTemplateHeader
-   * @description Use this to return a single instance of ContractTemplateHeader.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {number} [client_id] 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of ContractTemplateHeader. Requires authentication.
+   * @param {number} id
+   * @param {number} [client_id]
+   * @param {boolean} [includedetails]
    */
   getBillingTemplateById({
     id,
@@ -64,26 +45,18 @@ export class BillingTemplateAPI extends HaloPSA {
     id: number
     client_id?: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/BillingTemplate/${id}`,
-      params: {
-        client_id,
-        includedetails,
-      },
+      params: { client_id, includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteBillingTemplateById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/BillingTemplate/${id}`,
-    })
+  deleteBillingTemplateById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/BillingTemplate/${id}` })
   }
 }

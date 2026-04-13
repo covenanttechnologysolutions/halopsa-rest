@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link CustomButton} */
 export type CustomButton = schemas['CustomButton']
@@ -14,19 +13,14 @@ export type CustomButton = schemas['CustomButton']
  * CustomButton module
  * @public
  */
-export class CustomButtonAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class CustomButtonAPI extends BaseAPI {
   /**
    * @summary List of CustomButton
-   * @description Use this to return multiple CustomButton.<br>
-				Requires authentication.
-   * @param {boolean} [isbuttonsetup] 
-   * @param {boolean} [ispermissionsetup] 
-   * @param {number} [msid] 
-   * @param {number} [typeid] 
+   * @description Use this to return multiple CustomButton. Requires authentication.
+   * @param {boolean} [isbuttonsetup]
+   * @param {boolean} [ispermissionsetup]
+   * @param {number} [msid]
+   * @param {number} [typeid]
    */
   getCustomButton({
     isbuttonsetup,
@@ -38,38 +32,27 @@ export class CustomButtonAPI extends HaloPSA {
     ispermissionsetup?: boolean
     msid?: number
     typeid?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/CustomButton',
-      params: {
-        isbuttonsetup,
-        ispermissionsetup,
-        msid,
-        typeid,
-      },
+      params: { isbuttonsetup, ispermissionsetup, msid, typeid },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postCustomButton({ customButton }: { customButton: Array<CustomButton> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/CustomButton',
-      data: customButton,
-    })
+  postCustomButton({
+    customButtonList,
+  }: {
+    customButtonList: Array<CustomButton>
+  }): Promise<CustomButton> {
+    return this.request({ method: 'post', data: customButtonList, path: '/CustomButton' })
   }
 
   /**
    * @summary Get one CustomButton
-   * @description Use this to return a single instance of CustomButton.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of CustomButton. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getCustomButtonById({
     id,
@@ -77,25 +60,14 @@ export class CustomButtonAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/CustomButton/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<CustomButton> {
+    return this.request({ method: 'get', path: `/CustomButton/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteCustomButtonById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/CustomButton/${id}`,
-    })
+  deleteCustomButtonById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/CustomButton/${id}` })
   }
 }

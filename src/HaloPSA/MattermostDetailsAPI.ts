@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link MattermostDetails} */
 export type MattermostDetails = schemas['MattermostDetails']
@@ -14,61 +13,30 @@ export type MattermostDetails = schemas['MattermostDetails']
  * MattermostDetails module
  * @public
  */
-export class MattermostDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class MattermostDetailsAPI extends BaseAPI {
+  getMattermostDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/MattermostDetails' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getMattermostDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/MattermostDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postMattermostDetails({
-    mattermostDetails,
+    mattermostDetailsList,
   }: {
-    mattermostDetails: Array<MattermostDetails>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/MattermostDetails',
-      data: mattermostDetails,
-    })
+    mattermostDetailsList: Array<MattermostDetails>
+  }): Promise<MattermostDetails> {
+    return this.request({ method: 'post', data: mattermostDetailsList, path: '/MattermostDetails' })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getMattermostDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/MattermostDetails/${id}`,
-    })
+  getMattermostDetailsById({ id }: { id: number }): Promise<MattermostDetails> {
+    return this.request({ method: 'get', path: `/MattermostDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteMattermostDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/MattermostDetails/${id}`,
-    })
+  deleteMattermostDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/MattermostDetails/${id}` })
   }
 }

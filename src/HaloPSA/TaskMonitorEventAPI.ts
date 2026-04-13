@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module TaskMonitorEventAPI
@@ -12,20 +9,8 @@ type schemas = components['schemas']
  * TaskMonitorEvent module
  * @public
  */
-export class TaskMonitorEventAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  getTaskMonitorEvent({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/TaskMonitorEvent',
-    })
+export class TaskMonitorEventAPI extends BaseAPI {
+  getTaskMonitorEvent(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/TaskMonitorEvent' })
   }
 }

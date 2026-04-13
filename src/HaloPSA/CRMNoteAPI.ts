@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link AreaNote} */
 export type AreaNote = schemas['AreaNote']
@@ -14,19 +13,14 @@ export type AreaNote = schemas['AreaNote']
  * CRMNote module
  * @public
  */
-export class CRMNoteAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class CRMNoteAPI extends BaseAPI {
   /**
    * @summary List of AreaNote
-   * @description Use this to return multiple AreaNote.<br>
-				Requires authentication.
-   * @param {number} [client_id] 
-   * @param {number} [count] 
-   * @param {number} [supplier_id] 
-   * @param {number} [toplevel_id] 
+   * @description Use this to return multiple AreaNote. Requires authentication.
+   * @param {number} [client_id]
+   * @param {number} [count]
+   * @param {number} [supplier_id]
+   * @param {number} [toplevel_id]
    */
   getCRMNote({
     client_id,
@@ -38,58 +32,38 @@ export class CRMNoteAPI extends HaloPSA {
     count?: number
     supplier_id?: number
     toplevel_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/CRMNote',
-      params: {
-        client_id,
-        count,
-        supplier_id,
-        toplevel_id,
-      },
+      params: { client_id, count, supplier_id, toplevel_id },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postCRMNote({ areaNote }: { areaNote: Array<AreaNote> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/CRMNote',
-      data: areaNote,
-    })
+  postCRMNote({ areaNoteList }: { areaNoteList: Array<AreaNote> }): Promise<unknown> {
+    return this.request({ method: 'post', data: areaNoteList, path: '/CRMNote' })
   }
 
   /**
    * @summary Get one AreaNote
-   * @description Use this to return a single instance of AreaNote.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of AreaNote. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
-  getCRMNoteById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/CRMNote/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  getCRMNoteById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/CRMNote/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteCRMNoteById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/CRMNote/${id}`,
-    })
+  deleteCRMNoteById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/CRMNote/${id}` })
   }
 }

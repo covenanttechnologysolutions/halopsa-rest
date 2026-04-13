@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ReleasePipeline} */
 export type ReleasePipeline = schemas['ReleasePipeline']
@@ -14,61 +13,30 @@ export type ReleasePipeline = schemas['ReleasePipeline']
  * ReleasePipeline module
  * @public
  */
-export class ReleasePipelineAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class ReleasePipelineAPI extends BaseAPI {
+  getReleasePipeline(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/ReleasePipeline' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getReleasePipeline({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/ReleasePipeline',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postReleasePipeline({
-    releasePipeline,
+    releasePipelineList,
   }: {
-    releasePipeline: Array<ReleasePipeline>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ReleasePipeline',
-      data: releasePipeline,
-    })
+    releasePipelineList: Array<ReleasePipeline>
+  }): Promise<ReleasePipeline> {
+    return this.request({ method: 'post', data: releasePipelineList, path: '/ReleasePipeline' })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getReleasePipelineById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ReleasePipeline/${id}`,
-    })
+  getReleasePipelineById({ id }: { id: number }): Promise<ReleasePipeline> {
+    return this.request({ method: 'get', path: `/ReleasePipeline/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteReleasePipelineById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ReleasePipeline/${id}`,
-    })
+  deleteReleasePipelineById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ReleasePipeline/${id}` })
   }
 }

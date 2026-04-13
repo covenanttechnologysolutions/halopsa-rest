@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Release} */
 export type Release = schemas['Release']
@@ -14,38 +13,32 @@ export type Release = schemas['Release']
  * Release module
  * @public
  */
-export class ReleaseAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ReleaseAPI extends BaseAPI {
   /**
-   * 
-   * @description .<br>
-				Requires authentication.
-   * @param {number} [count] 
-   * @param {boolean} [include_devops_project] 
-   * @param {boolean} [includenotecount] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {number} [product_id] 
-   * @param {boolean} [restrictmyversion] 
-   * @param {string} [search] 
-   * @param {number} [compare_version_seq] 
-   * @param {number} [exclude_releasenote_group_id] 
-   * @param {boolean} [includedetails] 
-   * @param {number} [releasenote_group_id] 
+   * @description . Requires authentication.
+   * @param {number} [count]
+   * @param {boolean} [include_devops_project]
+   * @param {boolean} [includenotecount]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {number} [product_id]
+   * @param {boolean} [restrictmyversion]
+   * @param {string} [search]
+   * @param {number} [compare_version_seq]
+   * @param {number} [exclude_releasenote_group_id]
+   * @param {boolean} [includedetails]
+   * @param {number} [releasenote_group_id]
    */
   getRelease({
     count,
@@ -95,7 +88,7 @@ export class ReleaseAPI extends HaloPSA {
     exclude_releasenote_group_id?: number
     includedetails?: boolean
     releasenote_group_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/Release',
@@ -127,45 +120,30 @@ export class ReleaseAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postRelease({ release }: { release: Array<Release> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Release',
-      data: release,
-    })
+  postRelease({ releaseList }: { releaseList: Array<Release> }): Promise<Release> {
+    return this.request({ method: 'post', data: releaseList, path: '/Release' })
   }
 
   /**
    * @summary Get one Release
-   * @description Use this to return a single instance of Release.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of Release. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
-  getReleaseById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/Release/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  getReleaseById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<Release> {
+    return this.request({ method: 'get', path: `/Release/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteReleaseById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Release/${id}`,
-    })
+  deleteReleaseById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Release/${id}` })
   }
 }

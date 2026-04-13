@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ServStatus} */
 export type ServStatus = schemas['ServStatus']
@@ -16,30 +15,25 @@ export type ServStatusSubscribe = schemas['ServStatusSubscribe']
  * ServiceStatus module
  * @public
  */
-export class ServiceStatusAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ServiceStatusAPI extends BaseAPI {
   /**
    * @summary List of ServStatus
-   * @description Use this to return multiple ServStatus.<br>
-				Requires authentication.
-   * @param {number} [count] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {number} [service_id] 
+   * @description Use this to return multiple ServStatus. Requires authentication.
+   * @param {number} [count]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {number} [service_id]
    */
   getServiceStatus({
     count,
@@ -73,7 +67,7 @@ export class ServiceStatusAPI extends HaloPSA {
     page_size?: number
     pageinate?: boolean
     service_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/ServiceStatus',
@@ -97,37 +91,22 @@ export class ServiceStatusAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postServiceStatus({ servStatus }: { servStatus: Array<ServStatus> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ServiceStatus',
-      data: servStatus,
-    })
+  postServiceStatus({ servStatusList }: { servStatusList: Array<ServStatus> }): Promise<unknown> {
+    return this.request({ method: 'post', data: servStatusList, path: '/ServiceStatus' })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getServiceStatusSubscribeById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ServiceStatus/Subscribe/${id}`,
-    })
+  getServiceStatusSubscribeById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/ServiceStatus/Subscribe/${id}` })
   }
 
   /**
    * @summary Get one ServStatus
-   * @description Use this to return a single instance of ServStatus.<br>
-				Requires authentication.
-   * @param {string} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of ServStatus. Requires authentication.
+   * @param {string} id
+   * @param {boolean} [includedetails]
    */
   getServiceStatusById({
     id,
@@ -135,42 +114,26 @@ export class ServiceStatusAPI extends HaloPSA {
   }: {
     id: string
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ServiceStatus/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/ServiceStatus/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {string} id
    */
-  deleteServiceStatusById({ id }: { id: string }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ServiceStatus/${id}`,
-    })
+  deleteServiceStatusById({ id }: { id: string }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ServiceStatus/${id}` })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postServiceStatusSubscribe({
-    servStatusSubscribe,
+    servStatusSubscribeList,
   }: {
-    servStatusSubscribe: Array<ServStatusSubscribe>
-  }): Promise<any> {
+    servStatusSubscribeList: Array<ServStatusSubscribe>
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
+      data: servStatusSubscribeList,
       path: '/ServiceStatus/Subscribe',
-      data: servStatusSubscribe,
     })
   }
 }

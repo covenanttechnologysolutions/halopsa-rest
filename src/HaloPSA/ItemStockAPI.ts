@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ItemStock} */
 export type ItemStock = schemas['ItemStock']
@@ -14,33 +13,28 @@ export type ItemStock = schemas['ItemStock']
  * ItemStock module
  * @public
  */
-export class ItemStockAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ItemStockAPI extends BaseAPI {
   /**
    * @summary List of ItemStock
-   * @description Use this to return multiple ItemStock.<br>
-				Requires authentication.
-   * @param {number} [count] 
-   * @param {boolean} [idonly] 
-   * @param {number} [item_id] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {number} [stockbin_id] 
-   * @param {number} [stocklocation_id] 
+   * @description Use this to return multiple ItemStock. Requires authentication.
+   * @param {number} [count]
+   * @param {boolean} [idonly]
+   * @param {number} [item_id]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {number} [stockbin_id]
+   * @param {number} [stocklocation_id]
    */
   getItemStock({
     count,
@@ -80,7 +74,7 @@ export class ItemStockAPI extends HaloPSA {
     pageinate?: boolean
     stockbin_id?: number
     stocklocation_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/ItemStock',
@@ -107,45 +101,30 @@ export class ItemStockAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postItemStock({ itemStock }: { itemStock: Array<ItemStock> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ItemStock',
-      data: itemStock,
-    })
+  postItemStock({ itemStockList }: { itemStockList: Array<ItemStock> }): Promise<ItemStock> {
+    return this.request({ method: 'post', data: itemStockList, path: '/ItemStock' })
   }
 
   /**
    * @summary Get one ItemStock
-   * @description Use this to return a single instance of ItemStock.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of ItemStock. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
-  getItemStockById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ItemStock/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  getItemStockById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<ItemStock> {
+    return this.request({ method: 'get', path: `/ItemStock/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteItemStockById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ItemStock/${id}`,
-    })
+  deleteItemStockById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ItemStock/${id}` })
   }
 }

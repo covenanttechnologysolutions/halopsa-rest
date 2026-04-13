@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link PublishProfiles} */
 export type PublishProfiles = schemas['PublishProfiles']
@@ -14,61 +13,30 @@ export type PublishProfiles = schemas['PublishProfiles']
  * PublishProfiles module
  * @public
  */
-export class PublishProfilesAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class PublishProfilesAPI extends BaseAPI {
+  getPublishProfiles(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/PublishProfiles' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getPublishProfiles({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/PublishProfiles',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postPublishProfiles({
-    publishProfiles,
+    publishProfilesList,
   }: {
-    publishProfiles: Array<PublishProfiles>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/PublishProfiles',
-      data: publishProfiles,
-    })
+    publishProfilesList: Array<PublishProfiles>
+  }): Promise<PublishProfiles> {
+    return this.request({ method: 'post', data: publishProfilesList, path: '/PublishProfiles' })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getPublishProfilesById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/PublishProfiles/${id}`,
-    })
+  getPublishProfilesById({ id }: { id: number }): Promise<PublishProfiles> {
+    return this.request({ method: 'get', path: `/PublishProfiles/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deletePublishProfilesById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/PublishProfiles/${id}`,
-    })
+  deletePublishProfilesById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/PublishProfiles/${id}` })
   }
 }

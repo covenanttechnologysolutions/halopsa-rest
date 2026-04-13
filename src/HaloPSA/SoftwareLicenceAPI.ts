@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Licence_List} */
 export type Licence_List = schemas['Licence_List']
@@ -14,36 +13,31 @@ export type Licence_List = schemas['Licence_List']
  * SoftwareLicence module
  * @public
  */
-export class SoftwareLicenceAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class SoftwareLicenceAPI extends BaseAPI {
   /**
    * @summary List of Licence
-   * @description Use this to return multiple Licence.<br>
-				Requires authentication.
-   * @param {number} [client_id] 
-   * @param {number} [count] 
-   * @param {boolean} [includeinactive] 
-   * @param {number} [licence_type] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {string} [search] 
-   * @param {number} [site_id] 
-   * @param {string} [tenant_id] 
-   * @param {number} [toplevelid] 
+   * @description Use this to return multiple Licence. Requires authentication.
+   * @param {number} [client_id]
+   * @param {number} [count]
+   * @param {boolean} [includeinactive]
+   * @param {number} [licence_type]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {string} [search]
+   * @param {number} [site_id]
+   * @param {string} [tenant_id]
+   * @param {number} [toplevelid]
    */
   getSoftwareLicence({
     client_id,
@@ -89,7 +83,7 @@ export class SoftwareLicenceAPI extends HaloPSA {
     site_id?: number
     tenant_id?: string
     toplevelid?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/SoftwareLicence',
@@ -119,25 +113,19 @@ export class SoftwareLicenceAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postSoftwareLicence({ licence_List }: { licence_List: Array<Licence_List> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/SoftwareLicence',
-      data: licence_List,
-    })
+  postSoftwareLicence({
+    licence_ListList,
+  }: {
+    licence_ListList: Array<Licence_List>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: licence_ListList, path: '/SoftwareLicence' })
   }
 
   /**
    * @summary Get one Licence
-   * @description Use this to return a single instance of Licence.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of Licence. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getSoftwareLicenceById({
     id,
@@ -145,25 +133,18 @@ export class SoftwareLicenceAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/SoftwareLicence/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteSoftwareLicenceById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/SoftwareLicence/${id}`,
-    })
+  deleteSoftwareLicenceById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/SoftwareLicence/${id}` })
   }
 }

@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module GoToResolveAPI
@@ -12,32 +9,12 @@ type schemas = components['schemas']
  * GoToResolve module
  * @public
  */
-export class GoToResolveAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class GoToResolveAPI extends BaseAPI {
+  getGoToResolveComplete(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/GoToResolve/Complete' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getGoToResolveComplete({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/GoToResolve/Complete',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  getGoToResolveDownload({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/GoToResolve/Download',
-    })
+  getGoToResolveDownload(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/GoToResolve/Download' })
   }
 }

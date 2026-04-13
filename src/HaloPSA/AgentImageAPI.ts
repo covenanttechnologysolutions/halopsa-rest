@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module AgentImageAPI
@@ -12,22 +9,17 @@ type schemas = components['schemas']
  * AgentImage module
  * @public
  */
-export class AgentImageAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class AgentImageAPI extends BaseAPI {
   /**
    * @summary Get one Uname
-   * @description Use this to return a single instance of Uname.<br>
-				Requires authentication.
-   * @param {string} id 
-   * @param {string} [clientidoverride] 
-   * @param {boolean} [get_htmldesigner_signature] 
-   * @param {boolean} [getholidayallowance] 
-   * @param {boolean} [includedetails] (bool) Include extra objects in the response.
-   * @param {boolean} [isagentconfig] 
-   * @param {boolean} [loadcache] 
+   * @description Use this to return a single instance of Uname. Requires authentication.
+   * @param {string} id
+   * @param {string} [clientidoverride]
+   * @param {boolean} [get_htmldesigner_signature]
+   * @param {boolean} [getholidayallowance]
+   * @param {boolean} [includedetails] Include extra objects in the response.
+   * @param {boolean} [isagentconfig]
+   * @param {boolean} [loadcache]
    */
   getAgentImageById({
     id,
@@ -45,7 +37,7 @@ export class AgentImageAPI extends HaloPSA {
     includedetails?: boolean
     isagentconfig?: boolean
     loadcache?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/AgentImage/${id}`,

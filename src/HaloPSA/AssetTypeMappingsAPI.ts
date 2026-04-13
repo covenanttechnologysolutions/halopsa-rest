@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module AssetTypeMappingsAPI
@@ -12,29 +9,16 @@ type schemas = components['schemas']
  * AssetTypeMappings module
  * @public
  */
-export class AssetTypeMappingsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  getAssetTypeMappings({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/AssetTypeMappings',
-    })
+export class AssetTypeMappingsAPI extends BaseAPI {
+  getAssetTypeMappings(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/AssetTypeMappings' })
   }
 
   /**
    * @summary Get one XTypeMapping
-   * @description Use this to return a single instance of XTypeMapping.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of XTypeMapping. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getAssetTypeMappingsById({
     id,
@@ -42,13 +26,11 @@ export class AssetTypeMappingsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/AssetTypeMappings/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 }

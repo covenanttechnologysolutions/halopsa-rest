@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module AzureadmappingAPI
@@ -12,24 +9,13 @@ type schemas = components['schemas']
  * Azureadmapping module
  * @public
  */
-export class AzureadmappingAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class AzureadmappingAPI extends BaseAPI {
   /**
    * @summary List of AzureADMapping
-   * @description Use this to return multiple AzureADMapping.<br>
-				Requires authentication.
-   * @param {number} [connection_id] 
+   * @description Use this to return multiple AzureADMapping. Requires authentication.
+   * @param {number} [connection_id]
    */
-  getAzureadmapping({ connection_id }: { connection_id?: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/azureadmapping',
-      params: {
-        connection_id,
-      },
-    })
+  getAzureadmapping({ connection_id }: { connection_id?: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/azureadmapping', params: { connection_id } })
   }
 }

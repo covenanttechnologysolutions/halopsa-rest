@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module AssetSoftwareAPI
@@ -12,20 +9,15 @@ type schemas = components['schemas']
  * AssetSoftware module
  * @public
  */
-export class AssetSoftwareAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class AssetSoftwareAPI extends BaseAPI {
   /**
    * @summary List of DeviceApplications
-   * @description Use this to return multiple DeviceApplications.<br>
-				Requires authentication.
-   * @param {number} [device_id] 
-   * @param {number} [licence_id] 
-   * @param {string} [third_party_field] 
-   * @param {string} [third_party_id] 
-   * @param {number} [user_id] 
+   * @description Use this to return multiple DeviceApplications. Requires authentication.
+   * @param {number} [device_id]
+   * @param {number} [licence_id]
+   * @param {string} [third_party_field]
+   * @param {string} [third_party_id]
+   * @param {number} [user_id]
    */
   getAssetSoftware({
     device_id,
@@ -39,17 +31,11 @@ export class AssetSoftwareAPI extends HaloPSA {
     third_party_field?: string
     third_party_id?: string
     user_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/AssetSoftware',
-      params: {
-        device_id,
-        licence_id,
-        third_party_field,
-        third_party_id,
-        user_id,
-      },
+      params: { device_id, licence_id, third_party_field, third_party_id, user_id },
     })
   }
 }

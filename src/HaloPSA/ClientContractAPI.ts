@@ -1,10 +1,13 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
+/** {@link ContractApproval} */
+export type ContractApproval = schemas['ContractApproval']
 /** {@link ContractHeader} */
 export type ContractHeader = schemas['ContractHeader']
+/** {@link ContractHeader_View} */
+export type ContractHeader_View = schemas['ContractHeader_View']
 
 /**
  * @module ClientContractAPI
@@ -14,39 +17,37 @@ export type ContractHeader = schemas['ContractHeader']
  * ClientContract module
  * @public
  */
-export class ClientContractAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ClientContractAPI extends BaseAPI {
   /**
    * @summary List of ContractHeader
-   * @description Use this to return multiple ContractHeader.<br>
-				Requires authentication.
-   * @param {number} [client_id] 
-   * @param {number} [count] 
-   * @param {number} [device_id] 
-   * @param {boolean} [excluderenewed] 
-   * @param {boolean} [includeinactive] 
-   * @param {boolean} [includelastrenewed] 
-   * @param {boolean} [isbillingplansetup] 
-   * @param {boolean} [isoracle] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {boolean} [pending_recurring_invoice] 
-   * @param {string} [search] 
-   * @param {number} [site_id] 
+   * @description Use this to return multiple ContractHeader. Requires authentication.
+   * @param {number} [client_id]
+   * @param {number} [count]
+   * @param {number} [device_id]
+   * @param {boolean} [excluderenewed]
+   * @param {boolean} [includeinactive]
+   * @param {boolean} [includelastrenewed]
+   * @param {boolean} [isbillingplansetup]
+   * @param {boolean} [isoracle]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {boolean} [pending_recurring_invoice]
+   * @param {string} [search]
+   * @param {number} [site_id]
+   * @param {number} [contract_type] Use this to return only Contracts with the specified Contract Type
+   * @param {number} [contract_sub_type] Use this to return only Contracts with the specified Contract Sub-Type
+   * @param {number} [labour_type] Use this to return only Contracts with the specified Labour Type - 0=Fixed and 1=Pre-Pay
    */
   getClientContract({
     client_id,
@@ -73,6 +74,9 @@ export class ClientContractAPI extends HaloPSA {
     pending_recurring_invoice,
     search,
     site_id,
+    contract_type,
+    contract_sub_type,
+    labour_type,
   }: {
     client_id?: number
     count?: number
@@ -98,7 +102,10 @@ export class ClientContractAPI extends HaloPSA {
     pending_recurring_invoice?: boolean
     search?: string
     site_id?: number
-  }): Promise<any> {
+    contract_type?: number
+    contract_sub_type?: number
+    labour_type?: number
+  }): Promise<ContractHeader_View> {
     return this.request({
       method: 'get',
       path: '/ClientContract',
@@ -127,30 +134,27 @@ export class ClientContractAPI extends HaloPSA {
         pending_recurring_invoice,
         search,
         site_id,
+        contract_type,
+        contract_sub_type,
+        labour_type,
       },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postClientContract({ contractHeader }: { contractHeader: Array<ContractHeader> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ClientContract',
-      data: contractHeader,
-    })
+  postClientContract({
+    contractHeaderList,
+  }: {
+    contractHeaderList: Array<ContractHeader>
+  }): Promise<ContractHeader> {
+    return this.request({ method: 'post', data: contractHeaderList, path: '/ClientContract' })
   }
 
   /**
    * @summary Get one ContractHeader
-   * @description Use this to return a single instance of ContractHeader.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
-   * @param {boolean} [includeperiods] 
+   * @description Use this to return a single instance of ContractHeader. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
+   * @param {boolean} [includeperiods]
    */
   getClientContractById({
     id,
@@ -160,43 +164,42 @@ export class ClientContractAPI extends HaloPSA {
     id: number
     includedetails?: boolean
     includeperiods?: boolean
-  }): Promise<any> {
+  }): Promise<ContractHeader> {
     return this.request({
       method: 'get',
       path: `/ClientContract/${id}`,
-      params: {
-        includedetails,
-        includeperiods,
-      },
+      params: { includedetails, includeperiods },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteClientContractById({ id }: { id: number }): Promise<any> {
+  deleteClientContractById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ClientContract/${id}` })
+  }
+
+  postClientContractNextRef({
+    contractHeaderList,
+  }: {
+    contractHeaderList: Array<ContractHeader>
+  }): Promise<unknown> {
     return this.request({
-      method: 'delete',
-      path: `/ClientContract/${id}`,
+      method: 'post',
+      data: contractHeaderList,
+      path: '/ClientContract/NextRef',
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postClientContractNextRef({
-    contractHeader,
+  postClientContractApproval({
+    contractApprovalList,
   }: {
-    contractHeader: Array<ContractHeader>
-  }): Promise<any> {
+    contractApprovalList: Array<ContractApproval>
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
-      path: '/ClientContract/NextRef',
-      data: contractHeader,
+      data: contractApprovalList,
+      path: '/ClientContract/Approval',
     })
   }
 }

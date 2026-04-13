@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ViewFilter} */
 export type ViewFilter = schemas['ViewFilter']
@@ -14,21 +13,16 @@ export type ViewFilter = schemas['ViewFilter']
  * ViewFilter module
  * @public
  */
-export class ViewFilterAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ViewFilterAPI extends BaseAPI {
   /**
    * @summary List of ViewFilter
-   * @description Use this to return multiple ViewFilter.<br>
-				Requires authentication.
-   * @param {boolean} [globalonly] 
-   * @param {boolean} [showall] 
-   * @param {number} [showallforteam] 
-   * @param {number} [showallfortech] 
-   * @param {number} [ticketarea_id] 
-   * @param {string} [type] 
+   * @description Use this to return multiple ViewFilter. Requires authentication.
+   * @param {boolean} [globalonly]
+   * @param {boolean} [showall]
+   * @param {number} [showallforteam]
+   * @param {number} [showallfortech]
+   * @param {number} [ticketarea_id]
+   * @param {string} [type]
    */
   getViewFilter({
     globalonly,
@@ -44,40 +38,23 @@ export class ViewFilterAPI extends HaloPSA {
     showallfortech?: number
     ticketarea_id?: number
     type?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/ViewFilter',
-      params: {
-        globalonly,
-        showall,
-        showallforteam,
-        showallfortech,
-        ticketarea_id,
-        type,
-      },
+      params: { globalonly, showall, showallforteam, showallfortech, ticketarea_id, type },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postViewFilter({ viewFilter }: { viewFilter: Array<ViewFilter> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ViewFilter',
-      data: viewFilter,
-    })
+  postViewFilter({ viewFilterList }: { viewFilterList: Array<ViewFilter> }): Promise<ViewFilter> {
+    return this.request({ method: 'post', data: viewFilterList, path: '/ViewFilter' })
   }
 
   /**
    * @summary Get one ViewFilter
-   * @description Use this to return a single instance of ViewFilter.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of ViewFilter. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getViewFilterById({
     id,
@@ -85,25 +62,14 @@ export class ViewFilterAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ViewFilter/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<ViewFilter> {
+    return this.request({ method: 'get', path: `/ViewFilter/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteViewFilterById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ViewFilter/${id}`,
-    })
+  deleteViewFilterById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ViewFilter/${id}` })
   }
 }

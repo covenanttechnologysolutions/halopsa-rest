@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link LanguagePackTranslationsCustom} */
 export type LanguagePackTranslationsCustom = schemas['LanguagePackTranslationsCustom']
@@ -14,37 +13,20 @@ export type LanguagePackTranslationsCustom = schemas['LanguagePackTranslationsCu
  * Translation module
  * @public
  */
-export class TranslationAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class TranslationAPI extends BaseAPI {
+  getTranslation(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Translation' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getTranslation({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Translation',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postTranslation({
-    languagePackTranslationsCustom,
+    languagePackTranslationsCustomList,
   }: {
-    languagePackTranslationsCustom: Array<LanguagePackTranslationsCustom>
-  }): Promise<any> {
+    languagePackTranslationsCustomList: Array<LanguagePackTranslationsCustom>
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
+      data: languagePackTranslationsCustomList,
       path: '/Translation',
-      data: languagePackTranslationsCustom,
     })
   }
 }

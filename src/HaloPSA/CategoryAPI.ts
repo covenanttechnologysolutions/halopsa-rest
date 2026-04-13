@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link CategoryDetail} */
 export type CategoryDetail = schemas['CategoryDetail']
@@ -14,21 +13,16 @@ export type CategoryDetail = schemas['CategoryDetail']
  * Category module
  * @public
  */
-export class CategoryAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class CategoryAPI extends BaseAPI {
   /**
    * @summary List of CategoryDetail
-   * @description Use this to return multiple CategoryDetail.<br>
-				Requires authentication.
-   * @param {number} [client_id] 
-   * @param {number} [service_id] 
-   * @param {number} [team_id] 
-   * @param {string} [team_name] 
-   * @param {number} [tickettype_id] 
-   * @param {number} [type_id] 
+   * @description Use this to return multiple CategoryDetail. Requires authentication.
+   * @param {number} [client_id]
+   * @param {number} [service_id]
+   * @param {number} [team_id]
+   * @param {string} [team_name]
+   * @param {number} [tickettype_id]
+   * @param {number} [type_id]
    */
   getCategory({
     client_id,
@@ -44,60 +38,42 @@ export class CategoryAPI extends HaloPSA {
     team_name?: string
     tickettype_id?: number
     type_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/Category',
-      params: {
-        client_id,
-        service_id,
-        team_id,
-        team_name,
-        tickettype_id,
-        type_id,
-      },
+      params: { client_id, service_id, team_id, team_name, tickettype_id, type_id },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postCategory({ categoryDetail }: { categoryDetail: Array<CategoryDetail> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Category',
-      data: categoryDetail,
-    })
+  postCategory({
+    categoryDetailList,
+  }: {
+    categoryDetailList: Array<CategoryDetail>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: categoryDetailList, path: '/Category' })
   }
 
   /**
    * @summary Get one CategoryDetail
-   * @description Use this to return a single instance of CategoryDetail.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of CategoryDetail. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
-  getCategoryById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/Category/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  getCategoryById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/Category/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteCategoryById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Category/${id}`,
-    })
+  deleteCategoryById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Category/${id}` })
   }
 }

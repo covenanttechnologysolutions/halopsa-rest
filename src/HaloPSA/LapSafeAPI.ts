@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module LapSafeAPI
@@ -12,44 +9,16 @@ type schemas = components['schemas']
  * LapSafe module
  * @public
  */
-export class LapSafeAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class LapSafeAPI extends BaseAPI {
+  getLapSafeGet(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/LapSafe/Get' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getLapSafeGet({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/LapSafe/Get',
-    })
+  getLapSafeCancel(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/LapSafe/Cancel' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getLapSafeCancel({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/LapSafe/Cancel',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  getLapSafeComplete({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/LapSafe/Complete',
-    })
+  getLapSafeComplete(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/LapSafe/Complete' })
   }
 }

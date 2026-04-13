@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link LiveChatIsTyping} */
 export type LiveChatIsTyping = schemas['LiveChatIsTyping']
@@ -16,18 +15,13 @@ export type LiveChatMsg = schemas['LiveChatMsg']
  * ChatMessage module
  * @public
  */
-export class ChatMessageAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ChatMessageAPI extends BaseAPI {
   /**
    * @summary List of LiveChatMsg
-   * @description Use this to return multiple LiveChatMsg.<br>
-				Requires authentication.
-   * @param {number} [chat_id] 
-   * @param {number} [last_id] 
-   * @param {number} [max_id] 
+   * @description Use this to return multiple LiveChatMsg. Requires authentication.
+   * @param {number} [chat_id]
+   * @param {number} [last_id]
+   * @param {number} [max_id]
    */
   getChatMessage({
     chat_id,
@@ -37,45 +31,23 @@ export class ChatMessageAPI extends HaloPSA {
     chat_id?: number
     last_id?: number
     max_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/ChatMessage',
-      params: {
-        chat_id,
-        last_id,
-        max_id,
-      },
+      params: { chat_id, last_id, max_id },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postChatMessage({ liveChatMsg }: { liveChatMsg: Array<LiveChatMsg> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ChatMessage',
-      data: liveChatMsg,
-    })
+  postChatMessage({ liveChatMsgList }: { liveChatMsgList: Array<LiveChatMsg> }): Promise<unknown> {
+    return this.request({ method: 'post', data: liveChatMsgList, path: '/ChatMessage' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postChatMessageIsTyping({
     liveChatIsTyping,
   }: {
     liveChatIsTyping: LiveChatIsTyping
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ChatMessage/IsTyping',
-      data: liveChatIsTyping,
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: liveChatIsTyping, path: '/ChatMessage/IsTyping' })
   }
 }

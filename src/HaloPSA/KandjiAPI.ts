@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module KandjiAPI
@@ -12,20 +9,8 @@ type schemas = components['schemas']
  * Kandji module
  * @public
  */
-export class KandjiAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  getKandjiGet({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Kandji/Get',
-    })
+export class KandjiAPI extends BaseAPI {
+  getKandjiGet(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Kandji/Get' })
   }
 }

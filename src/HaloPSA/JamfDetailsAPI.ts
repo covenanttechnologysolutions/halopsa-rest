@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link JamfDetails} */
 export type JamfDetails = schemas['JamfDetails']
@@ -14,57 +13,30 @@ export type JamfDetails = schemas['JamfDetails']
  * JamfDetails module
  * @public
  */
-export class JamfDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class JamfDetailsAPI extends BaseAPI {
+  getJamfDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/JamfDetails' })
+  }
+
+  postJamfDetails({
+    jamfDetailsList,
+  }: {
+    jamfDetailsList: Array<JamfDetails>
+  }): Promise<JamfDetails> {
+    return this.request({ method: 'post', data: jamfDetailsList, path: '/JamfDetails' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  getJamfDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/JamfDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postJamfDetails({ jamfDetails }: { jamfDetails: Array<JamfDetails> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/JamfDetails',
-      data: jamfDetails,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  getJamfDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/JamfDetails/${id}`,
-    })
+  getJamfDetailsById({ id }: { id: number }): Promise<JamfDetails> {
+    return this.request({ method: 'get', path: `/JamfDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteJamfDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/JamfDetails/${id}`,
-    })
+  deleteJamfDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/JamfDetails/${id}` })
   }
 }

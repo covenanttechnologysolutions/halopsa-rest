@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module RemoteSessionTeamsAPI
@@ -12,17 +9,12 @@ type schemas = components['schemas']
  * RemoteSessionTeams module
  * @public
  */
-export class RemoteSessionTeamsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class RemoteSessionTeamsAPI extends BaseAPI {
   /**
    * @summary List of RemoteSessionTeams
-   * @description Use this to return multiple RemoteSessionTeams.<br>
-				Requires authentication.
-   * @param {boolean} [includeenabled] 
-   * @param {string} [msid] 
+   * @description Use this to return multiple RemoteSessionTeams. Requires authentication.
+   * @param {boolean} [includeenabled]
+   * @param {string} [msid]
    */
   getRemoteSessionTeams({
     includeenabled,
@@ -30,14 +22,11 @@ export class RemoteSessionTeamsAPI extends HaloPSA {
   }: {
     includeenabled?: boolean
     msid?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/RemoteSessionTeams',
-      params: {
-        includeenabled,
-        msid,
-      },
+      params: { includeenabled, msid },
     })
   }
 }

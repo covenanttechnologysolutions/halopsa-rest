@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module SearchAPI
@@ -12,17 +9,12 @@ type schemas = components['schemas']
  * Search module
  * @public
  */
-export class SearchAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class SearchAPI extends BaseAPI {
   /**
    * @summary List of Search
-   * @description Use this to return multiple Search.<br>
-				Requires authentication.
-   * @param {number} [count_per_entity] 
-   * @param {string} [search] 
+   * @description Use this to return multiple Search. Requires authentication.
+   * @param {number} [count_per_entity]
+   * @param {string} [search]
    */
   getSearch({
     count_per_entity,
@@ -30,14 +22,7 @@ export class SearchAPI extends HaloPSA {
   }: {
     count_per_entity?: number
     search?: string
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Search',
-      params: {
-        count_per_entity,
-        search,
-      },
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Search', params: { count_per_entity, search } })
   }
 }

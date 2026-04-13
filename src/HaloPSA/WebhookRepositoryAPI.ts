@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module WebhookRepositoryAPI
@@ -12,17 +9,12 @@ type schemas = components['schemas']
  * WebhookRepository module
  * @public
  */
-export class WebhookRepositoryAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class WebhookRepositoryAPI extends BaseAPI {
   /**
    * @summary List of Webhook
-   * @description Use this to return multiple Webhook.<br>
-				Requires authentication.
-   * @param {boolean} [isazureautomation] 
-   * @param {number} [type] 
+   * @description Use this to return multiple Webhook. Requires authentication.
+   * @param {boolean} [isazureautomation]
+   * @param {number} [type]
    */
   getWebhookRepository({
     isazureautomation,
@@ -30,23 +22,19 @@ export class WebhookRepositoryAPI extends HaloPSA {
   }: {
     isazureautomation?: boolean
     type?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/WebhookRepository',
-      params: {
-        isazureautomation,
-        type,
-      },
+      params: { isazureautomation, type },
     })
   }
 
   /**
    * @summary Get one Webhook
-   * @description Use this to return a single instance of Webhook.<br>
-				Requires authentication.
-   * @param {string} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of Webhook. Requires authentication.
+   * @param {string} id
+   * @param {boolean} [includedetails]
    */
   getWebhookRepositoryById({
     id,
@@ -54,13 +42,11 @@ export class WebhookRepositoryAPI extends HaloPSA {
   }: {
     id: string
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/WebhookRepository/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 }

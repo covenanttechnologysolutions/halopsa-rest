@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link TeamsChatMessage_List} */
 export type TeamsChatMessage_List = schemas['TeamsChatMessage_List']
@@ -14,61 +13,34 @@ export type TeamsChatMessage_List = schemas['TeamsChatMessage_List']
  * ExternalChatMessage module
  * @public
  */
-export class ExternalChatMessageAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class ExternalChatMessageAPI extends BaseAPI {
+  getExternalChatMessage(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/ExternalChatMessage' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getExternalChatMessage({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/ExternalChatMessage',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postExternalChatMessage({
-    teamsChatMessage_List,
+    teamsChatMessage_ListList,
   }: {
-    teamsChatMessage_List: Array<TeamsChatMessage_List>
-  }): Promise<any> {
+    teamsChatMessage_ListList: Array<TeamsChatMessage_List>
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
+      data: teamsChatMessage_ListList,
       path: '/ExternalChatMessage',
-      data: teamsChatMessage_List,
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getExternalChatMessageById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ExternalChatMessage/${id}`,
-    })
+  getExternalChatMessageById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/ExternalChatMessage/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteExternalChatMessageById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ExternalChatMessage/${id}`,
-    })
+  deleteExternalChatMessageById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ExternalChatMessage/${id}` })
   }
 }

@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link AdobeCommerceDetails} */
 export type AdobeCommerceDetails = schemas['AdobeCommerceDetails']
@@ -14,61 +13,34 @@ export type AdobeCommerceDetails = schemas['AdobeCommerceDetails']
  * AdobeCommerceDetails module
  * @public
  */
-export class AdobeCommerceDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class AdobeCommerceDetailsAPI extends BaseAPI {
+  getAdobeCommerceDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/AdobeCommerceDetails' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getAdobeCommerceDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/AdobeCommerceDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postAdobeCommerceDetails({
-    adobeCommerceDetails,
+    adobeCommerceDetailsList,
   }: {
-    adobeCommerceDetails: Array<AdobeCommerceDetails>
-  }): Promise<any> {
+    adobeCommerceDetailsList: Array<AdobeCommerceDetails>
+  }): Promise<AdobeCommerceDetails> {
     return this.request({
       method: 'post',
+      data: adobeCommerceDetailsList,
       path: '/AdobeCommerceDetails',
-      data: adobeCommerceDetails,
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getAdobeCommerceDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/AdobeCommerceDetails/${id}`,
-    })
+  getAdobeCommerceDetailsById({ id }: { id: number }): Promise<AdobeCommerceDetails> {
+    return this.request({ method: 'get', path: `/AdobeCommerceDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteAdobeCommerceDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/AdobeCommerceDetails/${id}`,
-    })
+  deleteAdobeCommerceDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/AdobeCommerceDetails/${id}` })
   }
 }

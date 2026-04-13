@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link SalesMailboxDetail} */
 export type SalesMailboxDetail = schemas['SalesMailboxDetail']
@@ -14,25 +13,20 @@ export type SalesMailboxDetail = schemas['SalesMailboxDetail']
  * SalesMailboxDetail module
  * @public
  */
-export class SalesMailboxDetailAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class SalesMailboxDetailAPI extends BaseAPI {
+  getSalesMailboxDetail(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/SalesMailboxDetail' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postSalesMailboxDetail({
-    salesMailboxDetail,
+    salesMailboxDetailList,
   }: {
-    salesMailboxDetail: Array<SalesMailboxDetail>
-  }): Promise<any> {
+    salesMailboxDetailList: Array<SalesMailboxDetail>
+  }): Promise<SalesMailboxDetail> {
     return this.request({
       method: 'post',
+      data: salesMailboxDetailList,
       path: '/SalesMailboxDetail',
-      data: salesMailboxDetail,
     })
   }
 }

@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module Test4API
@@ -12,20 +9,8 @@ type schemas = components['schemas']
  * Test4 module
  * @public
  */
-export class Test4API extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  getTest4({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Test4',
-    })
+export class Test4API extends BaseAPI {
+  getTest4(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Test4' })
   }
 }

@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link TenableCreateExport} */
 export type TenableCreateExport = schemas['TenableCreateExport']
@@ -14,61 +13,24 @@ export type TenableCreateExport = schemas['TenableCreateExport']
  * Tenable module
  * @public
  */
-export class TenableAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class TenableAPI extends BaseAPI {
+  getTenableGet(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Tenable/Get' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getTenableGet({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Tenable/Get',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postTenableExport({
     tenableCreateExport,
   }: {
     tenableCreateExport: TenableCreateExport
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Tenable/Export',
-      data: tenableCreateExport,
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: tenableCreateExport, path: '/Tenable/Export' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getTenableStatus({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Tenable/Status',
-    })
+  getTenableStatus(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Tenable/Status' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postTenableCancel({}: {}): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Tenable/Cancel',
-    })
+  postTenableCancel(): Promise<unknown> {
+    return this.request({ method: 'post', path: '/Tenable/Cancel' })
   }
 }

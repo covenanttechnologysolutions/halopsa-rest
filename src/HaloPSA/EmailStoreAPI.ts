@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link EmailStore} */
 export type EmailStore = schemas['EmailStore']
@@ -14,42 +13,20 @@ export type EmailStore = schemas['EmailStore']
  * EmailStore module
  * @public
  */
-export class EmailStoreAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class EmailStoreAPI extends BaseAPI {
+  getEmailStore(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/EmailStore' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getEmailStore({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/EmailStore',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postEmailStore({ emailStore }: { emailStore: Array<EmailStore> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/EmailStore',
-      data: emailStore,
-    })
+  postEmailStore({ emailStoreList }: { emailStoreList: Array<EmailStore> }): Promise<EmailStore> {
+    return this.request({ method: 'post', data: emailStoreList, path: '/EmailStore' })
   }
 
   /**
    * @summary Get one EmailStore
-   * @description Use this to return a single instance of EmailStore.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of EmailStore. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getEmailStoreById({
     id,
@@ -57,25 +34,14 @@ export class EmailStoreAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/EmailStore/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<EmailStore> {
+    return this.request({ method: 'get', path: `/EmailStore/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteEmailStoreById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/EmailStore/${id}`,
-    })
+  deleteEmailStoreById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/EmailStore/${id}` })
   }
 }

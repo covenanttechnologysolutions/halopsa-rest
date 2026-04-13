@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module HealthAPI
@@ -12,20 +9,12 @@ type schemas = components['schemas']
  * Health module
  * @public
  */
-export class HealthAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class HealthAPI extends BaseAPI {
+  getHealth(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Health' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getHealth({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Health',
-    })
+  getHealthHashing(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Health/Hashing' })
   }
 }

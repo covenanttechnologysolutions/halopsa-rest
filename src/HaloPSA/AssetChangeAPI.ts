@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link DeviceChange} */
 export type DeviceChange = schemas['DeviceChange']
@@ -14,34 +13,29 @@ export type DeviceChange = schemas['DeviceChange']
  * AssetChange module
  * @public
  */
-export class AssetChangeAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class AssetChangeAPI extends BaseAPI {
   /**
    * @summary List of DeviceChange
-   * @description Use this to return multiple DeviceChange.<br>
-				Requires authentication.
-   * @param {number} [asset_id] 
-   * @param {number} [count] 
-   * @param {boolean} [idonly] 
-   * @param {number} [licence_id] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {string} [search] 
-   * @param {number} [user_id] 
+   * @description Use this to return multiple DeviceChange. Requires authentication.
+   * @param {number} [asset_id]
+   * @param {number} [count]
+   * @param {boolean} [idonly]
+   * @param {number} [licence_id]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {string} [search]
+   * @param {number} [user_id]
    */
   getAssetChange({
     asset_id,
@@ -83,7 +77,7 @@ export class AssetChangeAPI extends HaloPSA {
     pageinate?: boolean
     search?: string
     user_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/AssetChange',
@@ -111,16 +105,11 @@ export class AssetChangeAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postAssetChange({ deviceChange }: { deviceChange: Array<DeviceChange> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/AssetChange',
-      data: deviceChange,
-    })
+  postAssetChange({
+    deviceChangeList,
+  }: {
+    deviceChangeList: Array<DeviceChange>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: deviceChangeList, path: '/AssetChange' })
   }
 }

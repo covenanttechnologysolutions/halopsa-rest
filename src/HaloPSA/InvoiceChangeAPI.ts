@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link InvoiceChange} */
 export type InvoiceChange = schemas['InvoiceChange']
@@ -14,34 +13,29 @@ export type InvoiceChange = schemas['InvoiceChange']
  * InvoiceChange module
  * @public
  */
-export class InvoiceChangeAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class InvoiceChangeAPI extends BaseAPI {
   /**
    * @summary List of InvoiceChange
-   * @description Use this to return multiple InvoiceChange.<br>
-				Requires authentication.
-   * @param {number} [count] 
-   * @param {boolean} [idonly] 
-   * @param {number} [invoice_id] 
-   * @param {number} [line_id] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {string} [search] 
-   * @param {number} [type_id] 
+   * @description Use this to return multiple InvoiceChange. Requires authentication.
+   * @param {number} [count]
+   * @param {boolean} [idonly]
+   * @param {number} [invoice_id]
+   * @param {number} [line_id]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {string} [search]
+   * @param {number} [type_id]
    */
   getInvoiceChange({
     count,
@@ -83,7 +77,7 @@ export class InvoiceChangeAPI extends HaloPSA {
     pageinate?: boolean
     search?: string
     type_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/InvoiceChange',
@@ -111,16 +105,11 @@ export class InvoiceChangeAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postInvoiceChange({ invoiceChange }: { invoiceChange: Array<InvoiceChange> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/InvoiceChange',
-      data: invoiceChange,
-    })
+  postInvoiceChange({
+    invoiceChangeList,
+  }: {
+    invoiceChangeList: Array<InvoiceChange>
+  }): Promise<InvoiceChange> {
+    return this.request({ method: 'post', data: invoiceChangeList, path: '/InvoiceChange' })
   }
 }

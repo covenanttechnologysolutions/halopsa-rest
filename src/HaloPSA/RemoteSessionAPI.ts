@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link RemoteSessionData} */
 export type RemoteSessionData = schemas['RemoteSessionData']
@@ -14,36 +13,31 @@ export type RemoteSessionData = schemas['RemoteSessionData']
  * RemoteSession module
  * @public
  */
-export class RemoteSessionAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class RemoteSessionAPI extends BaseAPI {
   /**
    * @summary List of RemoteSessionData
-   * @description Use this to return multiple RemoteSessionData.<br>
-				Requires authentication.
-   * @param {string} [agent] 
-   * @param {number} [agent_id] 
-   * @param {number} [client_id] 
-   * @param {number} [count] 
-   * @param {boolean} [includelinked] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {string} [search] 
-   * @param {number} [site_id] 
-   * @param {string} [username] 
+   * @description Use this to return multiple RemoteSessionData. Requires authentication.
+   * @param {string} [agent]
+   * @param {number} [agent_id]
+   * @param {number} [client_id]
+   * @param {number} [count]
+   * @param {boolean} [includelinked]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {string} [search]
+   * @param {number} [site_id]
+   * @param {string} [username]
    */
   getRemoteSession({
     agent,
@@ -89,7 +83,7 @@ export class RemoteSessionAPI extends HaloPSA {
     search?: string
     site_id?: number
     username?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/RemoteSession',
@@ -119,29 +113,19 @@ export class RemoteSessionAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postRemoteSession({
-    remoteSessionData,
+    remoteSessionDataList,
   }: {
-    remoteSessionData: Array<RemoteSessionData>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/RemoteSession',
-      data: remoteSessionData,
-    })
+    remoteSessionDataList: Array<RemoteSessionData>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: remoteSessionDataList, path: '/RemoteSession' })
   }
 
   /**
    * @summary Get one RemoteSessionData
-   * @description Use this to return a single instance of RemoteSessionData.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of RemoteSessionData. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getRemoteSessionById({
     id,
@@ -149,25 +133,14 @@ export class RemoteSessionAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/RemoteSession/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/RemoteSession/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteRemoteSessionById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/RemoteSession/${id}`,
-    })
+  deleteRemoteSessionById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/RemoteSession/${id}` })
   }
 }

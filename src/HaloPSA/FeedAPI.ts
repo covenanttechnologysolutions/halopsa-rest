@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module FeedAPI
@@ -12,30 +9,25 @@ type schemas = components['schemas']
  * Feed module
  * @public
  */
-export class FeedAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class FeedAPI extends BaseAPI {
   /**
    * @summary List of Feed
-   * @description Use this to return multiple Feed.<br>
-				Requires authentication.
-   * @param {number} [accountmanager_id] 
-   * @param {boolean} [agent_only] 
-   * @param {number} [count] 
-   * @param {boolean} [exclude_private] 
-   * @param {boolean} [followed_only] 
-   * @param {number} [newer_than_id] 
-   * @param {number} [older_than_id] 
-   * @param {number} [one_agent_id] 
-   * @param {number} [one_agents_tickets_id] 
-   * @param {number} [one_user_id] 
-   * @param {number} [related_asset_id] 
-   * @param {number} [related_client_id] 
-   * @param {number} [related_site_id] 
-   * @param {number} [related_user_id] 
-   * @param {boolean} [user_only] 
+   * @description Use this to return multiple Feed. Requires authentication.
+   * @param {number} [accountmanager_id]
+   * @param {boolean} [agent_only]
+   * @param {number} [count]
+   * @param {boolean} [exclude_private]
+   * @param {boolean} [followed_only]
+   * @param {number} [newer_than_id]
+   * @param {number} [older_than_id]
+   * @param {number} [one_agent_id]
+   * @param {number} [one_agents_tickets_id]
+   * @param {number} [one_user_id]
+   * @param {number} [related_asset_id]
+   * @param {number} [related_client_id]
+   * @param {number} [related_site_id]
+   * @param {number} [related_user_id]
+   * @param {boolean} [user_only]
    */
   getFeed({
     accountmanager_id,
@@ -69,7 +61,7 @@ export class FeedAPI extends HaloPSA {
     related_site_id?: number
     related_user_id?: number
     user_only?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/Feed',

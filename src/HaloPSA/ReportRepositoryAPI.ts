@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module ReportRepositoryAPI
@@ -12,36 +9,31 @@ type schemas = components['schemas']
  * ReportRepository module
  * @public
  */
-export class ReportRepositoryAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ReportRepositoryAPI extends BaseAPI {
   /**
    * @summary List of AnalyzerProfile
-   * @description Use this to return multiple AnalyzerProfile.<br>
-				Requires authentication.
-   * @param {number} [agentrestriction] 
-   * @param {boolean} [chartonly] 
-   * @param {string} [clientname] 
-   * @param {number} [count] 
-   * @param {boolean} [includepublished] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {number} [reportgroup_id] 
-   * @param {string} [search] 
-   * @param {number} [type] 
+   * @description Use this to return multiple AnalyzerProfile. Requires authentication.
+   * @param {number} [agentrestriction]
+   * @param {boolean} [chartonly]
+   * @param {string} [clientname]
+   * @param {number} [count]
+   * @param {boolean} [includepublished]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {number} [reportgroup_id]
+   * @param {string} [search]
+   * @param {number} [type]
    */
   getReportRepository({
     agentrestriction,
@@ -87,7 +79,7 @@ export class ReportRepositoryAPI extends HaloPSA {
     reportgroup_id?: number
     search?: string
     type?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/ReportRepository',
@@ -119,22 +111,21 @@ export class ReportRepositoryAPI extends HaloPSA {
 
   /**
    * @summary Get one AnalyzerProfile
-   * @description Use this to return a single instance of AnalyzerProfile.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {number} [client_id] 
-   * @param {string} [clientname] 
-   * @param {number} [dashboard_id] 
-   * @param {string} [dashboard_published_id] 
-   * @param {boolean} [dontloadsystemreport] 
-   * @param {boolean} [getcompositetoken] 
-   * @param {boolean} [includedetails] 
-   * @param {number} [invoice_id] 
-   * @param {boolean} [loadreport] 
-   * @param {string} [report_access_token] 
-   * @param {number} [reportingperiod] 
-   * @param {string} [reportingperiodenddate] 
-   * @param {string} [reportingperiodstartdate] 
+   * @description Use this to return a single instance of AnalyzerProfile. Requires authentication.
+   * @param {number} id
+   * @param {number} [client_id]
+   * @param {string} [clientname]
+   * @param {number} [dashboard_id]
+   * @param {string} [dashboard_published_id]
+   * @param {boolean} [dontloadsystemreport]
+   * @param {boolean} [getcompositetoken]
+   * @param {boolean} [includedetails]
+   * @param {number} [invoice_id]
+   * @param {boolean} [loadreport]
+   * @param {string} [report_access_token]
+   * @param {number} [reportingperiod]
+   * @param {string} [reportingperiodenddate]
+   * @param {string} [reportingperiodstartdate]
    */
   getReportRepositoryById({
     id,
@@ -166,7 +157,7 @@ export class ReportRepositoryAPI extends HaloPSA {
     reportingperiod?: number
     reportingperiodenddate?: string
     reportingperiodstartdate?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/ReportRepository/${id}`,
@@ -190,29 +181,28 @@ export class ReportRepositoryAPI extends HaloPSA {
 
   /**
    * @summary List of Lookup
-   * @description Use this to return multiple Lookup.<br>
-				Requires authentication.
-   * @param {number} [access_control_level] 
-   * @param {number} [assettype_id] 
-   * @param {number} [client_id] 
-   * @param {string} [clientname] 
-   * @param {number} [contract_id] 
-   * @param {number} [country_code_id] 
-   * @param {string} [dbc_company_id] 
-   * @param {string} [domain] 
-   * @param {boolean} [exclude_nocharge] 
-   * @param {boolean} [exclude_nolinkedtypes] 
-   * @param {boolean} [exclude_zero] 
-   * @param {boolean} [iscustomfield] 
-   * @param {boolean} [istree] 
-   * @param {number} [lookupid] 
-   * @param {number} [ordervaluetype] 
-   * @param {number} [outcome_id] 
-   * @param {boolean} [showallcodes] 
-   * @param {number} [ticket_id] 
-   * @param {boolean} [unameaprestriction] 
-   * @param {number} [use] 
-   * @param {number} [use2] 
+   * @description Use this to return multiple Lookup. Requires authentication.
+   * @param {number} [access_control_level]
+   * @param {number} [assettype_id]
+   * @param {number} [client_id]
+   * @param {string} [clientname]
+   * @param {number} [contract_id]
+   * @param {number} [country_code_id]
+   * @param {string} [dbc_company_id]
+   * @param {string} [domain]
+   * @param {boolean} [exclude_nocharge]
+   * @param {boolean} [exclude_nolinkedtypes]
+   * @param {boolean} [exclude_zero]
+   * @param {boolean} [iscustomfield]
+   * @param {boolean} [istree]
+   * @param {number} [lookupid]
+   * @param {number} [ordervaluetype]
+   * @param {number} [outcome_id]
+   * @param {boolean} [showallcodes]
+   * @param {number} [ticket_id]
+   * @param {boolean} [unameaprestriction]
+   * @param {number} [use]
+   * @param {number} [use2]
    */
   getReportRepositoryReportCategories({
     access_control_level,
@@ -258,7 +248,7 @@ export class ReportRepositoryAPI extends HaloPSA {
     unameaprestriction?: boolean
     use?: number
     use2?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/ReportRepository/ReportCategories',

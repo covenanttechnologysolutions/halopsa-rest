@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ReleaseNoteGroup} */
 export type ReleaseNoteGroup = schemas['ReleaseNoteGroup']
@@ -14,46 +13,24 @@ export type ReleaseNoteGroup = schemas['ReleaseNoteGroup']
  * ReleaseNoteGroup module
  * @public
  */
-export class ReleaseNoteGroupAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class ReleaseNoteGroupAPI extends BaseAPI {
+  getReleaseNoteGroup(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/ReleaseNoteGroup' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getReleaseNoteGroup({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/ReleaseNoteGroup',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postReleaseNoteGroup({
-    releaseNoteGroup,
+    releaseNoteGroupList,
   }: {
-    releaseNoteGroup: Array<ReleaseNoteGroup>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ReleaseNoteGroup',
-      data: releaseNoteGroup,
-    })
+    releaseNoteGroupList: Array<ReleaseNoteGroup>
+  }): Promise<ReleaseNoteGroup> {
+    return this.request({ method: 'post', data: releaseNoteGroupList, path: '/ReleaseNoteGroup' })
   }
 
   /**
    * @summary Get one ReleaseNoteGroup
-   * @description Use this to return a single instance of ReleaseNoteGroup.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of ReleaseNoteGroup. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getReleaseNoteGroupById({
     id,
@@ -61,25 +38,18 @@ export class ReleaseNoteGroupAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<ReleaseNoteGroup> {
     return this.request({
       method: 'get',
       path: `/ReleaseNoteGroup/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteReleaseNoteGroupById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ReleaseNoteGroup/${id}`,
-    })
+  deleteReleaseNoteGroupById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ReleaseNoteGroup/${id}` })
   }
 }

@@ -1,12 +1,13 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link InvoiceDetail} */
 export type InvoiceDetail = schemas['InvoiceDetail']
 /** {@link InvoiceHeader} */
 export type InvoiceHeader = schemas['InvoiceHeader']
+/** {@link InvoiceHeader_View} */
+export type InvoiceHeader_View = schemas['InvoiceHeader_View']
 
 /**
  * @module RecurringInvoiceAPI
@@ -16,62 +17,64 @@ export type InvoiceHeader = schemas['InvoiceHeader']
  * RecurringInvoice module
  * @public
  */
-export class RecurringInvoiceAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class RecurringInvoiceAPI extends BaseAPI {
   /**
    * @summary List of InvoiceHeader
-   * @description Use this to return multiple InvoiceHeader.<br>
-				Requires authentication.
-   * @param {string} [advanced_search] 
-   * @param {number} [asset_id] (int) Filters by the specified asset.
-   * @param {boolean} [awaiting_approval] 
-   * @param {string} [billing_date] (string) Filter on billing date.
-   * @param {string} [billingcategory_ids] (string) Filters by the specified billing categories, comma seperated.
-   * @param {number} [client_id] (int) Filters by the specified client.
-   * @param {string} [client_ids] (string) Filters by the specified clients, comma seperated.
-   * @param {number} [contract_id] (int) Filters by the specified contract.
-   * @param {number} [count] (int) Number of contracts to return in the response.
-   * @param {boolean} [idonly] (bool) Include only the Invoice ID in the response.
-   * @param {boolean} [includecredits] (bool) Include invoice type credits in the response.
-   * @param {boolean} [includeinvoices] (bool) Include invoice type invoice in the response.
-   * @param {boolean} [includelines] (bool) Include invoice lines in the response.
-   * @param {boolean} [includepoinvoices] 
-   * @param {boolean} [invoicedateend] (bool) Include the field invoicedateend in the response.
-   * @param {boolean} [invoicedatestart] (bool) Include the field invoicedatestart in the response.
-   * @param {boolean} [my_approvals] 
-   * @param {boolean} [notpostedonly] (bool) Filter on invoices that have not been posted.
-   * @param {string} [order] (string) The name of the field to order by first.
-   * @param {string} [order2] (string) The name of the field to order by second.
-   * @param {string} [order3] (string) The name of the field to order by third.
-   * @param {string} [order4] (string) The name of the field to order by fourth.
-   * @param {string} [order5] (string) The name of the field to order by fifth.
-   * @param {boolean} [orderdesc] (bool) Whether to order ascending or descending on first order.
-   * @param {boolean} [orderdesc2] (bool) Whether to order ascending or descending on second order.
-   * @param {boolean} [orderdesc3] (bool) Whether to order ascending or descending on third order.
-   * @param {boolean} [orderdesc4] (bool) Whether to order ascending or descending on fourth order.
-   * @param {boolean} [orderdesc5] (bool) Whether to order ascending or descending on fifth order.
-   * @param {number} [page_no] (int) When using Pagination, the page number to return.
-   * @param {number} [page_size] (int) When using Pagination, the size of the page.
-   * @param {boolean} [pageinate] (bool) Whether to use Pagination in the response.
+   * @description Use this to return multiple InvoiceHeader. Requires authentication.
+   * @param {string} [advanced_search]
+   * @param {number} [asset_id] Filters by the specified asset.
+   * @param {boolean} [awaiting_approval]
+   * @param {string} [billing_date] Filter on billing date.
+   * @param {string} [billingcategory_ids] Filters by the specified billing categories, comma seperated.
+   * @param {string} [start_date] Filter Invoices with date greater than specified date (Date Filter selected by datesearch parameter).
+   * @param {string} [end_date] Filter Invoices with date less than specified date (Date Filter selected by datesearch parameter).
+   * @param {string} [datesearch] Date used for start_date and end_date parameters. Possible values are invoice_date, last_modified, duedate, schedulestartdate and scheduleenddate.
+   * @param {number} [client_id] Filters by the specified client.
+   * @param {string} [client_ids] Filters by the specified clients, comma seperated.
+   * @param {number} [contract_id] Filters by the specified contract.
+   * @param {number} [count] Number of contracts to return in the response.
+   * @param {boolean} [idonly] Include only the Invoice ID in the response.
+   * @param {boolean} [includecredits] Include invoice type credits in the response.
+   * @param {boolean} [includeinvoices] Include invoice type invoice in the response.
+   * @param {boolean} [includelines] Include invoice lines in the response.
+   * @param {boolean} [includepoinvoices]
+   * @param {boolean} [invoicedateend] Include the field invoicedateend in the response.
+   * @param {boolean} [invoicedatestart] Include the field invoicedatestart in the response.
+   * @param {boolean} [my_approvals]
+   * @param {boolean} [notpostedonly] Filter on invoices that have not been posted.
+   * @param {string} [order] The name of the field to order by first.
+   * @param {string} [order2] The name of the field to order by second.
+   * @param {string} [order3] The name of the field to order by third.
+   * @param {string} [order4] The name of the field to order by fourth.
+   * @param {string} [order5] The name of the field to order by fifth.
+   * @param {boolean} [orderdesc] Whether to order ascending or descending on first order.
+   * @param {boolean} [orderdesc2] Whether to order ascending or descending on second order.
+   * @param {boolean} [orderdesc3] Whether to order ascending or descending on third order.
+   * @param {boolean} [orderdesc4] Whether to order ascending or descending on fourth order.
+   * @param {boolean} [orderdesc5] Whether to order ascending or descending on fifth order.
+   * @param {number} [page_no] When using Pagination, the page number to return.
+   * @param {number} [page_size] When using Pagination, the size of the page.
+   * @param {boolean} [pageinate] Whether to use Pagination in the response.
    * @param {Array<number>} [paymentstatuses] (array of int) Filter on invoice payment status, comma seperated int.
-   * @param {boolean} [postedonly] (bool) Filter on invoices that have been posted.
-   * @param {number} [purchaseorder_id] 
-   * @param {string} [quote_status] (string) Filters by the specified quote statuses, comma seperated.
-   * @param {boolean} [ready_for_invoicing] (bool) Filters on whether the invoice is ready for invoicing.
-   * @param {number} [recurringinvoice_id] (int) Filter by contracts recurring invoice id.
-   * @param {boolean} [reviewrequired] 
-   * @param {string} [rinvoice_type] (string) Filter on invoice type - values 'contracts', 'invoices', 'both'.
-   * @param {number} [salesorder_id] (int) Filter by contracts sales order id.
-   * @param {string} [search] (string) Filters response based on the search string.
-   * @param {number} [sent_status] 
-   * @param {number} [site_id] (int) Filters by the specified site.
-   * @param {boolean} [stripeautopaymentrequired] 
-   * @param {number} [ticket_id] (int) Return contracts assigned to a particular ticket.
-   * @param {number} [toplevel_id] 
-   * @param {number} [user_id] (int) Filters by the specified user.
+   * @param {boolean} [postedonly] Filter on invoices that have been posted.
+   * @param {number} [purchaseorder_id]
+   * @param {string} [quote_status] Filters by the specified quote statuses, comma seperated.
+   * @param {boolean} [ready_for_invoicing] Filters on whether the invoice is ready for invoicing.
+   * @param {number} [recurringinvoice_id] Filter by contracts recurring invoice id.
+   * @param {boolean} [reviewrequired]
+   * @param {string} [rinvoice_type] Filter on invoice type - values 'contracts', 'invoices', 'both'.
+   * @param {number} [salesorder_id] Filter by contracts sales order id.
+   * @param {string} [search] Filters response based on the search string.
+   * @param {number} [sent_status]
+   * @param {number} [site_id] Filters by the specified site.
+   * @param {boolean} [stripeautopaymentrequired]
+   * @param {number} [ticket_id] Return contracts assigned to a particular ticket.
+   * @param {number} [toplevel_id]
+   * @param {number} [user_id] Filters by the specified user.
+   * @param {string} [third_party_id] Finds an Invoice using Third Party Invoice Number.
+   * @param {string} [xero_id] Finds an Invoice using Xero Online ID.
+   * @param {number} [quickbooks_id] Finds an Invoice using Quickbooks Online ID.
+   * @param {boolean} [include_linked_item_details] Include Invoice lines linked Item.
    */
   getRecurringInvoice({
     advanced_search,
@@ -79,6 +82,9 @@ export class RecurringInvoiceAPI extends HaloPSA {
     awaiting_approval,
     billing_date,
     billingcategory_ids,
+    start_date,
+    end_date,
+    datesearch,
     client_id,
     client_ids,
     contract_id,
@@ -121,12 +127,19 @@ export class RecurringInvoiceAPI extends HaloPSA {
     ticket_id,
     toplevel_id,
     user_id,
+    third_party_id,
+    xero_id,
+    quickbooks_id,
+    include_linked_item_details,
   }: {
     advanced_search?: string
     asset_id?: number
     awaiting_approval?: boolean
     billing_date?: string
     billingcategory_ids?: string
+    start_date?: string
+    end_date?: string
+    datesearch?: string
     client_id?: number
     client_ids?: string
     contract_id?: number
@@ -169,7 +182,11 @@ export class RecurringInvoiceAPI extends HaloPSA {
     ticket_id?: number
     toplevel_id?: number
     user_id?: number
-  }): Promise<any> {
+    third_party_id?: string
+    xero_id?: string
+    quickbooks_id?: number
+    include_linked_item_details?: boolean
+  }): Promise<InvoiceHeader_View> {
     return this.request({
       method: 'get',
       path: '/RecurringInvoice',
@@ -179,6 +196,9 @@ export class RecurringInvoiceAPI extends HaloPSA {
         awaiting_approval,
         billing_date,
         billingcategory_ids,
+        start_date,
+        end_date,
+        datesearch,
         client_id,
         client_ids,
         contract_id,
@@ -221,29 +241,27 @@ export class RecurringInvoiceAPI extends HaloPSA {
         ticket_id,
         toplevel_id,
         user_id,
+        third_party_id,
+        xero_id,
+        quickbooks_id,
+        include_linked_item_details,
       },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postRecurringInvoice({ invoiceHeader }: { invoiceHeader: Array<InvoiceHeader> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/RecurringInvoice',
-      data: invoiceHeader,
-    })
+  postRecurringInvoice({
+    invoiceHeaderList,
+  }: {
+    invoiceHeaderList: Array<InvoiceHeader>
+  }): Promise<InvoiceHeader> {
+    return this.request({ method: 'post', data: invoiceHeaderList, path: '/RecurringInvoice' })
   }
 
   /**
    * @summary Get one InvoiceHeader
-   * @description Use this to return a single instance of InvoiceHeader.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] (bool) Include extra objects in the response.
+   * @description Use this to return a single instance of InvoiceHeader. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails] Include extra objects in the response.
    */
   getRecurringInvoiceById({
     id,
@@ -251,22 +269,19 @@ export class RecurringInvoiceAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<InvoiceHeader> {
     return this.request({
       method: 'get',
       path: `/RecurringInvoice/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
    * @summary Delete one InvoiceHeader
-   * @description Delete specific InvoiceHeader.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [bypass_accounts_sync] 
+   * @description Delete specific InvoiceHeader. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [bypass_accounts_sync]
    */
   deleteRecurringInvoiceById({
     id,
@@ -274,60 +289,39 @@ export class RecurringInvoiceAPI extends HaloPSA {
   }: {
     id: number
     bypass_accounts_sync?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'delete',
       path: `/RecurringInvoice/${id}`,
-      params: {
-        bypass_accounts_sync,
-      },
+      params: { bypass_accounts_sync },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postRecurringInvoiceUpdatelines({
-    invoiceDetail,
+    invoiceDetailList,
   }: {
-    invoiceDetail: Array<InvoiceDetail>
-  }): Promise<any> {
+    invoiceDetailList: Array<InvoiceDetail>
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
+      data: invoiceDetailList,
       path: '/RecurringInvoice/updatelines',
-      data: invoiceDetail,
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postRecurringInvoiceProcess({ listNumber }: { listNumber: number }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/RecurringInvoice/process',
-      data: listNumber,
-    })
+  postRecurringInvoiceProcess({ items }: { items: Array<number> }): Promise<unknown> {
+    return this.request({ method: 'post', data: items, path: '/RecurringInvoice/process' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postRecurringInvoiceLines({
-    invoiceDetail,
+    invoiceDetailList,
   }: {
-    invoiceDetail: Array<InvoiceDetail>
-  }): Promise<any> {
+    invoiceDetailList: Array<InvoiceDetail>
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
+      data: invoiceDetailList,
       path: '/RecurringInvoice/Lines',
-      data: invoiceDetail,
     })
   }
 }

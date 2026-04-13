@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link NHD_DeviceInfo} */
 export type NHD_DeviceInfo = schemas['NHD_DeviceInfo']
@@ -14,45 +13,26 @@ export type NHD_DeviceInfo = schemas['NHD_DeviceInfo']
  * HaloDeviceInfo module
  * @public
  */
-export class HaloDeviceInfoAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class HaloDeviceInfoAPI extends BaseAPI {
   /**
-   *
-   *
    * @param {string} id
    */
-  getHaloDeviceInfoById({ id }: { id: string }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/HaloDeviceInfo/${id}`,
-    })
+  getHaloDeviceInfoById({ id }: { id: string }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/HaloDeviceInfo/${id}` })
   }
 
   /**
-   *
-   *
    * @param {string} id
    */
-  deleteHaloDeviceInfoById({ id }: { id: string }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/HaloDeviceInfo/${id}`,
-    })
+  deleteHaloDeviceInfoById({ id }: { id: string }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/HaloDeviceInfo/${id}` })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postHaloDeviceInfo({ nHD_DeviceInfo }: { nHD_DeviceInfo: Array<NHD_DeviceInfo> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/HaloDeviceInfo',
-      data: nHD_DeviceInfo,
-    })
+  postHaloDeviceInfo({
+    nHD_DeviceInfoList,
+  }: {
+    nHD_DeviceInfoList: Array<NHD_DeviceInfo>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: nHD_DeviceInfoList, path: '/HaloDeviceInfo' })
   }
 }

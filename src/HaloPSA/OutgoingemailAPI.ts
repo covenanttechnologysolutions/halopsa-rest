@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Outgoingemail} */
 export type Outgoingemail = schemas['Outgoingemail']
@@ -14,49 +13,28 @@ export type Outgoingemail = schemas['Outgoingemail']
  * Outgoingemail module
  * @public
  */
-export class OutgoingemailAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class OutgoingemailAPI extends BaseAPI {
   /**
    * @summary List of Outgoingemail
-   * @description Use this to return multiple Outgoingemail.<br>
-				Requires authentication.
-   * @param {boolean} [errorsonly] 
+   * @description Use this to return multiple Outgoingemail. Requires authentication.
+   * @param {boolean} [errorsonly]
    */
-  getOutgoingemail({ errorsonly }: { errorsonly?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Outgoingemail',
-      params: {
-        errorsonly,
-      },
-    })
+  getOutgoingemail({ errorsonly }: { errorsonly?: boolean }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Outgoingemail', params: { errorsonly } })
+  }
+
+  postOutgoingemail({
+    outgoingemailList,
+  }: {
+    outgoingemailList: Array<Outgoingemail>
+  }): Promise<Outgoingemail> {
+    return this.request({ method: 'post', data: outgoingemailList, path: '/Outgoingemail' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  postOutgoingemail({ outgoingemail }: { outgoingemail: Array<Outgoingemail> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Outgoingemail',
-      data: outgoingemail,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  deleteOutgoingemailById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Outgoingemail/${id}`,
-    })
+  deleteOutgoingemailById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Outgoingemail/${id}` })
   }
 }

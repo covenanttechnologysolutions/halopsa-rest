@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link SlackDetails} */
 export type SlackDetails = schemas['SlackDetails']
@@ -14,20 +13,15 @@ export type SlackDetails = schemas['SlackDetails']
  * SlackDetails module
  * @public
  */
-export class SlackDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class SlackDetailsAPI extends BaseAPI {
   /**
    * @summary List of SlackDetails
-   * @description Use this to return multiple SlackDetails.<br>
-				Requires authentication.
-   * @param {string} [agent_id] 
-   * @param {string} [channel_name] 
-   * @param {string} [includedisabled] 
-   * @param {string} [includeenabled] 
-   * @param {string} [team_name] 
+   * @description Use this to return multiple SlackDetails. Requires authentication.
+   * @param {string} [agent_id]
+   * @param {string} [channel_name]
+   * @param {string} [includedisabled]
+   * @param {string} [includeenabled]
+   * @param {string} [team_name]
    */
   getSlackDetails({
     agent_id,
@@ -41,39 +35,27 @@ export class SlackDetailsAPI extends HaloPSA {
     includedisabled?: string
     includeenabled?: string
     team_name?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/SlackDetails',
-      params: {
-        agent_id,
-        channel_name,
-        includedisabled,
-        includeenabled,
-        team_name,
-      },
+      params: { agent_id, channel_name, includedisabled, includeenabled, team_name },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postSlackDetails({ slackDetails }: { slackDetails: Array<SlackDetails> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/SlackDetails',
-      data: slackDetails,
-    })
+  postSlackDetails({
+    slackDetailsList,
+  }: {
+    slackDetailsList: Array<SlackDetails>
+  }): Promise<SlackDetails> {
+    return this.request({ method: 'post', data: slackDetailsList, path: '/SlackDetails' })
   }
 
   /**
    * @summary Get one SlackDetails
-   * @description Use this to return a single instance of SlackDetails.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of SlackDetails. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getSlackDetailsById({
     id,
@@ -81,38 +63,18 @@ export class SlackDetailsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/SlackDetails/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<SlackDetails> {
+    return this.request({ method: 'get', path: `/SlackDetails/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteSlackDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/SlackDetails/${id}`,
-    })
+  deleteSlackDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/SlackDetails/${id}` })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postSlackDetailsUninstall({ slackDetails }: { slackDetails: SlackDetails }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/SlackDetails/Uninstall',
-      data: slackDetails,
-    })
+  postSlackDetailsUninstall(): Promise<unknown> {
+    return this.request({ method: 'post', path: '/SlackDetails/Uninstall' })
   }
 }

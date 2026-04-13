@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module ItemStockHistoryAPI
@@ -12,35 +9,30 @@ type schemas = components['schemas']
  * ItemStockHistory module
  * @public
  */
-export class ItemStockHistoryAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ItemStockHistoryAPI extends BaseAPI {
   /**
    * @summary List of ItemStockHistory
-   * @description Use this to return multiple ItemStockHistory.<br>
-				Requires authentication.
-   * @param {number} [count] 
-   * @param {boolean} [idonly] 
-   * @param {number} [item_id] 
-   * @param {number} [itemstock_id] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {string} [search] 
-   * @param {number} [stockbin_id] 
-   * @param {number} [stocklocation_id] 
+   * @description Use this to return multiple ItemStockHistory. Requires authentication.
+   * @param {number} [count]
+   * @param {boolean} [idonly]
+   * @param {number} [item_id]
+   * @param {number} [itemstock_id]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {string} [search]
+   * @param {number} [stockbin_id]
+   * @param {number} [stocklocation_id]
    */
   getItemStockHistory({
     count,
@@ -84,7 +76,7 @@ export class ItemStockHistoryAPI extends HaloPSA {
     search?: string
     stockbin_id?: number
     stocklocation_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/ItemStockHistory',
@@ -114,14 +106,9 @@ export class ItemStockHistoryAPI extends HaloPSA {
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getItemStockHistoryById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ItemStockHistory/${id}`,
-    })
+  getItemStockHistoryById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/ItemStockHistory/${id}` })
   }
 }

@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link PrepayHistory} */
 export type PrepayHistory = schemas['PrepayHistory']
@@ -14,37 +13,32 @@ export type PrepayHistory = schemas['PrepayHistory']
  * ClientPrepay module
  * @public
  */
-export class ClientPrepayAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ClientPrepayAPI extends BaseAPI {
   /**
    * @summary List of PrepayHistory
-   * @description Use this to return multiple PrepayHistory.<br>
-				Requires authentication.
-   * @param {string} [advanced_search] 
-   * @param {string} [billing_date] 
-   * @param {number} [client_id] 
-   * @param {string} [client_ids] 
-   * @param {number} [contract_id] 
-   * @param {number} [count] 
-   * @param {boolean} [idonly] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {boolean} [ready_for_invoicing] 
-   * @param {string} [search] 
+   * @description Use this to return multiple PrepayHistory. Requires authentication.
+   * @param {string} [advanced_search]
+   * @param {string} [billing_date]
+   * @param {number} [client_id]
+   * @param {string} [client_ids]
+   * @param {number} [contract_id]
+   * @param {number} [count]
+   * @param {boolean} [idonly]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {boolean} [ready_for_invoicing]
+   * @param {string} [search]
    */
   getClientPrepay({
     advanced_search,
@@ -92,7 +86,7 @@ export class ClientPrepayAPI extends HaloPSA {
     pageinate?: boolean
     ready_for_invoicing?: boolean
     search?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/ClientPrepay',
@@ -123,25 +117,19 @@ export class ClientPrepayAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postClientPrepay({ prepayHistory }: { prepayHistory: Array<PrepayHistory> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ClientPrepay',
-      data: prepayHistory,
-    })
+  postClientPrepay({
+    prepayHistoryList,
+  }: {
+    prepayHistoryList: Array<PrepayHistory>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: prepayHistoryList, path: '/ClientPrepay' })
   }
 
   /**
    * @summary Get one PrepayHistory
-   * @description Use this to return a single instance of PrepayHistory.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of PrepayHistory. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getClientPrepayById({
     id,
@@ -149,25 +137,14 @@ export class ClientPrepayAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ClientPrepay/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/ClientPrepay/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteClientPrepayById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ClientPrepay/${id}`,
-    })
+  deleteClientPrepayById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ClientPrepay/${id}` })
   }
 }

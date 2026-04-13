@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link FacebookDetails} */
 export type FacebookDetails = schemas['FacebookDetails']
@@ -14,50 +13,29 @@ export type FacebookDetails = schemas['FacebookDetails']
  * FacebookDetails module
  * @public
  */
-export class FacebookDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class FacebookDetailsAPI extends BaseAPI {
   /**
    * @summary List of FacebookDetails
-   * @description Use this to return multiple FacebookDetails.<br>
-				Requires authentication.
-   * @param {string} [page_id] 
+   * @description Use this to return multiple FacebookDetails. Requires authentication.
+   * @param {string} [page_id]
    */
-  getFacebookDetails({ page_id }: { page_id?: string }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/FacebookDetails',
-      params: {
-        page_id,
-      },
-    })
+  getFacebookDetails({ page_id }: { page_id?: string }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/FacebookDetails', params: { page_id } })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postFacebookDetails({
-    facebookDetails,
+    facebookDetailsList,
   }: {
-    facebookDetails: Array<FacebookDetails>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/FacebookDetails',
-      data: facebookDetails,
-    })
+    facebookDetailsList: Array<FacebookDetails>
+  }): Promise<FacebookDetails> {
+    return this.request({ method: 'post', data: facebookDetailsList, path: '/FacebookDetails' })
   }
 
   /**
    * @summary Get one FacebookDetails
-   * @description Use this to return a single instance of FacebookDetails.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of FacebookDetails. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getFacebookDetailsById({
     id,
@@ -65,25 +43,18 @@ export class FacebookDetailsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<FacebookDetails> {
     return this.request({
       method: 'get',
       path: `/FacebookDetails/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteFacebookDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/FacebookDetails/${id}`,
-    })
+  deleteFacebookDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/FacebookDetails/${id}` })
   }
 }

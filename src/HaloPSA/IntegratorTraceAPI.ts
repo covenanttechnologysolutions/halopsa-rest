@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module IntegratorTraceAPI
@@ -12,32 +9,15 @@ type schemas = components['schemas']
  * IntegratorTrace module
  * @public
  */
-export class IntegratorTraceAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class IntegratorTraceAPI extends BaseAPI {
+  getIntegratorTrace(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/IntegratorTrace' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  getIntegratorTrace({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/IntegratorTrace',
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  getIntegratorTraceById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/IntegratorTrace/${id}`,
-    })
+  getIntegratorTraceById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/IntegratorTrace/${id}` })
   }
 }

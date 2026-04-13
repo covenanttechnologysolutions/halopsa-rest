@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link BusinessCentralDetails} */
 export type BusinessCentralDetails = schemas['BusinessCentralDetails']
@@ -14,17 +13,12 @@ export type BusinessCentralDetails = schemas['BusinessCentralDetails']
  * BusinessCentralDetails module
  * @public
  */
-export class BusinessCentralDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class BusinessCentralDetailsAPI extends BaseAPI {
   /**
    * @summary List of BusinessCentralDetails
-   * @description Use this to return multiple BusinessCentralDetails.<br>
-				Requires authentication.
-   * @param {string} [companyid] 
-   * @param {boolean} [connectedonly] 
+   * @description Use this to return multiple BusinessCentralDetails. Requires authentication.
+   * @param {string} [companyid]
+   * @param {boolean} [connectedonly]
    */
   getBusinessCentralDetails({
     companyid,
@@ -32,40 +26,31 @@ export class BusinessCentralDetailsAPI extends HaloPSA {
   }: {
     companyid?: string
     connectedonly?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/BusinessCentralDetails',
-      params: {
-        companyid,
-        connectedonly,
-      },
+      params: { companyid, connectedonly },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postBusinessCentralDetails({
-    businessCentralDetails,
+    businessCentralDetailsList,
   }: {
-    businessCentralDetails: Array<BusinessCentralDetails>
-  }): Promise<any> {
+    businessCentralDetailsList: Array<BusinessCentralDetails>
+  }): Promise<BusinessCentralDetails> {
     return this.request({
       method: 'post',
+      data: businessCentralDetailsList,
       path: '/BusinessCentralDetails',
-      data: businessCentralDetails,
     })
   }
 
   /**
    * @summary Get one BusinessCentralDetails
-   * @description Use this to return a single instance of BusinessCentralDetails.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of BusinessCentralDetails. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getBusinessCentralDetailsById({
     id,
@@ -73,25 +58,18 @@ export class BusinessCentralDetailsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<BusinessCentralDetails> {
     return this.request({
       method: 'get',
       path: `/BusinessCentralDetails/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteBusinessCentralDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/BusinessCentralDetails/${id}`,
-    })
+  deleteBusinessCentralDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/BusinessCentralDetails/${id}` })
   }
 }

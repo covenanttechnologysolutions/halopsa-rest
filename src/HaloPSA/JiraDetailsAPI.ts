@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link JiraDetails} */
 export type JiraDetails = schemas['JiraDetails']
@@ -14,57 +13,30 @@ export type JiraDetails = schemas['JiraDetails']
  * JiraDetails module
  * @public
  */
-export class JiraDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class JiraDetailsAPI extends BaseAPI {
+  getJiraDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/JiraDetails' })
+  }
+
+  postJiraDetails({
+    jiraDetailsList,
+  }: {
+    jiraDetailsList: Array<JiraDetails>
+  }): Promise<JiraDetails> {
+    return this.request({ method: 'post', data: jiraDetailsList, path: '/JiraDetails' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  getJiraDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/JiraDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postJiraDetails({ jiraDetails }: { jiraDetails: Array<JiraDetails> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/JiraDetails',
-      data: jiraDetails,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  getJiraDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/JiraDetails/${id}`,
-    })
+  getJiraDetailsById({ id }: { id: number }): Promise<JiraDetails> {
+    return this.request({ method: 'get', path: `/JiraDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteJiraDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/JiraDetails/${id}`,
-    })
+  deleteJiraDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/JiraDetails/${id}` })
   }
 }

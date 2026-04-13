@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link InvoicePayment_List} */
 export type InvoicePayment_List = schemas['InvoicePayment_List']
@@ -14,33 +13,28 @@ export type InvoicePayment_List = schemas['InvoicePayment_List']
  * InvoicePayment module
  * @public
  */
-export class InvoicePaymentAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class InvoicePaymentAPI extends BaseAPI {
   /**
    * @summary List of InvoicePayment
-   * @description Use this to return multiple InvoicePayment.<br>
-				Requires authentication.
-   * @param {number} [client_id] 
-   * @param {number} [count] 
-   * @param {string} [intent_id] 
-   * @param {number} [invoice_id] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {string} [search] 
+   * @description Use this to return multiple InvoicePayment. Requires authentication.
+   * @param {number} [client_id]
+   * @param {number} [count]
+   * @param {string} [intent_id]
+   * @param {number} [invoice_id]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {string} [search]
    */
   getInvoicePayment({
     client_id,
@@ -80,7 +74,7 @@ export class InvoicePaymentAPI extends HaloPSA {
     page_size?: number
     pageinate?: boolean
     search?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/InvoicePayment',
@@ -107,29 +101,19 @@ export class InvoicePaymentAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postInvoicePayment({
-    invoicePayment_List,
+    invoicePayment_ListList,
   }: {
-    invoicePayment_List: Array<InvoicePayment_List>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/InvoicePayment',
-      data: invoicePayment_List,
-    })
+    invoicePayment_ListList: Array<InvoicePayment_List>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: invoicePayment_ListList, path: '/InvoicePayment' })
   }
 
   /**
    * @summary Get one InvoicePayment
-   * @description Use this to return a single instance of InvoicePayment.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of InvoicePayment. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getInvoicePaymentById({
     id,
@@ -137,25 +121,18 @@ export class InvoicePaymentAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/InvoicePayment/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteInvoicePaymentById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/InvoicePayment/${id}`,
-    })
+  deleteInvoicePaymentById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/InvoicePayment/${id}` })
   }
 }

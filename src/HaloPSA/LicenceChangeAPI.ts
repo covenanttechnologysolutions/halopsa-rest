@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module LicenceChangeAPI
@@ -12,33 +9,28 @@ type schemas = components['schemas']
  * LicenceChange module
  * @public
  */
-export class LicenceChangeAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class LicenceChangeAPI extends BaseAPI {
   /**
    * @summary List of LicenceChange
-   * @description Use this to return multiple LicenceChange.<br>
-				Requires authentication.
-   * @param {string} [change_date] 
-   * @param {number} [count] 
-   * @param {boolean} [idonly] 
-   * @param {number} [licence_id] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {string} [search] 
+   * @description Use this to return multiple LicenceChange. Requires authentication.
+   * @param {string} [change_date]
+   * @param {number} [count]
+   * @param {boolean} [idonly]
+   * @param {number} [licence_id]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {string} [search]
    */
   getLicenceChange({
     change_date,
@@ -78,7 +70,7 @@ export class LicenceChangeAPI extends HaloPSA {
     page_size?: number
     pageinate?: boolean
     search?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/LicenceChange',

@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ShopifyDetails} */
 export type ShopifyDetails = schemas['ShopifyDetails']
@@ -14,57 +13,30 @@ export type ShopifyDetails = schemas['ShopifyDetails']
  * ShopifyDetails module
  * @public
  */
-export class ShopifyDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class ShopifyDetailsAPI extends BaseAPI {
+  getShopifyDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/ShopifyDetails' })
+  }
+
+  postShopifyDetails({
+    shopifyDetailsList,
+  }: {
+    shopifyDetailsList: Array<ShopifyDetails>
+  }): Promise<ShopifyDetails> {
+    return this.request({ method: 'post', data: shopifyDetailsList, path: '/ShopifyDetails' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  getShopifyDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/ShopifyDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postShopifyDetails({ shopifyDetails }: { shopifyDetails: Array<ShopifyDetails> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ShopifyDetails',
-      data: shopifyDetails,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  getShopifyDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ShopifyDetails/${id}`,
-    })
+  getShopifyDetailsById({ id }: { id: number }): Promise<ShopifyDetails> {
+    return this.request({ method: 'get', path: `/ShopifyDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteShopifyDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ShopifyDetails/${id}`,
-    })
+  deleteShopifyDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ShopifyDetails/${id}` })
   }
 }

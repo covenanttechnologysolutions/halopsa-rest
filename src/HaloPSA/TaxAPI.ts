@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Tax} */
 export type Tax = schemas['Tax']
@@ -14,19 +13,14 @@ export type Tax = schemas['Tax']
  * Tax module
  * @public
  */
-export class TaxAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class TaxAPI extends BaseAPI {
   /**
    * @summary List of Tax
-   * @description Use this to return multiple Tax.<br>
-				Requires authentication.
-   * @param {number} [kashflowtenantid] 
-   * @param {string} [qbocompanyid] 
-   * @param {number} [related_to] 
-   * @param {string} [xerotenantid] 
+   * @description Use this to return multiple Tax. Requires authentication.
+   * @param {number} [kashflowtenantid]
+   * @param {string} [qbocompanyid]
+   * @param {number} [related_to]
+   * @param {string} [xerotenantid]
    */
   getTax({
     kashflowtenantid,
@@ -38,39 +32,24 @@ export class TaxAPI extends HaloPSA {
     qbocompanyid?: string
     related_to?: number
     xerotenantid?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/Tax',
-      params: {
-        kashflowtenantid,
-        qbocompanyid,
-        related_to,
-        xerotenantid,
-      },
+      params: { kashflowtenantid, qbocompanyid, related_to, xerotenantid },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postTax({ tax }: { tax: Array<Tax> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Tax',
-      data: tax,
-    })
+  postTax({ taxList }: { taxList: Array<Tax> }): Promise<Tax> {
+    return this.request({ method: 'post', data: taxList, path: '/Tax' })
   }
 
   /**
    * @summary Get one Tax
-   * @description Use this to return a single instance of Tax.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
-   * @param {boolean} [includeqbotaxrates] 
+   * @description Use this to return a single instance of Tax. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
+   * @param {boolean} [includeqbotaxrates]
    */
   getTaxById({
     id,
@@ -80,26 +59,18 @@ export class TaxAPI extends HaloPSA {
     id: number
     includedetails?: boolean
     includeqbotaxrates?: boolean
-  }): Promise<any> {
+  }): Promise<Tax> {
     return this.request({
       method: 'get',
       path: `/Tax/${id}`,
-      params: {
-        includedetails,
-        includeqbotaxrates,
-      },
+      params: { includedetails, includeqbotaxrates },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteTaxById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Tax/${id}`,
-    })
+  deleteTaxById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Tax/${id}` })
   }
 }

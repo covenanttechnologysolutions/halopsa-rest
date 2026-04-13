@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link IngramMicroDetails} */
 export type IngramMicroDetails = schemas['IngramMicroDetails']
@@ -14,46 +13,28 @@ export type IngramMicroDetails = schemas['IngramMicroDetails']
  * IngramMicroDetails module
  * @public
  */
-export class IngramMicroDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class IngramMicroDetailsAPI extends BaseAPI {
+  getIngramMicroDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/IngramMicroDetails' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getIngramMicroDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/IngramMicroDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postIngramMicroDetails({
-    ingramMicroDetails,
+    ingramMicroDetailsList,
   }: {
-    ingramMicroDetails: Array<IngramMicroDetails>
-  }): Promise<any> {
+    ingramMicroDetailsList: Array<IngramMicroDetails>
+  }): Promise<IngramMicroDetails> {
     return this.request({
       method: 'post',
+      data: ingramMicroDetailsList,
       path: '/IngramMicroDetails',
-      data: ingramMicroDetails,
     })
   }
 
   /**
    * @summary Get one IngramMicroDetails
-   * @description Use this to return a single instance of IngramMicroDetails.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of IngramMicroDetails. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getIngramMicroDetailsById({
     id,
@@ -61,25 +42,18 @@ export class IngramMicroDetailsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<IngramMicroDetails> {
     return this.request({
       method: 'get',
       path: `/IngramMicroDetails/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteIngramMicroDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/IngramMicroDetails/${id}`,
-    })
+  deleteIngramMicroDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/IngramMicroDetails/${id}` })
   }
 }

@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module BackgroundTaskAPI
@@ -12,20 +9,11 @@ type schemas = components['schemas']
  * BackgroundTask module
  * @public
  */
-export class BackgroundTaskAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class BackgroundTaskAPI extends BaseAPI {
   /**
-   *
-   *
    * @param {number} id
    */
-  getBackgroundTaskById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/BackgroundTask/${id}`,
-    })
+  getBackgroundTaskById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/BackgroundTask/${id}` })
   }
 }

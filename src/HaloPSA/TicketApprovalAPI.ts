@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link FaultApproval} */
 export type FaultApproval = schemas['FaultApproval']
@@ -14,21 +13,16 @@ export type FaultApproval = schemas['FaultApproval']
  * TicketApproval module
  * @public
  */
-export class TicketApprovalAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class TicketApprovalAPI extends BaseAPI {
   /**
    * @summary List of FaultApproval
-   * @description Use this to return multiple FaultApproval.<br>
-				Requires authentication.
-   * @param {number} [action_number] 
-   * @param {boolean} [include_agent_details] 
-   * @param {boolean} [include_attachments] 
-   * @param {boolean} [includeapprovaldetails] 
-   * @param {boolean} [mine] 
-   * @param {number} [ticket_id] 
+   * @description Use this to return multiple FaultApproval. Requires authentication.
+   * @param {number} [action_number]
+   * @param {boolean} [include_agent_details]
+   * @param {boolean} [include_attachments]
+   * @param {boolean} [includeapprovaldetails]
+   * @param {boolean} [mine]
+   * @param {number} [ticket_id]
    */
   getTicketApproval({
     action_number,
@@ -44,7 +38,7 @@ export class TicketApprovalAPI extends HaloPSA {
     includeapprovaldetails?: boolean
     mine?: boolean
     ticket_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/TicketApproval',
@@ -59,25 +53,19 @@ export class TicketApprovalAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postTicketApproval({ faultApproval }: { faultApproval: Array<FaultApproval> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/TicketApproval',
-      data: faultApproval,
-    })
+  postTicketApproval({
+    faultApprovalList,
+  }: {
+    faultApprovalList: Array<FaultApproval>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: faultApprovalList, path: '/TicketApproval' })
   }
 
   /**
    * @summary Get one FaultApproval
-   * @description Use this to return a single instance of FaultApproval.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of FaultApproval. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getTicketApprovalById({
     id,
@@ -85,26 +73,19 @@ export class TicketApprovalAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/TicketApproval/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    * @param {number} seq
    */
-  deleteTicketApprovalidseq({ id, seq }: { id: number; seq: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/TicketApproval/${id}&${seq}`,
-    })
+  deleteTicketApprovalIdseq({ id, seq }: { id: number; seq: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/TicketApproval/${id}&${seq}` })
   }
 }

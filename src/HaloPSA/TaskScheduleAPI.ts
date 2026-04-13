@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module TaskScheduleAPI
@@ -12,32 +9,12 @@ type schemas = components['schemas']
  * TaskSchedule module
  * @public
  */
-export class TaskScheduleAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class TaskScheduleAPI extends BaseAPI {
+  getTaskSchedule(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/TaskSchedule' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getTaskSchedule({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/TaskSchedule',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postTaskSchedule({}: {}): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/TaskSchedule',
-    })
+  postTaskSchedule(): Promise<unknown> {
+    return this.request({ method: 'post', path: '/TaskSchedule' })
   }
 }

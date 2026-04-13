@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module HaloFieldAPI
@@ -12,20 +9,8 @@ type schemas = components['schemas']
  * HaloField module
  * @public
  */
-export class HaloFieldAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  getHaloField({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/HaloField',
-    })
+export class HaloFieldAPI extends BaseAPI {
+  getHaloField(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/HaloField' })
   }
 }

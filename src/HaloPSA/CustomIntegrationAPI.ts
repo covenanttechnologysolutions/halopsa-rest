@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link OutboundIntegration} */
 export type OutboundIntegration = schemas['OutboundIntegration']
@@ -14,48 +13,30 @@ export type OutboundIntegration = schemas['OutboundIntegration']
  * CustomIntegration module
  * @public
  */
-export class CustomIntegrationAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class CustomIntegrationAPI extends BaseAPI {
+  getCustomIntegration(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/CustomIntegration' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getCustomIntegration({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/CustomIntegration',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postCustomIntegration({
-    outboundIntegration,
+    outboundIntegrationList,
   }: {
-    outboundIntegration: Array<OutboundIntegration>
-  }): Promise<any> {
+    outboundIntegrationList: Array<OutboundIntegration>
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
+      data: outboundIntegrationList,
       path: '/CustomIntegration',
-      data: outboundIntegration,
     })
   }
 
   /**
    * @summary Get one OutboundIntegration
-   * @description Use this to return a single instance of OutboundIntegration.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
-   * @param {boolean} [includemethods] 
-   * @param {number} [module_id] 
+   * @description Use this to return a single instance of OutboundIntegration. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
+   * @param {boolean} [includemethods]
+   * @param {number} [module_id]
    */
   getCustomIntegrationById({
     id,
@@ -67,27 +48,18 @@ export class CustomIntegrationAPI extends HaloPSA {
     includedetails?: boolean
     includemethods?: boolean
     module_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/CustomIntegration/${id}`,
-      params: {
-        includedetails,
-        includemethods,
-        module_id,
-      },
+      params: { includedetails, includemethods, module_id },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteCustomIntegrationById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/CustomIntegration/${id}`,
-    })
+  deleteCustomIntegrationById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/CustomIntegration/${id}` })
   }
 }

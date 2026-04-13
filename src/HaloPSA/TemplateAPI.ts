@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link StdRequest} */
 export type StdRequest = schemas['StdRequest']
@@ -14,52 +13,47 @@ export type StdRequest = schemas['StdRequest']
  * Template module
  * @public
  */
-export class TemplateAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class TemplateAPI extends BaseAPI {
   /**
    * @summary List of StdRequest
-   * @description Use this to return multiple StdRequest.<br>
-				Requires authentication.
-   * @param {number} [access_control_level] (string) Filters response based on the access control level.
-   * @param {number} [action_id] (int) Filter by the specified action.
-   * @param {number} [agent_id] (int) Filter by reports with permissions to a particular agent id.
-   * @param {boolean} [anonanduser] (bool) Filter on reports that can be viewed by anonymous users.
-   * @param {number} [asset_id] (int) Filter by asset id.
-   * @param {number} [client_id] (int) Filter by the specified client.
-   * @param {number} [department_id] (int) Filter by reports with permissions to a particular department id.
-   * @param {string} [domain] (string) Filter on tickets areas - 'reqs' = (not projects not oppportunities) or (projects not opportunities) - 'opps' = opportunities - 'prjs' = projects.
-   * @param {number} [group_id] 
-   * @param {number} [include_ticket_id] (int) Filter by the specified ticket.
-   * @param {boolean} [includeclients] (bool) Include which clients have access to the reports.
-   * @param {boolean} [includenames] (bool) Include which agents/teams/organisations have access to the reports.
-   * @param {number} [itil_ticket_type_id] 
-   * @param {number} [itil_type] (int) Filter by itil type.
-   * @param {string} [order] (string) The name of the field to order by first.
-   * @param {string} [order2] (string) The name of the field to order by second.
-   * @param {string} [order3] (string) The name of the field to order by third.
-   * @param {string} [order4] (string) The name of the field to order by fourth.
-   * @param {string} [order5] (string) The name of the field to order by fifth.
-   * @param {boolean} [orderdesc] (bool) Whether to order ascending or descending on first order.
-   * @param {boolean} [orderdesc2] (bool) Whether to order ascending or descending on second order.
-   * @param {boolean} [orderdesc3] (bool) Whether to order ascending or descending on third order.
-   * @param {boolean} [orderdesc4] (bool) Whether to order ascending or descending on fourth order.
-   * @param {boolean} [orderdesc5] (bool) Whether to order ascending or descending on fifth order.
-   * @param {number} [page_no] (int) When using Pagination, the page number to return.
-   * @param {number} [page_size] (int) When using Pagination, the size of the page.
-   * @param {boolean} [pageinate] (bool) Whether to use Pagination in the response.
-   * @param {number} [parent_template_id] (int) Filter by reports with permissions to a particular parent id.
-   * @param {number} [report_id] (int) Filter by report id.
-   * @param {string} [search] (string) Filters response based on the search string.
-   * @param {boolean} [showall] (bool) Admin override to return all reports.
-   * @param {number} [team_id] (int) Filter by reports with permissions to a particular team id.
-   * @param {number} [ticket_type_id] (int) Filter by the specified ticket type.
-   * @param {number} [todo_client_id] (string) Filters response based on the to-do client id.
-   * @param {boolean} [todo_only] (bool) Include only reports that are 'to-do' in the response.
-   * @param {number} [type] (int) Filters response based on the report type.
-   * @param {string} [types] (string) Return reports of these report types, comma seperated.
+   * @description Use this to return multiple StdRequest. Requires authentication.
+   * @param {number} [access_control_level] Filters response based on the access control level.
+   * @param {number} [action_id] Filter by the specified action.
+   * @param {number} [agent_id] Filter by reports with permissions to a particular agent id.
+   * @param {boolean} [anonanduser] Filter on reports that can be viewed by anonymous users.
+   * @param {number} [asset_id] Filter by asset id.
+   * @param {number} [client_id] Filter by the specified client.
+   * @param {number} [department_id] Filter by reports with permissions to a particular department id.
+   * @param {string} [domain] Filter on tickets areas - 'reqs' = (not projects not oppportunities) or (projects not opportunities) - 'opps' = opportunities - 'prjs' = projects.
+   * @param {number} [group_id]
+   * @param {number} [include_ticket_id] Filter by the specified ticket.
+   * @param {boolean} [includeclients] Include which clients have access to the reports.
+   * @param {boolean} [includenames] Include which agents/teams/organisations have access to the reports.
+   * @param {number} [itil_ticket_type_id]
+   * @param {number} [itil_type] Filter by itil type.
+   * @param {string} [order] The name of the field to order by first.
+   * @param {string} [order2] The name of the field to order by second.
+   * @param {string} [order3] The name of the field to order by third.
+   * @param {string} [order4] The name of the field to order by fourth.
+   * @param {string} [order5] The name of the field to order by fifth.
+   * @param {boolean} [orderdesc] Whether to order ascending or descending on first order.
+   * @param {boolean} [orderdesc2] Whether to order ascending or descending on second order.
+   * @param {boolean} [orderdesc3] Whether to order ascending or descending on third order.
+   * @param {boolean} [orderdesc4] Whether to order ascending or descending on fourth order.
+   * @param {boolean} [orderdesc5] Whether to order ascending or descending on fifth order.
+   * @param {number} [page_no] When using Pagination, the page number to return.
+   * @param {number} [page_size] When using Pagination, the size of the page.
+   * @param {boolean} [pageinate] Whether to use Pagination in the response.
+   * @param {number} [parent_template_id] Filter by reports with permissions to a particular parent id.
+   * @param {number} [report_id] Filter by report id.
+   * @param {string} [search] Filters response based on the search string.
+   * @param {boolean} [showall] Admin override to return all reports.
+   * @param {number} [team_id] Filter by reports with permissions to a particular team id.
+   * @param {number} [ticket_type_id] Filter by the specified ticket type.
+   * @param {number} [todo_client_id] Filters response based on the to-do client id.
+   * @param {boolean} [todo_only] Include only reports that are 'to-do' in the response.
+   * @param {number} [type] Filters response based on the report type.
+   * @param {string} [types] Return reports of these report types, comma seperated.
    */
   getTemplate({
     access_control_level,
@@ -137,7 +131,7 @@ export class TemplateAPI extends HaloPSA {
     todo_only?: boolean
     type?: number
     types?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/Template',
@@ -183,26 +177,16 @@ export class TemplateAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postTemplate({ stdRequest }: { stdRequest: Array<StdRequest> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Template',
-      data: stdRequest,
-    })
+  postTemplate({ stdRequestList }: { stdRequestList: Array<StdRequest> }): Promise<unknown> {
+    return this.request({ method: 'post', data: stdRequestList, path: '/Template' })
   }
 
   /**
    * @summary Get one StdRequest
-   * @description Use this to return a single instance of StdRequest.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] (bool) Include extra objects in the response.
-   * @param {boolean} [includekbinfo] (bool) Include knowledge base information in the response.
+   * @description Use this to return a single instance of StdRequest. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails] Include extra objects in the response.
+   * @param {boolean} [includekbinfo] Include knowledge base information in the response.
    */
   getTemplateById({
     id,
@@ -212,26 +196,18 @@ export class TemplateAPI extends HaloPSA {
     id: number
     includedetails?: boolean
     includekbinfo?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/Template/${id}`,
-      params: {
-        includedetails,
-        includekbinfo,
-      },
+      params: { includedetails, includekbinfo },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteTemplateById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Template/${id}`,
-    })
+  deleteTemplateById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Template/${id}` })
   }
 }

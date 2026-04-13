@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module ProductBranchAPI
@@ -12,24 +9,13 @@ type schemas = components['schemas']
  * ProductBranch module
  * @public
  */
-export class ProductBranchAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ProductBranchAPI extends BaseAPI {
   /**
    * @summary List of ReleaseBranch
-   * @description Use this to return multiple ReleaseBranch.<br>
-				Requires authentication.
-   * @param {number} [product_id] 
+   * @description Use this to return multiple ReleaseBranch. Requires authentication.
+   * @param {number} [product_id]
    */
-  getProductBranch({ product_id }: { product_id?: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/ProductBranch',
-      params: {
-        product_id,
-      },
-    })
+  getProductBranch({ product_id }: { product_id?: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/ProductBranch', params: { product_id } })
   }
 }

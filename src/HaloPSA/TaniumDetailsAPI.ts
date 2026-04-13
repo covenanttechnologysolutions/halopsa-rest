@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link TaniumDetails} */
 export type TaniumDetails = schemas['TaniumDetails']
@@ -14,57 +13,30 @@ export type TaniumDetails = schemas['TaniumDetails']
  * TaniumDetails module
  * @public
  */
-export class TaniumDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class TaniumDetailsAPI extends BaseAPI {
+  getTaniumDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/TaniumDetails' })
+  }
+
+  postTaniumDetails({
+    taniumDetailsList,
+  }: {
+    taniumDetailsList: Array<TaniumDetails>
+  }): Promise<TaniumDetails> {
+    return this.request({ method: 'post', data: taniumDetailsList, path: '/TaniumDetails' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  getTaniumDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/TaniumDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postTaniumDetails({ taniumDetails }: { taniumDetails: Array<TaniumDetails> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/TaniumDetails',
-      data: taniumDetails,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  getTaniumDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/TaniumDetails/${id}`,
-    })
+  getTaniumDetailsById({ id }: { id: number }): Promise<TaniumDetails> {
+    return this.request({ method: 'get', path: `/TaniumDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteTaniumDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/TaniumDetails/${id}`,
-    })
+  deleteTaniumDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/TaniumDetails/${id}` })
   }
 }

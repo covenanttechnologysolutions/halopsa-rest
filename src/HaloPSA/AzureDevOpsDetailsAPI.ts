@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link AzureDevOpsDetails} */
 export type AzureDevOpsDetails = schemas['AzureDevOpsDetails']
@@ -14,46 +13,28 @@ export type AzureDevOpsDetails = schemas['AzureDevOpsDetails']
  * AzureDevOpsDetails module
  * @public
  */
-export class AzureDevOpsDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class AzureDevOpsDetailsAPI extends BaseAPI {
+  getAzureDevOpsDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/AzureDevOpsDetails' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getAzureDevOpsDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/AzureDevOpsDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postAzureDevOpsDetails({
-    azureDevOpsDetails,
+    azureDevOpsDetailsList,
   }: {
-    azureDevOpsDetails: Array<AzureDevOpsDetails>
-  }): Promise<any> {
+    azureDevOpsDetailsList: Array<AzureDevOpsDetails>
+  }): Promise<AzureDevOpsDetails> {
     return this.request({
       method: 'post',
+      data: azureDevOpsDetailsList,
       path: '/AzureDevOpsDetails',
-      data: azureDevOpsDetails,
     })
   }
 
   /**
    * @summary Get one AzureDevOpsDetails
-   * @description Use this to return a single instance of AzureDevOpsDetails.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of AzureDevOpsDetails. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getAzureDevOpsDetailsById({
     id,
@@ -61,25 +42,18 @@ export class AzureDevOpsDetailsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<AzureDevOpsDetails> {
     return this.request({
       method: 'get',
       path: `/AzureDevOpsDetails/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteAzureDevOpsDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/AzureDevOpsDetails/${id}`,
-    })
+  deleteAzureDevOpsDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/AzureDevOpsDetails/${id}` })
   }
 }

@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link DistributionListsLog} */
 export type DistributionListsLog = schemas['DistributionListsLog']
@@ -14,61 +13,34 @@ export type DistributionListsLog = schemas['DistributionListsLog']
  * DistributionListsLog module
  * @public
  */
-export class DistributionListsLogAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class DistributionListsLogAPI extends BaseAPI {
+  getDistributionListsLog(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/DistributionListsLog' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getDistributionListsLog({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/DistributionListsLog',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postDistributionListsLog({
-    distributionListsLog,
+    distributionListsLogList,
   }: {
-    distributionListsLog: Array<DistributionListsLog>
-  }): Promise<any> {
+    distributionListsLogList: Array<DistributionListsLog>
+  }): Promise<DistributionListsLog> {
     return this.request({
       method: 'post',
+      data: distributionListsLogList,
       path: '/DistributionListsLog',
-      data: distributionListsLog,
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getDistributionListsLogById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/DistributionListsLog/${id}`,
-    })
+  getDistributionListsLogById({ id }: { id: number }): Promise<DistributionListsLog> {
+    return this.request({ method: 'get', path: `/DistributionListsLog/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteDistributionListsLogById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/DistributionListsLog/${id}`,
-    })
+  deleteDistributionListsLogById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/DistributionListsLog/${id}` })
   }
 }

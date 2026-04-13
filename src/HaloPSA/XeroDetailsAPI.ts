@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link XeroDetails} */
 export type XeroDetails = schemas['XeroDetails']
@@ -14,17 +13,12 @@ export type XeroDetails = schemas['XeroDetails']
  * XeroDetails module
  * @public
  */
-export class XeroDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class XeroDetailsAPI extends BaseAPI {
   /**
    * @summary List of XeroDetails
-   * @description Use this to return multiple XeroDetails.<br>
-				Requires authentication.
-   * @param {boolean} [connectedonly] 
-   * @param {string} [tenantid] 
+   * @description Use this to return multiple XeroDetails. Requires authentication.
+   * @param {boolean} [connectedonly]
+   * @param {string} [tenantid]
    */
   getXeroDetails({
     connectedonly,
@@ -32,36 +26,27 @@ export class XeroDetailsAPI extends HaloPSA {
   }: {
     connectedonly?: boolean
     tenantid?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/XeroDetails',
-      params: {
-        connectedonly,
-        tenantid,
-      },
+      params: { connectedonly, tenantid },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postXeroDetails({ xeroDetails }: { xeroDetails: Array<XeroDetails> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/XeroDetails',
-      data: xeroDetails,
-    })
+  postXeroDetails({
+    xeroDetailsList,
+  }: {
+    xeroDetailsList: Array<XeroDetails>
+  }): Promise<XeroDetails> {
+    return this.request({ method: 'post', data: xeroDetailsList, path: '/XeroDetails' })
   }
 
   /**
    * @summary Get one XeroDetails
-   * @description Use this to return a single instance of XeroDetails.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of XeroDetails. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getXeroDetailsById({
     id,
@@ -69,25 +54,14 @@ export class XeroDetailsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/XeroDetails/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<XeroDetails> {
+    return this.request({ method: 'get', path: `/XeroDetails/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteXeroDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/XeroDetails/${id}`,
-    })
+  deleteXeroDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/XeroDetails/${id}` })
   }
 }

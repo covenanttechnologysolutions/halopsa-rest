@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module ReportDataAPI
@@ -12,20 +9,11 @@ type schemas = components['schemas']
  * ReportData module
  * @public
  */
-export class ReportDataAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ReportDataAPI extends BaseAPI {
   /**
-   *
-   *
    * @param {string} publishedid
    */
-  getReportDatapublishedid({ publishedid }: { publishedid: string }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/ReportData/${publishedid}`,
-    })
+  getReportDataPublishedid({ publishedid }: { publishedid: string }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/ReportData/${publishedid}` })
   }
 }

@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link PowerShellScriptProcessing} */
 export type PowerShellScriptProcessing = schemas['PowerShellScriptProcessing']
@@ -14,33 +13,28 @@ export type PowerShellScriptProcessing = schemas['PowerShellScriptProcessing']
  * PowerShellScriptProcessing module
  * @public
  */
-export class PowerShellScriptProcessingAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class PowerShellScriptProcessingAPI extends BaseAPI {
   /**
    * @summary List of PowerShellScriptProcessing
-   * @description Use this to return multiple PowerShellScriptProcessing.<br>
-				Requires authentication.
-   * @param {number} [count] 
-   * @param {boolean} [includeparameters] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {boolean} [outstandingonly] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {number} [script_id] 
-   * @param {number} [ticket_id] 
+   * @description Use this to return multiple PowerShellScriptProcessing. Requires authentication.
+   * @param {number} [count]
+   * @param {boolean} [includeparameters]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {boolean} [outstandingonly]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {number} [script_id]
+   * @param {number} [ticket_id]
    */
   getPowerShellScriptProcessing({
     count,
@@ -80,7 +74,7 @@ export class PowerShellScriptProcessingAPI extends HaloPSA {
     pageinate?: boolean
     script_id?: number
     ticket_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/PowerShellScriptProcessing',
@@ -107,29 +101,23 @@ export class PowerShellScriptProcessingAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postPowerShellScriptProcessing({
-    powerShellScriptProcessing,
+    powerShellScriptProcessingList,
   }: {
-    powerShellScriptProcessing: Array<PowerShellScriptProcessing>
-  }): Promise<any> {
+    powerShellScriptProcessingList: Array<PowerShellScriptProcessing>
+  }): Promise<PowerShellScriptProcessing> {
     return this.request({
       method: 'post',
+      data: powerShellScriptProcessingList,
       path: '/PowerShellScriptProcessing',
-      data: powerShellScriptProcessing,
     })
   }
 
   /**
    * @summary Get one PowerShellScriptProcessing
-   * @description Use this to return a single instance of PowerShellScriptProcessing.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of PowerShellScriptProcessing. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getPowerShellScriptProcessingById({
     id,
@@ -137,25 +125,18 @@ export class PowerShellScriptProcessingAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<PowerShellScriptProcessing> {
     return this.request({
       method: 'get',
       path: `/PowerShellScriptProcessing/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deletePowerShellScriptProcessingById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/PowerShellScriptProcessing/${id}`,
-    })
+  deletePowerShellScriptProcessingById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/PowerShellScriptProcessing/${id}` })
   }
 }

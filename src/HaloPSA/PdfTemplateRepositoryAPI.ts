@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module PdfTemplateRepositoryAPI
@@ -12,17 +9,12 @@ type schemas = components['schemas']
  * PdfTemplateRepository module
  * @public
  */
-export class PdfTemplateRepositoryAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class PdfTemplateRepositoryAPI extends BaseAPI {
   /**
    * @summary List of PdfTemplate
-   * @description Use this to return multiple PdfTemplate.<br>
-				Requires authentication.
-   * @param {string} [licencename] 
-   * @param {number} [type] 
+   * @description Use this to return multiple PdfTemplate. Requires authentication.
+   * @param {string} [licencename]
+   * @param {number} [type]
    */
   getPdfTemplateRepository({
     licencename,
@@ -30,25 +22,21 @@ export class PdfTemplateRepositoryAPI extends HaloPSA {
   }: {
     licencename?: string
     type?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/PdfTemplateRepository',
-      params: {
-        licencename,
-        type,
-      },
+      params: { licencename, type },
     })
   }
 
   /**
    * @summary Get one PdfTemplate
-   * @description Use this to return a single instance of PdfTemplate.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
-   * @param {string} [licencename] 
-   * @param {string} [system_use] 
+   * @description Use this to return a single instance of PdfTemplate. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
+   * @param {string} [licencename]
+   * @param {string} [system_use]
    */
   getPdfTemplateRepositoryById({
     id,
@@ -60,15 +48,11 @@ export class PdfTemplateRepositoryAPI extends HaloPSA {
     includedetails?: boolean
     licencename?: string
     system_use?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/PdfTemplateRepository/${id}`,
-      params: {
-        includedetails,
-        licencename,
-        system_use,
-      },
+      params: { includedetails, licencename, system_use },
     })
   }
 }

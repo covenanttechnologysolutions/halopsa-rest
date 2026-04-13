@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module MattermostChannelDetailsAPI
@@ -12,20 +9,8 @@ type schemas = components['schemas']
  * MattermostChannelDetails module
  * @public
  */
-export class MattermostChannelDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  getMattermostChannelDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/MattermostChannelDetails',
-    })
+export class MattermostChannelDetailsAPI extends BaseAPI {
+  getMattermostChannelDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/MattermostChannelDetails' })
   }
 }

@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link GmailMessage} */
 export type GmailMessage = schemas['GmailMessage']
@@ -18,93 +17,42 @@ export type Pop3Message = schemas['Pop3Message']
  * Mail module
  * @public
  */
-export class MailAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class MailAPI extends BaseAPI {
+  postMailAzure(): Promise<unknown> {
+    return this.request({ method: 'post', path: '/Mail/Azure' })
+  }
+
+  postMailIntegratorAzure(): Promise<unknown> {
+    return this.request({ method: 'post', path: '/Mail/Integrator/Azure' })
+  }
+
+  postMailIntegratorGoogle({ gmailMessage }: { gmailMessage: GmailMessage }): Promise<unknown> {
+    return this.request({ method: 'post', data: gmailMessage, path: '/Mail/Integrator/Google' })
+  }
+
+  postMailIntegratorPop3({ pop3Message }: { pop3Message: Pop3Message }): Promise<unknown> {
+    return this.request({ method: 'post', data: pop3Message, path: '/Mail/Integrator/Pop3' })
+  }
+
+  postMailIntegratorIMAP({ iMAPMessage }: { iMAPMessage: IMAPMessage }): Promise<unknown> {
+    return this.request({ method: 'post', data: iMAPMessage, path: '/Mail/Integrator/IMAP' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  postMailAzure({}: {}): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Mail/Azure',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postMailIntegratorAzure({}: {}): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Mail/Integrator/Azure',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postMailIntegratorGoogle({ gmailMessage }: { gmailMessage: GmailMessage }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Mail/Integrator/Google',
-      data: gmailMessage,
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postMailIntegratorPop3({ pop3Message }: { pop3Message: Pop3Message }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Mail/Integrator/Pop3',
-      data: pop3Message,
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postMailIntegratorIMAP({ iMAPMessage }: { iMAPMessage: IMAPMessage }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Mail/Integrator/IMAP',
-      data: iMAPMessage,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} [task_id]
    */
   postMailProcessMail({
-    listNumber,
+    items,
     task_id,
   }: {
-    listNumber: number
+    items: Array<number>
     task_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
+      data: items,
       path: '/Mail/ProcessMail',
-      data: listNumber,
-      params: {
-        task_id,
-      },
+      params: { task_id },
     })
   }
 }

@@ -1,8 +1,9 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
+/** {@link AreaRequestType} */
+export type AreaRequestType = schemas['AreaRequestType']
 
 /**
  * @module AreaRequestTypeAPI
@@ -12,29 +13,16 @@ type schemas = components['schemas']
  * AreaRequestType module
  * @public
  */
-export class AreaRequestTypeAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  getAreaRequestType({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/AreaRequestType',
-    })
+export class AreaRequestTypeAPI extends BaseAPI {
+  getAreaRequestType(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/AreaRequestType' })
   }
 
   /**
    * @summary Get one AreaRequestType
-   * @description Use this to return a single instance of AreaRequestType.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of AreaRequestType. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getAreaRequestTypeById({
     id,
@@ -42,13 +30,11 @@ export class AreaRequestTypeAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<AreaRequestType> {
     return this.request({
       method: 'get',
       path: `/AreaRequestType/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 }

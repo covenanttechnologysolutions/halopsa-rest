@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link AuditPasswordField} */
 export type AuditPasswordField = schemas['AuditPasswordField']
@@ -14,46 +13,24 @@ export type AuditPasswordField = schemas['AuditPasswordField']
  * PasswordField module
  * @public
  */
-export class PasswordFieldAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class PasswordFieldAPI extends BaseAPI {
+  getPasswordField(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/PasswordField' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getPasswordField({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/PasswordField',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postPasswordField({
-    auditPasswordField,
+    auditPasswordFieldList,
   }: {
-    auditPasswordField: Array<AuditPasswordField>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/PasswordField',
-      data: auditPasswordField,
-    })
+    auditPasswordFieldList: Array<AuditPasswordField>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: auditPasswordFieldList, path: '/PasswordField' })
   }
 
   /**
    * @summary Get one AuditPasswordField
-   * @description Use this to return a single instance of AuditPasswordField.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of AuditPasswordField. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getPasswordFieldById({
     id,
@@ -61,13 +38,7 @@ export class PasswordFieldAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/PasswordField/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/PasswordField/${id}`, params: { includedetails } })
   }
 }

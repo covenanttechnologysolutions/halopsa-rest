@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link SetupTab} */
 export type SetupTab = schemas['SetupTab']
@@ -14,50 +13,28 @@ export type SetupTab = schemas['SetupTab']
  * SetupTab module
  * @public
  */
-export class SetupTabAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class SetupTabAPI extends BaseAPI {
+  getSetupTab(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/SetupTab' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getSetupTab({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/SetupTab',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postSetupTab({ setupTab }: { setupTab: Array<SetupTab> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/SetupTab',
-      data: setupTab,
-    })
+  postSetupTab({ setupTabList }: { setupTabList: Array<SetupTab> }): Promise<SetupTab> {
+    return this.request({ method: 'post', data: setupTabList, path: '/SetupTab' })
   }
 
   /**
    * @summary Get one SetupTab
-   * @description Use this to return a single instance of SetupTab.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of SetupTab. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
-  getSetupTabById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/SetupTab/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  getSetupTabById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<SetupTab> {
+    return this.request({ method: 'get', path: `/SetupTab/${id}`, params: { includedetails } })
   }
 }

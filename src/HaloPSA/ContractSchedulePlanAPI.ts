@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ContractSchedulePlan} */
 export type ContractSchedulePlan = schemas['ContractSchedulePlan']
@@ -14,46 +13,28 @@ export type ContractSchedulePlan = schemas['ContractSchedulePlan']
  * ContractSchedulePlan module
  * @public
  */
-export class ContractSchedulePlanAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class ContractSchedulePlanAPI extends BaseAPI {
+  getContractSchedulePlan(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/ContractSchedulePlan' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getContractSchedulePlan({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/ContractSchedulePlan',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postContractSchedulePlan({
-    contractSchedulePlan,
+    contractSchedulePlanList,
   }: {
-    contractSchedulePlan: Array<ContractSchedulePlan>
-  }): Promise<any> {
+    contractSchedulePlanList: Array<ContractSchedulePlan>
+  }): Promise<ContractSchedulePlan> {
     return this.request({
       method: 'post',
+      data: contractSchedulePlanList,
       path: '/ContractSchedulePlan',
-      data: contractSchedulePlan,
     })
   }
 
   /**
    * @summary Get one ContractSchedulePlan
-   * @description Use this to return a single instance of ContractSchedulePlan.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of ContractSchedulePlan. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getContractSchedulePlanById({
     id,
@@ -61,25 +42,18 @@ export class ContractSchedulePlanAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<ContractSchedulePlan> {
     return this.request({
       method: 'get',
       path: `/ContractSchedulePlan/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteContractSchedulePlanById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ContractSchedulePlan/${id}`,
-    })
+  deleteContractSchedulePlanById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ContractSchedulePlan/${id}` })
   }
 }

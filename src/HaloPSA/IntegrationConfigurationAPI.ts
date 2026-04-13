@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link IntegrationConfiguration} */
 export type IntegrationConfiguration = schemas['IntegrationConfiguration']
@@ -14,46 +13,28 @@ export type IntegrationConfiguration = schemas['IntegrationConfiguration']
  * IntegrationConfiguration module
  * @public
  */
-export class IntegrationConfigurationAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class IntegrationConfigurationAPI extends BaseAPI {
+  getIntegrationConfiguration(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/IntegrationConfiguration' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getIntegrationConfiguration({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/IntegrationConfiguration',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postIntegrationConfiguration({
-    integrationConfiguration,
+    integrationConfigurationList,
   }: {
-    integrationConfiguration: Array<IntegrationConfiguration>
-  }): Promise<any> {
+    integrationConfigurationList: Array<IntegrationConfiguration>
+  }): Promise<IntegrationConfiguration> {
     return this.request({
       method: 'post',
+      data: integrationConfigurationList,
       path: '/IntegrationConfiguration',
-      data: integrationConfiguration,
     })
   }
 
   /**
    * @summary Get one IntegrationConfiguration
-   * @description Use this to return a single instance of IntegrationConfiguration.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of IntegrationConfiguration. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getIntegrationConfigurationById({
     id,
@@ -61,13 +42,11 @@ export class IntegrationConfigurationAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<IntegrationConfiguration> {
     return this.request({
       method: 'get',
       path: `/IntegrationConfiguration/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 }

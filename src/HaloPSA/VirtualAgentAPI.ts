@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link VirtualAgent} */
 export type VirtualAgent = schemas['VirtualAgent']
@@ -14,57 +13,30 @@ export type VirtualAgent = schemas['VirtualAgent']
  * VirtualAgent module
  * @public
  */
-export class VirtualAgentAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class VirtualAgentAPI extends BaseAPI {
+  getVirtualAgent(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/VirtualAgent' })
+  }
+
+  postVirtualAgent({
+    virtualAgentList,
+  }: {
+    virtualAgentList: Array<VirtualAgent>
+  }): Promise<VirtualAgent> {
+    return this.request({ method: 'post', data: virtualAgentList, path: '/VirtualAgent' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  getVirtualAgent({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/VirtualAgent',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postVirtualAgent({ virtualAgent }: { virtualAgent: Array<VirtualAgent> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/VirtualAgent',
-      data: virtualAgent,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {string} id
    */
-  getVirtualAgentById({ id }: { id: string }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/VirtualAgent/${id}`,
-    })
+  getVirtualAgentById({ id }: { id: string }): Promise<VirtualAgent> {
+    return this.request({ method: 'get', path: `/VirtualAgent/${id}` })
   }
 
   /**
-   *
-   *
    * @param {string} id
    */
-  deleteVirtualAgentById({ id }: { id: string }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/VirtualAgent/${id}`,
-    })
+  deleteVirtualAgentById({ id }: { id: string }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/VirtualAgent/${id}` })
   }
 }

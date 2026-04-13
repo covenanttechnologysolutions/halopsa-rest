@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module TeamImageAPI
@@ -12,20 +9,11 @@ type schemas = components['schemas']
  * TeamImage module
  * @public
  */
-export class TeamImageAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class TeamImageAPI extends BaseAPI {
   /**
-   *
-   *
    * @param {string} id
    */
-  getTeamImageById({ id }: { id: string }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/TeamImage/${id}`,
-    })
+  getTeamImageById({ id }: { id: string }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/TeamImage/${id}` })
   }
 }

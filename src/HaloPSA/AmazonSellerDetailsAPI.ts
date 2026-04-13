@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link AmazonSellerDetails} */
 export type AmazonSellerDetails = schemas['AmazonSellerDetails']
@@ -14,61 +13,34 @@ export type AmazonSellerDetails = schemas['AmazonSellerDetails']
  * AmazonSellerDetails module
  * @public
  */
-export class AmazonSellerDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class AmazonSellerDetailsAPI extends BaseAPI {
+  getAmazonSellerDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/AmazonSellerDetails' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getAmazonSellerDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/AmazonSellerDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
   postAmazonSellerDetails({
-    amazonSellerDetails,
+    amazonSellerDetailsList,
   }: {
-    amazonSellerDetails: Array<AmazonSellerDetails>
-  }): Promise<any> {
+    amazonSellerDetailsList: Array<AmazonSellerDetails>
+  }): Promise<AmazonSellerDetails> {
     return this.request({
       method: 'post',
+      data: amazonSellerDetailsList,
       path: '/AmazonSellerDetails',
-      data: amazonSellerDetails,
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getAmazonSellerDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/AmazonSellerDetails/${id}`,
-    })
+  getAmazonSellerDetailsById({ id }: { id: number }): Promise<AmazonSellerDetails> {
+    return this.request({ method: 'get', path: `/AmazonSellerDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteAmazonSellerDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/AmazonSellerDetails/${id}`,
-    })
+  deleteAmazonSellerDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/AmazonSellerDetails/${id}` })
   }
 }

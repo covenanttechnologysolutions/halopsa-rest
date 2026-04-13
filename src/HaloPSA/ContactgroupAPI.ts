@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Contactgroup} */
 export type Contactgroup = schemas['Contactgroup']
@@ -14,57 +13,30 @@ export type Contactgroup = schemas['Contactgroup']
  * Contactgroup module
  * @public
  */
-export class ContactgroupAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class ContactgroupAPI extends BaseAPI {
+  getContactgroup(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Contactgroup' })
+  }
+
+  postContactgroup({
+    contactgroupList,
+  }: {
+    contactgroupList: Array<Contactgroup>
+  }): Promise<Contactgroup> {
+    return this.request({ method: 'post', data: contactgroupList, path: '/Contactgroup' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  getContactgroup({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Contactgroup',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postContactgroup({ contactgroup }: { contactgroup: Array<Contactgroup> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Contactgroup',
-      data: contactgroup,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  getContactgroupById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/Contactgroup/${id}`,
-    })
+  getContactgroupById({ id }: { id: number }): Promise<Contactgroup> {
+    return this.request({ method: 'get', path: `/Contactgroup/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteContactgroupById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Contactgroup/${id}`,
-    })
+  deleteContactgroupById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Contactgroup/${id}` })
   }
 }

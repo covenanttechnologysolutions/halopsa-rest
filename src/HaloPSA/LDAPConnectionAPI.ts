@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link LDAPConnection} */
 export type LDAPConnection = schemas['LDAPConnection']
@@ -14,47 +13,30 @@ export type LDAPConnection = schemas['LDAPConnection']
  * LDAPConnection module
  * @public
  */
-export class LDAPConnectionAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class LDAPConnectionAPI extends BaseAPI {
   /**
    * @summary List of LDAPConnection
-   * @description Use this to return multiple LDAPConnection.<br>
-				Requires authentication.
-   * @param {string} [clientidoverride] 
+   * @description Use this to return multiple LDAPConnection. Requires authentication.
+   * @param {string} [clientidoverride]
    */
-  getLDAPConnection({ clientidoverride }: { clientidoverride?: string }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/LDAPConnection',
-      params: {
-        clientidoverride,
-      },
-    })
+  getLDAPConnection({ clientidoverride }: { clientidoverride?: string }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/LDAPConnection', params: { clientidoverride } })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postLDAPConnection({ lDAPConnection }: { lDAPConnection: Array<LDAPConnection> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/LDAPConnection',
-      data: lDAPConnection,
-    })
+  postLDAPConnection({
+    lDAPConnectionList,
+  }: {
+    lDAPConnectionList: Array<LDAPConnection>
+  }): Promise<LDAPConnection> {
+    return this.request({ method: 'post', data: lDAPConnectionList, path: '/LDAPConnection' })
   }
 
   /**
    * @summary Get one LDAPConnection
-   * @description Use this to return a single instance of LDAPConnection.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {string} [clientidoverride] 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of LDAPConnection. Requires authentication.
+   * @param {number} id
+   * @param {string} [clientidoverride]
+   * @param {boolean} [includedetails]
    */
   getLDAPConnectionById({
     id,
@@ -64,26 +46,18 @@ export class LDAPConnectionAPI extends HaloPSA {
     id: number
     clientidoverride?: string
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<LDAPConnection> {
     return this.request({
       method: 'get',
       path: `/LDAPConnection/${id}`,
-      params: {
-        clientidoverride,
-        includedetails,
-      },
+      params: { clientidoverride, includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteLDAPConnectionById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/LDAPConnection/${id}`,
-    })
+  deleteLDAPConnectionById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/LDAPConnection/${id}` })
   }
 }

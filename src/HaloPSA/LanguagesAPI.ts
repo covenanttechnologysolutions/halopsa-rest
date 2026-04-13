@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link LanguagePack} */
 export type LanguagePack = schemas['LanguagePack']
@@ -14,66 +13,40 @@ export type LanguagePack = schemas['LanguagePack']
  * Languages module
  * @public
  */
-export class LanguagesAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class LanguagesAPI extends BaseAPI {
   /**
    * @summary List of LanguagePack
-   * @description Use this to return multiple LanguagePack.<br>
-				Requires authentication.
-   * @param {boolean} [showall] 
+   * @description Use this to return multiple LanguagePack. Requires authentication.
+   * @param {boolean} [showall]
    */
-  getLanguages({ showall }: { showall?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/Languages',
-      params: {
-        showall,
-      },
-    })
+  getLanguages({ showall }: { showall?: boolean }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/Languages', params: { showall } })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postLanguages({ languagePack }: { languagePack: Array<LanguagePack> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Languages',
-      data: languagePack,
-    })
+  postLanguages({ languagePackList }: { languagePackList: Array<LanguagePack> }): Promise<unknown> {
+    return this.request({ method: 'post', data: languagePackList, path: '/Languages' })
   }
 
   /**
    * @summary Get one LanguagePack
-   * @description Use this to return a single instance of LanguagePack.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of LanguagePack. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
-  getLanguagesById({ id, includedetails }: { id: number; includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/Languages/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  getLanguagesById({
+    id,
+    includedetails,
+  }: {
+    id: number
+    includedetails?: boolean
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/Languages/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteLanguagesById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Languages/${id}`,
-    })
+  deleteLanguagesById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Languages/${id}` })
   }
 }

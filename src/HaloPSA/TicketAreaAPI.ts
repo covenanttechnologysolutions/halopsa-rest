@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link TicketArea} */
 export type TicketArea = schemas['TicketArea']
@@ -14,42 +13,20 @@ export type TicketArea = schemas['TicketArea']
  * TicketArea module
  * @public
  */
-export class TicketAreaAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class TicketAreaAPI extends BaseAPI {
+  getTicketArea(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/TicketArea' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getTicketArea({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/TicketArea',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postTicketArea({ ticketArea }: { ticketArea: Array<TicketArea> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/TicketArea',
-      data: ticketArea,
-    })
+  postTicketArea({ ticketAreaList }: { ticketAreaList: Array<TicketArea> }): Promise<TicketArea> {
+    return this.request({ method: 'post', data: ticketAreaList, path: '/TicketArea' })
   }
 
   /**
    * @summary Get one TicketArea
-   * @description Use this to return a single instance of TicketArea.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of TicketArea. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getTicketAreaById({
     id,
@@ -57,25 +34,14 @@ export class TicketAreaAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/TicketArea/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<TicketArea> {
+    return this.request({ method: 'get', path: `/TicketArea/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteTicketAreaById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/TicketArea/${id}`,
-    })
+  deleteTicketAreaById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/TicketArea/${id}` })
   }
 }

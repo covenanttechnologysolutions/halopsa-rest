@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link WebhookEvent} */
 export type WebhookEvent = schemas['WebhookEvent']
@@ -14,33 +13,28 @@ export type WebhookEvent = schemas['WebhookEvent']
  * WebhookEvent module
  * @public
  */
-export class WebhookEventAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class WebhookEventAPI extends BaseAPI {
   /**
    * @summary List of WebhookEvent
-   * @description Use this to return multiple WebhookEvent.<br>
-				Requires authentication.
-   * @param {number} [automation_id] 
-   * @param {number} [count] 
-   * @param {boolean} [idonly] 
-   * @param {number} [integrationmethod_id] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {string} [webhook_id] 
+   * @description Use this to return multiple WebhookEvent. Requires authentication.
+   * @param {number} [automation_id]
+   * @param {number} [count]
+   * @param {boolean} [idonly]
+   * @param {number} [integrationmethod_id]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {string} [webhook_id]
    */
   getWebhookEvent({
     automation_id,
@@ -80,7 +74,7 @@ export class WebhookEventAPI extends HaloPSA {
     page_size?: number
     pageinate?: boolean
     webhook_id?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/WebhookEvent',
@@ -107,25 +101,19 @@ export class WebhookEventAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postWebhookEvent({ webhookEvent }: { webhookEvent: Array<WebhookEvent> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/WebhookEvent',
-      data: webhookEvent,
-    })
+  postWebhookEvent({
+    webhookEventList,
+  }: {
+    webhookEventList: Array<WebhookEvent>
+  }): Promise<WebhookEvent> {
+    return this.request({ method: 'post', data: webhookEventList, path: '/WebhookEvent' })
   }
 
   /**
    * @summary Get one WebhookEvent
-   * @description Use this to return a single instance of WebhookEvent.<br>
-				Requires authentication.
-   * @param {string} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of WebhookEvent. Requires authentication.
+   * @param {string} id
+   * @param {boolean} [includedetails]
    */
   getWebhookEventById({
     id,
@@ -133,13 +121,7 @@ export class WebhookEventAPI extends HaloPSA {
   }: {
     id: string
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/WebhookEvent/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<WebhookEvent> {
+    return this.request({ method: 'get', path: `/WebhookEvent/${id}`, params: { includedetails } })
   }
 }

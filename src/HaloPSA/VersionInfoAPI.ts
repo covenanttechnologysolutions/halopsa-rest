@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module VersionInfoAPI
@@ -12,33 +9,20 @@ type schemas = components['schemas']
  * VersionInfo module
  * @public
  */
-export class VersionInfoAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class VersionInfoAPI extends BaseAPI {
   /**
-   * 
-   * @description .<br>
-				Requires authentication.
-   * @param {number} [product_id] 
+   * @description . Requires authentication.
+   * @param {number} [product_id]
    */
-  getVersionInfo({ product_id }: { product_id?: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/VersionInfo',
-      params: {
-        product_id,
-      },
-    })
+  getVersionInfo({ product_id }: { product_id?: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/VersionInfo', params: { product_id } })
   }
 
   /**
    * @summary Get one Release
-   * @description Use this to return a single instance of Release.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of Release. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getVersionInfoById({
     id,
@@ -46,24 +30,16 @@ export class VersionInfoAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/VersionInfo/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/VersionInfo/${id}`, params: { includedetails } })
   }
 
   /**
-   * 
-   * @description .<br>
-				Requires authentication.
-   * @param {number} [count] 
-   * @param {boolean} [dontshownotes] 
-   * @param {number} [product_id] 
-   * @param {string} [search] 
+   * @description . Requires authentication.
+   * @param {number} [count]
+   * @param {boolean} [dontshownotes]
+   * @param {number} [product_id]
+   * @param {string} [search]
    */
   getVersionInfoSearchVersionInfo({
     count,
@@ -75,38 +51,26 @@ export class VersionInfoAPI extends HaloPSA {
     dontshownotes?: boolean
     product_id?: number
     search?: string
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/VersionInfo/SearchVersionInfo',
-      params: {
-        count,
-        dontshownotes,
-        product_id,
-        search,
-      },
+      params: { count, dontshownotes, product_id, search },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  getVersionInfoGetOneSpotlightById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/VersionInfo/GetOneSpotlight/${id}`,
-    })
+  getVersionInfoGetOneSpotlightById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/VersionInfo/GetOneSpotlight/${id}` })
   }
 
   /**
-   * 
-   * @description .<br>
-				Requires authentication.
-   * @param {number} [count] 
-   * @param {boolean} [dontshownotes] 
-   * @param {number} [product_id] 
+   * @description . Requires authentication.
+   * @param {number} [count]
+   * @param {boolean} [dontshownotes]
+   * @param {number} [product_id]
    */
   getVersionInfoSpotlight({
     count,
@@ -116,15 +80,15 @@ export class VersionInfoAPI extends HaloPSA {
     count?: number
     dontshownotes?: boolean
     product_id?: number
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/VersionInfo/Spotlight',
-      params: {
-        count,
-        dontshownotes,
-        product_id,
-      },
+      params: { count, dontshownotes, product_id },
     })
+  }
+
+  getVersionInfoIntegratorHash(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/VersionInfo/IntegratorHash' })
   }
 }

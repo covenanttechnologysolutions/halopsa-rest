@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link NCentralDetails} */
 export type NCentralDetails = schemas['NCentralDetails']
@@ -14,50 +13,29 @@ export type NCentralDetails = schemas['NCentralDetails']
  * NCentralDetails module
  * @public
  */
-export class NCentralDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class NCentralDetailsAPI extends BaseAPI {
   /**
    * @summary List of NCentralDetails
-   * @description Use this to return multiple NCentralDetails.<br>
-				Requires authentication.
-   * @param {boolean} [includedetails] 
+   * @description Use this to return multiple NCentralDetails. Requires authentication.
+   * @param {boolean} [includedetails]
    */
-  getNCentralDetails({ includedetails }: { includedetails?: boolean }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/NCentralDetails',
-      params: {
-        includedetails,
-      },
-    })
+  getNCentralDetails({ includedetails }: { includedetails?: boolean }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/NCentralDetails', params: { includedetails } })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postNCentralDetails({
-    nCentralDetails,
+    nCentralDetailsList,
   }: {
-    nCentralDetails: Array<NCentralDetails>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/NCentralDetails',
-      data: nCentralDetails,
-    })
+    nCentralDetailsList: Array<NCentralDetails>
+  }): Promise<NCentralDetails> {
+    return this.request({ method: 'post', data: nCentralDetailsList, path: '/NCentralDetails' })
   }
 
   /**
    * @summary Get one NCentralDetails
-   * @description Use this to return a single instance of NCentralDetails.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of NCentralDetails. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getNCentralDetailsById({
     id,
@@ -65,25 +43,18 @@ export class NCentralDetailsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<NCentralDetails> {
     return this.request({
       method: 'get',
       path: `/NCentralDetails/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteNCentralDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/NCentralDetails/${id}`,
-    })
+  deleteNCentralDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/NCentralDetails/${id}` })
   }
 }

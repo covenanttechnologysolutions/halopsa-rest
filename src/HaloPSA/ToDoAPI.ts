@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link FaultToDo} */
 export type FaultToDo = schemas['FaultToDo']
@@ -14,37 +13,17 @@ export type FaultToDo = schemas['FaultToDo']
  * ToDo module
  * @public
  */
-export class ToDoAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ToDoAPI extends BaseAPI {
   /**
    * @summary List of FaultToDo
-   * @description Use this to return multiple FaultToDo.<br>
-				Requires authentication.
-   * @param {number} [ticket_id] 
+   * @description Use this to return multiple FaultToDo. Requires authentication.
+   * @param {number} [ticket_id]
    */
-  getToDo({ ticket_id }: { ticket_id?: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/ToDo',
-      params: {
-        ticket_id,
-      },
-    })
+  getToDo({ ticket_id }: { ticket_id?: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/ToDo', params: { ticket_id } })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postToDo({ faultToDo }: { faultToDo: Array<FaultToDo> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ToDo',
-      data: faultToDo,
-    })
+  postToDo({ faultToDoList }: { faultToDoList: Array<FaultToDo> }): Promise<unknown> {
+    return this.request({ method: 'post', data: faultToDoList, path: '/ToDo' })
   }
 }

@@ -1,10 +1,11 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Contract} */
 export type Contract = schemas['Contract']
+/** {@link Contract_View} */
+export type Contract_View = schemas['Contract_View']
 
 /**
  * @module SupplierContractAPI
@@ -14,32 +15,27 @@ export type Contract = schemas['Contract']
  * SupplierContract module
  * @public
  */
-export class SupplierContractAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class SupplierContractAPI extends BaseAPI {
   /**
    * @summary List of Contract
-   * @description Use this to return multiple Contract.<br>
-				Requires authentication.
-   * @param {number} [count] (int) Number of contracts to return in the response.
-   * @param {boolean} [includeinactive] (bool) Include inactive contracts in the response.
-   * @param {string} [order] (string) The name of the field to order by first.
-   * @param {string} [order2] (string) The name of the field to order by second.
-   * @param {string} [order3] (string) The name of the field to order by third.
-   * @param {string} [order4] (string) The name of the field to order by fourth.
-   * @param {string} [order5] (string) The name of the field to order by fifth.
-   * @param {boolean} [orderdesc] (bool) Whether to order ascending or descending on first order.
-   * @param {boolean} [orderdesc2] (bool) Whether to order ascending or descending on second order.
-   * @param {boolean} [orderdesc3] (bool) Whether to order ascending or descending on third order.
-   * @param {boolean} [orderdesc4] (bool) Whether to order ascending or descending on fourth order.
-   * @param {boolean} [orderdesc5] (bool) Whether to order ascending or descending on fifth order.
-   * @param {number} [page_no] (int) When using Pagination, the page number to return.
-   * @param {number} [page_size] (int) When using Pagination, the size of the page.
-   * @param {boolean} [pageinate] (bool) Whether to use Pagination in the response.
-   * @param {string} [search] (string) Filters response based on the search string.
-   * @param {number} [supplier_id] (int) Filters by the specified supplier.
+   * @description Use this to return multiple Contract. Requires authentication.
+   * @param {number} [count] Number of contracts to return in the response.
+   * @param {boolean} [includeinactive] Include inactive contracts in the response.
+   * @param {string} [order] The name of the field to order by first.
+   * @param {string} [order2] The name of the field to order by second.
+   * @param {string} [order3] The name of the field to order by third.
+   * @param {string} [order4] The name of the field to order by fourth.
+   * @param {string} [order5] The name of the field to order by fifth.
+   * @param {boolean} [orderdesc] Whether to order ascending or descending on first order.
+   * @param {boolean} [orderdesc2] Whether to order ascending or descending on second order.
+   * @param {boolean} [orderdesc3] Whether to order ascending or descending on third order.
+   * @param {boolean} [orderdesc4] Whether to order ascending or descending on fourth order.
+   * @param {boolean} [orderdesc5] Whether to order ascending or descending on fifth order.
+   * @param {number} [page_no] When using Pagination, the page number to return.
+   * @param {number} [page_size] When using Pagination, the size of the page.
+   * @param {boolean} [pageinate] Whether to use Pagination in the response.
+   * @param {string} [search] Filters response based on the search string.
+   * @param {number} [supplier_id] Filters by the specified supplier.
    */
   getSupplierContract({
     count,
@@ -77,7 +73,7 @@ export class SupplierContractAPI extends HaloPSA {
     pageinate?: boolean
     search?: string
     supplier_id?: number
-  }): Promise<any> {
+  }): Promise<Contract_View> {
     return this.request({
       method: 'get',
       path: '/SupplierContract',
@@ -103,25 +99,15 @@ export class SupplierContractAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postSupplierContract({ contract }: { contract: Array<Contract> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/SupplierContract',
-      data: contract,
-    })
+  postSupplierContract({ contractList }: { contractList: Array<Contract> }): Promise<Contract> {
+    return this.request({ method: 'post', data: contractList, path: '/SupplierContract' })
   }
 
   /**
    * @summary Get one Contract
-   * @description Use this to return a single instance of Contract.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] (bool) Include extra objects in the response.
+   * @description Use this to return a single instance of Contract. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails] Include extra objects in the response.
    */
   getSupplierContractById({
     id,
@@ -129,38 +115,26 @@ export class SupplierContractAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<Contract> {
     return this.request({
       method: 'get',
       path: `/SupplierContract/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteSupplierContractById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/SupplierContract/${id}`,
-    })
+  deleteSupplierContractById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/SupplierContract/${id}` })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postSupplierContractNextRef({ contract }: { contract: Array<Contract> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/SupplierContract/NextRef',
-      data: contract,
-    })
+  postSupplierContractNextRef({
+    contractList,
+  }: {
+    contractList: Array<Contract>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: contractList, path: '/SupplierContract/NextRef' })
   }
 }

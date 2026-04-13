@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link DattoCommerceDetails} */
 export type DattoCommerceDetails = schemas['DattoCommerceDetails']
@@ -14,50 +13,37 @@ export type DattoCommerceDetails = schemas['DattoCommerceDetails']
  * DattoCommerceDetails module
  * @public
  */
-export class DattoCommerceDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class DattoCommerceDetailsAPI extends BaseAPI {
   /**
    * @summary List of DattoCommerceDetails
-   * @description Use this to return multiple DattoCommerceDetails.<br>
-				Requires authentication.
-   * @param {boolean} [includedetails] 
+   * @description Use this to return multiple DattoCommerceDetails. Requires authentication.
+   * @param {boolean} [includedetails]
    */
-  getDattoCommerceDetails({ includedetails }: { includedetails?: boolean }): Promise<any> {
+  getDattoCommerceDetails({ includedetails }: { includedetails?: boolean }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/DattoCommerceDetails',
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postDattoCommerceDetails({
-    dattoCommerceDetails,
+    dattoCommerceDetailsList,
   }: {
-    dattoCommerceDetails: Array<DattoCommerceDetails>
-  }): Promise<any> {
+    dattoCommerceDetailsList: Array<DattoCommerceDetails>
+  }): Promise<DattoCommerceDetails> {
     return this.request({
       method: 'post',
+      data: dattoCommerceDetailsList,
       path: '/DattoCommerceDetails',
-      data: dattoCommerceDetails,
     })
   }
 
   /**
    * @summary Get one DattoCommerceDetails
-   * @description Use this to return a single instance of DattoCommerceDetails.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of DattoCommerceDetails. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getDattoCommerceDetailsById({
     id,
@@ -65,25 +51,18 @@ export class DattoCommerceDetailsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<DattoCommerceDetails> {
     return this.request({
       method: 'get',
       path: `/DattoCommerceDetails/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteDattoCommerceDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/DattoCommerceDetails/${id}`,
-    })
+  deleteDattoCommerceDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/DattoCommerceDetails/${id}` })
   }
 }

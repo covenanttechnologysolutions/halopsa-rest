@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ItemGroup} */
 export type ItemGroup = schemas['ItemGroup']
@@ -14,43 +13,21 @@ export type ItemGroup = schemas['ItemGroup']
  * ItemGroup module
  * @public
  */
-export class ItemGroupAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class ItemGroupAPI extends BaseAPI {
+  getItemGroup(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/ItemGroup' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getItemGroup({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/ItemGroup',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postItemGroup({ itemGroup }: { itemGroup: Array<ItemGroup> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/ItemGroup',
-      data: itemGroup,
-    })
+  postItemGroup({ itemGroupList }: { itemGroupList: Array<ItemGroup> }): Promise<ItemGroup> {
+    return this.request({ method: 'post', data: itemGroupList, path: '/ItemGroup' })
   }
 
   /**
    * @summary Get one ItemGroup
-   * @description Use this to return a single instance of ItemGroup.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {number} [groupQuantity] 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of ItemGroup. Requires authentication.
+   * @param {number} id
+   * @param {number} [groupQuantity]
+   * @param {boolean} [includedetails]
    */
   getItemGroupById({
     id,
@@ -60,26 +37,18 @@ export class ItemGroupAPI extends HaloPSA {
     id: number
     groupQuantity?: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<ItemGroup> {
     return this.request({
       method: 'get',
       path: `/ItemGroup/${id}`,
-      params: {
-        groupQuantity,
-        includedetails,
-      },
+      params: { groupQuantity, includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteItemGroupById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/ItemGroup/${id}`,
-    })
+  deleteItemGroupById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/ItemGroup/${id}` })
   }
 }

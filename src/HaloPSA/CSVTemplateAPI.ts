@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link CSVTemplate} */
 export type CSVTemplate = schemas['CSVTemplate']
@@ -14,42 +13,24 @@ export type CSVTemplate = schemas['CSVTemplate']
  * CSVTemplate module
  * @public
  */
-export class CSVTemplateAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class CSVTemplateAPI extends BaseAPI {
+  getCSVTemplate(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/CSVTemplate' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getCSVTemplate({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/CSVTemplate',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postCSVTemplate({ cSVTemplate }: { cSVTemplate: Array<CSVTemplate> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/CSVTemplate',
-      data: cSVTemplate,
-    })
+  postCSVTemplate({
+    cSVTemplateList,
+  }: {
+    cSVTemplateList: Array<CSVTemplate>
+  }): Promise<CSVTemplate> {
+    return this.request({ method: 'post', data: cSVTemplateList, path: '/CSVTemplate' })
   }
 
   /**
    * @summary Get one CSVTemplate
-   * @description Use this to return a single instance of CSVTemplate.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of CSVTemplate. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getCSVTemplateById({
     id,
@@ -57,25 +38,14 @@ export class CSVTemplateAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/CSVTemplate/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<CSVTemplate> {
+    return this.request({ method: 'get', path: `/CSVTemplate/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteCSVTemplateById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/CSVTemplate/${id}`,
-    })
+  deleteCSVTemplateById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/CSVTemplate/${id}` })
   }
 }

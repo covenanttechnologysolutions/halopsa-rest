@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link PdfTemplate} */
 export type PdfTemplate = schemas['PdfTemplate']
@@ -14,50 +13,32 @@ export type PdfTemplate = schemas['PdfTemplate']
  * PdfTemplate module
  * @public
  */
-export class PdfTemplateAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class PdfTemplateAPI extends BaseAPI {
   /**
    * @summary List of PdfTemplate
-   * @description Use this to return multiple PdfTemplate.<br>
-				Requires authentication.
-   * @param {string} [licencename] 
-   * @param {number} [type] 
+   * @description Use this to return multiple PdfTemplate. Requires authentication.
+   * @param {string} [licencename]
+   * @param {number} [type]
    */
-  getPdfTemplate({ licencename, type }: { licencename?: string; type?: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/PdfTemplate',
-      params: {
-        licencename,
-        type,
-      },
-    })
+  getPdfTemplate({ licencename, type }: { licencename?: string; type?: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: '/PdfTemplate', params: { licencename, type } })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postPdfTemplate({ pdfTemplate }: { pdfTemplate: Array<PdfTemplate> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/PdfTemplate',
-      data: pdfTemplate,
-    })
+  postPdfTemplate({
+    pdfTemplateList,
+  }: {
+    pdfTemplateList: Array<PdfTemplate>
+  }): Promise<PdfTemplate> {
+    return this.request({ method: 'post', data: pdfTemplateList, path: '/PdfTemplate' })
   }
 
   /**
    * @summary Get one PdfTemplate
-   * @description Use this to return a single instance of PdfTemplate.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
-   * @param {string} [licencename] 
-   * @param {string} [system_use] 
+   * @description Use this to return a single instance of PdfTemplate. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
+   * @param {string} [licencename]
+   * @param {string} [system_use]
    */
   getPdfTemplateById({
     id,
@@ -69,27 +50,18 @@ export class PdfTemplateAPI extends HaloPSA {
     includedetails?: boolean
     licencename?: string
     system_use?: string
-  }): Promise<any> {
+  }): Promise<PdfTemplate> {
     return this.request({
       method: 'get',
       path: `/PdfTemplate/${id}`,
-      params: {
-        includedetails,
-        licencename,
-        system_use,
-      },
+      params: { includedetails, licencename, system_use },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deletePdfTemplateById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/PdfTemplate/${id}`,
-    })
+  deletePdfTemplateById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/PdfTemplate/${id}` })
   }
 }

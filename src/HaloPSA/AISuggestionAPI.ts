@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link AiSuggestion} */
 export type AiSuggestion = schemas['AiSuggestion']
@@ -14,57 +13,30 @@ export type AiSuggestion = schemas['AiSuggestion']
  * AISuggestion module
  * @public
  */
-export class AISuggestionAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class AISuggestionAPI extends BaseAPI {
+  getAISuggestion(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/AISuggestion' })
+  }
+
+  postAISuggestion({
+    aiSuggestionList,
+  }: {
+    aiSuggestionList: Array<AiSuggestion>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: aiSuggestionList, path: '/AISuggestion' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  getAISuggestion({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/AISuggestion',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postAISuggestion({ aiSuggestion }: { aiSuggestion: Array<AiSuggestion> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/AISuggestion',
-      data: aiSuggestion,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  getAISuggestionById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/AISuggestion/${id}`,
-    })
+  getAISuggestionById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/AISuggestion/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteAISuggestionById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/AISuggestion/${id}`,
-    })
+  deleteAISuggestionById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/AISuggestion/${id}` })
   }
 }

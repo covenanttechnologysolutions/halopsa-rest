@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link TenableDetails} */
 export type TenableDetails = schemas['TenableDetails']
@@ -14,57 +13,30 @@ export type TenableDetails = schemas['TenableDetails']
  * TenableDetails module
  * @public
  */
-export class TenableDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class TenableDetailsAPI extends BaseAPI {
+  getTenableDetails(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/TenableDetails' })
+  }
+
+  postTenableDetails({
+    tenableDetailsList,
+  }: {
+    tenableDetailsList: Array<TenableDetails>
+  }): Promise<TenableDetails> {
+    return this.request({ method: 'post', data: tenableDetailsList, path: '/TenableDetails' })
   }
 
   /**
-   * 
-   * 
-   
-   */
-  getTenableDetails({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/TenableDetails',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postTenableDetails({ tenableDetails }: { tenableDetails: Array<TenableDetails> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/TenableDetails',
-      data: tenableDetails,
-    })
-  }
-
-  /**
-   *
-   *
    * @param {number} id
    */
-  getTenableDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/TenableDetails/${id}`,
-    })
+  getTenableDetailsById({ id }: { id: number }): Promise<TenableDetails> {
+    return this.request({ method: 'get', path: `/TenableDetails/${id}` })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteTenableDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/TenableDetails/${id}`,
-    })
+  deleteTenableDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/TenableDetails/${id}` })
   }
 }

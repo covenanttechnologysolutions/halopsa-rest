@@ -1,8 +1,9 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
+/** {@link AddToTicket} */
+export type AddToTicket = schemas['AddToTicket']
 /** {@link IncomingEmail} */
 export type IncomingEmail = schemas['IncomingEmail']
 
@@ -14,29 +15,24 @@ export type IncomingEmail = schemas['IncomingEmail']
  * Incomingemail module
  * @public
  */
-export class IncomingemailAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class IncomingemailAPI extends BaseAPI {
   /**
    * @summary List of IncomingEmail
-   * @description Use this to return multiple IncomingEmail.<br>
-				Requires authentication.
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {boolean} [showcurrentagentonly] 
+   * @description Use this to return multiple IncomingEmail. Requires authentication.
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {boolean} [showcurrentagentonly]
    */
   getIncomingemail({
     order,
@@ -68,7 +64,7 @@ export class IncomingemailAPI extends HaloPSA {
     page_size?: number
     pageinate?: boolean
     showcurrentagentonly?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/incomingemail',
@@ -91,26 +87,20 @@ export class IncomingemailAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postIncomingemail({ incomingEmail }: { incomingEmail: Array<IncomingEmail> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/incomingemail',
-      data: incomingEmail,
-    })
+  postIncomingemail({
+    incomingEmailList,
+  }: {
+    incomingEmailList: Array<IncomingEmail>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: incomingEmailList, path: '/incomingemail' })
   }
 
   /**
    * @summary Get one IncomingEmail
-   * @description Use this to return a single instance of IncomingEmail.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
-   * @param {boolean} [showcurrentagentonly] 
+   * @description Use this to return a single instance of IncomingEmail. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
+   * @param {boolean} [showcurrentagentonly]
    */
   getIncomingemailById({
     id,
@@ -120,26 +110,30 @@ export class IncomingemailAPI extends HaloPSA {
     id: number
     includedetails?: boolean
     showcurrentagentonly?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: `/incomingemail/${id}`,
-      params: {
-        includedetails,
-        showcurrentagentonly,
-      },
+      params: { includedetails, showcurrentagentonly },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteIncomingemailById({ id }: { id: number }): Promise<any> {
+  deleteIncomingemailById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/incomingemail/${id}` })
+  }
+
+  postIncomingemailAddToTicket({
+    addToTicketList,
+  }: {
+    addToTicketList: Array<AddToTicket>
+  }): Promise<unknown> {
     return this.request({
-      method: 'delete',
-      path: `/incomingemail/${id}`,
+      method: 'post',
+      data: addToTicketList,
+      path: '/incomingemail/AddToTicket',
     })
   }
 }

@@ -1,10 +1,11 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ServSite} */
 export type ServSite = schemas['ServSite']
+/** {@link ServSite_View} */
+export type ServSite_View = schemas['ServSite_View']
 /** {@link UnsubscribeService} */
 export type UnsubscribeService = schemas['UnsubscribeService']
 
@@ -16,46 +17,41 @@ export type UnsubscribeService = schemas['UnsubscribeService']
  * Service module
  * @public
  */
-export class ServiceAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class ServiceAPI extends BaseAPI {
   /**
    * @summary List of ServSite
-   * @description Use this to return multiple ServSite.<br>
-				Requires authentication.
-   * @param {number} [access_control_level] 
-   * @param {string} [asset_ids] 
-   * @param {number} [count] 
-   * @param {boolean} [includechildservices] 
-   * @param {boolean} [includestatusinfo] 
-   * @param {number} [itil_ticket_type] 
-   * @param {boolean} [monitoredonly] 
-   * @param {string} [order] 
-   * @param {string} [order2] 
-   * @param {string} [order3] 
-   * @param {string} [order4] 
-   * @param {string} [order5] 
-   * @param {boolean} [orderdesc] 
-   * @param {boolean} [orderdesc2] 
-   * @param {boolean} [orderdesc3] 
-   * @param {boolean} [orderdesc4] 
-   * @param {boolean} [orderdesc5] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
-   * @param {number} [parent_service_category_id] 
-   * @param {boolean} [relatedservicesonly] 
-   * @param {string} [search] 
-   * @param {number} [service_category_id] 
-   * @param {string} [service_category_ids] 
-   * @param {string} [service_status_ids] 
-   * @param {boolean} [subscribedonly] 
-   * @param {number} [template_id] 
-   * @param {number} [ticket_id] 
-   * @param {number} [tickettype_id] 
-   * @param {number} [user_id] 
+   * @description Use this to return multiple ServSite. Requires authentication.
+   * @param {number} [access_control_level]
+   * @param {string} [asset_ids]
+   * @param {number} [count]
+   * @param {boolean} [includechildservices]
+   * @param {boolean} [includestatusinfo]
+   * @param {number} [itil_ticket_type]
+   * @param {boolean} [monitoredonly]
+   * @param {string} [order]
+   * @param {string} [order2]
+   * @param {string} [order3]
+   * @param {string} [order4]
+   * @param {string} [order5]
+   * @param {boolean} [orderdesc]
+   * @param {boolean} [orderdesc2]
+   * @param {boolean} [orderdesc3]
+   * @param {boolean} [orderdesc4]
+   * @param {boolean} [orderdesc5]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
+   * @param {number} [parent_service_category_id]
+   * @param {boolean} [relatedservicesonly]
+   * @param {string} [search]
+   * @param {number} [service_category_id]
+   * @param {string} [service_category_ids]
+   * @param {string} [service_status_ids]
+   * @param {boolean} [subscribedonly]
+   * @param {number} [template_id]
+   * @param {number} [ticket_id]
+   * @param {number} [tickettype_id]
+   * @param {number} [user_id]
    */
   getService({
     access_control_level,
@@ -121,7 +117,7 @@ export class ServiceAPI extends HaloPSA {
     ticket_id?: number
     tickettype_id?: number
     user_id?: number
-  }): Promise<any> {
+  }): Promise<ServSite_View> {
     return this.request({
       method: 'get',
       path: '/Service',
@@ -161,26 +157,16 @@ export class ServiceAPI extends HaloPSA {
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  postService({ servSite }: { servSite: Array<ServSite> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/Service',
-      data: servSite,
-    })
+  postService({ servSiteList }: { servSiteList: Array<ServSite> }): Promise<ServSite> {
+    return this.request({ method: 'post', data: servSiteList, path: '/Service' })
   }
 
   /**
    * @summary Get one ServSite
-   * @description Use this to return a single instance of ServSite.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
-   * @param {number} [user_id] 
+   * @description Use this to return a single instance of ServSite. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
+   * @param {number} [user_id]
    */
   getServiceById({
     id,
@@ -190,43 +176,30 @@ export class ServiceAPI extends HaloPSA {
     id: number
     includedetails?: boolean
     user_id?: number
-  }): Promise<any> {
+  }): Promise<ServSite> {
     return this.request({
       method: 'get',
       path: `/Service/${id}`,
-      params: {
-        includedetails,
-        user_id,
-      },
+      params: { includedetails, user_id },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteServiceById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/Service/${id}`,
-    })
+  deleteServiceById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/Service/${id}` })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postServiceUnsubscribe({
-    unsubscribeService,
+    unsubscribeServiceList,
   }: {
-    unsubscribeService: Array<UnsubscribeService>
-  }): Promise<any> {
+    unsubscribeServiceList: Array<UnsubscribeService>
+  }): Promise<unknown> {
     return this.request({
       method: 'post',
+      data: unsubscribeServiceList,
       path: '/Service/unsubscribe',
-      data: unsubscribeService,
     })
   }
 }

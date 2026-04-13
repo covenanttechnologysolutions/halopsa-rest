@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link ItemSupplier} */
 export type ItemSupplier = schemas['ItemSupplier']
@@ -14,42 +13,24 @@ export type ItemSupplier = schemas['ItemSupplier']
  * Itemsupplier module
  * @public
  */
-export class ItemsupplierAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
+export class ItemsupplierAPI extends BaseAPI {
+  getItemsupplier(): Promise<unknown> {
+    return this.request({ method: 'get', path: '/itemsupplier' })
   }
 
-  /**
-   * 
-   * 
-   
-   */
-  getItemsupplier({}: {}): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: '/itemsupplier',
-    })
-  }
-
-  /**
-   * 
-   * 
-   
-   */
-  postItemsupplier({ itemSupplier }: { itemSupplier: Array<ItemSupplier> }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/itemsupplier',
-      data: itemSupplier,
-    })
+  postItemsupplier({
+    itemSupplierList,
+  }: {
+    itemSupplierList: Array<ItemSupplier>
+  }): Promise<unknown> {
+    return this.request({ method: 'post', data: itemSupplierList, path: '/itemsupplier' })
   }
 
   /**
    * @summary Get one ItemSupplier
-   * @description Use this to return a single instance of ItemSupplier.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of ItemSupplier. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getItemsupplierById({
     id,
@@ -57,25 +38,14 @@ export class ItemsupplierAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
-    return this.request({
-      method: 'get',
-      path: `/itemsupplier/${id}`,
-      params: {
-        includedetails,
-      },
-    })
+  }): Promise<unknown> {
+    return this.request({ method: 'get', path: `/itemsupplier/${id}`, params: { includedetails } })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteItemsupplierById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/itemsupplier/${id}`,
-    })
+  deleteItemsupplierById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/itemsupplier/${id}` })
   }
 }

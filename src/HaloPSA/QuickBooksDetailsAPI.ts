@@ -1,7 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
+import { BaseAPI } from '../BaseAPI'
+import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link QuickBooksDetails} */
 export type QuickBooksDetails = schemas['QuickBooksDetails']
@@ -14,17 +13,12 @@ export type QuickBooksDetails = schemas['QuickBooksDetails']
  * QuickBooksDetails module
  * @public
  */
-export class QuickBooksDetailsAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class QuickBooksDetailsAPI extends BaseAPI {
   /**
    * @summary List of QuickBooksDetails
-   * @description Use this to return multiple QuickBooksDetails.<br>
-				Requires authentication.
-   * @param {string} [companyid] 
-   * @param {boolean} [connectedonly] 
+   * @description Use this to return multiple QuickBooksDetails. Requires authentication.
+   * @param {string} [companyid]
+   * @param {boolean} [connectedonly]
    */
   getQuickBooksDetails({
     companyid,
@@ -32,40 +26,27 @@ export class QuickBooksDetailsAPI extends HaloPSA {
   }: {
     companyid?: string
     connectedonly?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/QuickBooksDetails',
-      params: {
-        companyid,
-        connectedonly,
-      },
+      params: { companyid, connectedonly },
     })
   }
 
-  /**
-   * 
-   * 
-   
-   */
   postQuickBooksDetails({
-    quickBooksDetails,
+    quickBooksDetailsList,
   }: {
-    quickBooksDetails: Array<QuickBooksDetails>
-  }): Promise<any> {
-    return this.request({
-      method: 'post',
-      path: '/QuickBooksDetails',
-      data: quickBooksDetails,
-    })
+    quickBooksDetailsList: Array<QuickBooksDetails>
+  }): Promise<QuickBooksDetails> {
+    return this.request({ method: 'post', data: quickBooksDetailsList, path: '/QuickBooksDetails' })
   }
 
   /**
    * @summary Get one QuickBooksDetails
-   * @description Use this to return a single instance of QuickBooksDetails.<br>
-				Requires authentication.
-   * @param {number} id 
-   * @param {boolean} [includedetails] 
+   * @description Use this to return a single instance of QuickBooksDetails. Requires authentication.
+   * @param {number} id
+   * @param {boolean} [includedetails]
    */
   getQuickBooksDetailsById({
     id,
@@ -73,25 +54,18 @@ export class QuickBooksDetailsAPI extends HaloPSA {
   }: {
     id: number
     includedetails?: boolean
-  }): Promise<any> {
+  }): Promise<QuickBooksDetails> {
     return this.request({
       method: 'get',
       path: `/QuickBooksDetails/${id}`,
-      params: {
-        includedetails,
-      },
+      params: { includedetails },
     })
   }
 
   /**
-   *
-   *
    * @param {number} id
    */
-  deleteQuickBooksDetailsById({ id }: { id: number }): Promise<any> {
-    return this.request({
-      method: 'delete',
-      path: `/QuickBooksDetails/${id}`,
-    })
+  deleteQuickBooksDetailsById({ id }: { id: number }): Promise<unknown> {
+    return this.request({ method: 'delete', path: `/QuickBooksDetails/${id}` })
   }
 }

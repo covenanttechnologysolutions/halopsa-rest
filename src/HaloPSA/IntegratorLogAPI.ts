@@ -1,8 +1,5 @@
 /* This file was auto-generated, do not manually edit. */
-import HaloPSA, { HaloOptions } from '../HaloPSA'
-import { components } from '../types'
-import { NoContentResponse, OctetStreamResponse, PDFResponse, HTMLResponse } from '../types'
-type schemas = components['schemas']
+import { BaseAPI } from '../BaseAPI'
 
 /**
  * @module IntegratorLogAPI
@@ -12,19 +9,14 @@ type schemas = components['schemas']
  * IntegratorLog module
  * @public
  */
-export class IntegratorLogAPI extends HaloPSA {
-  constructor(props: HaloOptions) {
-    super(props)
-  }
-
+export class IntegratorLogAPI extends BaseAPI {
   /**
    * @summary List of IntegratorLog
-   * @description Use this to return multiple IntegratorLog.<br>
-				Requires authentication.
-   * @param {number} [module_id] 
-   * @param {number} [page_no] 
-   * @param {number} [page_size] 
-   * @param {boolean} [pageinate] 
+   * @description Use this to return multiple IntegratorLog. Requires authentication.
+   * @param {number} [module_id]
+   * @param {number} [page_no]
+   * @param {number} [page_size]
+   * @param {boolean} [pageinate]
    */
   getIntegratorLog({
     module_id,
@@ -36,16 +28,11 @@ export class IntegratorLogAPI extends HaloPSA {
     page_no?: number
     page_size?: number
     pageinate?: boolean
-  }): Promise<any> {
+  }): Promise<unknown> {
     return this.request({
       method: 'get',
       path: '/IntegratorLog',
-      params: {
-        module_id,
-        page_no,
-        page_size,
-        pageinate,
-      },
+      params: { module_id, page_no, page_size, pageinate },
     })
   }
 }
