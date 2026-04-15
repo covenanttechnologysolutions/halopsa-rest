@@ -112,6 +112,36 @@ Hints come from two sources, in order:
 
 When neither produces a hint, the return type is `unknown`. Cast or narrow at the call site if you have out-of-band knowledge of the shape.
 
+## Uploading and downloading files
+
+Attachments are uploaded as an array of `Attachment` objects with the file contents base64-encoded in the `data` field. The server returns the created record, including an `id` you can use for downloads.
+
+```ts
+import fs from 'node:fs'
+
+const bytes = fs.readFileSync('report.pdf')
+const created = await halo.AttachmentAPI.postAttachment({
+  attachmentList: [{
+    ticket_id: 123,
+    filename: 'report.pdf',
+    data: bytes.toString('base64'),
+  }],
+})
+
+console.log(`uploaded id=${created.id}, size=${created.filesize}`)
+```
+
+Download the raw bytes back with `getAttachmentById`. The return type is a Node `Buffer`, ready to write to disk or pipe wherever you need.
+
+```ts
+const buf = await halo.AttachmentAPI.getAttachmentById({ id: created.id })
+fs.writeFileSync('report.pdf', buf)
+```
+
+`POST /Attachment/document` accepts the same body shape and behaves identically to `POST /Attachment`. Use whichever you prefer.
+
+The `/Attachment/image` endpoint is a separate staging flow for rich-text editor inline images. It returns a token URL rather than persisting an attachment to a ticket, and the spec declares ~100 query-string parameters that most callers will not need. The generated method is included for completeness but most library users should reach for `postAttachment` instead.
+
 ## Schema types
 
 Every section file re-exports the schemas it references. Import them by name:

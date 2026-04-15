@@ -33,7 +33,7 @@ export const makeRequest =
     api: (args: RequestOptions) => Promise<unknown>
     thisObj: InstanceType<typeof HaloPSA>
   }): ((args: RequestOptions) => Promise<unknown>) =>
-  ({ path, method = 'get', params, data }: RequestOptions): Promise<unknown> => {
+  ({ path, method = 'get', params, data, responseType }: RequestOptions): Promise<unknown> => {
     const retryCodes = ['ECONNRESET', 'ETIMEDOUT', 'ESOCKETTIMEDOUT']
     const boundApi = api.bind(thisObj)
 
@@ -45,7 +45,7 @@ export const makeRequest =
     const { retry, retryOptions, logger } = config
 
     if (!retry) {
-      return boundApi({ path, method, params, data })
+      return boundApi({ path, method, params, data, responseType })
         .then((result: any) => {
           logger(
             'info',
@@ -63,7 +63,7 @@ export const makeRequest =
         })
     } else {
       return promiseRetry(retryOptions, (retry, number) => {
-        return boundApi({ path, method, params, data }).catch((error) => {
+        return boundApi({ path, method, params, data, responseType }).catch((error) => {
           logger(
             'warn',
             `${method} ${path} ${Date.now() - startTime}ms error occurred: ${

@@ -193,6 +193,7 @@ export default class HaloPSA {
     method,
     params,
     data,
+    responseType,
   }: RequestOptions): Promise<ErrorResponse | DataResponse> {
     try {
       const result = await this.instance.request({
@@ -200,6 +201,7 @@ export default class HaloPSA {
         method,
         params,
         data,
+        responseType,
       })
 
       return result?.data

@@ -136,4 +136,50 @@ describe('HaloAPI (read-only e2e)', function () {
     const result = await read(this, () => halo.HolidayAPI.getHoliday({}))
     assert.ok(result, 'expected a response')
   })
+
+  it('uploads and downloads an attachment roundtrip', async function () {
+    if (!firstTicketId) {
+      this.skip()
+    }
+    // 1x1 transparent PNG
+    const PNG = Buffer.from(
+      '89504e470d0a1a0a0000000d49484452000000010000000108060000001f15c4890000000d49444154789c63f8cfc0500f0000040001ffaefd870000000049454e44ae426082',
+      'hex',
+    )
+
+    const uploaded = await read(this, () =>
+      halo.AttachmentAPI.postAttachment({
+        attachmentList: [
+          {
+            ticket_id: firstTicketId,
+            filename: `halopsa-test-${Date.now()}.png`,
+            desc: 'halopsa lib e2e upload',
+            isimage: true,
+            data: PNG.toString('base64'),
+            type: 1,
+          },
+        ],
+      }),
+    )
+    if (!uploaded) {
+      return
+    }
+
+    assert.ok(uploaded.id, 'expected created attachment to have an id')
+    assert.strictEqual(uploaded.filesize, PNG.length, 'filesize should match uploaded bytes')
+
+    const bytes = await read(this, () =>
+      halo.AttachmentAPI.getAttachmentById({ id: uploaded.id }),
+    )
+    if (!bytes) {
+      return
+    }
+    assert.ok(Buffer.isBuffer(bytes), 'download should return a Node Buffer')
+    assert.strictEqual(bytes.length, PNG.length, 'downloaded length should match')
+    assert.strictEqual(
+      bytes.subarray(0, 8).toString('hex'),
+      '89504e470d0a1a0a',
+      'downloaded bytes should start with the PNG magic header',
+    )
+  })
 })

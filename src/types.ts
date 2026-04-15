@@ -39,6 +39,9 @@ export type RequestOptions = {
     | number
     | undefined
     | object
+  // optional axios responseType, set to 'arraybuffer' for binary endpoints
+  // so raw bytes come back as a Buffer instead of getting JSON-parsed
+  responseType?: 'json' | 'arraybuffer' | 'text' | 'stream'
 }
 
 export type LoggingLevels = 'error' | 'warn' | 'info' | 'debug'
@@ -61,6 +64,8 @@ export type ErrorResponse = {
 // missing types from api spec
 export type NoContentResponse = undefined
 export type OctetStreamResponse = Buffer
-export type PDFResponse = Blob
+// PDF endpoints return raw bytes; this is a Node-only client, so Buffer
+// is the ergonomic return type (vs browser-only Blob).
+export type PDFResponse = Buffer
 export type HTMLResponse = string
 export type components = HaloPSATypes.components

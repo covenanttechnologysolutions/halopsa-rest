@@ -160,6 +160,7 @@ function resolveSchemaType(schema, usedSchemas) {
 /**
  * Determine the response TS type for an operation from its 2xx responses.
  * Populates `usedSchemas` and `usedHelpers` with what was referenced.
+ * Returns { type, isBinary } or null when no 2xx response defines a body.
  */
 function resolveExplicitResponseType(responses, usedSchemas, usedHelpers) {
   if (!responses) {
@@ -178,7 +179,7 @@ function resolveExplicitResponseType(responses, usedSchemas, usedHelpers) {
 
     if (code === '204' && !resp.content) {
       usedHelpers.add('NoContentResponse')
-      return 'NoContentResponse'
+      return { type: 'NoContentResponse', isBinary: false }
     }
 
     const content = resp.content
@@ -187,22 +188,35 @@ function resolveExplicitResponseType(responses, usedSchemas, usedHelpers) {
     }
 
     const types = []
+    let isBinary = false
 
     const json = firstJsonContent(content)
     if (json?.value?.schema) {
-      const t = resolveSchemaType(json.value.schema, usedSchemas)
-      if (t) {
-        types.push(t)
+      const schema = json.value.schema
+      // HaloPSA quirk: GET /Attachment/{id} declares a binary body inside
+      // application/json. Treat format: binary as a binary response regardless
+      // of the declared media type.
+      if (schema.format === 'binary') {
+        usedHelpers.add('OctetStreamResponse')
+        types.push('OctetStreamResponse')
+        isBinary = true
+      } else {
+        const t = resolveSchemaType(schema, usedSchemas)
+        if (t) {
+          types.push(t)
+        }
       }
     }
 
     if (content['application/octet-stream']) {
       usedHelpers.add('OctetStreamResponse')
       types.push('OctetStreamResponse')
+      isBinary = true
     }
     if (content['application/pdf']) {
       usedHelpers.add('PDFResponse')
       types.push('PDFResponse')
+      isBinary = true
     }
     if (content['text/html']) {
       usedHelpers.add('HTMLResponse')
@@ -210,7 +224,7 @@ function resolveExplicitResponseType(responses, usedSchemas, usedHelpers) {
     }
 
     if (types.length) {
-      return [...new Set(types)].join(' | ')
+      return { type: [...new Set(types)].join(' | '), isBinary }
     }
   }
 
@@ -261,9 +275,9 @@ function resolveResponseType({ method, url, responses, sectionHint, usedSchemas,
   }
   const inferred = inferResponseType({ method, url, sectionHint, usedSchemas })
   if (inferred) {
-    return inferred
+    return { type: inferred, isBinary: false }
   }
-  return 'unknown'
+  return { type: 'unknown', isBinary: false }
 }
 
 /**
@@ -412,7 +426,7 @@ function generateAPIClass({ apiName, operations = [], sectionHint }) {
         requestParams.push(`params: { ${paramPairs.join(', ')} }`)
       }
 
-      const returnType = resolveResponseType({
+      const { type: returnType, isBinary } = resolveResponseType({
         method,
         url,
         responses: methodDefinition.responses,
@@ -420,6 +434,10 @@ function generateAPIClass({ apiName, operations = [], sectionHint }) {
         usedSchemas,
         usedHelpers,
       })
+
+      if (isBinary) {
+        requestParams.push(`responseType: 'arraybuffer'`)
+      }
 
       const jsDoc = buildJsDoc({
         summary: methodDefinition.summary,

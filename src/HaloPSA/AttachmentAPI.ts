@@ -1,5 +1,6 @@
 /* This file was auto-generated, do not manually edit. */
 import { BaseAPI } from '../BaseAPI'
+import type { OctetStreamResponse } from '../types'
 import type { components } from '../types'
 type schemas = components['schemas']
 /** {@link Attachment} */
@@ -117,8 +118,8 @@ export class AttachmentAPI extends BaseAPI {
     })
   }
 
-  postAttachment(): Promise<Attachment> {
-    return this.request({ method: 'post', path: '/Attachment' })
+  postAttachment({ attachmentList }: { attachmentList: Array<Attachment> }): Promise<Attachment> {
+    return this.request({ method: 'post', data: attachmentList, path: '/Attachment' })
   }
 
   /**
@@ -139,11 +140,12 @@ export class AttachmentAPI extends BaseAPI {
     childticketid?: number
     includedetails?: boolean
     token?: string
-  }): Promise<string> {
+  }): Promise<OctetStreamResponse> {
     return this.request({
       method: 'get',
       path: `/Attachment/${id}`,
       params: { childticketid, includedetails, token },
+      responseType: 'arraybuffer',
     })
   }
 

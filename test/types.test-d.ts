@@ -36,3 +36,18 @@ expectTypeOf(halo.ActionsAPI.getActionsById({ id: 1 })).resolves.toEqualTypeOf<A
 // Required path params are enforced at the type level.
 // @ts-expect-error - `id` is required
 halo.TicketsAPI.getTicketsById({})
+
+import type { AttachmentAPI, Attachment } from '../dist/HaloPSA/AttachmentAPI'
+
+// postAttachment now takes a JSON body (spec overlay): Array<Attachment> in,
+// one Attachment out.
+expectTypeOf(halo.AttachmentAPI).toEqualTypeOf<AttachmentAPI>()
+expectTypeOf(
+  halo.AttachmentAPI.postAttachment({ attachmentList: [] as Array<Attachment> }),
+).resolves.toEqualTypeOf<Attachment>()
+
+// getAttachmentById returns raw bytes as a Buffer (via OctetStreamResponse alias).
+expectTypeOf(halo.AttachmentAPI.getAttachmentById({ id: 1 })).resolves.toEqualTypeOf<Buffer>()
+
+// @ts-expect-error - `attachmentList` is required (previously postAttachment took no args).
+halo.AttachmentAPI.postAttachment({})

@@ -10,6 +10,7 @@ const fs = require('fs')
 const path = require('path')
 const { ESLint } = require('eslint')
 const { generateAPIClass } = require('./generator.js')
+const OVERLAYS = require('./spec-overlays.js')
 
 const SPEC_PATH = path.join(__dirname, 'spec', 'halo-psa-api.json')
 const SRC_DIR = path.join(__dirname, '..', 'src')
@@ -208,8 +209,27 @@ async function runEslintFix() {
   }
 }
 
+/**
+ * Apply per-endpoint overlays from spec-overlays.js onto the parsed spec.
+ * Each overlay key is "METHOD /path"; Object.assign replaces matching
+ * top-level keys on the operation (requestBody, parameters, etc.).
+ */
+function applyOverlays(spec, overlays) {
+  for (const [key, patch] of Object.entries(overlays)) {
+    const [method, url] = key.split(' ')
+    const op = spec.paths?.[url]?.[method.toLowerCase()]
+    if (!op) {
+      console.warn(`overlay target not found in spec: ${key}`)
+      continue
+    }
+    Object.assign(op, patch)
+    console.log(`applied overlay: ${key}`)
+  }
+}
+
 async function generate() {
   const spec = require(SPEC_PATH)
+  applyOverlays(spec, OVERLAYS)
 
   await emitTypes(spec)
 
