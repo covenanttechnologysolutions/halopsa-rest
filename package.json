@@ -1,15 +1,23 @@
 {
-  "name": "halopsa",
+  "name": "halopsa-rest",
   "version": "1.0.0",
   "description": "",
+  "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist"
   ],
   "scripts": {
     "clean:docs": "npx rimraf docs/",
-    "clean:generator": "npx rimraf generator/temp/*.ts",
+    "clean:generator": "npx rimraf --glob generator/temp/*.ts",
     "clean:dist": "npx rimraf dist/",
     "clean:src": "npx rimraf src/HaloPSA/",
     "clean": "npm run clean:dist && npm run clean:generator && npm run clean:src",
@@ -24,8 +32,6 @@
     "coveralls": "npx nyc report --reporter=text-lcov > ./.nyc_output/lcov.info",
     "predocs": "npm run clean:docs",
     "docs": "npx typedoc src/index.ts",
-    "preapidocumenter": "npx api-extractor run --local --verbose",
-    "apidocumenter": "npx api-documenter markdown --input-folder temp --output-folder docs",
     "gh-pages": "npx gh-pages -d docs"
   },
   "keywords": [],
@@ -37,8 +43,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@microsoft/api-documenter": "^7.30.0",
-    "@microsoft/api-extractor": "^7.58.2",
     "@types/mocha": "^10.0.10",
     "@types/node": "^25.6.0",
     "@types/promise-retry": "^1.1.6",
